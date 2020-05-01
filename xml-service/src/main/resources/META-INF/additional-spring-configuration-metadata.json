@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "sping.jpa.properties.hibernate.jdbc.lob.non_contextual_creation",
+      "type": "java.lang.String",
+      "description": "Description for sping.jpa.properties.hibernate.jdbc.lob.non_contextual_creation."
+    },
+    {
+      "name": "sping.jpa.properties.hibernate.jdbc.lob.non_contextual_creation",
+      "type": "java.lang.String",
+      "description": "Description for sping.jpa.properties.hibernate.jdbc.lob.non_contextual_creation."
+    }
+  ] }
