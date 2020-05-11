@@ -58,7 +58,7 @@ public class User {
 
     @Column
     private  String role;
-
+  
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
 
@@ -86,6 +86,5 @@ public class User {
         this.authorities = authorities;
         this.username = username;
     }
-
 
 }
