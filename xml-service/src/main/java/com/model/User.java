@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 import javax.persistence.Inheritance;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.List;
+
 import static javax.persistence.InheritanceType.JOINED;
 
 @Entity
@@ -28,6 +31,9 @@ public class User {
 
     @Column
     private String surname;
+
+    @Column
+    private String username;
 
     @Column
     private String ucidn;
@@ -52,12 +58,9 @@ public class User {
 
     @Column
     private  String role;
-<<<<<<< Updated upstream
-=======
 
     @Column
     private boolean isAdmin;
-
 
 
   
@@ -69,12 +72,13 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
->>>>>>> Stashed changes
+
 
     public User() {
     }
 
-    public User(String name, String surname, String ucidn, String address, String city, String country, String email, String phone, String password, String role) {
+    public User(String name, String surname, String ucidn, String address, String city, String country, String email,
+                String phone, String password, String role, List<Authority> authorities, String username) {
         this.name = name;
         this.surname = surname;
         this.ucidn = ucidn;
@@ -85,5 +89,8 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.role = role;
+        this.authorities = authorities;
+        this.username = username;
     }
+
 }
