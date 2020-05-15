@@ -1,4 +1,4 @@
-package com.model;
+package com.example.demo.model;
 
 import lombok.*;
 import sun.security.x509.X500Name;

@@ -1,4 +1,4 @@
-package com.model;
+package com.example.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,34 +23,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "surname")
     private String surname;
 
-    @Column
+    @Column(name = "ucidn")
     private String ucidn;
 
-    @Column
+    @Column(name = "address")
     private String address;
 
-    @Column
+    @Column(name = "city")
     private String city;
 
-    @Column
+    @Column(name = "country")
     private String country;
 
-    @Column
+    @Column(name = "email")
     private String email;
 
-    @Column
+    @Column(name = "phone")
     private String phone;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @Column
+    @Column(name = "role")
     private  String role;
 
     public User() {

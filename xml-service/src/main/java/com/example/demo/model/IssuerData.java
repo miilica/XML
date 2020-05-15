@@ -1,4 +1,4 @@
-package com.model;
+package com.example.demo.model;
 
 import lombok.*;
 import org.bouncycastle.asn1.x500.X500Name;
