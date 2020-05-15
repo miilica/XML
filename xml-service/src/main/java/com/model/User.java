@@ -58,6 +58,11 @@ public class User {
 
     @Column
     private  String role;
+
+    @Column
+    private boolean isAdmin;
+
+
   
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
@@ -67,6 +72,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
+
 
     public User() {
     }
