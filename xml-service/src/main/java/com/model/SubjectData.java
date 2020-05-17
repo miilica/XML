@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.model;
 
 import lombok.*;
 import sun.security.x509.X500Name;
@@ -8,8 +8,6 @@ import java.security.PublicKey;
 import java.util.Date;
 
 @Data
-@Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
