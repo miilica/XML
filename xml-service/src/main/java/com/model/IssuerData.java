@@ -7,6 +7,8 @@ import java.security.PrivateKey;
 
 
 @Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
