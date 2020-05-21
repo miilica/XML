@@ -2,6 +2,7 @@ package com.model;
 
 import java.awt.*;
 import java.util.Date;
+import java.util.List;
 
 public class Oglas {
     private Vozilo vozilo;

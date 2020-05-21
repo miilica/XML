@@ -63,7 +63,7 @@ public class User {
     private boolean isAdmin;
 
 
-  
+
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
 
