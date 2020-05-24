@@ -1,13 +1,12 @@
 package com.example.dto;
 
 import com.example.model.Authority;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.security.Timestamp;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Getter
 @Setter
