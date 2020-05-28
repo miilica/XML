@@ -1,11 +1,11 @@
 package com.model;
 
-import java.util.List;
+import java.util.Set;
 
 public class Korisnik extends User {
 
-    private List<Oglas> korpa;
-    private List<Zahtjev> mojiZahtjevi;
+    private Set<Oglas> korpa;
+    private Set<Zahtjev> mojiZahtjevi;
 
-    private List<Oglas> mojiOglasi; //maks3
+    private Set<Oglas> mojiOglasi; //maks3
 }

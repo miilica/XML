@@ -1,18 +1,17 @@
 package com.model;
 
-import javax.jws.soap.SOAPBinding;
-import java.util.List;
+import java.util.Set;
 
-public class Agent extends User {
+public class Agent{
     private String ime;
     private String prezime;
     private String adresa;
-    private String imeKopanije;
+    private String imeKompanije;
     private String poslovniMB;
-    private List<Vozilo> vozila;
-    private List<Oglas> oglasi;
+    private Set<Vozilo> vozila;
+    private Set<Oglas> oglasi;
     private int brOglasa;
-    private List<Zahtjev> pristigliZahtjevi;
+    private Set<Zahtjev> pristigliZahtjevi;
 
 
 }

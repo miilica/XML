@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 import java.util.Set;
 
 public class Vozilo {
@@ -23,7 +22,7 @@ public class Vozilo {
     private double mozePreciKM;
 
     @Column
-    private int brSjedistazaDjecu;
+    private int brSjedistaZaDjecu;
 
     @Column
     private double ocjena;
@@ -33,7 +32,7 @@ public class Vozilo {
 
     private VrstaGoriva vrstaGoriva;
 
-    private  TipMjenjaca tipMjenjaca;
+    private TipMjenjaca tipMjenjaca;
 
     private KlasaAutomobila klasaAutomobila;
 
@@ -43,6 +42,6 @@ public class Vozilo {
     private boolean coliisionDamageWavier;
 
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-    private List<Komentar> komentari;
-    private List<Izvjestaj> izvjestaji;
+    private Set<Komentar> komentari;
+    private Set<Izvjestaj> izvjestaji;
 }

@@ -1,7 +1,6 @@
 package com.model;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 public class Zahtjev {
@@ -9,5 +8,5 @@ public class Zahtjev {
     private Date datumKreiranja;
     private boolean potvrdjen;
     private  boolean bandle;
-    private List<Oglas> oglasi;
+    private Set<Oglas> oglasi;
 }
