@@ -26,9 +26,9 @@ public class Poruka {
 
     //private User poslijalac;
     @Column
-    private String senderId;
+    private String posiljalacId;
 
     //private User primalac;
     @Column
-    private String reciverId;
+    private String primalacId;
 }
