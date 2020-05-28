@@ -1,7 +1,5 @@
-package com.model;
+package com.example.xmlserviceoglas.model;
 
-import java.awt.*;
-import java.util.Date;
 import java.util.List;
 
 public class Oglas {
@@ -10,5 +8,4 @@ public class Oglas {
     private String mjestoPreuzimanja;
     private TerminIznajmljivanja terminIznajmljivanja;
     private Cjenovnik cjenovnik;
-    //private List<String> slike;
 }

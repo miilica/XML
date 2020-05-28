@@ -50,6 +50,8 @@ public class Vozilo {
     private boolean coliisionDamageWavier;
 
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+
     private List<Komentar> komentari;
-    //private List<Izvjestaj> izvjestaji;
+
+    private List<Izvjestaj> izvjestaji;
 }

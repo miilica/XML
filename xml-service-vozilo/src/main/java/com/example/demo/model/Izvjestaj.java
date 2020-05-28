@@ -1,4 +1,4 @@
-package com.model;
+package com.example.demo.model;
 
 public class Izvjestaj {
     private String komentar;

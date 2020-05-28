@@ -11,7 +11,7 @@ public class VoziloDTO {
 
     private Long id;
     private double kilomtetraza;
-    private int cjena;
+    private double cijena;
     private double ocjena;
     private MarkaAutomobila markaAutomobila;
     private VrstaGoriva gorivo;
@@ -26,24 +26,24 @@ public class VoziloDTO {
     }
 
     public VoziloDTO(Vozilo vozilo) {
-        id = getId();
-        kilomtetraza = getKilomtetraza();
-        cjena = getCjena();
-        ocjena = getOcjena();
-        markaAutomobila = getMarkaAutomobila();
-        gorivo = getGorivo();
-        mozePreciKM = getMozePreciKM();
-        brSjedistazaDjecu = getBrSjedistazaDjecu();
-        tipMjenjaca = getTipMjenjaca();
-        imaAndroid = getImaAndroid();
-        klasaAutomobila = getKlasaAutomobila();
+        id = vozilo.getId();
+        kilomtetraza = vozilo.getKilometraza();
+        ocjena = vozilo.getOcjena();
+        cijena = vozilo.getCijena();
+        markaAutomobila = vozilo.getMarkaAutomobila();
+        gorivo = vozilo.getVrstaGoriva();
+        mozePreciKM = vozilo.getMozePreciKM();
+        brSjedistazaDjecu = vozilo.getBrSjedistazaDjecu();
+        tipMjenjaca = vozilo.getTipMjenjaca();
+        imaAndroid = vozilo.getImaAndroid();
+        klasaAutomobila = vozilo.getKlasaAutomobila();
 
     }
 
-    public VoziloDTO(Long id, double kilomtetraza, int cjena, double ocjena, MarkaAutomobila markaAutomobila, VrstaGoriva gorivo, double mozePreciKM, int brSjedistazaDjecu, TipMjenjaca tipMjenjaca, Boolean imaAndroid, KlasaAutomobila klasaAutomobila) {
+    public VoziloDTO(Long id, double kilomtetraza, double cijena, double ocjena, MarkaAutomobila markaAutomobila, VrstaGoriva gorivo, double mozePreciKM, int brSjedistazaDjecu, TipMjenjaca tipMjenjaca, Boolean imaAndroid, KlasaAutomobila klasaAutomobila) {
         this.id = id;
         this.kilomtetraza = kilomtetraza;
-        this.cjena = cjena;
+        this.cijena = cijena;
         this.ocjena = ocjena;
         this.markaAutomobila = markaAutomobila;
         this.gorivo = gorivo;
