@@ -20,7 +20,7 @@ public class User {
     private String email;
     private String phone;
     private String password;
-    private  String role;
+    private String role;
     private boolean isAdmin;
     private Timestamp lastPasswordResetDate;
     private List<Authority> authorities;
