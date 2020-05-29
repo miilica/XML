@@ -9,30 +9,30 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-//@Entity
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vozilo {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column
+    @Column
     private double cijena;
 
-    //@Column
+    @Column
     private double kilometraza;
 
-    //@Column
+    @Column
     private double mozePreciKM;
 
-    //@Column
+    @Column
     private int brSjedistazaDjecu;
 
-    //@Column
+    @Column
     private double ocjena;
 
     //@Column
@@ -46,7 +46,7 @@ public class Vozilo {
 
     private Boolean imaAndroid;
 
-    //@Column
+    @Column
     private boolean coliisionDamageWavier;
 
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
