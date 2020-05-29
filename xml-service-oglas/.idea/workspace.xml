@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="32b12223-78cd-4960-9610-21e3d1b5b8a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/repository/PretragaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/repository/PretragaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/MarkaAutomobila.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/MarkaAutomobila.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Vozilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Vozilo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

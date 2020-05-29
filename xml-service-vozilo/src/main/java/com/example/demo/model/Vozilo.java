@@ -35,21 +35,21 @@ public class Vozilo {
     @Column
     private double ocjena;
 
-    //@Column
-    private MarkaAutomobila markaAutomobila;
 
-    private VrstaGoriva vrstaGoriva;
+    //private MarkaAutomobila markaAutomobila;
 
-    private  TipMjenjaca tipMjenjaca;
+    //private VrstaGoriva vrstaGoriva;
 
-    private KlasaAutomobila klasaAutomobila;
+    //private  TipMjenjaca tipMjenjaca;
+
+    //private KlasaAutomobila klasaAutomobila;
 
     private Boolean imaAndroid;
 
     @Column
     private boolean coliisionDamageWavier;
 
-    private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-    private List<Komentar> komentari;
+    //private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+    //private List<Komentar> komentari;
     //private List<Izvjestaj> izvjestaji;
 }
