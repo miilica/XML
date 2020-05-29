@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="32b12223-78cd-4960-9610-21e3d1b5b8a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Pretraga.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Pretraga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.ejb.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.jms.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.persistence.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.resource.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.servlet.jsp.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.servlet.jsp.jstl.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/lib/javax.transaction.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Authority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1590437826032</updated>
       <workItem from="1590437830698" duration="907000" />
-      <workItem from="1590704537617" duration="1160000" />
+      <workItem from="1590704537617" duration="2172000" />
     </task>
     <servers />
   </component>
