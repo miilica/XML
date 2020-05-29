@@ -64,7 +64,7 @@ public class User {
     private Timestamp lastPasswordResetDate;
 
 
-    private List<Authority> authorities;
+    //private List<Authority> authorities;
 
 
 }
