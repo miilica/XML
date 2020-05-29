@@ -4,5 +4,5 @@ public class Komentar {
     private  String tekst;
     private boolean odobren;
     private Vozilo vozilo;
-    private Long userId;
+    private Korisnik korisnik;
 }

@@ -6,50 +6,54 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
+import static javax.persistence.InheritanceType.JOINED;
+
+@Entity
+@Inheritance(strategy=JOINED)
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pretraga {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private Date od;
+    private String name;
 
     @Column
-    private Date doo;
+    private String surname;
 
     @Column
-    private String modelVozila;
+    private String username;
 
     @Column
-    private String markaVozila;
+    private String ucidn;
 
     @Column
-    private String klasaVozila;
+    private String address;
 
     @Column
-    private double kilometraza;
+    private String city;
 
     @Column
-    private double cijena;
+    private String country;
 
     @Column
-    private double ocjena;
+    private String email;
 
     @Column
-    private VrstaGoriva gorivo;
+    private String phone;
 
     @Column
-    private TipMjenjanca mjenjac;
+    private String password;
 
     @Column
-    private String imeKompanije;
+    private  String role;
 
+    @Column
+    private boolean isAdmin;
 }

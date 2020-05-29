@@ -11,9 +11,7 @@ public class Authority{
 
     private static final long serialVersionUID = 1L;
 
-
     Long id;
-
 
     String name;
 

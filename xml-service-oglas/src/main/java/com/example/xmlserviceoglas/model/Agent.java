@@ -1,4 +1,4 @@
-package com.model;
+package com.example.xmlserviceoglas.model;
 
 import java.util.Set;
 
@@ -12,6 +12,4 @@ public class Agent{
     private Set<Oglas> oglasi;
     private int brOglasa;
     private Set<Zahtjev> pristigliZahtjevi;
-
-
 }

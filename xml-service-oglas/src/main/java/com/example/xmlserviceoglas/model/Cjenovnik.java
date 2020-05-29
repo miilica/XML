@@ -1,4 +1,4 @@
-package com.model;
+package com.example.xmlserviceoglas.model;
 
 public class Cjenovnik {
     private double ponCijena;

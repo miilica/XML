@@ -1,9 +1,10 @@
-package com.model;
+package com.example.xmlserviceoglas.model;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 import java.util.Set;
 
 public class Vozilo {
@@ -32,7 +33,7 @@ public class Vozilo {
 
     private VrstaGoriva vrstaGoriva;
 
-    private TipMjenjaca tipMjenjaca;
+    private  TipMjenjaca tipMjenjaca;
 
     private KlasaAutomobila klasaAutomobila;
 

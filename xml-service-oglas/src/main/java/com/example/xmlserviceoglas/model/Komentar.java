@@ -1,4 +1,4 @@
-package com.model;
+package com.example.xmlserviceoglas.model;
 
 public class Komentar {
     private String tekst;

@@ -1,6 +1,6 @@
 package com.example.xmlserviceoglas.model;
 
-import com.sun.javafx.beans.IDProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,4 +22,5 @@ public class Oglas {
     private String mjestoPreuzimanja;
     //private TerminIznajmljivanja terminIznajmljivanja;
     //private Cjenovnik cjenovnik;
+
 }

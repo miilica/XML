@@ -1,17 +1,24 @@
 package com.example.model;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Agent extends User {
+import java.util.Set;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Agent{
     private String ime;
     private String prezime;
     private String adresa;
-    private String imeKopanije;
+    private String imeKompanije;
     private String poslovniMB;
-    private List<Integer> vozila;
-    private List<Integer> oglasi;
-    private int brOglasa;
-    private List<Integer> pristigliZahtjevi;
-
-
+    private Set<Vozilo> vozila;
+    //private List<Integer> oglasi;
+    //private int brOglasa;
+    //private List<Integer> pristigliZahtjevi;
 }

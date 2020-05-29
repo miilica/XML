@@ -1,25 +1,24 @@
-package com.example.model;
+package com.example.xmlserviceoglas.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import javax.persistence.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.List;
 
-
-
+import static javax.persistence.InheritanceType.JOINED;
 
 @Entity
+@Inheritance(strategy=JOINED)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -54,19 +53,9 @@ public class User {
     @Column
     private String password;
 
-
     @Column
     private  String role;
 
     @Column
-
     private boolean isAdmin;
-
-
-    private Timestamp lastPasswordResetDate;
-
-
-    //private List<Authority> authorities;
-
-
 }
