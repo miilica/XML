@@ -20,6 +20,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { AddCarComponent } from './components/addCar/addCar.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     LoginComponent,
     SignupComponent,
     WelcomeComponent,
+    AddCarComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     MatFormFieldModule,
     MatInputModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
