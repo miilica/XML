@@ -5,23 +5,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+import javax.persistence.*;
 import java.util.Date;
 
-@Setter
+@Entity
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Poruka {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
 
+    @Column
     private String sadrzaj;
 
+    @Column
     private Date datum;
 
     //private User poslijalac;
-    private String senderId;
+    @Column
+    private String posiljalacId;
 
     //private User primalac;
-    private String reciverId;
+    @Column
+    private String primalacId;
 }

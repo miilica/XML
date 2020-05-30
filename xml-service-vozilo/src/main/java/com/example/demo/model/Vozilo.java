@@ -9,49 +9,49 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-//@Entity
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vozilo {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column
+    @Column
     private double cijena;
 
-    //@Column
+    @Column
     private double kilometraza;
 
-    //@Column
+    @Column
     private double mozePreciKM;
 
-    //@Column
+    @Column
     private int brSjedistazaDjecu;
 
-    //@Column
+    @Column
     private double ocjena;
 
-    //@Column
-    private MarkaAutomobila markaAutomobila;
 
-    private VrstaGoriva vrstaGoriva;
+    //private MarkaAutomobila markaAutomobila;
 
-    private  TipMjenjaca tipMjenjaca;
+    //private VrstaGoriva vrstaGoriva;
 
-    private KlasaAutomobila klasaAutomobila;
+    //private  TipMjenjaca tipMjenjaca;
+
+    //private KlasaAutomobila klasaAutomobila;
 
     private Boolean imaAndroid;
 
-    //@Column
+    @Column
     private boolean coliisionDamageWavier;
 
-    private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
-    private List<Komentar> komentari;
+    //private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+    //private List<Komentar> komentari;
+    //private List<Izvjestaj> izvjestaji;
 
-    private List<Izvjestaj> izvjestaji;
 }
