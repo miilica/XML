@@ -1,5 +1,5 @@
-import { MarkaAutomobila } from './markaAutomobila';
-import { KlasaAutomobila } from './klasaAutomobila';
+import { MarkaAutomobila } from '../dodajMarkaAutomobila/markaAutomobila';
+import { KlasaAutomobila } from '../dodajKlasaAutomobila/klasaAutomobila';
 
 export class Vozilo {
     constructor(

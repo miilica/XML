@@ -27,7 +27,10 @@
     <div>
       <label  class="col-form-label" for="inputDefault">Marka automobila: </label>
       <select>  
-          <option> </option>
+        <select class="form-control" id="marka"  [(ngModel)]="vozilo.markaAutomobila" name="marka" >
+          <option [ngValue]="null">Izaberi marku</option>
+          <option *ngFor = 'let c of marke' name="marka" [ngValue]="c">{{c.naziv}}</option>
+        </select>
       </select>
     </div>
     
@@ -52,9 +55,9 @@
     
     <div>
       <label  class="col-form-label" for="inputDefault">Klasa automobila</label>
-      <select class="form-control" id="tipMjenjaca" >
-        <option>manuel ni</option>
-       
+      <select class="form-control" id="klasa"  [(ngModel)]="vozilo.klasaAutomobila" name="klasa" >
+        <option [ngValue]="null">Izaberi klasu</option>
+        <option *ngFor = 'let c of klase' name="klasa" [ngValue]="c">{{c.naziv}}</option>
       </select>
     </div>
 
