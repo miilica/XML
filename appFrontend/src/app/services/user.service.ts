@@ -2,7 +2,8 @@ import { VERIFY_ACC_URL, REGISTER_URL } from './../config/api-paths';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import UserRegistrationDTO from '../models/user-registration-dto.model';
+import UserRegistrationDTO from '../components/models/user-registration-dto.model';
+
 
 @Injectable({
   providedIn: 'root'

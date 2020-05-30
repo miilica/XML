@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HOME_PATH } from 'src/app/config/router-paths';
+import { HOME_PATH, REGISTRATION_PATH } from 'src/app/config/router-paths';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
   onClickLogout(): void {
     this.authService.logout();
     this.router.navigate([HOME_PATH]);
+  }
+
+  onClickRegister(): void {
+    this.router.navigate([REGISTRATION_PATH]);
   }
 
 }
