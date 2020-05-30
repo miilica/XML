@@ -23,6 +23,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignupComponent,
     WelcomeComponent,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

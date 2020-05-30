@@ -5,6 +5,7 @@ import {LoginComponent} from '../app/components/login/login.component';
 import {WelcomeComponent} from '../app/components/welcome/welcome.component'
 import { ADMIN_HOME_PATH, HOME_PATH, LOGIN_PATH, REGISTRATION_PATH, VERIFY_ACCOUNT } from './config/router-paths';
 import { SignupComponent } from './components/signup/signup.component';
+import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: ADMIN_HOME_PATH,
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+    component: AdminHomeComponent
   },
 ];
 
