@@ -1,5 +1,6 @@
 package com.service;
 
+import com.dto.UserRegistrationDTO;
 import com.model.User;
 import com.model.UserRequest;
 
@@ -10,4 +11,5 @@ public interface UserService {
     User findByUsername(String username);
     List<User> findAll();
 	User save(UserRequest userRequest);
+    User addUser(UserRegistrationDTO userInfo);
 }
