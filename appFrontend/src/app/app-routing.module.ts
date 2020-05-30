@@ -7,6 +7,7 @@ import { ADMIN_HOME_PATH, HOME_PATH, LOGIN_PATH, REGISTRATION_PATH, VERIFY_ACCOU
 import { SignupComponent } from './components/signup/signup.component';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 
+import { AddCarComponent } from './components/addCar/addCar.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,8 @@ const routes: Routes = [
     path: ADMIN_HOME_PATH,
     component: AdminHomeComponent
   },
+  { path: 'addcar', component: AddCarComponent },
+
 ];
 
 @NgModule({

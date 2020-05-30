@@ -1,0 +1,70 @@
+
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Dodaj vozilo:</legend>
+
+     <div>
+      <label  class="col-form-label" for="inputDefault">Cijena:</label>
+      <input type="number"  class="form-control" id="cijena" name="cijena"  [(ngModel)]="vozilo.cijena" />
+    </div>
+
+    <div>
+         <label class="col-form-label" for="inputDefault">Kilometraža:</label>
+         <input type="number" class="form-control" id="km" name="km" [(ngModel)]="vozilo.kilometraza"/>
+    </div>  
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Može preći kilometra:</label>
+      <input type="num4" class="form-control" name="mozePreci" id="mozePreci" [(ngModel)]="vozilo.mozePreci"/>
+    </div>
+
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Broj sjedišta za djecu:</label>
+      <input type="number"  class="form-control" id="brsj" name="brsj" [(ngModel)]="vozilo.brSjedista"/>
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Marka automobila: </label>
+      <select>  
+          <option> </option>
+      </select>
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault"  >Vrsta goriva:</label>
+      <select class="form-control" id="vrstaGoriva" name="vrstaGoriva" [(ngModel)]="vozilo.vrstaGoriva" >
+        <option>benzin</option>
+        <option>dizel</option>
+        <option>plin</option>
+        <option>električni</option>
+      </select>
+    </div>
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Tip mjenjača</label>
+      <select class="form-control" id="tipMjenjaca"  [(ngModel)]="vozilo.tipMjenjaca" name="tipMjenjaca">
+        <option>manuelni</option>
+        <option>automatski</option>
+        <option>poluautomatski</option>
+      </select>
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Klasa automobila</label>
+      <select class="form-control" id="tipMjenjaca" >
+        <option>manuel ni</option>
+       
+      </select>
+    </div>
+
+    <label>Ima android</label>
+    <input type="checkbox"  class="form-control" name="android"  [(ngModel)]="vozilo.imaAndroid"/>
+
+    <label>Coliision Damage Wavier:</label>
+    <input type="checkbox"  class="form-control" name="cdw"  [(ngModel)]="vozilo.cdw" />
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</fieldset>       
+</form>
+
