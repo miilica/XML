@@ -1,0 +1,18 @@
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Dodaj novu marku automobila:</legend>
+
+     <div>
+      <label  class="col-form-label" for="inputDefault">Naziv marke:</label>
+      <input type="text"  class="form-control" id="Naziv" name="naziv"  [(ngModel)]="marka.naziv" />
+    </div>
+
+    <div>
+         <label class="col-form-label" for="inputDefault">Model:</label>
+         <input type="text" class="form-control" id="Model" name="Model" [(ngModel)]="marka.model"/>
+    </div>  
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</fieldset>       
+</form>
+

@@ -20,6 +20,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { AddCarComponent } from './components/dodajVozilo/addCar.component';
+import { AddMarkaAutomobila } from './components/dodajMarkaAutomobila/addMarkaAutomobila.component';
+import { KlasaAutomobila } from './components/dodajKlasaAutomobila/klasaAutomobila';
+import { DodajKlasuAutomobila } from './components/dodajKlasaAutomobila/dodajKlasuAutomobila.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +41,8 @@ import { AddCarComponent } from './components/addCar/addCar.component';
     WelcomeComponent,
     AdminHomeComponent,
     AddCarComponent,
+    AddMarkaAutomobila,
+    DodajKlasuAutomobila,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +57,7 @@ import { AddCarComponent } from './components/addCar/addCar.component';
     RouterModule,
     HttpClientModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
