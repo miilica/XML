@@ -1,1 +1,23 @@
 <h1>Admin homepage!</h1>
+
+<div class="container">
+    <h2 class="ui header">Lista korisnika</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Name</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+                <td>{{ category.name }}</td>
+                <td>
+                    <button class="ui icon button red" (click)="onClickDelete(category.id)">
+                        <i class="trash icon"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

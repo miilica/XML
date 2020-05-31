@@ -1,4 +1,4 @@
-import { VERIFY_ACC_URL, REGISTER_URL } from './../config/api-paths';
+import { VERIFY_ACC_URL, REGISTER_URL, ADMIN_ALL_USERS_URL, ADMIN_ALL_KORISNIKE_URL, ADMIN_DELETE_KORISNIKA_URL } from './../config/api-paths';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -19,5 +19,17 @@ export class UserService {
 
   register(user: UserRegistrationDTO): Observable<any> {
     return this.http.post(REGISTER_URL, user);
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get(ADMIN_ALL_USERS_URL);
+  }
+
+  getAllKorisnike(): Observable<any> {
+    return this.http.get(ADMIN_ALL_KORISNIKE_URL);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${ADMIN_DELETE_KORISNIKA_URL}/${id}`);
   }
 }
