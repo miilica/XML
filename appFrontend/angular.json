@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "appFrontend"
+  "defaultProject": "appFrontend",
+  "cli": {
+    "analytics": false
+  }
 }

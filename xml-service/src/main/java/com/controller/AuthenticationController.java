@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.dto.LoginDTO;
+import com.dto.UserDTO;
 import com.exception.ResourceConflictException;
 import com.model.User;
 import com.model.UserRequest;
@@ -23,6 +25,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,41 +48,10 @@ public class AuthenticationController {
 
 	// Prvi endpoint koji pogadja korisnik kada se loguje.
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
-	@PostMapping("/login")
-	public ResponseEntity<UserTokenState> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest,
-																	HttpServletResponse response) {
-
-		// 
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
-						authenticationRequest.getPassword()));
-
-		// Ubaci korisnika u trenutni security kontekst
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-
-		// Kreiraj token za tog korisnika
-		User user = (User) authentication.getPrincipal();
-		String jwt = tokenUtils.generateToken(user.getUsername());
-		int expiresIn = tokenUtils.getExpiredIn();
-
-		// Vrati token kao odgovor na uspesnu autentifikaciju
-		return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
-	}
-
-	// Endpoint za registraciju novog korisnika
-	@PostMapping("/signup")
-	public ResponseEntity<User> addUser(@RequestBody UserRequest userRequest, UriComponentsBuilder ucBuilder) {
-
-		User existUser = this.userService.findByUsername(userRequest.getUsername());
-		if (existUser != null) {
-			throw new ResourceConflictException(userRequest.getId(), "Username already exists");
-		}
-
-		User user = this.userService.save(userRequest);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(user.getId()).toUri());
-		return new ResponseEntity<>(user, HttpStatus.CREATED);
-	}
+    @PostMapping("/login")
+    public ResponseEntity<UserDTO> login(@RequestBody @Valid LoginDTO authenticationRequest) {
+        return new ResponseEntity<>(userDetailsService.login(authenticationRequest), HttpStatus.OK);
+    }
 
 	// U slucaju isteka vazenja JWT tokena, endpoint koji se poziva da se token osvezi
 	@PostMapping(value = "/refresh")

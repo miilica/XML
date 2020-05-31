@@ -1,3 +1,4 @@
+
 spring:
   application:
     # sets the name in Eureka
@@ -22,3 +23,5 @@ logging:
       netflix:
         eureka: OFF
         discovery: OFF
+
+

@@ -1,8 +1,13 @@
 package com.service.impl;
 
-import com.model.Authority;
-import com.model.User;
-import com.model.UserRequest;
+import com.common.TimeProvider;
+import com.config.consts.UserRoles;
+import com.dto.UserRegistrationDTO;
+import com.exception.ApiRequestException;
+import com.mappers.UserMapper;
+import com.model.*;
+import com.repository.AuthorityRepository;
+import com.repository.ConfirmationTokenRepository;
 import com.repository.UserRepository;
 import com.service.AuthorityService;
 import com.service.UserService;
@@ -25,6 +30,15 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private AuthorityService authService;
+
+	@Autowired
+	private ConfirmationTokenRepository tokenRepository;
+
+	@Autowired
+	private TimeProvider timeProvider;
+
+	@Autowired
+	private AuthorityRepository authorityRepository;
 
 	@Override
 	public User findByUsername(String username) throws UsernameNotFoundException {
@@ -56,6 +70,43 @@ public class UserServiceImpl implements UserService {
 		
 		u = this.userRepository.save(u);
 		return u;
+	}
+
+	@Override
+	public User addUser(UserRegistrationDTO userInfo) {
+		if (userRepository.findByUsername(userInfo.getUsername()) != null) {
+			throw new ApiRequestException("Username '" + userInfo.getUsername() + "' already exists.");
+		}
+
+		if (!userInfo.getPassword().equals(userInfo.getRepeatPassword())) {
+			throw new ApiRequestException("Provided passwords must be the same.");
+		}
+
+		if (userRepository.findByEmail(userInfo.getEmail()) != null) {
+			throw new ApiRequestException("Email '" + userInfo.getEmail() + "' is taken.");
+		}
+
+		User user = createNewUserObject(userInfo);
+		userRepository.save(user);
+
+		ConfirmationToken token = new ConfirmationToken(user);
+		tokenRepository.save(token);
+
+		//mailSenderService.sendRegistrationMail(token);
+
+		return user;
+	}
+
+	private User createNewUserObject(UserRegistrationDTO userInfo) {
+		//Korisnik user = UserMapper.toKorisnikEntity(userInfo);
+		User user = UserMapper.toUserEntity(userInfo);
+		user.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+		user.setLastPasswordResetDate(timeProvider.nowTimestamp());
+		user.getUserAuthorities().add(authorityRepository.findByName(UserRoles.ROLE_BUYER));
+
+		//aktivacija naloga
+		user.setEnabled(true);
+		return user;
 	}
 
 }

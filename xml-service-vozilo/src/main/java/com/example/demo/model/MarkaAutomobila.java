@@ -1,18 +1,18 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
+import javax.persistence.*;
+
+@Entity
 public class MarkaAutomobila {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column
+    @Column
     private String nazivMarke;
 
-    //@Column
+    @Column
     private String model;
 }

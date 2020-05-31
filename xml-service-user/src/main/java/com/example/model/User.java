@@ -1,47 +1,72 @@
 package com.example.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+import javax.persistence.*;
 import java.security.Timestamp;
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
 
+
+
+@Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String surname;
+
+    @Column
     private String username;
+
+    @Column
     private String ucidn;
+
+    @Column
     private String address;
+
+    @Column
     private String city;
+
+    @Column
     private String country;
+
+    @Column
     private String email;
+
+    @Column
     private String phone;
+
+    @Column
     private String password;
-    private String role;
+
+
+    @Column
+    private  String role;
+
+    @Column
+
     private boolean isAdmin;
+
+
     private Timestamp lastPasswordResetDate;
-    private List<Authority> authorities;
 
 
-    public User() {
-    }
+    //private List<Authority> authorities;
 
-    public User(String name, String surname, String ucidn, String address, String city, String country, String email,
-                String phone, String password, String role, List<Authority> authorities, String username) {
-        this.name = name;
-        this.surname = surname;
-        this.ucidn = ucidn;
-        this.address = address;
-        this.city = city;
-        this.country = country;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
-        this.role = role;
-        this.authorities = authorities;
-        this.username = username;
-    }
+
 }

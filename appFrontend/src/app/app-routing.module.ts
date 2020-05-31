@@ -6,12 +6,29 @@ import {WelcomeComponent} from '../app/components/welcome/welcome.component'
 import { AddCarComponent } from './components/dodajVozilo/addCar.component';
 import { AddMarkaAutomobila } from './components/dodajMarkaAutomobila/addMarkaAutomobila.component';
 import { DodajKlasuAutomobila } from './components/dodajKlasaAutomobila/dodajKlasuAutomobila.component';
+import { ADMIN_HOME_PATH, HOME_PATH, LOGIN_PATH, REGISTRATION_PATH, VERIFY_ACCOUNT } from './config/router-paths';
+import { SignupComponent } from './components/signup/signup.component';
+import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 
-
+import { AddCarComponent } from './components/addCar/addCar.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'welcome', component: WelcomeComponent },
+  {
+    path: HOME_PATH,
+    component: WelcomeComponent
+  },
+  {
+    path: LOGIN_PATH,
+    component: LoginComponent
+  },
+  {
+    path: REGISTRATION_PATH,
+    component: SignupComponent
+  },
+  {
+    path: ADMIN_HOME_PATH,
+    component: AdminHomeComponent
+  },
   { path: 'addcar', component: AddCarComponent },
   { path: 'addmarkuautomobila', component: AddMarkaAutomobila },
   { path: 'addklasu', component: DodajKlasuAutomobila },

@@ -1,11 +1,17 @@
 package com.service.impl;
 
+import com.dto.LoginDTO;
+import com.dto.UserDTO;
+import com.dto.UserTokenDTO;
+import com.exception.ApiRequestException;
 import com.model.User;
 import com.repository.UserRepository;
+import com.security.TokenUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +37,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	@Autowired
+	private TokenUtils tokenUtils;
+
 	// Funkcija koja na osnovu username-a iz baze vraca objekat User-a
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -38,7 +47,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
 		} else {
-			return (UserDetails) user;
+			return user;
 		}
 	}
 
@@ -68,5 +77,30 @@ public class CustomUserDetailsService implements UserDetailsService {
 		user.setPassword(passwordEncoder.encode(newPassword));
 		userRepository.save(user);
 
+	}
+
+	public UserDTO login(LoginDTO authenticationRequest) throws ApiRequestException {
+		Authentication authentication;
+		try {
+			authentication = authenticationManager
+					.authenticate(new UsernamePasswordAuthenticationToken(
+							authenticationRequest.getUsername(),
+							authenticationRequest.getPassword()));
+		} catch (BadCredentialsException e) {
+			throw new ApiRequestException("Credentials are not valid!");
+		}
+
+		// Insert username and password into context
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		// Create token
+		User user = (User) authentication.getPrincipal();
+		String jwt = tokenUtils.generateToken(user.getUsername());
+		int expiresIn = tokenUtils.getExpiredIn();
+
+		UserDTO userDto = new UserDTO(user);
+		userDto.setToken(new UserTokenDTO(jwt, expiresIn));
+
+		return userDto;
 	}
 }

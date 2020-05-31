@@ -1,58 +1,103 @@
 <h1  style="text-align:center">Sign up</h1>
-<div mat-dialog-content>
 
-    <p style="text-align:center" >
-        <mat-form-field appearance="outline" >
-            <mat-label>First name</mat-label>
-            <input matInput type="text" placeholder="First name">
-        </mat-form-field>
-        <mat-form-field appearance="outline" >
-            <mat-label>Last name</mat-label>
-            <input matInput type="text" placeholder="Last name">
-        </mat-form-field>
-    </p>
+<form [formGroup]="registrationForm" (submit)="onRegisterSubmit()">
+    <div mat-dialog-content>
 
-    <p style="text-align:center">
-        <mat-form-field appearance="outline" >
-            <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Username">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password">
-        </mat-form-field>
-    </p>
+        <p style="text-align:center" >
+            <mat-form-field appearance="outline" >
+                <mat-label>First name</mat-label>
+                <input matInput type="text" placeholder="First name" formControlName="name">
 
-    <p style="text-align:center">
-        <mat-form-field appearance="outline" >
-            <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Email">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Phone number</mat-label>
-            <input matInput type="text">
-        </mat-form-field>
-    </p>
+                <small id="firstname-error-msg" class="text-danger"
+                    *ngIf="registrationForm.controls.name.touched && registrationForm.controls.name.errors?.required">
+                    Name is required
+                </small>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input matInput type="text" placeholder="Last name" formControlName="surname">
 
-    <p style="text-align:center">
-        <mat-form-field appearance="outline" >
-            <mat-label>Address</mat-label>
-            <input matInput type="text" placeholder="Address">
-        </mat-form-field>
-        <mat-form-field appearance="outline" >
-            <mat-label>City</mat-label>
-            <input matInput type="text" placeholder="City">
-        </mat-form-field>
-    </p>
+                <small id="firstname-error-msg" class="text-danger"
+                    *ngIf="registrationForm.controls.name.touched && registrationForm.controls.name.errors?.required">
+                    Surname is required
+                </small>
+            </mat-form-field>
+        </p>
 
-    <p style="text-align:center">
-        <mat-form-field appearance="outline" >
-            <mat-label>Country</mat-label>
-            <input matInput type="text" placeholder="Country">
-        </mat-form-field>
-    </p>
-</div>
-<div  style="text-align:center" >
-  <button  mat-raised-button color="accent" >Sing up</button>
-  
-</div>
+        <p style="text-align:center">
+            <mat-form-field appearance="outline" >
+                <mat-label>Username</mat-label>
+                <input matInput type="text" placeholder="Username" formControlName="username">
+
+                <small id="username-error-msg" class="text-danger"
+                    *ngIf="registrationForm.controls.username.touched && registrationForm.controls.username.errors?.required">
+                    Username is required
+                </small>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" >
+                <mat-label>Country</mat-label>
+                <input matInput type="text" placeholder="Country">
+            </mat-form-field>
+
+        </p>
+
+        <p style="text-align:center">
+            <mat-form-field appearance="outline" >
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email" formControlName="email">
+
+                <small id="email-error-msg-req" class="text-danger"
+                    *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.errors?.required">
+                    Email is required
+                </small>
+
+                <small id="email-error-msg" class="text-danger"
+                    *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.errors?.email">
+                    Email is not valid
+                </small>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input matInput type="text">
+            </mat-form-field>
+        </p>
+
+        <p style="text-align:center">
+            <mat-form-field appearance="outline" >
+                <mat-label>Address</mat-label>
+                <input matInput type="text" placeholder="Address">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>City</mat-label>
+                <input matInput type="text" placeholder="City">
+            </mat-form-field>
+        </p>
+
+        <p style="text-align:center">
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password">
+
+                <small id="password-error-msg" class="text-danger"
+                    *ngIf="registrationForm.controls.password.touched && registrationForm.controls.password.errors?.required">
+                    Password is required
+                </small>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Repeat password</mat-label>
+                <input matInput type="password" formControlName="repeatPassword">
+
+                <small id="repeatpassword-error-msg" class="text-danger"
+                    *ngIf="registrationForm.controls.repeatPassword.touched && registrationForm.controls.repeatPassword.errors?.required">
+                    Repeat password is required
+                </small>
+            </mat-form-field>
+        </p>
+    </div>
+    <div  style="text-align:center" >
+    <button  mat-raised-button color="accent" type="submit" [disabled]="registrationForm.invalid">Sing up</button>
+    
+    </div>
+</form>
