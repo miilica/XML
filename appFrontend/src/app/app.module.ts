@@ -28,7 +28,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
-import { AddCarComponent } from './components/addCar/addCar.component';
 
 
 @NgModule({
