@@ -4,6 +4,7 @@ import com.common.TimeProvider;
 import com.config.consts.UserRoles;
 import com.dto.UserRegistrationDTO;
 import com.exception.ApiRequestException;
+import com.exception.ResourceNotFoundException;
 import com.mappers.UserMapper;
 import com.model.*;
 import com.repository.AuthorityRepository;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,6 +55,17 @@ public class UserServiceImpl implements UserService {
 
 	public List<User> findAll() throws AccessDeniedException {
 		List<User> result = userRepository.findAll();
+		return result;
+	}
+
+	public List<User> findAllKorisnike() throws AccessDeniedException {
+		List<User> allUsers = userRepository.findAll();
+		List<User> result = new ArrayList<>();
+		for(User u : allUsers) {
+			if(!u.isAdmin()) {
+				result.add(u);
+			}
+		}
 		return result;
 	}
 
@@ -102,11 +115,23 @@ public class UserServiceImpl implements UserService {
 		User user = UserMapper.toUserEntity(userInfo);
 		user.setPassword(passwordEncoder.encode(userInfo.getPassword()));
 		user.setLastPasswordResetDate(timeProvider.nowTimestamp());
-		user.getUserAuthorities().add(authorityRepository.findByName(UserRoles.ROLE_BUYER));
+		user.getUserAuthorities().add(authorityRepository.findByName(UserRoles.ROLE_KORISNIK));
+		user.setName(userInfo.getName());
 
 		//aktivacija naloga
 		user.setEnabled(true);
+
+		user.setAdmin(false);
+
 		return user;
+	}
+
+	@Override
+	public void delete(Long id) {
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " doesn't exist"));
+
+		userRepository.delete(user);
 	}
 
 }
