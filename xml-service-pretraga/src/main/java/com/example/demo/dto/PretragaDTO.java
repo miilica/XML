@@ -28,7 +28,7 @@ public class PretragaDTO {
 
     private double kilometrazaDTO;
 
-    private int cijenaDTO;
+    private double cijenaDTO;
 
     private double ocjenaDTO;
 

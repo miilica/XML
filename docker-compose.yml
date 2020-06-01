@@ -29,6 +29,8 @@ services:
     depends_on:
       - eureka-serviceregistry
       - xml-service-messages
+      - xml-service-oglas
+      - xml-service-pretraga
 
   xml-service-messages:
     image: xml-service-messages
@@ -70,6 +72,28 @@ services:
       DATABASE_PASSWORD: root
       DATABASE_DOMAIN: mysql
       DATABASE_SCHEMA: ad_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+    depends_on:
+      - eureka-serviceregistry
+      - mysql
+
+  xml-service-pretraga:
+    image: xml-service-pretraga
+    container_name: xml-service-pretraga
+    build:
+      context: ./xml-service-pretraga
+      dockerfile: Dockerfile
+    tty: true
+    restart: on-failure
+    networks:
+      - demo
+    ports:
+      - "8087:8087"
+    environment:
+      REGISTRY_HOST: eureka-serviceregistry
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+      DATABASE_DOMAIN: mysql
+      DATABASE_SCHEMA: search_db?createDatabaseIfNotExist=true&serverTimezone=UTC
     depends_on:
       - eureka-serviceregistry
       - mysql

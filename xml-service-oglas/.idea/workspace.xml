@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32b12223-78cd-4960-9610-21e3d1b5b8a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-messages/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-messages/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +45,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xml-service-pretraga" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -84,7 +81,7 @@
       <workItem from="1590437830698" duration="907000" />
       <workItem from="1590704537617" duration="2172000" />
       <workItem from="1590783046741" duration="1880000" />
-      <workItem from="1591032738985" duration="604000" />
+      <workItem from="1591032738985" duration="1242000" />
     </task>
     <servers />
   </component>
