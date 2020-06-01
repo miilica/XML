@@ -52,6 +52,28 @@ services:
         - eureka-serviceregistry
         - mysql
 
+  xml-service-oglas:
+    image: xml-service-oglas
+    container_name: xml-service-oglas
+    build:
+      context: ./xml-service-oglas
+      dockerfile: Dockerfile
+    tty: true
+    restart: on-failure
+    networks:
+      - demo
+    ports:
+      - "8086:8086"
+    environment:
+      REGISTRY_HOST: eureka-serviceregistry
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+      DATABASE_DOMAIN: mysql
+      DATABASE_SCHEMA: ad_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+    depends_on:
+      - eureka-serviceregistry
+      - mysql
+
   mysql:
     image: mysql:8.0.19
     container_name: mysql
