@@ -57,6 +57,13 @@ public class UserController {
 		return ResponseEntity.ok().build();
 	}
 
+	@GetMapping("activate/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public ResponseEntity activate(@PathVariable Long id) {
+		userService.activateUser(id);
+		return ResponseEntity.ok().build();
+	}
+
 	@GetMapping("/whoami")
 	@PreAuthorize("hasRole('USER')")
 	public User user(Principal user) {
