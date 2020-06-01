@@ -18,6 +18,7 @@ export class UserService {
   }
 
   register(user: UserRegistrationDTO): Observable<any> {
+    console.log(user);
     return this.http.post(REGISTER_URL, user);
   }
 

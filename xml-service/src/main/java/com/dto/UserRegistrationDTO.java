@@ -27,4 +27,20 @@ public class UserRegistrationDTO {
 
     @NotNull(message = "Name must be provided")
     private String name;
+
+    @NotNull(message = "Surname must be provided")
+    private String surname;
+
+    @NotNull(message = "Address must be provided")
+    private String address;
+
+    @NotNull(message = "City must be provided")
+    private String city;
+
+    @NotNull(message = "Country must be provided")
+    private String country;
+
+    @NotNull(message = "Phone must be provided")
+    private String phone;
+
 }

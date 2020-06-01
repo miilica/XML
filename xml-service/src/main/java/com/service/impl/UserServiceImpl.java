@@ -117,6 +117,12 @@ public class UserServiceImpl implements UserService {
 		user.setLastPasswordResetDate(timeProvider.nowTimestamp());
 		user.getUserAuthorities().add(authorityRepository.findByName(UserRoles.ROLE_KORISNIK));
 		user.setName(userInfo.getName());
+		user.setSurname(userInfo.getSurname());
+		user.setEmail(userInfo.getEmail());
+		user.setAddress(userInfo.getAddress());
+		user.setCity(userInfo.getCity());
+		user.setPhone(userInfo.getPhone());
+		user.setCountry(userInfo.getCountry());
 
 		//aktivacija naloga
 		user.setEnabled(true);

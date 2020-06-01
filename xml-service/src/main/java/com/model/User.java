@@ -39,9 +39,6 @@ public class User implements UserDetails{
     private String username;
 
     @Column
-    private String ucidn;
-
-    @Column
     private String address;
 
     @Column
@@ -58,9 +55,6 @@ public class User implements UserDetails{
 
     @Column(name = "password", nullable = false)
     private String password;
-
-    @Column
-    private  String role;
 
     @Column
     private boolean isAdmin;
@@ -81,18 +75,16 @@ public class User implements UserDetails{
     public User() {
     }
 
-    public User(String name, String surname, String ucidn, String address, String city, String country, String email,
-                String phone, String password, String role, List<Authority> authorities, String username) {
+    public User(String name, String surname, String address, String city, String country, String email,
+                String phone, String password, List<Authority> authorities, String username) {
         this.name = name;
         this.surname = surname;
-        this.ucidn = ucidn;
         this.address = address;
         this.city = city;
         this.country = country;
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.role = role;
         this.authorities = authorities;
         this.username = username;
     }

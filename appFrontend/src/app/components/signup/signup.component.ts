@@ -14,7 +14,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
 
-  isUserInfoSent: boolean = false;
   registrationForm: FormGroup;
 
   constructor(private userService: UserService,
@@ -39,7 +38,11 @@ export class SignupComponent implements OnInit {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      repeatPassword: ['', Validators.required]
+      repeatPassword: ['', Validators.required],
+      country: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      phone: ['', Validators.required],
     });
   }
 
@@ -58,12 +61,17 @@ export class SignupComponent implements OnInit {
       repeatPassword: repeatPassword,
       email: this.registrationForm.controls.email.value,
       name: this.registrationForm.controls.name.value,
+      surname: this.registrationForm.controls.surname.value,
+      country: this.registrationForm.controls.country.value,
+      address: this.registrationForm.controls.address.value,
+      city: this.registrationForm.controls.city.value,
+      phone: this.registrationForm.controls.phone.value,
     };
 
     this.userService.register(userInfo).subscribe(data => {
-      this.isUserInfoSent = true;
       this.toastr.success('You account has been created, go to your email to verify it.');
     }, error => {
+      console.log(userInfo);
       this.toastr.error('There was an error while adding your account. Try again later.');
     });
   }
