@@ -29,10 +29,20 @@ export class AdminHomeComponent implements OnInit {
 
   onClickDelete(id: number): void {
     this.usersService.delete(id).subscribe(data => {
-      this.toastr.success('Category has been deleted');
+      this.toastr.success('User has been deleted');
       this.getAll();
     }, error => {
       this.toastr.error(error.error.message);
     });
   }
+
+  onClickActivate(id: number): void {
+    this.usersService.activate(id).subscribe(data => {
+      this.toastr.success('User has been activated/deactivated');
+      this.getAll();
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
+  }
+
 }
