@@ -144,6 +144,28 @@ services:
       - eureka-serviceregistry
       - mysql
 
+  #xml-service:
+   # image: xml-service
+   # container_name: xml-service
+    #build:
+     # context: ./xml-service
+      #dockerfile: Dockerfile
+    #tty: true
+    #restart: on-failure
+    #networks:
+     # - demo
+    #ports:
+     # - "8089:8089"
+    #environment:
+     # REGISTRY_HOST: eureka-serviceregistry
+      #DATABASE_USERNAME: root
+      #DATABASE_PASSWORD: root
+      #DATABASE_DOMAIN: mysql
+      #DATABASE_SCHEMA: rentAcar?createDatabaseIfNotExist=true&serverTimezone=UTC
+    #depends_on:
+     # - eureka-serviceregistry
+      #- mysql
+
   mysql:
     image: mysql:8.0.19
     container_name: mysql
@@ -158,13 +180,3 @@ networks:
     name: demo
     driver: bridge
 
-#mysql:
- # image: mysql:8.0.19
-  #container_name: mysql
-  #restart: always
-  #networks:
-  #  - demo
-  #volumes:
-   # - ./mysql:/docker-entrypoint-initdb.d
-  #environment:
-   # MYSQL_ROOT_PASSWORD: root
