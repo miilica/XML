@@ -28,7 +28,7 @@ public class PretragaDTO {
 
     private double kilometrazaDTO;
 
-    private int cijenaDTO;
+    private double cijenaDTO;
 
     private double ocjenaDTO;
 
@@ -57,7 +57,7 @@ public class PretragaDTO {
     }
 
 
-    public PretragaDTO(Long idDTO, Date odDTO, Date dooDTO, String modelVozilaDTO, String klasaVozilaDTO, double kilometrazaDTO, int cijenaDTO, double ocjenaDTO, VrstaGoriva gorivoDTO, TipMjenjanca mjenjacDTO, String imeKompanijeDTO) {
+    public PretragaDTO(Long idDTO, Date odDTO, Date dooDTO, String modelVozilaDTO, String klasaVozilaDTO, double kilometrazaDTO, double cijenaDTO, double ocjenaDTO, VrstaGoriva gorivoDTO, TipMjenjanca mjenjacDTO, String imeKompanijeDTO) {
         this.idDTO = idDTO;
         this.odDTO = odDTO;
         this.dooDTO = dooDTO;

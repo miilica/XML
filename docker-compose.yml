@@ -1,0 +1,83 @@
+version: "3"
+services:
+  eureka:
+    build: ./eureka
+    ports:
+      - "8761:8761"
+    tty: true
+      
+  xml-service-user:
+    build: ./xml-service-user
+    ports:
+      - "8084:8084"
+    environment:
+      - REGISTRY_HOST=eureka
+    tty: true
+    depends_on:
+      - eureka
+
+  xml-service-messages:
+    build: ./xml-service-messages
+    ports:
+      - "8085:8085"
+    environment:
+      - REGISTRY_HOST=eureka
+    tty: true
+    depends_on:
+      - eureka
+
+  xml-service-oglas:
+    build: ./xml-service-oglas
+    ports:
+      - "8086:8086"
+    environment:
+      REGISTRY_HOST: eureka
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+      DATABASE_DOMAIN: mysql
+      DATABASE_SCHEMA: ad_db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    tty: true
+    depends_on:
+      - eureka
+      - mysql
+      
+  xml-service-pretraga:
+    build: ./xml-service-pretraga
+    ports:
+      - "8087:8087"
+    environment:
+      - REGISTRY_HOST=eureka
+    tty: true
+    depends_on:
+      - eureka
+
+  xml-service-vozilo:
+    build: ./xml-service-vozilo
+    ports:
+      - "8088:8088"
+    environment:
+      - REGISTRY_HOST=eureka
+    tty: true
+    depends_on:
+      - eureka
+
+  zuul:
+    build: ./zuul
+    ports:
+      - "8083:8083"
+    environment:
+      - REGISTRY_HOST=eureka
+    tty: true
+    depends_on:
+        - eureka
+        - xml-service-messages
+        - xml-service-oglas
+        - xml-service-pretraga
+        - xml-service-user
+        - xml-service-vozilo
+     
+  mysql:
+    image: mysql:8.0.19
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rentAcar
