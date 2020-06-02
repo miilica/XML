@@ -11,6 +11,6 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin extends User {
+public class Admin extends User{
     private Set<Komentar> odobriKomentare;
 }
