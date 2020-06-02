@@ -18,6 +18,7 @@ public class UserDTO {
     private String username;
     private String name;
     private String email;
+    private String address;
     private boolean enabled;
     private List<String> authorities;
     private UserTokenDTO token;
@@ -27,6 +28,7 @@ public class UserDTO {
         this.username = user.getUsername();
         this.name = user.getName();
         this.email = user.getEmail();
+        this.address = user.getAddress();
         this.enabled = user.isEnabled();
         this.token = null;
 
