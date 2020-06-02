@@ -39,9 +39,6 @@ public class User implements UserDetails{
     private String username;
 
     @Column
-    private String ucidn;
-
-    @Column
     private String address;
 
     @Column
@@ -60,9 +57,6 @@ public class User implements UserDetails{
     private String password;
 
     @Column
-    private  String role;
-
-    @Column
     private boolean isAdmin;
 
     @Column(name = "enabled", nullable = false)
@@ -71,7 +65,7 @@ public class User implements UserDetails{
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
@@ -81,18 +75,16 @@ public class User implements UserDetails{
     public User() {
     }
 
-    public User(String name, String surname, String ucidn, String address, String city, String country, String email,
-                String phone, String password, String role, List<Authority> authorities, String username) {
+    public User(String name, String surname, String address, String city, String country, String email,
+                String phone, String password, List<Authority> authorities, String username) {
         this.name = name;
         this.surname = surname;
-        this.ucidn = ucidn;
         this.address = address;
         this.city = city;
         this.country = country;
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.role = role;
         this.authorities = authorities;
         this.username = username;
     }

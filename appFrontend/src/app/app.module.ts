@@ -28,6 +28,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AdminHomeComponent } from './modules/admin/components/home/home.compone
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    MatIconModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },

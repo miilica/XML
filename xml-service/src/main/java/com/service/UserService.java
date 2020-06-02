@@ -10,6 +10,9 @@ public interface UserService {
     User findById(Long id);
     User findByUsername(String username);
     List<User> findAll();
+    List<User> findAllKorisnike();
 	User save(UserRequest userRequest);
     User addUser(UserRegistrationDTO userInfo);
+    void delete(Long id);
+    void activateUser(Long id);
 }

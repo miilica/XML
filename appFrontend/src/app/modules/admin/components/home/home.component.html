@@ -1,1 +1,28 @@
 <h1>Admin homepage!</h1>
+
+<div class="container">
+    <h2 class="ui header">Lista korisnika</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Name Surname Username</th>
+            <th>Delete</th>
+            <th>Activate/Block</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+                <td>{{ category.name }} {{ category.surname }} -- {{ category.username }}</td>
+                <td>
+                    <mat-icon (click)="onClickDelete(category.id)">delete_outline</mat-icon>
+                </td>
+                <td *ngIf="category.enabled">
+                    <mat-icon (click)="onClickActivate(category.id)">block</mat-icon>
+                </td>
+                <td *ngIf="!category.enabled">
+                    <mat-icon (click)="onClickActivate(category.id)">check_circle_outline</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
