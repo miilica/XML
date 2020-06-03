@@ -1,7 +1,13 @@
 package com.dto;
 
 import com.model.MarkaAutomobila;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class MarkaAutomobilaDTO {
     private Long id;
     private String nazivMake;
