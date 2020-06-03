@@ -29,6 +29,7 @@ import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 import {MatIconModule} from '@angular/material/icon';
+import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {MatIconModule} from '@angular/material/icon';
     AddCarComponent,
     AddMarkaAutomobila,
     DodajKlasuAutomobila,
+    AddTipGoriva,
   ],
   imports: [
     BrowserModule,

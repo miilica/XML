@@ -30,7 +30,7 @@ public class Vozilo {
     @Column
     private MarkaAutomobila markaAutomobila;
 
-    private VrstaGoriva vrstaGoriva;
+    private TipGoriva tipGoriva;
 
     private TipMjenjaca tipMjenjaca;
 

@@ -3,8 +3,8 @@ package com.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="klasaautomobila")
-public class KlasaAutomobila {
+@Table(name = "vrstagoriva")
+public class TipGoriva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,11 +12,19 @@ public class KlasaAutomobila {
     @Column
     private String naziv;
 
-    public KlasaAutomobila(String naziv) {
+    public TipGoriva(String naziv) {
         this.naziv = naziv;
     }
 
-    public KlasaAutomobila() {
+    public TipGoriva() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNaziv() {
