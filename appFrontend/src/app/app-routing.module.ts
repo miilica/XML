@@ -28,9 +28,9 @@ const routes: Routes = [
     path: ADMIN_HOME_PATH,
     component: AdminHomeComponent
   },
-  { path: 'addcar', component: AddCarComponent },
-  { path: 'addmarkuautomobila', component: AddMarkaAutomobila },
-  { path: 'addklasu', component: DodajKlasuAutomobila },
+  { path: 'admin/addcar', component: AddCarComponent },
+  { path: 'admin/addmarkuautomobila', component: AddMarkaAutomobila },
+  { path: 'admin/addklasu', component: DodajKlasuAutomobila },
 ];
 
 @NgModule({
