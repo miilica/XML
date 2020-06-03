@@ -17,7 +17,7 @@ public class MarkaAutomobilaController {
 
 
     @PostMapping("/dodaj")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody MarkaAutomobilaDTO mDTO) {
         markaAutomobilaService.save(mDTO);
         return ResponseEntity.ok().build();
