@@ -31,6 +31,8 @@ import { AdminHomeComponent } from './modules/admin/components/home/home.compone
 import {MatIconModule} from '@angular/material/icon';
 import { VehicleListComponent } from './modules/korisnik/components/home/vehicle-list.component';
 import { KorpaKorisnikaComponent } from './modules/korisnik/components/korpaKorisnika/korpa-korisnika.component';
+import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
+import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { KorpaKorisnikaComponent } from './modules/korisnik/components/korpaKori
     DodajKlasuAutomobila,
     VehicleListComponent,
     KorpaKorisnikaComponent,
+    AddTipGoriva,
+    DodajTipMjenjaca,
   ],
   imports: [
     BrowserModule,

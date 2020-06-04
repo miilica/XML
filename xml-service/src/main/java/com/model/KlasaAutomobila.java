@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@Table(name="klasaautomobila")
 public class KlasaAutomobila {
 
     @Id
@@ -22,6 +22,23 @@ public class KlasaAutomobila {
     @Column
     private String naziv;
 
+
     @OneToMany(mappedBy = "klasaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozilo;
+
+    public KlasaAutomobila(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public KlasaAutomobila() {
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
 }

@@ -12,6 +12,8 @@ import { AdminHomeComponent } from './modules/admin/components/home/home.compone
 import { USER_ALL_ADS_URL } from './config/api-paths';
 import { VehicleListComponent } from './modules/korisnik/components/home/vehicle-list.component';
 import { KorpaKorisnikaComponent } from './modules/korisnik/components/korpaKorisnika/korpa-korisnika.component';
+import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
+import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,9 @@ const routes: Routes = [
   { path: 'admin/addcar', component: AddCarComponent },
   { path: 'admin/addmarkuautomobila', component: AddMarkaAutomobila },
   { path: 'admin/addklasu', component: DodajKlasuAutomobila },
+  { path: 'admin/addtipgoriva', component: AddTipGoriva },
+  { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
+
 ];
 
 @NgModule({

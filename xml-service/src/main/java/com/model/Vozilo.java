@@ -41,6 +41,10 @@ public class Vozilo {
     @Column
     private VrstaGoriva vrstaGoriva;
 
+
+    private TipGoriva tipGoriva;
+
+
     @Column
     private TipMjenjaca tipMjenjaca;
 */
