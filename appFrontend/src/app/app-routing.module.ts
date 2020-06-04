@@ -10,6 +10,7 @@ import { ADMIN_HOME_PATH, HOME_PATH, LOGIN_PATH, REGISTRATION_PATH, VERIFY_ACCOU
 import { SignupComponent } from './components/signup/signup.component';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
+import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,8 @@ const routes: Routes = [
   { path: 'admin/addmarkuautomobila', component: AddMarkaAutomobila },
   { path: 'admin/addklasu', component: DodajKlasuAutomobila },
   { path: 'admin/addtipgoriva', component: AddTipGoriva },
+  { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
+
 ];
 
 @NgModule({
