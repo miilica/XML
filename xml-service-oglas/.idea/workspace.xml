@@ -2,66 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32b12223-78cd-4960-9610-21e3d1b5b8a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Agent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Cjenovnik.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Izvjestaj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/KlasaAutomobila.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Komentar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Korisnik.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/MarkaAutomobila.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/StatusZahtjeva.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/TerminIznajmljivanja.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/TipMjenjaca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Vozilo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/VrstaGoriva.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Zahtjev.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Komentar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Korisnik.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Vozilo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Izvjestaj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Korisnik.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-messages/src/main/java/com/example/model/Poruka.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-messages/src/main/java/com/example/model/Poruka.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/dto/KlasaAutomobilaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/dto/MarkaAutomobilaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/dto/TipMjenjacaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/dto/VrstaGorivaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Cjenovnik.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/KlasaAutomobila.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/MarkaAutomobila.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Oglas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/TerminIznajmljivanja.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Vozilo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appFrontend/src/app/guard/admin.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../appFrontend/src/app/guard/admin.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Oglas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/xmlserviceoglas/model/Oglas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml-service-oglas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/xml-service-oglas.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/dto/PretragaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/dto/PretragaDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Pretraga.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/Pretraga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Agent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/Authority.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/dto/VoziloDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/dto/VoziloDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Komentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Komentar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Vozilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/java/com/example/demo/model/Vozilo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Agent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Cjenovnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Cjenovnik.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Izvjestaj.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Izvjestaj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Komentar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Komentar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Korisnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Korisnik.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Oglas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Oglas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Vozilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Vozilo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Zahtjev.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/java/com/model/Zahtjev.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/VrstaGoriva.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/model/VrstaGoriva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/repository/PretragaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/repository/PretragaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/service/PretragaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/java/com/example/demo/service/PretragaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/resources/application.properties" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -76,6 +41,10 @@
   </component>
   <component name="ProjectId" id="1cPksr6XbPPhsGqhqERca59JePd" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -84,18 +53,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../xml-service-pretraga" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="XmlServiceOglasApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -119,23 +76,23 @@
       <workItem from="1590437830698" duration="907000" />
       <workItem from="1590704537617" duration="2172000" />
       <workItem from="1590783046741" duration="1880000" />
+      <workItem from="1591289244299" duration="434000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -1,73 +1,47 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Pretraga;
-import com.example.demo.model.TipMjenjanca;
-import com.example.demo.model.VrstaGoriva;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PretragaDTO {
 
-    private Long idDTO;
+    private Long id;
 
-    private Date odDTO;
+    private Date od;
 
-    private Date dooDTO;
+    private Date doo;
 
-    private String modelVozilaDTO;
+    private String modelVozila;
 
-    private String klasaVozilaDTO;
+    private MarkaAutomobilaDTO markaAutomobila;
 
-    private double kilometrazaDTO;
+    private KlasaAutomobilaDTO klasaAutomobila;
 
-    private int cijenaDTO;
+    private VrstaGorivaDTO gorivo;
 
-    private double ocjenaDTO;
+    private TipMjenjacaDTO tipMjenjaca;
 
-    private VrstaGoriva gorivoDTO;
+    private double kilometrazaOd;
 
-    private TipMjenjanca mjenjacDTO;
+    private double mozePreciKM;
 
-    private String imeKompanijeDTO;
+    private double kilometrazaDo;
 
-    public PretragaDTO(){
+    private String mjestoPreuzimanja;
 
-    }
+    private int brSjedistaZaDjecu;
 
-    public PretragaDTO(Pretraga pretraga){
-        idDTO = pretraga.getId();
-        odDTO = pretraga.getOd();
-        dooDTO = pretraga.getDoo();
-        modelVozilaDTO = pretraga.getModelVozila();
-        klasaVozilaDTO = pretraga.getKlasaVozila();
-        kilometrazaDTO = pretraga.getKilometraza();
-        cijenaDTO = pretraga.getCijena();
-        ocjenaDTO = pretraga.getOcjena();
-        gorivoDTO = pretraga.getGorivo();
-        mjenjacDTO = pretraga.getMjenjac();
-        imeKompanijeDTO = pretraga.getImeKompanije();
-    }
+    private double cijenaOd;
+
+    private double cijenaDo;
 
 
-    public PretragaDTO(Long idDTO, Date odDTO, Date dooDTO, String modelVozilaDTO, String klasaVozilaDTO, double kilometrazaDTO, int cijenaDTO, double ocjenaDTO, VrstaGoriva gorivoDTO, TipMjenjanca mjenjacDTO, String imeKompanijeDTO) {
-        this.idDTO = idDTO;
-        this.odDTO = odDTO;
-        this.dooDTO = dooDTO;
-        this.modelVozilaDTO = modelVozilaDTO;
-        this.klasaVozilaDTO = klasaVozilaDTO;
-        this.kilometrazaDTO = kilometrazaDTO;
-        this.cijenaDTO = cijenaDTO;
-        this.ocjenaDTO = ocjenaDTO;
-        this.gorivoDTO = gorivoDTO;
-        this.mjenjacDTO = mjenjacDTO;
-        this.imeKompanijeDTO = imeKompanijeDTO;
-    }
 }
