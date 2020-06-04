@@ -1,11 +1,19 @@
 package com.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Vozilo {
 
     @Id
@@ -27,21 +35,35 @@ public class Vozilo {
     @Column
     private double ocjena;
 
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
     private MarkaAutomobila markaAutomobila;
-
+/*
+    @Column
     private VrstaGoriva vrstaGoriva;
 
+    @Column
     private TipMjenjaca tipMjenjaca;
+*/
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private KlasaAutomobila klasaAutomobila;
 
+    @Column
     private Boolean imaAndroid;
 
     @Column
     private boolean coliisionDamageWavier;
 
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<Komentar> komentari;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<Izvjestaj> izvjestaji;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.EAGER)
+    private Set<Oglas> oglasi;
+
 }

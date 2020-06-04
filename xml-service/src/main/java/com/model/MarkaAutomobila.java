@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="markaautomobila")
@@ -19,6 +20,9 @@ public class MarkaAutomobila {
 
     @Column
     private String model;
+
+    @OneToMany(mappedBy = "markaAutomobila", fetch = FetchType.LAZY)
+    private Set<Vozilo> vozilo;
 
     public Long getId() {
         return id;
