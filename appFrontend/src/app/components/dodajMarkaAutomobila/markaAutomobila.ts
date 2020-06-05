@@ -1,7 +1,7 @@
 export class MarkaAutomobila {
     constructor(
         public id: string,
-        public  naziv: string,
+        public  nazivMarke: string,
         public  model: string,
     ){}
 }

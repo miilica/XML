@@ -1,0 +1,76 @@
+<div class="container">
+  <h2 class="ui header">Vasa korpa</h2>
+  <br>
+
+  <table class="ui celled striped table">
+      <thead>
+        <th>AgentID</th>
+        <th>Cijena</th>
+        <th>Sjedista za decu</th>
+        <th>Kilometraza</th>
+        <th>Moze preci KM</th>
+        <th>Ocjena</th>
+        <th>CDW</th>
+        <th>Andorid</th>
+        <th>Bundle</th>
+        <th>Iznajmi</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let vozilo of vozila">
+
+            <td *ngIf="vozilo.agent != null">
+                {{ vozilo.agent.id }}
+            </td>
+
+            <td *ngIf="vozilo.agent == null">
+                Trenutno nema ID
+            </td>
+
+            <td>
+                {{ vozilo.cijena }}
+            </td>
+
+            <td>
+                {{ vozilo.brSjedistaZaDjecu }}
+            </td>
+
+            <td>
+                {{ vozilo.kilometraza }}
+            </td>
+
+            <td>
+                {{ vozilo.mozePreciKM }}
+            </td>
+
+            <td>
+                {{ vozilo.ocjena }}
+            </td>
+
+            <td *ngIf="!vozilo.coliisionDamageWavier">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.coliisionDamageWavier">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td *ngIf="!vozilo.imaAndroid">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.imaAndroid">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td>
+                <input type="checkbox" [(ngModel)]="vozilo.bundle">
+            </td>
+
+            <td>
+                <mat-icon (click)="rentCar(vozilo)">done</mat-icon>
+            </td>
+
+          </tr>
+      </tbody>
+  </table>
+
+</div>
+      

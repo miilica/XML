@@ -26,30 +26,29 @@
     
     <div>
       <label  class="col-form-label" for="inputDefault">Marka automobila: </label>
-      <select>  
+      
         <select class="form-control" id="marka"  [(ngModel)]="vozilo.markaAutomobila" name="marka" >
           <option [ngValue]="null">Izaberi marku</option>
-          <option *ngFor = 'let c of marke' name="marka" [ngValue]="c">{{c.naziv}}</option>
+          <option *ngFor = 'let c of marke' name="markaAutomobila" [ngValue]="c">{{c.nazivMarke}}</option>
         </select>
-      </select>
+      
     </div>
     
     <div>
       <label  class="col-form-label" for="inputDefault"  >Vrsta goriva:</label>
-      <select class="form-control" id="vrstaGoriva" name="vrstaGoriva" [(ngModel)]="vozilo.vrstaGoriva" >
-        <option>benzin</option>
-        <option>dizel</option>
-        <option>plin</option>
-        <option>električni</option>
-      </select>
+
+        <select class="form-control" id="gor"  [(ngModel)]="vozilo.tipGoriva" name="vg" >
+          <option [ngValue]="null">Izaberi vrstu goriva</option>
+          <option *ngFor = 'let c of gorivo' name="g" [ngValue]="c">{{c.naziv}}</option>
+        </select>
+      
     </div>
 
     <div>
       <label  class="col-form-label" for="inputDefault">Tip mjenjača</label>
-      <select class="form-control" id="tipMjenjaca"  [(ngModel)]="vozilo.tipMjenjaca" name="tipMjenjaca">
-        <option>manuelni</option>
-        <option>automatski</option>
-        <option>poluautomatski</option>
+      <select class="form-control" id="mjenj"  [(ngModel)]="vozilo.tipMjenjaca" name="tipMjenjaca" >
+        <option [ngValue]="null">Izaberi vrstu mjenjaca</option>
+        <option *ngFor = 'let c of mjenjac' name="m" [ngValue]="c">{{c.naziv}}</option>
       </select>
     </div>
     

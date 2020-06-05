@@ -29,6 +29,10 @@ import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 import {MatIconModule} from '@angular/material/icon';
+import { VehicleListComponent } from './modules/korisnik/components/home/vehicle-list.component';
+import { KorpaKorisnikaComponent } from './modules/korisnik/components/korpaKorisnika/korpa-korisnika.component';
+import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
+import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
 
 
 @NgModule({
@@ -43,6 +47,10 @@ import {MatIconModule} from '@angular/material/icon';
     AddCarComponent,
     AddMarkaAutomobila,
     DodajKlasuAutomobila,
+    VehicleListComponent,
+    KorpaKorisnikaComponent,
+    AddTipGoriva,
+    DodajTipMjenjaca,
   ],
   imports: [
     BrowserModule,

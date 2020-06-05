@@ -33,19 +33,19 @@ public class UserController {
 	// Ukoliko nema, server ce vratiti gresku 403 Forbidden
 	// Korisnik jeste autentifikovan, ali nije autorizovan da pristupi resursu
 	@GetMapping("/user/{userId}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public User loadById(@PathVariable Long userId) {
 		return this.userService.findById(userId);
 	}
 
 	@GetMapping("/user/all")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<User> loadAll() {
 		return this.userService.findAll();
 	}
 
 	@GetMapping("/user/allKorisnike")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<User> loadAllKorisnike() {
 		return this.userService.findAllKorisnike();
 	}
@@ -64,10 +64,6 @@ public class UserController {
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping("/whoami")
-	@PreAuthorize("hasRole('USER')")
-	public User user(Principal user) {
-		return this.userService.findByUsername(user.getName());
-	}
+
 
 }
