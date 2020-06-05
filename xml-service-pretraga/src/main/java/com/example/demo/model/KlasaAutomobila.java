@@ -1,19 +1,20 @@
-package com.model;
+package com.example.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.dto.KlasaAutomobilaDTO;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(name="klasaautomobila")
+@Entity
+@Table(name="klasa_automobila")
 public class KlasaAutomobila {
 
     @Id
@@ -25,25 +26,5 @@ public class KlasaAutomobila {
 
     @OneToMany(mappedBy = "klasaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozilo;
-
-
-    public KlasaAutomobila(String naziv) {
-        this.naziv = naziv;
-    }
-
-    public KlasaAutomobila(KlasaAutomobilaDTO k) {
-        this.setNaziv(k.getNaziv());
-    }
-
-    public KlasaAutomobila() {
-    }
-
-    public String getNaziv() {
-        return naziv;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
-    }
 
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MarkaAutomobilaService {
     @Autowired
@@ -19,11 +21,12 @@ public class MarkaAutomobilaService {
 
 
     public MarkaAutomobila save(MarkaAutomobilaDTO mDTO) {
-        MarkaAutomobila m = new MarkaAutomobila();
-        m.setModel(mDTO.getModel());
-        m.setNazivMarke(mDTO.getNazivMake());
-
+        MarkaAutomobila m = new MarkaAutomobila(mDTO);
         m = this.markaAutomobilaRepository.save(m);
         return m;
+    }
+    public List<MarkaAutomobila> findAll() throws AccessDeniedException {
+        List<MarkaAutomobila> result = markaAutomobilaRepository.findAll();
+        return result;
     }
 }

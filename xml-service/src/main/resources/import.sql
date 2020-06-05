@@ -27,4 +27,19 @@ INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, tr
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
 
+insert into `tipmjenjaca` (id, naziv) values (1, 'manuelni');
+insert into `tipmjenjaca` (id, naziv) values (2, 'automatski');
+insert into `tipmjenjaca` (id, naziv) values (3, 'poluautomatski');
+
+insert into `klasaautomobila` (id, naziv) values (1, 'klasa1');
+insert into `klasaautomobila` (id, naziv) values (2, 'klasa2');
+insert into `klasaautomobila` (id, naziv) values (3, 'klasa3');
+
+insert into `vrstagoriva` (id, naziv) values (1, 'benzin');
+insert into `vrstagoriva` (id, naziv) values (2, 'dizel');
+insert into `vrstagoriva` (id, naziv) values (3, 'plin');
+
+insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
+insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
+insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
 
