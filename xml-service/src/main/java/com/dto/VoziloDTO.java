@@ -22,6 +22,9 @@ public class VoziloDTO {
     private KlasaAutomobilaDTO klasaAutomobila;
     private Boolean imaAndroid;
     private boolean coliisionDamageWavier;
+    private Agent agent;
+
+    //private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
     public VoziloDTO() {
 
@@ -47,6 +50,7 @@ public class VoziloDTO {
         this.cijena = v.getCijena();
         this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
         this.kilometraza = v.getKilometraza();
+        this.agent = v.getAgent();
         this.mozePreciKM = v.getMozePreciKM();
         this.imaAndroid = v.getImaAndroid();
         this.coliisionDamageWavier = v.isColiisionDamageWavier();

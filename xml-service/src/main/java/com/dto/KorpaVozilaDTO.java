@@ -1,9 +1,6 @@
 package com.dto;
 
-import com.model.KlasaAutomobila;
-import com.model.KorpaVozila;
-import com.model.MarkaAutomobila;
-import com.model.Vozilo;
+import com.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,23 +14,27 @@ public class KorpaVozilaDTO {
 
     private Long id;
 
-    private String cijena;
+    private double cijena;
 
-    private String kilometraza;
+    private double kilometraza;
 
-    private String mozePreciKM;
+    private double mozePreciKM;
 
-    private String brSjedistaZaDjecu;
+    private int brSjedistaZaDjecu;
 
-    private String ocjena;
+    private double ocjena;
+
+    private Boolean imaAndroid;
+
+    private boolean coliisionDamageWavier;
+
+    private  boolean bundle;
 
     private MarkaAutomobila markaAutomobila;
 
     private KlasaAutomobila klasaAutomobila;
 
-    private Boolean imaAndroid;
-
-    private boolean coliisionDamageWavier;
+    private Agent agent;
 /*
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
@@ -46,9 +47,14 @@ public class KorpaVozilaDTO {
 
     public KorpaVozilaDTO(KorpaVozila v) {
         this.id = v.getId();
-        this.cijena = v.getCjena();
+        this.cijena = v.getCijena();
         this.kilometraza = v.getKilometraza();
         this.mozePreciKM = v.getMozePreciKM();
+        this.agent = v.getAgent();
+        this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
+        this.imaAndroid = v.getImaAndroid();
+        this.coliisionDamageWavier = v.isColiisionDamageWavier();
+        this.bundle = v.isBundle();
     }
 
 }

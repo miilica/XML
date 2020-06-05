@@ -1,12 +1,40 @@
 package com.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Zahtjev {
-    private StatusZahtjeva statusZahtjeva;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private Date datumKreiranja;
+
+    @Column
     private boolean potvrdjen;
-    private  boolean bandle;
-    private Set<Oglas> oglasi;
+
+    @Column
+    private  boolean bundle;
+
+    @ManyToOne
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
+
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //private Set<Oglas> oglasi;
+
+    //private StatusZahtjeva statusZahtjeva;
 }

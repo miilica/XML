@@ -69,6 +69,10 @@ public class Vozilo {
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.EAGER)
     private Set<Oglas> oglasi;
 
+    @ManyToOne()
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
+
    // private Set<TerminIznajmljivanja> terminiIznajmljivanja;
    // private Set<Komentar> komentari;
   //  private Set<Izvjestaj> izvjestaji;
@@ -187,4 +191,5 @@ public class Vozilo {
     public void setColiisionDamageWavier(boolean coliisionDamageWavier) {
         this.coliisionDamageWavier = coliisionDamageWavier;
     }
+
 }
