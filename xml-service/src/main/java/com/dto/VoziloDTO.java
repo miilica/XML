@@ -1,71 +1,37 @@
-package com.model;
+package com.dto;
 
-import com.dto.VoziloDTO;
+public class VoziloDTO {
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
-public class Vozilo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
     private double cijena;
-
-    @Column
     private double kilometraza;
-
-    @Column
     private double mozePreciKM;
-
-    @Column
     private int brSjedistaZaDjecu;
-
-    @Column
     private double ocjena;
-
-    @ManyToOne( fetch = FetchType.LAZY)
-    private MarkaAutomobila markaAutomobila;
-
-    @ManyToOne( fetch = FetchType.LAZY)
-    private TipGoriva tipGoriva;
-
-    @ManyToOne( fetch = FetchType.LAZY)
-    private TipMjenjaca tipMjenjaca;
-
-    @ManyToOne( fetch = FetchType.LAZY)
-    private KlasaAutomobila klasaAutomobila;
-
-    @Column
+    private MarkaAutomobilaDTO markaAutomobila;
+    private VrstaGorivaDTO tipGoriva;
+    private TipMjenjacaDTO tipMjenjaca;
+    private KlasaAutomobilaDTO klasaAutomobila;
     private Boolean imaAndroid;
-
-    @Column
     private boolean coliisionDamageWavier;
 
-   // private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-   // private Set<Komentar> komentari;
-  //  private Set<Izvjestaj> izvjestaji;
+    public VoziloDTO() {
 
-
-    public Vozilo() {
     }
 
-    public Vozilo(VoziloDTO vDTO){
-        this.setCijena(vDTO.getCijena());
-        this.setKilometraza(vDTO.getKilometraza());
-        this.setMozePreciKM(vDTO.getMozePreciKM());
-        this.setBrSjedistaZaDjecu(vDTO.getBrSjedistaZaDjecu());
-        this.setOcjena(vDTO.getOcjena());
-        this.setMarkaAutomobila(new MarkaAutomobila(vDTO.getMarkaAutomobila()));
-        this.setKlasaAutomobila(new KlasaAutomobila(vDTO.getKlasaAutomobila()));
-        this.setTipGoriva(new TipGoriva(vDTO.getTipGoriva()));
-        this.setTipMjenjaca(new TipMjenjaca(vDTO.getTipMjenjaca()));
-        this.setImaAndroid(vDTO.getImaAndroid());
-        this.setColiisionDamageWavier(vDTO.isColiisionDamageWavier());
-
+    public VoziloDTO(Long id, double cijena, double kilometraza, double mozePreciKM, int brSjedistaZaDjecu, double ocjena, MarkaAutomobilaDTO markaAutomobila, VrstaGorivaDTO tipGoriva, TipMjenjacaDTO tipMjenjaca, KlasaAutomobilaDTO klasaAutomobila, Boolean imaAndroid, boolean coliisionDamageWavier) {
+        this.id = id;
+        this.cijena = cijena;
+        this.kilometraza = kilometraza;
+        this.mozePreciKM = mozePreciKM;
+        this.brSjedistaZaDjecu = brSjedistaZaDjecu;
+        this.ocjena = ocjena;
+        this.markaAutomobila = markaAutomobila;
+        this.tipGoriva = tipGoriva;
+        this.tipMjenjaca = tipMjenjaca;
+        this.klasaAutomobila = klasaAutomobila;
+        this.imaAndroid = imaAndroid;
+        this.coliisionDamageWavier = coliisionDamageWavier;
     }
 
     public Long getId() {
@@ -116,35 +82,35 @@ public class Vozilo {
         this.ocjena = ocjena;
     }
 
-    public MarkaAutomobila getMarkaAutomobila() {
+    public MarkaAutomobilaDTO getMarkaAutomobila() {
         return markaAutomobila;
     }
 
-    public void setMarkaAutomobila(MarkaAutomobila markaAutomobila) {
+    public void setMarkaAutomobila(MarkaAutomobilaDTO markaAutomobila) {
         this.markaAutomobila = markaAutomobila;
     }
 
-    public TipGoriva getTipGoriva() {
+    public VrstaGorivaDTO getTipGoriva() {
         return tipGoriva;
     }
 
-    public void setTipGoriva(TipGoriva tipGoriva) {
+    public void setTipGoriva(VrstaGorivaDTO tipGoriva) {
         this.tipGoriva = tipGoriva;
     }
 
-    public TipMjenjaca getTipMjenjaca() {
+    public TipMjenjacaDTO getTipMjenjaca() {
         return tipMjenjaca;
     }
 
-    public void setTipMjenjaca(TipMjenjaca tipMjenjaca) {
+    public void setTipMjenjaca(TipMjenjacaDTO tipMjenjaca) {
         this.tipMjenjaca = tipMjenjaca;
     }
 
-    public KlasaAutomobila getKlasaAutomobila() {
+    public KlasaAutomobilaDTO getKlasaAutomobila() {
         return klasaAutomobila;
     }
 
-    public void setKlasaAutomobila(KlasaAutomobila klasaAutomobila) {
+    public void setKlasaAutomobila(KlasaAutomobilaDTO klasaAutomobila) {
         this.klasaAutomobila = klasaAutomobila;
     }
 

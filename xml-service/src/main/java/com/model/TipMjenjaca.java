@@ -1,6 +1,9 @@
 package com.model;
 
+import com.dto.TipMjenjacaDTO;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "tipmjenjaca")
@@ -13,11 +16,17 @@ public class TipMjenjaca {
         @Column
         private String naziv;
 
+    @OneToMany(mappedBy = "tipMjenjaca", fetch = FetchType.LAZY)
+    private Set<Vozilo> vozila;
+
     public TipMjenjaca(String naziv) {
         this.naziv = naziv;
     }
 
     public TipMjenjaca() {
+    }
+    public TipMjenjaca(TipMjenjacaDTO t) {
+        this.setNaziv(t.getNaziv());
     }
 
     public Long getId() {

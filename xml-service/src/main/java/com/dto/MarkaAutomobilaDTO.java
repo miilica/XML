@@ -19,6 +19,8 @@ public class MarkaAutomobilaDTO {
         model = markaAutomobila.getModel();
     }
 
+
+
     public Long getId() {
         return id;
     }

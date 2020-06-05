@@ -37,6 +37,7 @@ export class AddCarComponent implements OnInit {
   )
   this._markaServis.getMarke().subscribe(
     data=>{ 
+      console.log(data);
         this.marke = data;
     },
     error=> console.error('Error!', error)
