@@ -12,4 +12,5 @@ export default interface VehicleDTO {
     klasaAutomobila: KlasaAutomobila;
     imaAndroid: boolean;
     coliisionDamageWavier: boolean;
+    bundle: boolean;
 }

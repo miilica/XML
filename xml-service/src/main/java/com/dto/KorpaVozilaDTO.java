@@ -28,6 +28,8 @@ public class KorpaVozilaDTO {
 
     private boolean coliisionDamageWavier;
 
+    private  boolean bundle;
+
     private MarkaAutomobila markaAutomobila;
 
     private KlasaAutomobila klasaAutomobila;
@@ -52,6 +54,7 @@ public class KorpaVozilaDTO {
         this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
         this.imaAndroid = v.getImaAndroid();
         this.coliisionDamageWavier = v.isColiisionDamageWavier();
+        this.bundle = v.isBundle();
     }
 
 }

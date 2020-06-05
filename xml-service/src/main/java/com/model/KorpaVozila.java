@@ -40,6 +40,9 @@ public class KorpaVozila {
     private boolean coliisionDamageWavier;
 
     @Column
+    private  boolean bundle;
+
+    @Column
     private Long userId;
 
     @Column

@@ -12,7 +12,7 @@
         <th>Ocjena</th>
         <th>CDW</th>
         <th>Andorid</th>
-        <th>Dostupan</th>
+        <th>Bundle</th>
         <th>Iznajmi</th>
       </thead>
       <tbody>
@@ -60,11 +60,8 @@
                 <mat-icon>check_circle_outline</mat-icon>
             </td>
 
-            <td *ngIf="!vozilo.dostupan">
-                <mat-icon>block</mat-icon>
-            </td>
-            <td *ngIf="vozilo.dostupan">
-                <mat-icon>check_circle_outline</mat-icon>
+            <td>
+                <input type="checkbox" [(ngModel)]="vozilo.bundle">
             </td>
 
             <td>

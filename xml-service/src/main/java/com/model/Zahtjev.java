@@ -27,7 +27,7 @@ public class Zahtjev {
     private boolean potvrdjen;
 
     @Column
-    private  boolean bandle;
+    private  boolean bundle;
 
     @ManyToOne
     @JoinColumn(name = "agent_id")

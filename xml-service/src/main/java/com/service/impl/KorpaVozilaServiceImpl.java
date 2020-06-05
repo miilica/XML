@@ -95,7 +95,7 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         zahtjev.setDatumKreiranja(currentUtilDate);
         zahtjev.setPotvrdjen(false);
         zahtjev.setAgent(vozilo.getAgent());
-        zahtjev.setBandle(false);//privremeno
+        zahtjev.setBundle(vozilo.isBundle());
 
         zahtjevRepository.save(zahtjev);
 
