@@ -18,8 +18,12 @@
       <tbody>
           <tr *ngFor="let vozilo of vozila">
 
-            <td>
+            <td *ngIf="vozilo.agent != null">
                 {{ vozilo.agent.id }}
+            </td>
+
+            <td *ngIf="vozilo.agent == null">
+                Trenutno nema ID
             </td>
 
             <td>

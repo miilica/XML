@@ -42,6 +42,7 @@ public class Agent{
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 
+    @JsonIgnore//uleti u neku beskonacnu petlju kad uzimam sve oglase pa sam morao ovo
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Zahtjev> pristigliZahtjevi;
 
