@@ -4,19 +4,24 @@
 
   <table class="ui celled striped table">
       <thead>
-        <th>Cjena</th>
+        <th>AgentID</th>
+        <th>Cijena</th>
         <th>Sjedista za decu</th>
         <th>Kilometraza</th>
         <th>Moze preci KM</th>
         <th>Ocjena</th>
         <th>CDW</th>
         <th>Andorid</th>
-        <th>Mesto preuzimanja</th>
         <th>Dostupan</th>
         <th>Iznajmi</th>
       </thead>
       <tbody>
           <tr *ngFor="let vozilo of vozila">
+
+            <td>
+                {{ vozilo.agent.id }}
+            </td>
+
             <td>
                 {{ vozilo.cijena }}
             </td>
@@ -30,11 +35,11 @@
             </td>
 
             <td>
-                {{ vozilo.ocjena }}
+                {{ vozilo.mozePreciKM }}
             </td>
 
             <td>
-                {{ vozilo.cijena }}
+                {{ vozilo.ocjena }}
             </td>
 
             <td *ngIf="!vozilo.coliisionDamageWavier">
@@ -51,8 +56,6 @@
                 <mat-icon>check_circle_outline</mat-icon>
             </td>
 
-            <td>{{ vozilo.mjestoPreuzimanja }}</td>
-
             <td *ngIf="!vozilo.dostupan">
                 <mat-icon>block</mat-icon>
             </td>
@@ -61,7 +64,7 @@
             </td>
 
             <td>
-                <mat-icon>done</mat-icon>
+                <mat-icon (click)="rentCar(vozilo)">done</mat-icon>
             </td>
 
           </tr>

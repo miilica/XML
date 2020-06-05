@@ -5,7 +5,8 @@
 
   <table class="ui celled striped table">
       <thead>
-        <th>Cjena</th>
+        <th>AgentID</th>
+        <th>Cijena</th>
         <th>Sjedista za decu</th>
         <th>Kilometraza</th>
         <th>Moze preci KM</th>
@@ -18,6 +19,11 @@
       </thead>
       <tbody>
           <tr *ngFor="let vozilo of vozila">
+            
+            <td>
+                {{ vozilo.agent.id }}
+            </td>
+
             <td>
                 {{ vozilo.cijena }}
             </td>

@@ -28,5 +28,12 @@ export class KorpaKorisnikaComponent implements OnInit {
     });
   }
 
+  public rentCar(vehicle: VehicleDTO): void {
+    this.adsSerice.rentACarRequest(vehicle).subscribe(data => {
+      this.toastr.success('Request for vehicle has been sent');
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
+  }
   
 }

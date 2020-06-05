@@ -19,3 +19,4 @@ export const USER_ALL_ADS_URL = `${BASE_URL}/oglasi/allAds`;
 export const USER_ALL_VEHICLES_URL = `${BASE_URL}/vozilo/allVozila`;
 export const VEHICLE_TO_CART_URL = `${BASE_URL}/korpa/addVehicleToCart`;
 export const ALL_VEHICLEs_IN_CART_URL = `${BASE_URL}/korpa/allVozila`;
+export const RENT_A_CAR_REQUEST_URL = `${BASE_URL}/korpa/rentACarRequest`;
