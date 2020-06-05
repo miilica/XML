@@ -1,24 +1,42 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.OglasDTO;
 import com.example.demo.dto.PretragaDTO;
-import com.example.demo.model.Pretraga;
+import com.example.demo.model.Oglas;
+import com.example.demo.repository.PretragaRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-import java.lang.ref.PhantomReference;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public interface PretragaService {
+@Service
+public class PretragaService {
 
-    Pretraga findById(Long id);
-    Pretraga findAll();
-    Pretraga save(PretragaDTO pretragaDTO);
-    Pretraga delete(Long id);
+    @Autowired
+    private ModelMapper modelMapper;
 
-    Pretraga findByOd(Date od);
-    Pretraga findByDoo(Date doo);
-    Pretraga findByModelVoyila(String model);
-    Pretraga findByKilometraza(double kilometraza);
-    Pretraga findByKlasaVozila(String klasa);
-    Pretraga findByCijena(int cijena);
-    Pretraga findByOcjena(double ocjena);
-    Pretraga findByImeKompanije(String ime);
+    @Autowired
+    private PretragaRepository pretragaRepository;
+
+    public ResponseEntity<List<OglasDTO>> pretraga(PretragaDTO pretragaDTO) {
+
+        String mjestoPreuzimanja = pretragaDTO.getMjestoPreuzimanja();
+        Date doo = pretragaDTO.getDoo();
+        Date od = pretragaDTO.getOd();
+
+
+        List<Oglas> oglasi = this.pretragaRepository.pretrazi(mjestoPreuzimanja, doo, od);
+
+        List<OglasDTO> oglasiDTO = new ArrayList<>();
+        for(Oglas oglas: oglasi){
+            oglasiDTO.add(modelMapper.map(oglas, OglasDTO.class));
+        }
+
+        return new ResponseEntity<>(oglasiDTO, HttpStatus.OK);
+    }
 }
