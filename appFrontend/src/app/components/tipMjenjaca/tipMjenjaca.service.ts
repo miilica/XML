@@ -9,7 +9,7 @@ import { TipMjenjaca } from './tipMjenjaca';
 })
 export class TipMjenjacaService{
     _url = 'http://localhost:8080/api/tipmjenjaca/dodaj';
-    _url2 = 'http://localhost:8080/api/';
+    _url2 = 'http://localhost:8080/api/tipmjenjaca/get';
    
 
     constructor(private _http: HttpClient) { }

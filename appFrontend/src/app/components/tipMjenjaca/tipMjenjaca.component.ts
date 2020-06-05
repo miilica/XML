@@ -23,7 +23,7 @@ export class DodajTipMjenjaca implements OnInit {
          data=>{
           console.log('Success!', JSON.stringify(data))
           alert('Novi tip mjenjaca dodat!');
-          this.router.navigate(['ADMIN_HOME_PATH']);
+          this.router.navigate(['admin']);
          } ,
           error=> console.error('Error!',error)
       )

@@ -16,6 +16,6 @@ export const ADMIN_ACTIVATE_KORISNIKA_URL = `${BASE_URL}/api/users/activate`;
 
 //Oglasi
 export const USER_ALL_ADS_URL = `${BASE_URL}/oglasi/allAds`;
-export const USER_ALL_VEHICLES_URL = `${BASE_URL}/vozilo/allVozila`;
+export const USER_ALL_VEHICLES_URL = `${BASE_URL}/api/vozilo/allVozila`;
 export const VEHICLE_TO_CART_URL = `${BASE_URL}/korpa/addVehicleToCart`;
 export const ALL_VEHICLEs_IN_CART_URL = `${BASE_URL}/korpa/allVozila`;

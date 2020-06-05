@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class DodajKlasuAutomobilaService{
     _url = 'http://localhost:8080/api/klasa/dodaj';
-    _url2 = 'http://localhost:8080/api/';
+    _url2 = 'http://localhost:8080/api/klasa/get';
    
 
     constructor(private _http: HttpClient) { }

@@ -1,5 +1,6 @@
 package com.model;
 
+import com.dto.MarkaAutomobilaDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +23,15 @@ public class MarkaAutomobila {
     private String model;
 
     @OneToMany(mappedBy = "markaAutomobila", fetch = FetchType.LAZY)
-    private Set<Vozilo> vozilo;
+    private Set<Vozilo> vozila;
+
+    public MarkaAutomobila(MarkaAutomobilaDTO m) {
+        this.setNazivMarke(m.getNazivMake());
+        this.setModel(m.getModel());
+    }
+
+    public MarkaAutomobila() {
+    }
 
     public Long getId() {
         return id;
