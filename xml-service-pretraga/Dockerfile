@@ -6,6 +6,7 @@ RUN ["mvn", "package", "-DskipTests"]
 
 FROM openjdk:8-jdk-alpine
 WORKDIR /xml-service-pretraga
+#COPY /usr/src/xml-service-pretraga/target/xml-service-pretraga-0.0.1-SNAPSHOT.jar ./
 COPY --from=pretraga-dock /usr/src/xml-service-pretraga/target/xml-service-pretraga-0.0.1-SNAPSHOT.jar ./
 
 CMD ["java", "-jar", "xml-service-pretraga-0.0.1-SNAPSHOT.jar"]

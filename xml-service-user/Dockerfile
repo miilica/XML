@@ -6,6 +6,7 @@ RUN ["mvn", "package", "-DskipTests"]
 
 FROM openjdk:8-jdk-alpine
 WORKDIR /xml-service-user
+#COPY /usr/src/xml-service-user/target/xml-service-user-0.0.1-SNAPSHOT.jar ./
 COPY --from=user-dock /usr/src/xml-service-user/target/xml-service-user-0.0.1-SNAPSHOT.jar ./
 
 CMD ["java", "-jar", "xml-service-user-0.0.1-SNAPSHOT.jar"]

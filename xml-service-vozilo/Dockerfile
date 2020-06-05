@@ -6,6 +6,7 @@ RUN ["mvn", "package", "-DskipTests"]
 
 FROM openjdk:8-jdk-alpine
 WORKDIR /xml-service-vozilo
+#COPY /usr/src/xml-service-vozilo/target/xml-service-vozilo-0.0.1-SNAPSHOT.jar ./
 COPY --from=vozilo-dock /usr/src/xml-service-vozilo/target/xml-service-vozilo-0.0.1-SNAPSHOT.jar ./
 
 CMD ["java", "-jar", "xml-service-vozilo-0.0.1-SNAPSHOT.jar"]

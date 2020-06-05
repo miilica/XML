@@ -4,17 +4,17 @@
     <list default="true" id="32b12223-78cd-4960-9610-21e3d1b5b8a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-messages/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-messages/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-messages/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-messages/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/java/com/example/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-user/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zuul/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-pretraga/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-pretraga/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-user/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-user/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service-vozilo/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service-vozilo/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../xml-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zuul/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zuul/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zuul/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +56,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xml-service-pretraga" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -95,6 +95,7 @@
       <workItem from="1591032738985" duration="1242000" />
       <workItem from="1591118501942" duration="445000" />
       <workItem from="1591177943512" duration="2206000" />
+      <workItem from="1591202725254" duration="2448000" />
     </task>
     <servers />
   </component>
