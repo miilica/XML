@@ -15,10 +15,16 @@ INSERT INTO `user_authority` (user_id, authority_id) VALUES (3, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (4, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (5, 2);
 
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena) VALUES (1, '0', '1200', false, true, '120000', '100', '4');
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena) VALUES (2, '2', '2200', true, true, '150000', '200', '3');
+INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prezime) VALUES (1, 'Nikole Tesle 15', '1', 'Marko', 'MarkoTrans', 'stagod', 'Markic');
+INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prezime) VALUES (2, 'Mihajla Pupina 22', '2', 'Jelena', 'JelenaTrans', 'wthevr', 'Jelenic');
+
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 1);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3', 1);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (3, '1', '600', false, false, '270000', '500', '2', 2);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (4, '0', '5000', false, true, '10000', '1000', '5', 2);
 
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, true, 'Novi Sad', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
+
 

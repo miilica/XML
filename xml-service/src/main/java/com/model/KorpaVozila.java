@@ -19,21 +19,34 @@ public class KorpaVozila {
     private Long id;
 
     @Column
-    private String kilometraza;
+    private double cijena;
 
     @Column
-    private String ocjena;
+    private double kilometraza;
 
     @Column
-    private String cjena;
+    private double mozePreciKM;
 
     @Column
-    private String mozePreciKM;
+    private int brSjedistaZaDjecu;
+
+    @Column
+    private double ocjena;
+
+    @Column
+    private Boolean imaAndroid;
+
+    @Column
+    private boolean coliisionDamageWavier;
 
     @Column
     private Long userId;
 
     @Column
     private Long vehicleId;
+
+    @ManyToOne()
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
 
 }

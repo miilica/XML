@@ -32,4 +32,11 @@ public class KorpaVozilaKontroler {
     public List<KorpaVozila> findAll() throws AccessDeniedException {
         return this.korpaVozilaService.findAll();
     }
+
+    @PostMapping("/rentACarRequest")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity rentACarRequest(@Valid @RequestBody KorpaVozilaDTO vozilo) {
+        korpaVozilaService.rentACarRequest(vozilo);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -70,4 +70,8 @@ public class Vozilo {
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.EAGER)
     private Set<Oglas> oglasi;
 
+    @ManyToOne()
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
+
 }
