@@ -1,5 +1,13 @@
 package com.dto;
 
+import com.model.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class VoziloDTO {
 
     private Long id;
@@ -32,6 +40,16 @@ public class VoziloDTO {
         this.klasaAutomobila = klasaAutomobila;
         this.imaAndroid = imaAndroid;
         this.coliisionDamageWavier = coliisionDamageWavier;
+    }
+
+    public VoziloDTO(Vozilo v) {
+        this.id = v.getId();
+        this.cijena = v.getCijena();
+        this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
+        this.kilometraza = v.getKilometraza();
+        this.mozePreciKM = v.getMozePreciKM();
+        this.imaAndroid = v.getImaAndroid();
+        this.coliisionDamageWavier = v.isColiisionDamageWavier();
     }
 
     public Long getId() {
@@ -129,4 +147,5 @@ public class VoziloDTO {
     public void setColiisionDamageWavier(boolean coliisionDamageWavier) {
         this.coliisionDamageWavier = coliisionDamageWavier;
     }
+
 }

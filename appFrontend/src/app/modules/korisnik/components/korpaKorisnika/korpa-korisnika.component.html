@@ -1,0 +1,72 @@
+<div class="container">
+  <h2 class="ui header">Vasa korpa</h2>
+  <br>
+
+  <table class="ui celled striped table">
+      <thead>
+        <th>Cjena</th>
+        <th>Sjedista za decu</th>
+        <th>Kilometraza</th>
+        <th>Moze preci KM</th>
+        <th>Ocjena</th>
+        <th>CDW</th>
+        <th>Andorid</th>
+        <th>Mesto preuzimanja</th>
+        <th>Dostupan</th>
+        <th>Iznajmi</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let vozilo of vozila">
+            <td>
+                {{ vozilo.cijena }}
+            </td>
+
+            <td>
+                {{ vozilo.brSjedistaZaDjecu }}
+            </td>
+
+            <td>
+                {{ vozilo.kilometraza }}
+            </td>
+
+            <td>
+                {{ vozilo.ocjena }}
+            </td>
+
+            <td>
+                {{ vozilo.cijena }}
+            </td>
+
+            <td *ngIf="!vozilo.coliisionDamageWavier">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.coliisionDamageWavier">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td *ngIf="!vozilo.imaAndroid">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.imaAndroid">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td>{{ vozilo.mjestoPreuzimanja }}</td>
+
+            <td *ngIf="!vozilo.dostupan">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.dostupan">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td>
+                <mat-icon>done</mat-icon>
+            </td>
+
+          </tr>
+      </tbody>
+  </table>
+
+</div>
+      

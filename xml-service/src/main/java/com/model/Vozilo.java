@@ -1,11 +1,19 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import com.dto.VoziloDTO;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@AllArgsConstructor
+@Getter
+@Setter
 public class Vozilo {
 
     @Id
@@ -27,16 +35,20 @@ public class Vozilo {
     @Column
     private double ocjena;
 
-    @ManyToOne( fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private MarkaAutomobila markaAutomobila;
+/*
+    @Column
+    private VrstaGoriva vrstaGoriva;
 
+*/
     @ManyToOne( fetch = FetchType.LAZY)
     private TipGoriva tipGoriva;
 
     @ManyToOne( fetch = FetchType.LAZY)
     private TipMjenjaca tipMjenjaca;
 
-    @ManyToOne( fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private KlasaAutomobila klasaAutomobila;
 
     @Column
@@ -44,6 +56,18 @@ public class Vozilo {
 
     @Column
     private boolean coliisionDamageWavier;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    private Set<Komentar> komentari;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    private Set<Izvjestaj> izvjestaji;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.EAGER)
+    private Set<Oglas> oglasi;
 
    // private Set<TerminIznajmljivanja> terminiIznajmljivanja;
    // private Set<Komentar> komentari;

@@ -24,7 +24,7 @@ export class AddTipGoriva implements OnInit {
          data=>{
           console.log('Success!', JSON.stringify(data))
           alert('Novi tip goriva dodata!');
-          this.router.navigate(['welcome']);
+          this.router.navigate(['admin']);
          } ,
           error=> console.error('Error!',error)
       )

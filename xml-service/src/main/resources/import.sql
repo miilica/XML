@@ -15,6 +15,13 @@ INSERT INTO `user_authority` (user_id, authority_id) VALUES (3, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (4, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (5, 2);
 
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena) VALUES (1, '0', '1200', false, true, '120000', '100', '4');
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena) VALUES (2, '2', '2200', true, true, '150000', '200', '3');
+
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, true, 'Novi Sad', 1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
+
 insert into `tipmjenjaca` (id, naziv) values (1, 'manuelni');
 insert into `tipmjenjaca` (id, naziv) values (2, 'automatski');
 insert into `tipmjenjaca` (id, naziv) values (3, 'poluautomatski');
@@ -30,3 +37,4 @@ insert into `vrstagoriva` (id, naziv) values (3, 'plin');
 insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
 insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
 insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
+

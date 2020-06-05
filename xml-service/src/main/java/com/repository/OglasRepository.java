@@ -1,12 +1,11 @@
 package com.repository;
 
-import com.model.Vozilo;
+import com.model.Oglas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VoziloRepository extends JpaRepository<Vozilo, Long> {
+public interface OglasRepository extends JpaRepository<Oglas, Long> {
 
-    Vozilo findById (String id);
-
+    Oglas findById (String id);
 }

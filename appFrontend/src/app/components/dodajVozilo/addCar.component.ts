@@ -62,7 +62,7 @@ this._mjenjacServis.getTipoveMjenjaca().subscribe(
            data=>{
             console.log('Success!', JSON.stringify(data))
             alert('Novo vozilo dodato!');
-            this.router.navigate(['welcome']);
+            this.router.navigate(['admin']);
            } ,
             error=> console.error('Error!',error)
         )
