@@ -26,12 +26,12 @@
     
     <div>
       <label  class="col-form-label" for="inputDefault">Marka automobila: </label>
-      <select>  
+      
         <select class="form-control" id="marka"  [(ngModel)]="vozilo.markaAutomobila" name="marka" >
           <option [ngValue]="null">Izaberi marku</option>
-          <option *ngFor = 'let c of marke' name="marka" [ngValue]="c">{{c.naziv}}</option>
+          <option *ngFor = 'let c of marke' name="markaAutomobila" [ngValue]="c">{{c.nazivMarke}}</option>
         </select>
-      </select>
+      
     </div>
     
     <div>

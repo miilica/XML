@@ -21,10 +21,7 @@ public class MarkaAutomobilaService {
 
 
     public MarkaAutomobila save(MarkaAutomobilaDTO mDTO) {
-        MarkaAutomobila m = new MarkaAutomobila();
-        m.setModel(mDTO.getModel());
-        m.setNazivMarke(mDTO.getNazivMake());
-
+        MarkaAutomobila m = new MarkaAutomobila(mDTO);
         m = this.markaAutomobilaRepository.save(m);
         return m;
     }

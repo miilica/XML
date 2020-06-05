@@ -14,3 +14,19 @@ INSERT INTO `user_authority` (user_id, authority_id) VALUES (2, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (3, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (4, 2);
 INSERT INTO `user_authority` (user_id, authority_id) VALUES (5, 2);
+
+insert into `tipmjenjaca` (id, naziv) values (1, 'manuelni');
+insert into `tipmjenjaca` (id, naziv) values (2, 'automatski');
+insert into `tipmjenjaca` (id, naziv) values (3, 'poluautomatski');
+
+insert into `klasaautomobila` (id, naziv) values (1, 'klasa1');
+insert into `klasaautomobila` (id, naziv) values (2, 'klasa2');
+insert into `klasaautomobila` (id, naziv) values (3, 'klasa3');
+
+insert into `vrstagoriva` (id, naziv) values (1, 'benzin');
+insert into `vrstagoriva` (id, naziv) values (2, 'dizel');
+insert into `vrstagoriva` (id, naziv) values (3, 'plin');
+
+insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
+insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
+insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
