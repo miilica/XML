@@ -10,29 +10,51 @@ services:
       - demo
     ports:
       - "8761:8761"
+#  eureka-serviceregistry:
+#    build: ./eureka
+#    ports:
+#      - "8761:8761"
+#    tty: true
 
-#  xml-service-messages:
-#    image: xml-service-messages
-#    container_name: xml-service-messages
-#    build:
+  mysql_db:
+    image: mysql:latest
+#    ports:
+#      - '3306:3306'
+#    expose:
+#      - '3306'
+    environment:
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rentAcar
+    volumes:
+      - mysql_db_container:/var/lib/mysql
+
+  xml-service-messages:
+    image: xml-service-messages
+    container_name: xml-service-messages
+    build: ./xml-service-messages
 #      context: ./xml-service-messages
 #      dockerfile: Dockerfile
-#    tty: true
-#    restart: on-failure
+    tty: true
+    restart: on-failure
 #    networks:
 #      - demo
-#    ports:
-#      - "8085:8085"
+    ports:
+      - "8085:8085"
+    environment:
+      - REGISTRY_HOST=eureka-serviceregistry
+      - MYSQL_HOST=mysql_db
 #    environment:
-#      #REGISTRY_HOST: eureka-serviceregistry
+#      REGISTRY_HOST: eureka-serviceregistry
+#      MYSQL_HOST: mysql_db
 #      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-serviceregistry:8761/eureka/
 #      DATABASE_USERNAME: root
 #      DATABASE_PASSWORD: root
-#      DATABASE_DOMAIN: mysql
+#      DATABASE_DOMAIN: mysql_db
 #      DATABASE_SCHEMA: message_db?createDatabaseIfNotExist=true&serverTimezone=UTC
-#    depends_on:
-#        - eureka-serviceregistry
-#        - mysql
+    depends_on:
+        - eureka-serviceregistry
+        - mysql_db
 
 #  xml-service-oglas:
 #    image: xml-service-oglas
@@ -57,28 +79,28 @@ services:
 #      - eureka-serviceregistry
 #      - mysql
 
-  xml-service-pretraga:
-    image: xml-service-pretraga
-    container_name: xml-service-pretraga
-    build:
-      context: ./xml-service-pretraga
-      dockerfile: Dockerfile
-    tty: true
-    restart: on-failure
-    networks:
-      - demo
-    ports:
-      - "8087:8087"
-    environment:
-      #REGISTRY_HOST: eureka-serviceregistry
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-serviceregistry:8761/eureka/
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: root
-      DATABASE_DOMAIN: mysql
-      DATABASE_SCHEMA: search_db?createDatabaseIfNotExist=true&serverTimezone=UTC
-    depends_on:
-      - eureka-serviceregistry
-      - mysql
+#  xml-service-pretraga:
+#    image: xml-service-pretraga
+#    container_name: xml-service-pretraga
+#    build:
+#      context: ./xml-service-pretraga
+#      dockerfile: Dockerfile
+#    tty: true
+#    restart: on-failure
+#    networks:
+#      - demo
+#    ports:
+#      - "8087:8087"
+#    environment:
+#      #REGISTRY_HOST: eureka-serviceregistry
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-serviceregistry:8761/eureka/
+#      DATABASE_USERNAME: root
+#      DATABASE_PASSWORD: root
+#      DATABASE_DOMAIN: mysql
+#      DATABASE_SCHEMA: search_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+#    depends_on:
+#      - eureka-serviceregistry
+#      - mysql
 
 #  xml-service-user:
 #    image: xml-service-user
@@ -126,25 +148,6 @@ services:
 #      - eureka-serviceregistry
 #      - mysql
 
-  xml-service:
-    image: xml-service
-    container_name: xml-service
-    build:
-      context: ./xml-service
-      dockerfile: Dockerfile
-    tty: true
-    restart: on-failure
-    networks:
-      - demo
-    ports:
-      - "8089:8089"
-    environment:
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: root
-      DATABASE_DOMAIN: mysql
-      DATABASE_SCHEMA: rentAcar?createDatabaseIfNotExist=true&serverTimezone=UTC
-    depends_on:
-      - mysql
 
   zuul:
     image: zuul
@@ -161,21 +164,36 @@ services:
       - "8083:8083"
     depends_on:
       - eureka-serviceregistry
-#      - xml-service-messages
+      - xml-service-messages
 #      - xml-service-oglas
 #      - xml-service-pretraga
 #      - xml-service-user
 #      - xml-service-vozilo
 
-  mysql:
-    image: mysql:8.0.19
-    container_name: mysql
-    restart: always
-    networks:
-      - demo
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: rentAcar
+
+#  xml-service:
+#    image: xml-service
+#    container_name: xml-service
+#    build: ./xml-service
+#    #context: ./xml-service
+#    #dockerfile: Dockerfile
+#    tty: true
+#    restart: on-failure
+#    networks:
+#      - demo
+#    ports:
+#      - "8089:8089"
+#    environment:
+#
+#      # REGISTRY_HOST=eureka-serviceregistry
+#      - MYSQL_HOST=mysql_db
+#    depends_on:
+#      - mysql_db
+
+
+volumes:
+  mysql_db_container:
+
 networks:
   demo:
     name: demo
