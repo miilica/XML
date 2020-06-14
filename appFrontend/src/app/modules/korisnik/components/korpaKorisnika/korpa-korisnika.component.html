@@ -4,7 +4,8 @@
 
   <table class="ui celled striped table">
       <thead>
-        <th>AgentID</th>
+        <th>Agent ID</th>
+        <th>Vozilo ID</th>
         <th>Cijena</th>
         <th>Sjedista za decu</th>
         <th>Kilometraza</th>
@@ -14,6 +15,7 @@
         <th>Andorid</th>
         <th>Bundle</th>
         <th>Iznajmi</th>
+        <th>Vidi zahtjev</th>
       </thead>
       <tbody>
           <tr *ngFor="let vozilo of vozila">
@@ -24,6 +26,10 @@
 
             <td *ngIf="vozilo.agent == null">
                 Trenutno nema ID
+            </td>
+
+            <td>
+                {{ vozilo.vehicleId }}
             </td>
 
             <td>
@@ -68,9 +74,54 @@
                 <mat-icon (click)="rentCar(vozilo)">done</mat-icon>
             </td>
 
+            <td>
+                <mat-icon (click)="onClickOpenZahtjev(vozilo.id, vozilo.agent.id)">open_in_browser</mat-icon>
+            </td>
+
           </tr>
       </tbody>
   </table>
+
+  <div class='table-responsive' *ngIf='vidiZahtjev'>
+    <h2>Detalji vaseg zahtjeva: ----------------- <mat-icon (click)="onClickCloseZahtjev()">close</mat-icon></h2>
+
+    <table class="ui celled striped table">
+        <thead>
+          <th>Ime agenta</th>
+          <th>Vozilo</th>
+          <th>Status</th>
+          <th>Datum kreiranja</th>
+          <th>Plati</th>
+        </thead>
+        <tbody>
+            <tr>
+              
+            <td>
+                {{ zahtjev.agent.imeKompanije }}
+            </td>
+
+            <td>
+                {{ zahtjev.vozilo.id }}
+            </td>
+
+            <td>
+                {{ zahtjev.zahtjevStatus }}
+            </td>
+
+            <td>{{ zahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+
+            <td *ngIf="!zahtjev.potvrdjen">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="zahtjev.potvrdjen">
+                <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
+            </td>
+
+  
+            </tr>
+        </tbody>
+    </table>
+  </div>
 
 </div>
       
