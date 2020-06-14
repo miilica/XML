@@ -1,12 +1,15 @@
 package com.service.impl;
 
+import com.config.consts.ZahtjevStatus;
 import com.dto.KorpaVozilaDTO;
 import com.exception.ApiRequestException;
 import com.model.KorpaVozila;
 import com.model.User;
+import com.model.Vozilo;
 import com.model.Zahtjev;
 import com.repository.KorpaVozilaRepository;
 import com.repository.UserRepository;
+import com.repository.VoziloRepository;
 import com.repository.ZahtjevRepository;
 import com.service.KorpaVozilaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,9 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
 
     @Autowired
     private ZahtjevRepository zahtjevRepository;
+
+    @Autowired
+    private VoziloServiceImpl voziloService;
 
     @Override
     public KorpaVozila addVehicleToCart(KorpaVozilaDTO vozilo) {
@@ -96,6 +102,22 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         zahtjev.setPotvrdjen(false);
         zahtjev.setAgent(vozilo.getAgent());
         zahtjev.setBundle(vozilo.isBundle());
+        zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PENDING);
+
+        Vozilo vozilo1 = voziloService.findById(vozilo.getVehicleId());
+        zahtjev.setVozilo(vozilo1);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+        User u = userRepository.findByUsername(username);
+        zahtjev.setUserPoslao(u);
 
         zahtjevRepository.save(zahtjev);
 
