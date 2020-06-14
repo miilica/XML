@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="ui header">Lista svih zahtjeva</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Datum kreiranja</th>
+            <th>Korsnik (username)</th>
+            <th>Vozilo</th>
+            <th>Status</th>
+            <th>Vozilo(id)</th>
+
+            <th>Potvrdi</th>
+            <th>Odbij</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let zahtjev of zahtjevi">
+                <td>{{ zahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+                <td>{{ zahtjev.userPoslao.username }}</td>
+                <td>{{ zahtjev.voziloId }}</td>
+                <td>{{ zahtjev.zahtjevStatus }}</td>
+                <td>{{ zahtjev.vozilo.id }} </td>
+
+                <td>
+                    <mat-icon (click)="onClickPotvrdi(zahtjev)">check_circle_outline</mat-icon>
+                </td>
+                
+                <td>
+                    <mat-icon (click)="onClickCancel(zahtjev)">block</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
