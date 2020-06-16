@@ -18,6 +18,10 @@ export class KorpaKorisnikaComponent implements OnInit {
   bundleCheckBox: boolean = false;
   listaZahtjeva: VehicleDTO[] = [];
   max3: any = 0;
+  pojedinacniZahtjev = null;
+  bundleZahtjev = null;
+
+  vozilaZaIspis = [];
 
   constructor(private adsService: AdsService,
               private toastr: ToastrService) { }
@@ -66,6 +70,13 @@ export class KorpaKorisnikaComponent implements OnInit {
     console.log("ID agenta: ", agentId);
     this.adsService.findVehicleById(voziloId, agentId).subscribe(data => {
       this.zahtjev = data;
+      if(this.zahtjev.bundle) {
+        this.bundleZahtjev = this.zahtjev;
+      } else {
+        this.pojedinacniZahtjev = this.zahtjev;
+      }
+      console.log("Pojedinacni: ", this.pojedinacniZahtjev);
+      console.log("Bundle: ", this.bundleZahtjev);
       console.log("Zahtev: ", this.zahtjev);
       this.toastr.success('Success');
     }, error => {

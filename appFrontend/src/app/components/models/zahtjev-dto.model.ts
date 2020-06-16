@@ -5,11 +5,12 @@ import { Vozilo } from '../dodajVozilo/vozilo';
 export default interface ZahtjevDTO {
     id: number;
     agent: AgentDTO;
-    bungle: boolean;
+    bundle: boolean;
     datumKreiranja: Date;
     potvrdjen: boolean;
     userIzdao: UserRegistrationDTO;
     userPoslao: UserRegistrationDTO;
     zahtjevStatus: String;
     vozilo: Vozilo;
+    korpaVozila: Vozilo;
 }

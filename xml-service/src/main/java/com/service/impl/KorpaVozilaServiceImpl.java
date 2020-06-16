@@ -183,6 +183,7 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
 
         zahtjevRepository.save(zahtjev);
 
+
         return zahtjev;
     }
 

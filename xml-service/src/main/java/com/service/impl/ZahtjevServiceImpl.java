@@ -154,9 +154,18 @@ public class ZahtjevServiceImpl implements ZahtjevService {
     public Zahtjev findByIds(Long voziloId, Long agentId) throws AccessDeniedException {
         List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
         for(Zahtjev z: listaZahtjeva) {
-            if(z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId) {
-                z = zahtjevRepository.findById(z.getId()).orElseGet(null);
-                return z;
+            if(!z.isBundle()) {
+                if (z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId) {
+                    z = zahtjevRepository.findById(z.getId()).orElseGet(null);
+                    return z;
+                }
+            } else {
+                for(KorpaVozila kv: z.getKorpaVozila()) {
+                    if(kv.getVehicleId() == voziloId && kv.getAgent().getId() == agentId) {
+                        z = zahtjevRepository.findById(z.getId()).orElseGet(null);
+                        return z;
+                    }
+                }
             }
         }
         return null;

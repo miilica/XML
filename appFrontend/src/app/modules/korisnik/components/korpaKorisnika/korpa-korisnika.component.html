@@ -90,21 +90,27 @@
 
     <table class="ui celled striped table">
         <thead>
-          <th>Ime agenta</th>
-          <th>Vozilo</th>
-          <th>Status</th>
-          <th>Datum kreiranja</th>
-          <th>Plati</th>
+            <th>Plati</th>
+            <th>Ime agenta</th>
+            <th>Status</th>
+            <th>Datum kreiranja</th>
+            <th>Vozilo1 (id)</th>
+            <th>Vozilo2 (id)</th>
+            <th>Vozilo3 (id)</th>
+
         </thead>
         <tbody>
-            <tr>
-              
+            <tr *ngIf="zahtjev.bundle">
+
+            <td *ngIf="!zahtjev.potvrdjen">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="zahtjev.potvrdjen">
+                <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
+            </td>   
+            
             <td>
                 {{ zahtjev.agent.imeKompanije }}
-            </td>
-
-            <td>
-                {{ zahtjev.vozilo.id }}
             </td>
 
             <td>
@@ -113,15 +119,43 @@
 
             <td>{{ zahtjev.datumKreiranja|date: 'mediumDate' }}</td>
 
-            <td *ngIf="!zahtjev.potvrdjen">
-                <mat-icon>block</mat-icon>
-            </td>
-            <td *ngIf="zahtjev.potvrdjen">
-                <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
+            <td *ngIf="!zahtjev.bundle">
+                {{ zahtjev.vozilo.id }}
             </td>
 
-  
+            <ng-container *ngIf="zahtjev.bundle">
+                <td *ngFor="let kv of zahtjev.korpaVozila">
+                    {{ kv.id }} 
+                </td>
+            </ng-container>
+            
             </tr>
+
+
+            <tr *ngIf="!zahtjev.bundle">
+
+                <td *ngIf="!zahtjev.potvrdjen">
+                    <mat-icon>block</mat-icon>
+                </td>
+                <td *ngIf="zahtjev.potvrdjen">
+                    <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
+                </td>   
+                
+                <td>
+                    {{ zahtjev.agent.imeKompanije }}
+                </td>
+    
+                <td>
+                    {{ zahtjev.zahtjevStatus }}
+                </td>
+    
+                <td>{{ zahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+    
+                <td>
+                    {{ zahtjev.vozilo.id }}
+                </td>
+      
+                </tr>
         </tbody>
     </table>
   </div>
