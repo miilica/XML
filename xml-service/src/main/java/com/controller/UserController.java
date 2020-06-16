@@ -2,7 +2,9 @@ package com.controller;
 
 import com.dto.UserRegistrationDTO;
 import com.model.User;
+import com.model.Zahtjev;
 import com.service.UserService;
+import com.service.ZahtjevService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private ZahtjevService zahtjevService;
 
     @PostMapping("/public/register")
     public ResponseEntity add(@Valid @RequestBody UserRegistrationDTO user) {
@@ -64,6 +69,11 @@ public class UserController {
 		return ResponseEntity.ok().build();
 	}
 
-
+	@PostMapping("/payForRent")
+	@PreAuthorize("hasRole('ROLE_KORISNIK')")
+	public ResponseEntity payForRent(@Valid @RequestBody Zahtjev zahtjev) {
+		zahtjevService.payForRentACar(zahtjev);
+		return ResponseEntity.ok().build();
+	}
 
 }

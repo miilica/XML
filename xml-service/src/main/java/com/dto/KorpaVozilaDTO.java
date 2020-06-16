@@ -35,6 +35,9 @@ public class KorpaVozilaDTO {
     private KlasaAutomobila klasaAutomobila;
 
     private Agent agent;
+
+    private Long vehicleId;
+
 /*
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
@@ -55,6 +58,7 @@ public class KorpaVozilaDTO {
         this.imaAndroid = v.getImaAndroid();
         this.coliisionDamageWavier = v.isColiisionDamageWavier();
         this.bundle = v.isBundle();
+        this.vehicleId = v.getVehicleId();
     }
 
 }

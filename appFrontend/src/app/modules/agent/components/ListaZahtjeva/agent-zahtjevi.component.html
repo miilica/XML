@@ -1,0 +1,64 @@
+<div class="container">
+    <h2 class="ui header">Lista pojedinacnih zahtjeva</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Datum kreiranja</th>
+            <th>Korsnik (username)</th>
+            <th>Status</th>
+            <th>Vozilo(id)</th>
+
+            <th>Potvrdi</th>
+            <th>Odbij</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pzahtjev of pojedinacniZahtjevi">
+                <td>{{ pzahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+                <td>{{ pzahtjev.userPoslao.username }}</td>
+                <td>{{ pzahtjev.zahtjevStatus }}</td>
+                <td>{{ pzahtjev.vozilo.id }} </td>
+
+                <td>
+                    <mat-icon (click)="onClickPotvrdi(pzahtjev)">check_circle_outline</mat-icon>
+                </td>
+                
+                <td>
+                    <mat-icon (click)="onClickCancel(pzahtjev)">block</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="ui header">Lista bundle zahtjeva</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Potvrdi</th>
+            <th>Odbij</th>
+
+            <th>Datum kreiranja</th>
+            <th>Korsnik (username)</th>
+            <th>Status</th>
+            <th>Vozilo 1 (id)</th>
+            <th>Vozilo 2 (id)</th>
+            <th>Vozilo 3 (id)</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bzahtjev of bundleZahtjevi">
+                <td>
+                    <mat-icon (click)="onClickPotvrdiBundle(bzahtjev)">check_circle_outline</mat-icon>
+                </td>
+                
+                <td>
+                    <mat-icon (click)="onClickCancel(bzahtjev)">block</mat-icon>
+                </td>
+
+                <td>{{ bzahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+                <td>{{ bzahtjev.userPoslao.username }}</td>
+                <td>{{ bzahtjev.zahtjevStatus }}</td>
+                <td *ngFor="let kv of bzahtjev.korpaVozila"> {{ kv.vehicleId }} </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

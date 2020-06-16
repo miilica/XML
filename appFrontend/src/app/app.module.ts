@@ -33,6 +33,9 @@ import { VehicleListComponent } from './modules/korisnik/components/home/vehicle
 import { KorpaKorisnikaComponent } from './modules/korisnik/components/korpaKorisnika/korpa-korisnika.component';
 import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
 import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
+import { AgentHomepage } from './modules/agent/components/home/agent-homepage.component';
+import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-zahtjevi.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -51,6 +54,8 @@ import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component
     KorpaKorisnikaComponent,
     AddTipGoriva,
     DodajTipMjenjaca,
+    AgentHomepage,
+    AgentZahtjevi,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     MatIconModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },

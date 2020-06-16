@@ -15,4 +15,6 @@ public interface KorpaVozilaService {
     List<KorpaVozila> findAll();
 
     Zahtjev rentACarRequest(KorpaVozilaDTO vozilo);
+
+    Zahtjev rentACarRequestBundle(KorpaVozilaDTO[] listaVozila);
 }

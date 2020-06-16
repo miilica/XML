@@ -1,12 +1,15 @@
 package com.service.impl;
 
+import com.config.consts.ZahtjevStatus;
 import com.dto.KorpaVozilaDTO;
 import com.exception.ApiRequestException;
 import com.model.KorpaVozila;
 import com.model.User;
+import com.model.Vozilo;
 import com.model.Zahtjev;
 import com.repository.KorpaVozilaRepository;
 import com.repository.UserRepository;
+import com.repository.VoziloRepository;
 import com.repository.ZahtjevRepository;
 import com.service.KorpaVozilaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class KorpaVozilaServiceImpl implements KorpaVozilaService {
@@ -30,6 +31,9 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
 
     @Autowired
     private ZahtjevRepository zahtjevRepository;
+
+    @Autowired
+    private VoziloServiceImpl voziloService;
 
     @Override
     public KorpaVozila addVehicleToCart(KorpaVozilaDTO vozilo) {
@@ -96,8 +100,89 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         zahtjev.setPotvrdjen(false);
         zahtjev.setAgent(vozilo.getAgent());
         zahtjev.setBundle(vozilo.isBundle());
+        zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PENDING);
+
+        Vozilo vozilo1 = voziloService.findById(vozilo.getVehicleId());
+        zahtjev.setVozilo(vozilo1);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+        User u = userRepository.findByUsername(username);
+        zahtjev.setUserPoslao(u);
 
         zahtjevRepository.save(zahtjev);
+
+        return zahtjev;
+    }
+
+    public Zahtjev rentACarRequestBundle(KorpaVozilaDTO[] listaVozila) {
+        Date currentUtilDate = new Date();
+        Zahtjev zahtjev = new Zahtjev();
+        Set<KorpaVozila> listaVozilaPomocna = new HashSet<>();
+
+        for(KorpaVozilaDTO vozilo: listaVozila) {
+            KorpaVozila v = new KorpaVozila();
+            v.setKilometraza(vozilo.getKilometraza());
+            v.setAgent(vozilo.getAgent());
+            v.setVehicleId(vozilo.getVehicleId());
+            v.setImaAndroid(vozilo.getImaAndroid());
+
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            Object currentUser = auth.getPrincipal();
+
+            String username = "";
+            if (currentUser instanceof UserDetails) {
+                username = ((UserDetails)currentUser).getUsername();
+            } else {
+                username = currentUser.toString();
+            }
+            User u = userRepository.findByUsername(username);
+
+            v.setUserId(u.getId());
+
+            v.setOcjena(vozilo.getOcjena());
+            v.setMozePreciKM(vozilo.getMozePreciKM());
+            v.setCijena(vozilo.getCijena());
+            v.setBundle(vozilo.isBundle());
+            v.setColiisionDamageWavier(vozilo.isColiisionDamageWavier());
+            v.setBrSjedistaZaDjecu(vozilo.getBrSjedistaZaDjecu());
+
+            listaVozilaPomocna.add(v);
+        }
+
+        if(listaVozila != null) {
+            zahtjev.setKorpaVozila(listaVozilaPomocna);
+        } else {
+            zahtjev.setKorpaVozila(null);
+        }
+
+        zahtjev.setDatumKreiranja(currentUtilDate);
+        zahtjev.setPotvrdjen(false);
+        zahtjev.setBundle(true);
+        zahtjev.setAgent(listaVozila[0].getAgent());
+        zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PENDING);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+        User u = userRepository.findByUsername(username);
+        zahtjev.setUserPoslao(u);
+
+        zahtjevRepository.save(zahtjev);
+
 
         return zahtjev;
     }

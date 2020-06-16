@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VoziloRepository extends JpaRepository<Vozilo, Long> {
 
-    Vozilo findById (String id);
-
 }

@@ -11,5 +11,6 @@ export const ADMIN_HOME_PATH = 'admin';
 export const KORISNIK_HOME_PATH = 'korisnik';
 export const KORPA_KORISNIKA = 'korisnik/korpaKorisnika';
 
-// Seller paths
-export const SELLER_HOME_PATH = 'seller';
+// Agent paths
+export const AGENT_HOME_PATH = 'agent';
+export const ZAHTJEVI_ZA_VOZILA_AGENT_PATH = `agent/zahjeviZaVozila`;
