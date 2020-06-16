@@ -11,6 +11,7 @@ public interface ZahtjevService {
     Zahtjev findById(Long id);
 
     void vehicleToReserved(Zahtjev zahtjev);
+    void vehicleToReservedBundle(Zahtjev zahtjev);
 
     void vehicleToCanceled(Zahtjev zahtjev);
 

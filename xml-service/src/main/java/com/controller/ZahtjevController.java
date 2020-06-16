@@ -33,6 +33,13 @@ public class ZahtjevController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/toReservedBundle")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity vehicleToReservedBundle(@Valid @RequestBody Zahtjev zahtjev) {
+        zahtjevService.vehicleToReservedBundle(zahtjev);
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/toCanceled")
     @PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity vehicleToCanceled(@Valid @RequestBody Zahtjev zahtjev) {

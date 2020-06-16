@@ -49,8 +49,3 @@ insert into `vrstagoriva` (id, naziv) values (3, 'plin');
 insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
 insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
 insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
-
-INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (1, false, '2020-06-12 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 2, 1);
-INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (2, false, '2020-06-13 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 2, 2);
-INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (3, false, '2020-06-11 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 3, 1);
-INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (4, false, '2020-06-10 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 3, 2);

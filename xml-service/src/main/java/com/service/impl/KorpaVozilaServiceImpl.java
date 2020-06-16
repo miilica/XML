@@ -133,6 +133,27 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
             v.setAgent(vozilo.getAgent());
             v.setVehicleId(vozilo.getVehicleId());
             v.setImaAndroid(vozilo.getImaAndroid());
+
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            Object currentUser = auth.getPrincipal();
+
+            String username = "";
+            if (currentUser instanceof UserDetails) {
+                username = ((UserDetails)currentUser).getUsername();
+            } else {
+                username = currentUser.toString();
+            }
+            User u = userRepository.findByUsername(username);
+
+            v.setUserId(u.getId());
+
+            v.setOcjena(vozilo.getOcjena());
+            v.setMozePreciKM(vozilo.getMozePreciKM());
+            v.setCijena(vozilo.getCijena());
+            v.setBundle(vozilo.isBundle());
+            v.setColiisionDamageWavier(vozilo.isColiisionDamageWavier());
+            v.setBrSjedistaZaDjecu(vozilo.getBrSjedistaZaDjecu());
+
             listaVozilaPomocna.add(v);
         }
 

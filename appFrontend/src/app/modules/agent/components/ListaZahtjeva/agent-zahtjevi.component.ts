@@ -50,6 +50,15 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
       });
     }
 
+    public onClickPotvrdiBundle(zahtjev: ZahtjevDTO): void {
+      this.adsService.vehicleStatusToReservedBundle(zahtjev).subscribe(data => {
+        this.toastr.success('Success');
+        this.getAll();
+      }, error => {
+        this.toastr.error(error.error.message);
+      });
+    }
+
     public onClickCancel(zahtjev: ZahtjevDTO): void {
       this.adsService.vehicleStatusToCanceled(zahtjev).subscribe(data => {
         this.toastr.success('Success');

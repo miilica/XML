@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.config.consts.ZahtjevStatus;
 import com.model.*;
+import com.repository.KorpaVozilaRepository;
 import com.repository.UserRepository;
 import com.repository.VoziloRepository;
 import com.repository.ZahtjevRepository;
@@ -27,6 +28,9 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
     @Autowired
     private VoziloRepository voziloRepository;
+
+    @Autowired
+    private KorpaVozilaRepository korpaVozilaRepository;
 
     @Override
     public List<Zahtjev> findAll() {
@@ -54,35 +58,50 @@ public class ZahtjevServiceImpl implements ZahtjevService {
         return result;
     }
 
+    //obican zahtev
     @Override
     public void vehicleToReserved(Zahtjev zahtjev){
         List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
         boolean vecRezervisan = false;
+
         for(Zahtjev z: listaZahtjeva) {
-            if(z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED) && z.getAgent().getId() == zahtjev.getAgent().getId() && z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
-                vecRezervisan = true;
+            if(!z.isBundle()) {
+                if (z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED) && z.getAgent().getId() == zahtjev.getAgent().getId() && z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
+                    vecRezervisan = true;
+                }
             }
         }
 
         if(vecRezervisan == false ) {
             for(Zahtjev z: listaZahtjeva) {
-                if(z.getAgent().getId() == zahtjev.getAgent().getId()) {
-                    if(z.getVozilo() == null) { //znaci da je bundle
-                        for(KorpaVozila korpaVozila: z.getKorpaVozila()) {
-                            if(korpaVozila.getVehicleId() == zahtjev.getVozilo().getId()) {
-                                if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
-                                    zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
-                                    zahtjev.setPotvrdjen(true);
-                                    zahtjevRepository.save(zahtjev);
-                                }
-                            }
+                if(!z.isBundle()) {
+                    if (z.getAgent().getId() == zahtjev.getAgent().getId() && z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
+                        if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                            zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
+                            zahtjev.setPotvrdjen(true);
+                            zahtjevRepository.save(zahtjev);
                         }
-                    } else {
-                        if(z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
-                            if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
-                                zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
-                                zahtjev.setPotvrdjen(true);
-                                zahtjevRepository.save(zahtjev);
+                    }
+                }
+            }
+        }
+    }
+
+    //bundle zahtev
+    @Override
+    public void vehicleToReservedBundle(Zahtjev zahtjev){
+        List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
+        List<KorpaVozila> listaZahtjevaKorpa = korpaVozilaRepository.findAll();
+        boolean vecRezervisan = false;
+        boolean sacuvan = false;
+
+        for(Zahtjev z: listaZahtjeva) {
+            if(z.isBundle()) {
+                if (z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED) && z.getAgent().getId() == zahtjev.getAgent().getId()) {
+                    for (KorpaVozila korpaVozila : z.getKorpaVozila()) {
+                        for (KorpaVozila korpaVozila1 : listaZahtjevaKorpa) {
+                            if (korpaVozila.getVehicleId() == korpaVozila1.getVehicleId()) {
+                                vecRezervisan = true;
                             }
                         }
                     }
@@ -90,6 +109,33 @@ public class ZahtjevServiceImpl implements ZahtjevService {
             }
         }
 
+        if(vecRezervisan == false ) {
+            for(Zahtjev z: listaZahtjeva) {
+                if(z.isBundle()) {
+                    if (z.getAgent().getId() == zahtjev.getAgent().getId()) {
+                        for (KorpaVozila korpaVozila : z.getKorpaVozila()) {
+                            for (KorpaVozila korpaVozila1 : listaZahtjevaKorpa) {
+                                if(korpaVozila.getVehicleId() == korpaVozila1.getVehicleId()) {
+                                    if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                                        zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
+                                        zahtjev.setPotvrdjen(true);
+                                        zahtjevRepository.save(zahtjev);
+                                        sacuvan = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if(sacuvan) {
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(sacuvan) {
+                    break;
+                }
+            }
+        }
     }
 
     @Override
