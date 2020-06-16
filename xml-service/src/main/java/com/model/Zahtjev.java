@@ -17,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "zahtjev")
 public class Zahtjev {
 
     @Id
