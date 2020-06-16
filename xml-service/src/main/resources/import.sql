@@ -25,8 +25,10 @@ INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prez
 
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 6);
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3', 6);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (3, '1', '600', false, false, '270000', '500', '2', 7);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (4, '0', '5000', false, true, '10000', '1000', '5', 7);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (3, '0', '2150', false, false, '250000', '600', '5', 6);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (4, '1', '2250', true, true, '15000', '150', '5', 6);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (5, '1', '600', false, false, '270000', '500', '2', 7);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (6, '0', '5000', false, true, '10000', '1000', '5', 7);
 
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, true, 'Novi Sad', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
@@ -52,4 +54,3 @@ INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, a
 INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (2, false, '2020-06-13 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 2, 2);
 INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (3, false, '2020-06-11 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 3, 1);
 INSERT INTO `zahtjev` (id, bundle, datum_kreiranja, potvrdjen, zahtjev_status, agent_id, user_izdao_id, user_poslao_id, vozilo_id) VALUES (4, false, '2020-06-10 20:21:29.627000', false, 'STATUS_PENDING', 6, null, 3, 2);
-

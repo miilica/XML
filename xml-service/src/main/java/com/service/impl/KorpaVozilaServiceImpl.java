@@ -18,9 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class KorpaVozilaServiceImpl implements KorpaVozilaService {
@@ -106,6 +104,49 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
 
         Vozilo vozilo1 = voziloService.findById(vozilo.getVehicleId());
         zahtjev.setVozilo(vozilo1);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+        User u = userRepository.findByUsername(username);
+        zahtjev.setUserPoslao(u);
+
+        zahtjevRepository.save(zahtjev);
+
+        return zahtjev;
+    }
+
+    public Zahtjev rentACarRequestBundle(KorpaVozilaDTO[] listaVozila) {
+        Date currentUtilDate = new Date();
+        Zahtjev zahtjev = new Zahtjev();
+        Set<KorpaVozila> listaVozilaPomocna = new HashSet<>();
+
+        for(KorpaVozilaDTO vozilo: listaVozila) {
+            KorpaVozila v = new KorpaVozila();
+            v.setKilometraza(vozilo.getKilometraza());
+            v.setAgent(vozilo.getAgent());
+            v.setVehicleId(vozilo.getVehicleId());
+            v.setImaAndroid(vozilo.getImaAndroid());
+            listaVozilaPomocna.add(v);
+        }
+
+        if(listaVozila != null) {
+            zahtjev.setKorpaVozila(listaVozilaPomocna);
+        } else {
+            zahtjev.setKorpaVozila(null);
+        }
+
+        zahtjev.setDatumKreiranja(currentUtilDate);
+        zahtjev.setPotvrdjen(false);
+        zahtjev.setBundle(true);
+        zahtjev.setAgent(listaVozila[0].getAgent());
+        zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PENDING);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Object currentUser = auth.getPrincipal();

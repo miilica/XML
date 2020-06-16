@@ -37,6 +37,7 @@ public class KorpaVozilaDTO {
     private Agent agent;
 
     private Long vehicleId;
+
 /*
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 

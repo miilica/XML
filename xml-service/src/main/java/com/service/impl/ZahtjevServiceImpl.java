@@ -1,10 +1,7 @@
 package com.service.impl;
 
 import com.config.consts.ZahtjevStatus;
-import com.model.Agent;
-import com.model.User;
-import com.model.Vozilo;
-import com.model.Zahtjev;
+import com.model.*;
 import com.repository.UserRepository;
 import com.repository.VoziloRepository;
 import com.repository.ZahtjevRepository;
@@ -59,11 +56,40 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
     @Override
     public void vehicleToReserved(Zahtjev zahtjev){
-        if(zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
-            zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
-            zahtjev.setPotvrdjen(true);
-            zahtjevRepository.save(zahtjev);
+        List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
+        boolean vecRezervisan = false;
+        for(Zahtjev z: listaZahtjeva) {
+            if(z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED) && z.getAgent().getId() == zahtjev.getAgent().getId() && z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
+                vecRezervisan = true;
+            }
         }
+
+        if(vecRezervisan == false ) {
+            for(Zahtjev z: listaZahtjeva) {
+                if(z.getAgent().getId() == zahtjev.getAgent().getId()) {
+                    if(z.getVozilo() == null) { //znaci da je bundle
+                        for(KorpaVozila korpaVozila: z.getKorpaVozila()) {
+                            if(korpaVozila.getVehicleId() == zahtjev.getVozilo().getId()) {
+                                if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                                    zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
+                                    zahtjev.setPotvrdjen(true);
+                                    zahtjevRepository.save(zahtjev);
+                                }
+                            }
+                        }
+                    } else {
+                        if(z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
+                            if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                                zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
+                                zahtjev.setPotvrdjen(true);
+                                zahtjevRepository.save(zahtjev);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     @Override

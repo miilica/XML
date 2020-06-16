@@ -42,8 +42,7 @@ public class ZahtjevController {
 
     @GetMapping("/findVehicleById/{vehicleId}/{agentId}")
     @PreAuthorize("hasRole('ROLE_AGENT')" + "|| hasRole('ROLE_KORISNIK')")
-    public Zahtjev loadById(@PathVariable Long vehicleId, Long agentId) {
-        agentId = 6L; //nece dva id-a da prosledi
+    public Zahtjev loadById(@PathVariable Long vehicleId, @PathVariable Long agentId) {
         return this.zahtjevService.findByIds(vehicleId, agentId);
     }
 }
