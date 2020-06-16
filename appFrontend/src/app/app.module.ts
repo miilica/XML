@@ -35,6 +35,7 @@ import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
 import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
 import { AgentHomepage } from './modules/agent/components/home/agent-homepage.component';
 import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-zahtjevi.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-za
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     MatIconModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },

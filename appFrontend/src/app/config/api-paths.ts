@@ -27,3 +27,5 @@ export const USER_ALL_VEHICLES_URL = `${BASE_URL}/api/vozilo/allVozila`;
 export const VEHICLE_TO_CART_URL = `${BASE_URL}/korpa/addVehicleToCart`;
 export const ALL_VEHICLEs_IN_CART_URL = `${BASE_URL}/korpa/allVozila`;
 export const RENT_A_CAR_REQUEST_URL = `${BASE_URL}/korpa/rentACarRequest`;
+export const RENT_A_CAR_BUNDLE_REQUEST_URL = `${BASE_URL}/korpa/rentACarRequestBundle`;
+

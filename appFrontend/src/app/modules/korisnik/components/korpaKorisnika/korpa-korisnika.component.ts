@@ -3,6 +3,7 @@ import { AdsService } from 'src/app/services/ads.service';
 import { ToastrService } from 'ngx-toastr';
 import VehicleDTO from 'src/app/components/models/vehicle-dto.model';
 import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
+import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
 
 @Component({
   selector: 'app-korpa-korisnika',
@@ -14,6 +15,9 @@ export class KorpaKorisnikaComponent implements OnInit {
   vozila = [];
   vidiZahtjev: boolean = false;
   zahtjev: ZahtjevDTO;
+  bundleCheckBox: boolean = false;
+  listaZahtjeva: VehicleDTO[] = [];
+  max3: any = 0;
 
   constructor(private adsService: AdsService,
               private toastr: ToastrService) { }
@@ -32,8 +36,25 @@ export class KorpaKorisnikaComponent implements OnInit {
   }
 
   public rentCar(vehicle: VehicleDTO): void {
-    this.adsService.rentACarRequest(vehicle).subscribe(data => {
-      this.toastr.success('Request for vehicle has been sent');
+    if(!this.bundleCheckBox) {  //pojedinacni zahtevi
+      this.adsService.rentACarRequest(vehicle).subscribe(data => {
+        this.toastr.success('Request for vehicle has been sent');
+      }, error => {
+        this.toastr.error(error.error.message);
+      });
+    } else {  //bundle zahtevi
+      if(this.max3 < 3) {
+        this.listaZahtjeva.push(vehicle);
+        this.max3++;
+      } else {
+        console.log("Max je 3");
+      }
+    }
+  }
+
+  public onClickBundleZahtev(): void {
+    this.adsService.rentACarRequestBundle(this.listaZahtjeva).subscribe(data => {
+      this.toastr.success('Request for vehicles has been sent');
     }, error => {
       this.toastr.error(error.error.message);
     });

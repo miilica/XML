@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { USER_ALL_ADS_URL, USER_ALL_VEHICLES_URL, VEHICLE_TO_CART_URL, ALL_VEHICLEs_IN_CART_URL, RENT_A_CAR_REQUEST_URL, ZAHTJEVI_ZA_VOZILA_URL, VEHICLE_STATUS_TO_RESERVED_URL, VEHICLE_STATUS_TO_CANCELED_URL, FIND_VEHICLE_BY_ID_URL, PAY_FOR_RENT_A_CAR_REQUEST_URL } from '../config/api-paths';
+import { USER_ALL_ADS_URL, USER_ALL_VEHICLES_URL, VEHICLE_TO_CART_URL, ALL_VEHICLEs_IN_CART_URL, RENT_A_CAR_REQUEST_URL, ZAHTJEVI_ZA_VOZILA_URL, VEHICLE_STATUS_TO_RESERVED_URL, VEHICLE_STATUS_TO_CANCELED_URL, FIND_VEHICLE_BY_ID_URL, PAY_FOR_RENT_A_CAR_REQUEST_URL, RENT_A_CAR_BUNDLE_REQUEST_URL } from '../config/api-paths';
 import VehicleDTO from '../components/models/vehicle-dto.model';
 import ZahtjevDTO from '../components/models/zahtjev-dto.model';
 
@@ -36,6 +36,11 @@ export class AdsService {
     rentACarRequest(vehicle: VehicleDTO): Observable<any> {
         console.log(vehicle);
         return this.http.post(RENT_A_CAR_REQUEST_URL, vehicle);
+    }
+
+    rentACarRequestBundle(listaZahtjeva: VehicleDTO[]): Observable<any> {
+        console.log(listaZahtjeva);
+        return this.http.post(RENT_A_CAR_BUNDLE_REQUEST_URL, listaZahtjeva);
     }
 
     getAllZahtjevi(): Observable<any> {

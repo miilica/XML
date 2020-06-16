@@ -2,6 +2,7 @@
   <h2 class="ui header">Vasa korpa</h2>
   <br>
 
+  <mat-checkbox [(ngModel)]="bundleCheckBox">Bundle zahtev</mat-checkbox>
   <table class="ui celled striped table">
       <thead>
         <th>Agent ID</th>
@@ -75,12 +76,14 @@
             </td>
 
             <td>
-                <mat-icon (click)="onClickOpenZahtjev(vozilo.id, vozilo.agent.id)">open_in_browser</mat-icon>
+                <mat-icon (click)="onClickOpenZahtjev(vozilo.vehicleId, vozilo.agent.id)">open_in_browser</mat-icon>
             </td>
 
           </tr>
       </tbody>
   </table>
+
+  <button mat-raised-button (click)="onClickBundleZahtev()">Posalji bundle zahtev</button>
 
   <div class='table-responsive' *ngIf='vidiZahtjev'>
     <h2>Detalji vaseg zahtjeva: ----------------- <mat-icon (click)="onClickCloseZahtjev()">close</mat-icon></h2>

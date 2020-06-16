@@ -1,5 +1,6 @@
 import UserRegistrationDTO from './user-registration-dto.model';
 import AgentDTO from './agent-dto.model';
+import { Vozilo } from '../dodajVozilo/vozilo';
 
 export default interface ZahtjevDTO {
     id: number;
@@ -10,4 +11,5 @@ export default interface ZahtjevDTO {
     userIzdao: UserRegistrationDTO;
     userPoslao: UserRegistrationDTO;
     zahtjevStatus: String;
+    vozilo: Vozilo;
 }

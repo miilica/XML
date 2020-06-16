@@ -12,6 +12,8 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
   export class AgentZahtjevi implements OnInit {
 
     zahtjevi = [];
+    pojedinacniZahtjevi = [];
+    bundleZahtjevi = [];
 
     ngOnInit(): void {
         this.getAll();
@@ -24,7 +26,16 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
     private getAll(): void {
         this.adsService.getAllZahtjevi().subscribe(data => {
           this.zahtjevi = data;
+          for(let z of this.zahtjevi) {
+            if(z.vozilo == null) {
+              this.bundleZahtjevi.push(z);
+            } else {
+              this.pojedinacniZahtjevi.push(z);
+            }
+          }
           console.log("Zahtevi: ", data);
+          console.log("Pojedinacni: ", this.pojedinacniZahtjevi);
+          console.log("Bundle: ", this.bundleZahtjevi);
         }, error => {
           this.toastr.error('There was an error while getting the ads');
         });
