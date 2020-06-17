@@ -36,6 +36,7 @@ import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component
 import { AgentHomepage } from './modules/agent/components/home/agent-homepage.component';
 import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-zahtjevi.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     DodajTipMjenjaca,
     AgentHomepage,
     AgentZahtjevi,
+    OceniKomentarisiComponent,
   ],
   imports: [
     BrowserModule,

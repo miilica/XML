@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://localhost:8089';
 
 // Auth
 export const LOGIN_URL = `${BASE_URL}/auth/login`;
@@ -29,4 +29,6 @@ export const VEHICLE_TO_CART_URL = `${BASE_URL}/korpa/addVehicleToCart`;
 export const ALL_VEHICLEs_IN_CART_URL = `${BASE_URL}/korpa/allVozila`;
 export const RENT_A_CAR_REQUEST_URL = `${BASE_URL}/korpa/rentACarRequest`;
 export const RENT_A_CAR_BUNDLE_REQUEST_URL = `${BASE_URL}/korpa/rentACarRequestBundle`;
+export const USER_RATE_COMMENT_URL = `${BASE_URL}/api/zahtjev/allZahtjeveRateComment`;
+export const USER_RATE_VEHICLE_URL = `${BASE_URL}/api/zahtjev/rateVehicle`;
 

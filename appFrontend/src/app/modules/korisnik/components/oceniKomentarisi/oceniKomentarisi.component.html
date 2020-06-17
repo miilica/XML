@@ -1,0 +1,25 @@
+<h1>Oceni i komentarisi</h1>
+
+<table class="ui celled striped table">
+    <thead>
+      <th>Vozilo id</th>
+      <th>Ocjena</th>
+      <th>Agent id</th>
+      <th>Ocjeni vozilo</th>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let zahtjev of zahtjevi">
+
+          <td> {{ zahtjev.vozilo.id }} </td>
+          <td> {{ zahtjev.vozilo.ocjena }} </td>
+          <td> {{ zahtjev.vozilo.agent.id }} </td>
+        
+          <td>
+                <ngb-rating [(rate)]="currentRate" max="5"></ngb-rating>
+                <button (click)="rateVehicle(zahtjev.vozilo)">Ocjeni</button>
+          </td>
+
+        </tr>
+    </tbody>
+</table>

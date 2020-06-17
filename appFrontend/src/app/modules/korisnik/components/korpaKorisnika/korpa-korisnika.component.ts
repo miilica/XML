@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import VehicleDTO from 'src/app/components/models/vehicle-dto.model';
 import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
 import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
+import { Router } from '@angular/router';
+import { OCENI_KOMENTARISI_KORISNIK_PATH } from 'src/app/config/router-paths';
 
 @Component({
   selector: 'app-korpa-korisnika',
@@ -24,7 +26,8 @@ export class KorpaKorisnikaComponent implements OnInit {
   vozilaZaIspis = [];
 
   constructor(private adsService: AdsService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getAll();
@@ -96,6 +99,10 @@ export class KorpaKorisnikaComponent implements OnInit {
     }, error => {
       this.toastr.error(error.error.message);
     });
+  }
+
+  public onClickOceniKomentarisi(): void {
+    this.router.navigate([OCENI_KOMENTARISI_KORISNIK_PATH]);
   }
   
   

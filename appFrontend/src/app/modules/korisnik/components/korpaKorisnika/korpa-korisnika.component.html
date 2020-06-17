@@ -91,6 +91,7 @@
     <table class="ui celled striped table">
         <thead>
             <th>Plati</th>
+            <th>Oceni/Komentarisi</th>
             <th>Ime agenta</th>
             <th>Status</th>
             <th>Datum kreiranja</th>
@@ -107,7 +108,14 @@
             </td>
             <td *ngIf="zahtjev.potvrdjen">
                 <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
-            </td>   
+            </td>
+            
+            <td *ngIf="!zahtjev.potvrdjen">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="zahtjev.potvrdjen">
+                <mat-icon (click)="onClickOceniKomentarisi()">rate_review</mat-icon>
+            </td>
             
             <td>
                 {{ zahtjev.agent.imeKompanije }}
@@ -139,7 +147,14 @@
                 </td>
                 <td *ngIf="zahtjev.potvrdjen">
                     <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
-                </td>   
+                </td>
+                
+                <td *ngIf="!zahtjev.potvrdjen">
+                    <mat-icon>block</mat-icon>
+                </td>
+                <td *ngIf="zahtjev.potvrdjen">
+                    <mat-icon (click)="onClickOceniKomentarisi()">rate_review</mat-icon>
+                </td>
                 
                 <td>
                     {{ zahtjev.agent.imeKompanije }}
