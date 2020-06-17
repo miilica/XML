@@ -1,11 +1,12 @@
 package com.service.impl;
 
 import com.config.consts.ZahtjevStatus;
+import com.dto.VoziloDTO;
+import com.dto.ZahtjevDTO;
 import com.model.*;
-import com.repository.KorpaVozilaRepository;
-import com.repository.UserRepository;
-import com.repository.VoziloRepository;
-import com.repository.ZahtjevRepository;
+import com.repository.*;
+import com.service.OcenaService;
+import com.service.VoziloService;
 import com.service.ZahtjevService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -15,7 +16,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ZahtjevServiceImpl implements ZahtjevService {
@@ -31,6 +34,18 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
     @Autowired
     private KorpaVozilaRepository korpaVozilaRepository;
+
+    @Autowired
+    private ZahtjevService zahtjevService;
+
+    @Autowired
+    private VoziloService voziloService;
+
+    @Autowired
+    private OcenaRepository ocenaRepository;
+
+    @Autowired
+    private OcenaService ocenaService;
 
     @Override
     public List<Zahtjev> findAll() {
@@ -99,7 +114,7 @@ public class ZahtjevServiceImpl implements ZahtjevService {
             if(z.isBundle()) {
                 if (z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED) && z.getAgent().getId() == zahtjev.getAgent().getId()) {
                     for (KorpaVozila korpaVozila : z.getKorpaVozila()) {
-                        for (KorpaVozila korpaVozila1 : listaZahtjevaKorpa) {
+                        for (KorpaVozila korpaVozila1 : zahtjev.getKorpaVozila()) {
                             if (korpaVozila.getVehicleId() == korpaVozila1.getVehicleId()) {
                                 vecRezervisan = true;
                             }
@@ -114,7 +129,7 @@ public class ZahtjevServiceImpl implements ZahtjevService {
                 if(z.isBundle()) {
                     if (z.getAgent().getId() == zahtjev.getAgent().getId()) {
                         for (KorpaVozila korpaVozila : z.getKorpaVozila()) {
-                            for (KorpaVozila korpaVozila1 : listaZahtjevaKorpa) {
+                            for (KorpaVozila korpaVozila1 : zahtjev.getKorpaVozila()) {
                                 if(korpaVozila.getVehicleId() == korpaVozila1.getVehicleId()) {
                                     if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
                                         zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
@@ -177,6 +192,65 @@ public class ZahtjevServiceImpl implements ZahtjevService {
             zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PAID);
             zahtjevRepository.save(zahtjev);
         }
+    }
+
+    @Override
+    public List<Zahtjev> findAllVehiclesToRateComment() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+
+        User u = userRepository.findByUsername(username);
+
+        List<Zahtjev> all = zahtjevRepository.findAll();
+        List<Zahtjev> result = new ArrayList<>();
+
+        for(Zahtjev zahtjev : all) {
+            if(zahtjev.getUserPoslao().getId() == u.getId() && zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PAID)) { // TODO: dodati uslov nakon isteka vremna
+                result.add(zahtjev);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public Vozilo rateVehicle(VoziloDTO voziloDTO, Double rate){
+        Vozilo vozilo = voziloRepository.findById(voziloDTO.getId()).orElseGet(null);
+
+        Ocena ocena = new Ocena();
+        Set<Ocena> listaOcena = new HashSet<>();
+        ocena.setOcena(rate);
+        ocena.setUserId(voziloDTO.getId());
+        ocena.setVozilo(new Vozilo(voziloDTO));
+        listaOcena.add(ocena);
+
+        Double prosecnaOcena = 0.0;
+        List<Ocena> listaOcena1 = ocenaService.findAllByVehicleId(voziloDTO.getId());
+        int ukupno = listaOcena1.size();
+        if(listaOcena1.isEmpty()) {
+            prosecnaOcena = rate;
+        }
+        for(Ocena o: listaOcena1) {
+            prosecnaOcena += o.getOcena();
+        }
+        if(ukupno != 0)
+            prosecnaOcena = prosecnaOcena/ukupno;
+        else
+            prosecnaOcena = rate;
+
+        vozilo.setOcjene(listaOcena);
+        vozilo.setOcjena(prosecnaOcena);
+
+        vozilo = voziloRepository.save(vozilo);
+
+        return vozilo;
     }
 
 }

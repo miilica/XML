@@ -1,9 +1,12 @@
 package com.controller;
 
+import com.dto.VoziloDTO;
+import com.dto.ZahtjevDTO;
 import com.model.Zahtjev;
 import com.repository.ZahtjevRepository;
 import com.service.ZahtjevService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,10 +23,19 @@ public class ZahtjevController {
     @Autowired
     private ZahtjevService zahtjevService;
 
+    @Autowired
+    private ZahtjevRepository zahtjevRepository;
+
     @GetMapping("/allZahtjeve")
     @PreAuthorize("hasRole('ROLE_AGENT')")
     public List<Zahtjev> findAll() throws AccessDeniedException {
         return this.zahtjevService.findAll();
+    }
+
+    @GetMapping("/allZahtjeveRateComment")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public List<Zahtjev> findAllPaid() throws AccessDeniedException {
+        return this.zahtjevService.findAllVehiclesToRateComment();
     }
 
     @PostMapping("/toReserved")
@@ -51,5 +63,12 @@ public class ZahtjevController {
     @PreAuthorize("hasRole('ROLE_AGENT')" + "|| hasRole('ROLE_KORISNIK')")
     public Zahtjev loadById(@PathVariable Long vehicleId, @PathVariable Long agentId) {
         return this.zahtjevService.findByIds(vehicleId, agentId);
+    }
+
+    @PutMapping(value = "/rateVehicle/{rate}")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity rateVehicleGrade (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable Double rate) {
+        zahtjevService.rateVehicle(voziloDTO, rate);
+        return ResponseEntity.ok().build();
     }
 }
