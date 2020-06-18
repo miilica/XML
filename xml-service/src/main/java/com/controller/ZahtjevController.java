@@ -71,4 +71,11 @@ public class ZahtjevController {
         zahtjevService.rateVehicle(voziloDTO, rate);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping(value = "/commentVehicle/{kom}")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity commentVehicleGrade (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable String kom) {
+        zahtjevService.commentVehicle(voziloDTO, kom);
+        return ResponseEntity.ok().build();
+    }
 }

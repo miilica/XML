@@ -24,4 +24,5 @@ public interface ZahtjevService {
     Zahtjev findByIds(Long vehicleId, Long agentId);
 
     Vozilo rateVehicle(VoziloDTO voziloDTO, Double rate);
+    Vozilo commentVehicle(VoziloDTO voziloDTO, String komentar);
 }

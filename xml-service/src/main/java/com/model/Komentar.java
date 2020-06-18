@@ -1,13 +1,18 @@
 package com.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "komentar")
 public class Komentar {
 
     @Id
@@ -21,8 +26,13 @@ public class Komentar {
     @Column
     private boolean odobren;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
+    @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
+
+    // user koji je ostavio komentar
+    @Column
+    private Long userId;
 
 
    // private Agent agent;

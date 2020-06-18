@@ -2,7 +2,6 @@ package com.service.impl;
 
 import com.config.consts.ZahtjevStatus;
 import com.dto.VoziloDTO;
-import com.dto.ZahtjevDTO;
 import com.model.*;
 import com.repository.*;
 import com.service.OcenaService;
@@ -247,6 +246,37 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
         vozilo.setOcjene(listaOcena);
         vozilo.setOcjena(prosecnaOcena);
+
+        vozilo = voziloRepository.save(vozilo);
+
+        return vozilo;
+    }
+
+    @Override
+    public Vozilo commentVehicle(VoziloDTO voziloDTO, String comment){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+
+        User u = userRepository.findByUsername(username);
+
+        Vozilo vozilo = voziloRepository.findById(voziloDTO.getId()).orElseGet(null);
+
+        Set<Komentar> komentari = new HashSet<>();
+        Komentar kom = new Komentar();
+        kom.setOdobren(false);
+        kom.setTekst(comment);
+        kom.setVozilo(new Vozilo(voziloDTO));
+        kom.setUserId(u.getId());
+        komentari.add(kom);
+        vozilo.setKomentari(komentari);
 
         vozilo = voziloRepository.save(vozilo);
 

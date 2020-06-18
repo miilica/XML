@@ -38,11 +38,6 @@ public class Vozilo {
     @Column
     private double ocjena;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ocjene_id")
-    private Set<Ocena> ocjene = new HashSet<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
     private MarkaAutomobila markaAutomobila;
 /*
@@ -65,10 +60,17 @@ public class Vozilo {
     @Column
     private boolean coliisionDamageWavier;
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ocjene_id")
+    private Set<Ocena> ocjene = new HashSet<>();
+
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
-    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "komentari_id")
     private Set<Komentar> komentari;
 
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
