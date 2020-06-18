@@ -13,6 +13,7 @@ import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
 
     zahtjevi = [];
     currentRate = 3;
+    komentar: any = "";
 
     constructor(private adsService: AdsService,
         private toastr: ToastrService,
@@ -40,6 +41,22 @@ import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
             this.adsService.rateVehicle(z, this.currentRate).subscribe(
               date=> {
                 alert('Vozilo je ocjenjeno!');
+              }, error => {
+                this.toastr.error('Error');
+              });
+          }
+        }
+    }
+
+    commentVehicle(vozilo: Vozilo): void {
+        console.log(vozilo)
+        for(let z of this.zahtjevi) {
+          if(z.vozilo.id == vozilo.id) {
+            console.log("v: ", z);
+            console.log("vozilo: ", vozilo);
+            this.adsService.commentVehicle(z, this.komentar).subscribe(
+              date=> {
+                alert('Komentar je poslat!');
               }, error => {
                 this.toastr.error('Error');
               });

@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminHomeComponent implements OnInit {
 
   categories = [];
+  komentari = [];
   categoryName: string = '';
 
   constructor(private usersService: UserService,
@@ -17,6 +18,7 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAll();
+    this.getComments();
   }
 
   private getAll(): void {
@@ -24,6 +26,15 @@ export class AdminHomeComponent implements OnInit {
       this.categories = data;
     }, error => {
       this.toastr.error('There was an error while getting the product categories');
+    });
+  }
+
+  private getComments(): void {
+    this.usersService.getAllComments().subscribe(data => {
+      this.komentari = data;
+      console.log("Svi komentari: ",this.komentari);
+    }, error => {
+      this.toastr.error('There was an error while getting comments');
     });
   }
 
@@ -40,6 +51,15 @@ export class AdminHomeComponent implements OnInit {
     this.usersService.activate(id).subscribe(data => {
       this.toastr.success('User has been activated/deactivated');
       this.getAll();
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
+  }
+
+  onClickActivateComment(id: number): void {
+    this.usersService.activateComment(id).subscribe(data => {
+      this.toastr.success('Comment has been activated/deactivated');
+      this.getComments();
     }, error => {
       this.toastr.error(error.error.message);
     });

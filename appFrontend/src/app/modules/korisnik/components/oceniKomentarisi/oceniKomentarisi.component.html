@@ -6,7 +6,7 @@
       <th>Ocjena</th>
       <th>Agent id</th>
       <th>Ocjeni vozilo</th>
-
+      <th>Ostavite komentar</th>
     </thead>
     <tbody>
         <tr *ngFor="let zahtjev of zahtjevi">
@@ -18,6 +18,13 @@
           <td>
                 <ngb-rating [(rate)]="currentRate" max="5"></ngb-rating>
                 <button (click)="rateVehicle(zahtjev.vozilo)">Ocjeni</button>
+          </td>
+
+          <td>
+            <mat-form-field class="example-full-width">
+                <textarea [(ngModel)]="komentar" matInput placeholder="Npr. Odlicno vozilo..."></textarea>
+            </mat-form-field>
+            <button (click)="commentVehicle(zahtjev.vozilo)">Komentarisi</button>
           </td>
 
         </tr>
