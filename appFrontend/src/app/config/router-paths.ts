@@ -10,6 +10,8 @@ export const ADMIN_HOME_PATH = 'admin';
 // Korisnik paths
 export const KORISNIK_HOME_PATH = 'korisnik';
 export const KORPA_KORISNIKA = 'korisnik/korpaKorisnika';
+export const OCENI_KOMENTARISI_KORISNIK_PATH = 'korisnik/korpaKorisnika/oceniKomentarisi';
+
 
 // Agent paths
 export const AGENT_HOME_PATH = 'agent';

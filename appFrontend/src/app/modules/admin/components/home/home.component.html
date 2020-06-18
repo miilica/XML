@@ -31,3 +31,30 @@
     </table>
 
 </div>
+
+<div class="container">
+    <h2 class="ui header">Lista komentara</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Vozilo id</th>
+            <th>User id</th>
+            <th>Komentar</th>
+            <th>Odobri/Blokiraj</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let komentar of komentari">
+                <td>{{ komentar.vozilo.id }}</td>
+                <td>{{ komentar.userId }}</td>
+                <td>{{ komentar.tekst }}</td>
+                <td *ngIf="komentar.odobren">
+                    <mat-icon (click)="onClickActivateComment(komentar.id)">block</mat-icon>
+                </td>
+                <td *ngIf="!komentar.odobren">
+                    <mat-icon (click)="onClickActivateComment(komentar.id)">check_circle_outline</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
