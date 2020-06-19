@@ -1,10 +1,14 @@
 package com.repository;
 
-import com.model.Vozilo;
+import com.model.Ocena;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
-public interface VoziloRepository extends JpaRepository<Vozilo, Long> {
+public interface OcenaRepository extends JpaRepository<Ocena, Long> {
+
 
 }

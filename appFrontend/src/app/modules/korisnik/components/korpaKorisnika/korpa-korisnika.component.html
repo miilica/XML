@@ -2,9 +2,11 @@
   <h2 class="ui header">Vasa korpa</h2>
   <br>
 
+  <mat-checkbox [(ngModel)]="bundleCheckBox">Bundle zahtev</mat-checkbox>
   <table class="ui celled striped table">
       <thead>
-        <th>AgentID</th>
+        <th>Agent ID</th>
+        <th>Vozilo ID</th>
         <th>Cijena</th>
         <th>Sjedista za decu</th>
         <th>Kilometraza</th>
@@ -14,6 +16,7 @@
         <th>Andorid</th>
         <th>Bundle</th>
         <th>Iznajmi</th>
+        <th>Vidi zahtjev</th>
       </thead>
       <tbody>
           <tr *ngFor="let vozilo of vozila">
@@ -24,6 +27,10 @@
 
             <td *ngIf="vozilo.agent == null">
                 Trenutno nema ID
+            </td>
+
+            <td>
+                {{ vozilo.vehicleId }}
             </td>
 
             <td>
@@ -68,9 +75,105 @@
                 <mat-icon (click)="rentCar(vozilo)">done</mat-icon>
             </td>
 
+            <td>
+                <mat-icon (click)="onClickOpenZahtjev(vozilo.vehicleId, vozilo.agent.id)">open_in_browser</mat-icon>
+            </td>
+
           </tr>
       </tbody>
   </table>
+
+  <button mat-raised-button (click)="onClickBundleZahtev()">Posalji bundle zahtev</button>
+
+  <div class='table-responsive' *ngIf='vidiZahtjev'>
+    <h2>Detalji vaseg zahtjeva: ----------------- <mat-icon (click)="onClickCloseZahtjev()">close</mat-icon></h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Plati</th>
+            <th>Oceni/Komentarisi</th>
+            <th>Ime agenta</th>
+            <th>Status</th>
+            <th>Datum kreiranja</th>
+            <th>Vozilo1 (id)</th>
+            <th>Vozilo2 (id)</th>
+            <th>Vozilo3 (id)</th>
+
+        </thead>
+        <tbody>
+            <tr *ngIf="zahtjev.bundle">
+
+            <td *ngIf="!zahtjev.potvrdjen">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="zahtjev.potvrdjen">
+                <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
+            </td>
+            
+            <td *ngIf="!zahtjev.potvrdjen">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="zahtjev.potvrdjen">
+                <mat-icon (click)="onClickOceniKomentarisi()">rate_review</mat-icon>
+            </td>
+            
+            <td>
+                {{ zahtjev.agent.imeKompanije }}
+            </td>
+
+            <td>
+                {{ zahtjev.zahtjevStatus }}
+            </td>
+
+            <td>{{ zahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+
+            <td *ngIf="!zahtjev.bundle">
+                {{ zahtjev.vozilo.id }}
+            </td>
+
+            <ng-container *ngIf="zahtjev.bundle">
+                <td *ngFor="let kv of zahtjev.korpaVozila">
+                    {{ kv.id }} 
+                </td>
+            </ng-container>
+            
+            </tr>
+
+
+            <tr *ngIf="!zahtjev.bundle">
+
+                <td *ngIf="!zahtjev.potvrdjen">
+                    <mat-icon>block</mat-icon>
+                </td>
+                <td *ngIf="zahtjev.potvrdjen">
+                    <mat-icon (click)="onClickPlati(zahtjev)">payment</mat-icon>
+                </td>
+                
+                <td *ngIf="!zahtjev.potvrdjen">
+                    <mat-icon>block</mat-icon>
+                </td>
+                <td *ngIf="zahtjev.potvrdjen">
+                    <mat-icon (click)="onClickOceniKomentarisi()">rate_review</mat-icon>
+                </td>
+                
+                <td>
+                    {{ zahtjev.agent.imeKompanije }}
+                </td>
+    
+                <td>
+                    {{ zahtjev.zahtjevStatus }}
+                </td>
+    
+                <td>{{ zahtjev.datumKreiranja|date: 'mediumDate' }}</td>
+    
+                <td>
+                    {{ zahtjev.vozilo.id }}
+                </td>
+      
+                </tr>
+        </tbody>
+    </table>
+  </div>
 
 </div>
       

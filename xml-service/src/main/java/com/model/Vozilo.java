@@ -1,5 +1,6 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,12 +9,14 @@ import lombok.Setter;
 import com.dto.VoziloDTO;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "vozilo")
 public class Vozilo {
 
     @Id
@@ -57,10 +60,17 @@ public class Vozilo {
     @Column
     private boolean coliisionDamageWavier;
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ocjene_id")
+    private Set<Ocena> ocjene = new HashSet<>();
+
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
-    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "komentari_id")
     private Set<Komentar> komentari;
 
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
@@ -82,15 +92,16 @@ public class Vozilo {
     }
 
     public Vozilo(VoziloDTO vDTO){
+        this.setId(vDTO.getId());
         this.setCijena(vDTO.getCijena());
         this.setKilometraza(vDTO.getKilometraza());
         this.setMozePreciKM(vDTO.getMozePreciKM());
         this.setBrSjedistaZaDjecu(vDTO.getBrSjedistaZaDjecu());
         this.setOcjena(vDTO.getOcjena());
-        this.setMarkaAutomobila(new MarkaAutomobila(vDTO.getMarkaAutomobila()));
-        this.setKlasaAutomobila(new KlasaAutomobila(vDTO.getKlasaAutomobila()));
-        this.setTipGoriva(new TipGoriva(vDTO.getTipGoriva()));
-        this.setTipMjenjaca(new TipMjenjaca(vDTO.getTipMjenjaca()));
+        //this.setMarkaAutomobila(new MarkaAutomobila(vDTO.getMarkaAutomobila()));
+        //this.setKlasaAutomobila(new KlasaAutomobila(vDTO.getKlasaAutomobila()));
+        //this.setTipGoriva(new TipGoriva(vDTO.getTipGoriva()));
+        //this.setTipMjenjaca(new TipMjenjaca(vDTO.getTipMjenjaca()));
         this.setImaAndroid(vDTO.getImaAndroid());
         this.setColiisionDamageWavier(vDTO.isColiisionDamageWavier());
 
