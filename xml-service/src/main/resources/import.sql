@@ -34,6 +34,10 @@ INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, tr
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
 
+INSERT INTO `termin_iznajmljivanja` (id, do_kad, od_kad, user_id, vozilo_id) VALUES (1, '2020-06-18 21:58:58', '2020-06-17 21:58:58', 1, 1);
+INSERT INTO `termin_iznajmljivanja` (id, do_kad, od_kad, user_id, vozilo_id) VALUES (2, '2020-05-05 21:58:58', '2020-05-17 21:58:58', 1, 2);
+INSERT INTO `termin_iznajmljivanja` (id, do_kad, od_kad, user_id, vozilo_id) VALUES (3, '2020-06-20 21:58:58', '2020-06-24 21:58:58', 1, 3);
+
 insert into `tipmjenjaca` (id, naziv) values (1, 'manuelni');
 insert into `tipmjenjaca` (id, naziv) values (2, 'automatski');
 insert into `tipmjenjaca` (id, naziv) values (3, 'poluautomatski');

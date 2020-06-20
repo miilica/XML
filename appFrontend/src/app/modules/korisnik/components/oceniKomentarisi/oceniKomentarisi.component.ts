@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AdsService } from 'src/app/services/ads.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
 import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
 
 @Component({
@@ -38,7 +37,7 @@ import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
           if(z.vozilo.id == vozilo.id) {
             console.log("v: ", z);
             console.log("vozilo: ", vozilo);
-            this.adsService.rateVehicle(z, this.currentRate).subscribe(
+            this.adsService.rateVehicle(z, vozilo.ocjena).subscribe(
               date=> {
                 alert('Vozilo je ocjenjeno!');
               }, error => {

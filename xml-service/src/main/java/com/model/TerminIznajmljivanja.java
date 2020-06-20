@@ -1,7 +1,9 @@
 package com.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,6 +11,9 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "termin_iznajmljivanja")
 public class TerminIznajmljivanja {
 
     @Id
@@ -16,11 +21,16 @@ public class TerminIznajmljivanja {
     private Long id;
 
     @Column
-    private Date od;
+    private Date odKad;
 
     @Column
-    private Date doo;
+    private Date doKad;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    //koji user iznajmljuje
+    @Column
+    private Long userId;
+
+    @ManyToOne()
+    @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 }

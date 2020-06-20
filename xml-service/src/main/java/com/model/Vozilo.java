@@ -65,7 +65,9 @@ public class Vozilo {
     @JoinColumn(name = "ocjene_id")
     private Set<Ocena> ocjene = new HashSet<>();
 
-    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "termini_iznajmljivanja_id")
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
     @JsonIgnore

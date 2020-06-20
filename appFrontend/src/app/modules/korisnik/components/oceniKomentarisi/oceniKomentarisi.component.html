@@ -16,7 +16,7 @@
           <td> {{ zahtjev.vozilo.agent.id }} </td>
         
           <td>
-                <ngb-rating [(rate)]="currentRate" max="5"></ngb-rating>
+                <ngb-rating [(rate)]="zahtjev.vozilo.ocjena" max="5"></ngb-rating>
                 <button (click)="rateVehicle(zahtjev.vozilo)">Ocjeni</button>
           </td>
 

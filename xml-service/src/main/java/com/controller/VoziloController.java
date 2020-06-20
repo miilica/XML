@@ -1,9 +1,9 @@
 package com.controller;
 
 import com.dto.VoziloDTO;
+import com.model.TerminIznajmljivanja;
 import com.dto.ZauzeceDTO;
 import com.model.Vozilo;
-import com.service.VoziloService;
 import com.service.impl.VoziloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
@@ -39,5 +40,17 @@ public class VoziloController {
         return this.voziloService.findAll();
     }
 
+    @GetMapping("/user/agent/allTermineIznajmljivanja")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public List<TerminIznajmljivanja> loadAllTermineIznajmljivanja() {
+        return this.voziloService.findAllTermineIznajmljivanja();
+    }
+
+    @PutMapping(value = "/user/agent/dodajKM/{dodatiKM}")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity addKm (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable Double dodatiKM) {
+        voziloService.addKmToVehicle(voziloDTO, dodatiKM);
+        return ResponseEntity.ok().build();
+    }
 
 }

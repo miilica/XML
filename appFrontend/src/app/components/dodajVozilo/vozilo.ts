@@ -15,6 +15,7 @@ export class Vozilo {
         public  tipMjenjaca: TipMjenjaca,
         public  klasaAutomobila: KlasaAutomobila,
         public  imaAndroid: boolean,
-        public  cdw: boolean
+        public  cdw: boolean,
+        public ocjena: number,
     ){}
 }
