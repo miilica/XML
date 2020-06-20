@@ -4,9 +4,17 @@ import com.dto.VoziloDTO;
 import com.model.*;
 import com.repository.TerminIznajmljivanjaRepository;
 import com.repository.UserRepository;
+import com.dto.ZauzeceDTO;
+import com.model.KorpaVozila;
+import com.model.Oglas;
+import com.model.Vozilo;
+import com.model.Zauzece;
+import com.repository.KorpaVozilaRepository;
 import com.repository.VoziloRepository;
 import com.service.VoziloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -94,6 +102,8 @@ public class VoziloServiceImpl implements VoziloService {
         vozilo.setKilometraza(km);
         vozilo = voziloRepository.save(vozilo);
 
+    public Vozilo getVozilo(Long id){
+        Vozilo vozilo = voziloRepository.getOne(id);
         return vozilo;
     }
 

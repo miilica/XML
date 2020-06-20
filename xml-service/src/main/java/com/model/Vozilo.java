@@ -89,6 +89,8 @@ public class Vozilo {
    // private Set<Komentar> komentari;
   //  private Set<Izvjestaj> izvjestaji;
 
+    @OneToMany(mappedBy = "vozilo")
+    private Set<Zauzece> zauzece;
 
     public Vozilo() {
     }

@@ -2,6 +2,7 @@ package com.controller;
 
 import com.dto.VoziloDTO;
 import com.model.TerminIznajmljivanja;
+import com.dto.ZauzeceDTO;
 import com.model.Vozilo;
 import com.service.impl.VoziloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
