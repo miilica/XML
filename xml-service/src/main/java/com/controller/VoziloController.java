@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.dto.VoziloDTO;
+import com.dto.ZauzeceDTO;
 import com.model.Vozilo;
 import com.service.VoziloService;
 import com.service.impl.VoziloServiceImpl;
@@ -37,5 +38,6 @@ public class VoziloController {
     public List<Vozilo> findAll() throws AccessDeniedException {
         return this.voziloService.findAll();
     }
+
 
 }
