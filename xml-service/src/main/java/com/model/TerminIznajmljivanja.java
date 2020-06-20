@@ -1,17 +1,22 @@
 package com.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "termin_iznajmljivanja")
 public class TerminIznajmljivanja {
 
     @Id
@@ -32,8 +37,18 @@ public class TerminIznajmljivanja {
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
     })
     private DateTime dateTo;
+    @Column
+    private Date odKad;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Column
+    private Date doKad;
+
+    //koji user iznajmljuje
+    @Column
+    private Long userId;
+
+    @ManyToOne()
+    @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 
     public TerminIznajmljivanja() {

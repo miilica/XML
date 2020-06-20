@@ -2,19 +2,33 @@ package com.service.impl;
 
 import com.dto.VoziloDTO;
 import com.model.*;
+import com.repository.TerminIznajmljivanjaRepository;
+import com.repository.UserRepository;
+import com.dto.ZauzeceDTO;
+import com.model.KorpaVozila;
+import com.model.Oglas;
+import com.model.Vozilo;
+import com.model.Zauzece;
 import com.repository.KorpaVozilaRepository;
 import com.repository.VoziloRepository;
 import com.service.VoziloService;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 
 import javax.sql.rowset.serial.SerialBlob;
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +41,12 @@ public class VoziloServiceImpl implements VoziloService {
     private VrstaGorivaService vrstaGorivaService;
     private KlasaAutomobilaService klasaAutomobilaService;
     private  TipMjenjacaService tipMjenjacaService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TerminIznajmljivanjaRepository terminIznajmljivanjaRepository;
 
     @Override
     public List<Vozilo> findAll() {
@@ -78,6 +98,47 @@ public class VoziloServiceImpl implements VoziloService {
         myImage.setInfo(parts[0]);
         myImage.setTip(type);
         return myImage;
+    }
+
+    @Override
+    public List<TerminIznajmljivanja> findAllTermineIznajmljivanja() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+
+        User u = userRepository.findByUsername(username);
+
+        List<TerminIznajmljivanja> all = terminIznajmljivanjaRepository.findAll();
+        List<TerminIznajmljivanja> result = new ArrayList<>();
+        Date currentUtilDate = new Date();
+
+        for(TerminIznajmljivanja ti : all) {
+            if(ti.getVozilo().getAgent().getId() == u.getId()) {
+                if(ti.getDoKad().before(currentUtilDate)) {
+                    result.add(ti);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public Vozilo addKmToVehicle(VoziloDTO voziloDTO, Double predjeniKM){
+        Vozilo vozilo = voziloRepository.findById(voziloDTO.getId()).orElseGet(null);
+        Double km = vozilo.getKilometraza() + predjeniKM;
+        vozilo.setKilometraza(km);
+        vozilo = voziloRepository.save(vozilo);
+
+    public Vozilo getVozilo(Long id){
+        Vozilo vozilo = voziloRepository.getOne(id);
+        return vozilo;
     }
 
 }

@@ -34,6 +34,10 @@ INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, tr
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
 
+INSERT INTO `termin_iznajmljivanja` (id, do_kad, od_kad, user_id, vozilo_id) VALUES (1, '2020-06-18 21:58:58', '2020-06-17 21:58:58', 1, 1);
+INSERT INTO `termin_iznajmljivanja` (id, do_kad, od_kad, user_id, vozilo_id) VALUES (2, '2020-05-05 21:58:58', '2020-05-17 21:58:58', 1, 2);
+INSERT INTO `termin_iznajmljivanja` (id, do_kad, od_kad, user_id, vozilo_id) VALUES (3, '2020-06-20 21:58:58', '2020-06-24 21:58:58', 1, 3);
+
 insert into `tipmjenjaca` (id, naziv) values (1, 'manuelni');
 insert into `tipmjenjaca` (id, naziv) values (2, 'automatski');
 insert into `tipmjenjaca` (id, naziv) values (3, 'poluautomatski');
@@ -49,3 +53,11 @@ insert into `vrstagoriva` (id, naziv) values (3, 'plin');
 insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
 insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
 insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
+
+
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (1, '2020-06-20', '2020-06-28', 1);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (2, '2020-06-15', '2020-06-28', 2);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (3, '2020-06-18', '2020-07-08', 3);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 2);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 2);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 1);

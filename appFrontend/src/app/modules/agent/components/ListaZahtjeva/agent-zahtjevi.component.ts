@@ -44,7 +44,6 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
     public onClickPotvrdi(zahtjev: ZahtjevDTO): void {
       this.adsService.vehicleStatusToReserved(zahtjev).subscribe(data => {
         this.toastr.success('Success');
-        this.getAll();
       }, error => {
         this.toastr.error(error.error.message);
       });
@@ -53,7 +52,6 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
     public onClickPotvrdiBundle(zahtjev: ZahtjevDTO): void {
       this.adsService.vehicleStatusToReservedBundle(zahtjev).subscribe(data => {
         this.toastr.success('Success');
-        this.getAll();
       }, error => {
         this.toastr.error(error.error.message);
       });
@@ -62,7 +60,6 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
     public onClickCancel(zahtjev: ZahtjevDTO): void {
       this.adsService.vehicleStatusToCanceled(zahtjev).subscribe(data => {
         this.toastr.success('Success');
-        this.getAll();
       }, error => {
         this.toastr.error(error.error.message);
       });
