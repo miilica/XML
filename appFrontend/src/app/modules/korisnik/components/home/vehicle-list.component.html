@@ -1,0 +1,76 @@
+<div class="container">
+  <h2 class="ui header">Lista oglasa</h2>
+  <br>
+  <button [routerLink]="['korpaKorisnika']">Vasa korpa</button>
+
+  <table class="ui celled striped table">
+      <thead>
+        <th>Agent ID</th>
+        <th>Vozilo ID</th>
+        <th>Cijena</th>
+        <th>Sjedista za decu</th>
+        <th>Kilometraza</th>
+        <th>Ocjena</th>
+        <th>Moze preci KM</th>
+        <th>CDW</th>
+        <th>Andorid</th>
+        <th>Dodaj u korpu</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let vozilo of vozila">
+            
+            <td *ngIf="vozilo.agent != null">
+                {{ vozilo.agent.id }}
+            </td>
+
+            <td *ngIf="vozilo.agent == null">
+                Trenutno nema ID
+            </td>
+
+            <td>
+                {{ vozilo.id }}
+            </td>
+
+            <td>
+                {{ vozilo.cijena }}
+            </td>
+
+            <td>
+                {{ vozilo.brSjedistaZaDjecu }}
+            </td>
+
+            <td>
+                {{ vozilo.kilometraza }}
+            </td>
+
+            <td>
+                {{ vozilo.ocjena }}
+            </td>
+
+            <td>
+                {{ vozilo.cijena }}
+            </td>
+
+            <td *ngIf="!vozilo.coliisionDamageWavier">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.coliisionDamageWavier">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td *ngIf="!vozilo.imaAndroid">
+                <mat-icon>block</mat-icon>
+            </td>
+            <td *ngIf="vozilo.imaAndroid">
+                <mat-icon>check_circle_outline</mat-icon>
+            </td>
+
+            <td>
+                <mat-icon (click)="addToCart(vozilo)">add_shopping_cart</mat-icon>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+
+</div>
+      

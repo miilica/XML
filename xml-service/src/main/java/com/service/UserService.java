@@ -15,4 +15,5 @@ public interface UserService {
     User addUser(UserRegistrationDTO userInfo);
     void delete(Long id);
     void activateUser(Long id);
+    void activateComment(Long id);
 }

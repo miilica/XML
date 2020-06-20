@@ -9,6 +9,7 @@ import com.mappers.UserMapper;
 import com.model.*;
 import com.repository.AuthorityRepository;
 import com.repository.ConfirmationTokenRepository;
+import com.repository.KomentarRepository;
 import com.repository.UserRepository;
 import com.service.AuthorityService;
 import com.service.UserService;
@@ -41,6 +42,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private AuthorityRepository authorityRepository;
+
+	@Autowired
+	private KomentarRepository komentarRepository;
 
 	@Override
 	public User findByUsername(String username) throws UsernameNotFoundException {
@@ -151,6 +155,19 @@ public class UserServiceImpl implements UserService {
 			user.setEnabled(true);
 		}
 		userRepository.save(user);
+	}
+
+	@Override
+	public void activateComment(Long id) {
+		Komentar kom = komentarRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Comment with id " + id + " doesn't exist"));
+
+		if(kom.isOdobren()) {
+			kom.setOdobren(false);
+		} else {
+			kom.setOdobren(true);
+		}
+		komentarRepository.save(kom);
 	}
 
 

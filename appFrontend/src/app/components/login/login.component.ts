@@ -3,8 +3,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { USER_ID_KEY, USER_ROLE_KEY, USERNAME_KEY, USER_TOKEN_KEY } from 'src/app/config/local-storage-keys';
-import { ROLE_ADMIN, ROLE_SELLER, ROLE_KORISNIK } from 'src/app/config/user-roles-keys';
-import { ADMIN_HOME_PATH, HOME_PATH, SELLER_HOME_PATH } from 'src/app/config/router-paths';
+import { ROLE_ADMIN, ROLE_KORISNIK, ROLE_AGENT } from 'src/app/config/user-roles-keys';
+import { ADMIN_HOME_PATH, KORISNIK_HOME_PATH, AGENT_HOME_PATH } from 'src/app/config/router-paths';
 import LoginDTO from '../models/login-dto.model';
 
 @Component({
@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit {
 
       switch (data.authorities[0]) {
         case ROLE_ADMIN:  this.router.navigate([ADMIN_HOME_PATH]); break;
-        case ROLE_SELLER: this.router.navigate([SELLER_HOME_PATH]); break;
-        case ROLE_KORISNIK: this.router.navigate([HOME_PATH]); break;
+        case ROLE_AGENT: this.router.navigate([AGENT_HOME_PATH]); break;
+        case ROLE_KORISNIK: this.router.navigate([KORISNIK_HOME_PATH]); break;
       }
     }, error => {
       this.loginSuccess = false;

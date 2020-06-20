@@ -29,6 +29,14 @@ import { AddTokenInterceptor } from './interceptors/http-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './modules/admin/components/home/home.component';
 import {MatIconModule} from '@angular/material/icon';
+import { VehicleListComponent } from './modules/korisnik/components/home/vehicle-list.component';
+import { KorpaKorisnikaComponent } from './modules/korisnik/components/korpaKorisnika/korpa-korisnika.component';
+import { AddTipGoriva } from './components/tipGoriva/tipGoriva.component';
+import { DodajTipMjenjaca } from './components/tipMjenjaca/tipMjenjaca.component';
+import { AgentHomepage } from './modules/agent/components/home/agent-homepage.component';
+import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-zahtjevi.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 
 
 @NgModule({
@@ -43,6 +51,13 @@ import {MatIconModule} from '@angular/material/icon';
     AddCarComponent,
     AddMarkaAutomobila,
     DodajKlasuAutomobila,
+    VehicleListComponent,
+    KorpaKorisnikaComponent,
+    AddTipGoriva,
+    DodajTipMjenjaca,
+    AgentHomepage,
+    AgentZahtjevi,
+    OceniKomentarisiComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +76,7 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     MatIconModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },

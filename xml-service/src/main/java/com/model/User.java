@@ -182,4 +182,8 @@ public class User implements UserDetails{
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
+    public String getAddress() {
+        return address;
+    }
 }
