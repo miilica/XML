@@ -49,3 +49,11 @@ insert into `vrstagoriva` (id, naziv) values (3, 'plin');
 insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
 insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
 insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
+
+
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (1, '2020-06-20', '2020-06-28', 1);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (2, '2020-06-15', '2020-06-28', 2);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (3, '2020-06-18', '2020-07-08', 3);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 2);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 2);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 1);
