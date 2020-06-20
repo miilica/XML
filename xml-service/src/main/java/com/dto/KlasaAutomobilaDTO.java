@@ -2,6 +2,8 @@ package com.dto;
 
 public class KlasaAutomobilaDTO {
     private String naziv;
+    private Long id;
+
 
     public KlasaAutomobilaDTO() {
     }
@@ -16,5 +18,9 @@ public class KlasaAutomobilaDTO {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
+    }
+
+    public Long getID() {
+        return id;
     }
 }

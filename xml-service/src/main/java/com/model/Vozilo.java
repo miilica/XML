@@ -40,11 +40,7 @@ public class Vozilo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MarkaAutomobila markaAutomobila;
-/*
-    @Column
-    private VrstaGoriva vrstaGoriva;
 
-*/
     @ManyToOne( fetch = FetchType.LAZY)
     private TipGoriva tipGoriva;
 
@@ -82,6 +78,9 @@ public class Vozilo {
     @ManyToOne()
     @JoinColumn(name = "agent_id")
     private Agent agent;
+
+    @OneToMany(mappedBy = "vozilo", cascade = CascadeType.ALL)
+    private Set<Slika> slike;
 
    // private Set<TerminIznajmljivanja> terminiIznajmljivanja;
    // private Set<Komentar> komentari;
@@ -203,4 +202,59 @@ public class Vozilo {
         this.coliisionDamageWavier = coliisionDamageWavier;
     }
 
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public Set<Ocena> getOcjene() {
+        return ocjene;
+    }
+
+    public void setOcjene(Set<Ocena> ocjene) {
+        this.ocjene = ocjene;
+    }
+
+    public Set<TerminIznajmljivanja> getTerminiIznajmljivanja() {
+        return terminiIznajmljivanja;
+    }
+
+    public void setTerminiIznajmljivanja(Set<TerminIznajmljivanja> terminiIznajmljivanja) {
+        this.terminiIznajmljivanja = terminiIznajmljivanja;
+    }
+
+    public Set<Komentar> getKomentari() {
+        return komentari;
+    }
+
+    public void setKomentari(Set<Komentar> komentari) {
+        this.komentari = komentari;
+    }
+
+    public Set<Izvjestaj> getIzvjestaji() {
+        return izvjestaji;
+    }
+
+    public void setIzvjestaji(Set<Izvjestaj> izvjestaji) {
+        this.izvjestaji = izvjestaji;
+    }
+
+    public Set<Oglas> getOglasi() {
+        return oglasi;
+    }
+
+    public void setOglasi(Set<Oglas> oglasi) {
+        this.oglasi = oglasi;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public Set<Slika> getSlike() {
+        return slike;
+    }
+
+    public void setSlike(Set<Slika> slike) {
+        this.slike = slike;
+    }
 }

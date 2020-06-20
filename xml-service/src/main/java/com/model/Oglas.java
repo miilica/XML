@@ -39,4 +39,45 @@ public class Oglas {
     private Cjenovnik cjenovnik;
 
     //private List<String> slike;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isDostupan() {
+        return dostupan;
+    }
+
+    public void setDostupan(boolean dostupan) {
+        this.dostupan = dostupan;
+    }
+
+    public Vozilo getVozilo() {
+        return vozilo;
+    }
+
+    public void setVozilo(Vozilo vozilo) {
+        this.vozilo = vozilo;
+    }
+
+    public String getMjestoPreuzimanja() {
+        return mjestoPreuzimanja;
+    }
+
+    public void setMjestoPreuzimanja(String mjestoPreuzimanja) {
+        this.mjestoPreuzimanja = mjestoPreuzimanja;
+    }
+
+    public Cjenovnik getCjenovnik() {
+        return cjenovnik;
+    }
+
+    public void setCjenovnik(Cjenovnik cjenovnik) {
+        this.cjenovnik = cjenovnik;
+    }
 }

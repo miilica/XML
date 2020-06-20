@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface VoziloService {
     List<Vozilo> findAll();
+
+    Vozilo findById(Long voziloId);
 }
