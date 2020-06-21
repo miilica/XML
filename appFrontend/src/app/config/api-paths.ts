@@ -23,6 +23,9 @@ export const VEHICLE_STATUS_TO_RESERVED_URL = `${BASE_URL}/api/zahtjev/toReserve
 export const VEHICLE_STATUS_TO_RESERVED_BUNDLE_URL = `${BASE_URL}/api/zahtjev/toReservedBundle`;
 export const VEHICLE_STATUS_TO_CANCELED_URL = `${BASE_URL}/api/zahtjev/toCanceled`;
 export const FIND_VEHICLE_BY_ID_URL = `${BASE_URL}/api/zahtjev/findVehicleById`;
+export const AGENT_ALL_TERMINI_URL = `${BASE_URL}/api/vozilo/user/agent/allTermineIznajmljivanja`;
+export const AGENT_ADD_KM_VEHICLE_URL = `${BASE_URL}/api/vozilo/user/agent/dodajKM`;
+
 
 //Oglasi
 export const USER_ALL_ADS_URL = `${BASE_URL}/oglasi/allAds`;

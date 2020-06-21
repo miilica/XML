@@ -46,4 +46,19 @@ public class KlasaAutomobila {
         this.naziv = naziv;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<Vozilo> getVozilo() {
+        return vozilo;
+    }
+
+    public void setVozilo(Set<Vozilo> vozilo) {
+        this.vozilo = vozilo;
+    }
 }
