@@ -15,6 +15,11 @@ import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_V
 
     }
 
+    onClickPoruka(): void {
+      
+  }
+
+
     onClickZahtjevi(): void {
         this.router.navigate([ZAHTJEVI_ZA_VOZILA_AGENT_PATH]);
     }
@@ -25,6 +30,7 @@ import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_V
     onClickTermini(): void {
       this.router.navigate([TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH]);
   }
+
 
   }
   

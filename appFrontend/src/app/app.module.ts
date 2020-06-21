@@ -62,7 +62,7 @@ import { PorukaComponent } from './poruka/poruka.component';
     AgentZahtjevi,
     OceniKomentarisiComponent,
     AgentTermini,
-    PorukaComponent,
+    PorukaComponent
   ],
   imports: [
     BrowserModule,

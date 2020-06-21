@@ -42,3 +42,6 @@ export const USER_COMMENT_VEHICLE_URL = `${BASE_URL}/api/zahtjev/commentVehicle`
 export const GET_ALL_VOZILO_AGENT = `${BASE_URL}/api/vozilo/getVozilaAgent`;
 
 
+//poruke
+export const PORUKE_HOME_PAGE = `${BASE_URL}/api/poruke`;
+
