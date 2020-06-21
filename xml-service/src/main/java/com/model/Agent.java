@@ -46,7 +46,78 @@ public class Agent{
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Zahtjev> pristigliZahtjevi;
 
+
+
     //private Set<Oglas> oglasi;
+    public Long getId() {
+        return  id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getIme() {
+        return ime;
+    }
+
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+    }
+
+    public String getImeKompanije() {
+        return imeKompanije;
+    }
+
+    public void setImeKompanije(String imeKompanije) {
+        this.imeKompanije = imeKompanije;
+    }
+
+    public String getPoslovniMB() {
+        return poslovniMB;
+    }
+
+    public void setPoslovniMB(String poslovniMB) {
+        this.poslovniMB = poslovniMB;
+    }
+
+    public int getBrOglasa() {
+        return brOglasa;
+    }
+
+    public void setBrOglasa(int brOglasa) {
+        this.brOglasa = brOglasa;
+    }
+
+    public Set<Vozilo> getVozila() {
+        return vozila;
+    }
+
+    public void setVozila(Set<Vozilo> vozila) {
+        this.vozila = vozila;
+    }
+
+    public Set<Zahtjev> getPristigliZahtjevi() {
+        return pristigliZahtjevi;
+    }
+
+    public void setPristigliZahtjevi(Set<Zahtjev> pristigliZahtjevi) {
+        this.pristigliZahtjevi = pristigliZahtjevi;
+    }
 }
