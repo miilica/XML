@@ -61,3 +61,6 @@ insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (3, '2020-06-
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 2);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 2);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 1);
+
+INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Hi', '2020-06-17T10:00', 1, 6, 1);
+INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Hey', '2020-06-17T10:00', 6, 1, 1);
