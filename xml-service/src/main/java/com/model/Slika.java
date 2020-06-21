@@ -11,10 +11,10 @@ public class Slika {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 30000)
+    @Column(columnDefinition="LONGBLOB")
     private String info;
 
-    @Column(length = 30000)
+    @Column(columnDefinition="LONGBLOB")
     private String tip;
 
     @Lob
