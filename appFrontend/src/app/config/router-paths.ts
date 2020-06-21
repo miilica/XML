@@ -16,5 +16,5 @@ export const OCENI_KOMENTARISI_KORISNIK_PATH = 'korisnik/korpaKorisnika/oceniKom
 // Agent paths
 export const AGENT_HOME_PATH = 'agent';
 export const ZAHTJEVI_ZA_VOZILA_AGENT_PATH = `agent/zahjeviZaVozila`;
-export const TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH = `agent/terminiIznajmljenihVozila`;
 export const AGENT_ZAUZECE = 'zauzece';
+export const TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH = `agent/terminiIznajmljenihVozila`;

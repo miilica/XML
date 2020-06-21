@@ -19,7 +19,6 @@ import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKo
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 
-
 const routes: Routes = [
   {
     path: HOME_PATH,
