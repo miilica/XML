@@ -1,41 +1,60 @@
-<h1  style="text-align:center">Logging in</h1>
+<html>
 
-<form [formGroup]="loginForm" (submit)="onLogin()">
-    <div >
-        <p style="text-align:center">
-            <mat-form-field appearance="outline" >
-                <mat-label>Username</mat-label>
-                <input matInput type="text" placeholder="Username" formControlName="username">
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
 
-                <small id="username-error" class="text-danger"
-                *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required">
-                Username is required
-            </small>
-            </mat-form-field>
-        </p>
+    <body>
+        <div id="login">
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+                            <h1  style="text-align:center; margin-top: 50px; color: deeppink; text-transform: uppercase;">Logging in</h1>
+                            <form style="margin-top: 40px;"  [formGroup]="loginForm" (submit)="onLogin()">
+                                <div>
+                                    <p style="text-align:center; height: 60px; width: 100px; margin-left: 150px;">
+                                        <mat-form-field appearance="outline" >
+                                            <mat-label>Username</mat-label>
+                                            <input matInput type="text" placeholder="Username" formControlName="username" style="color: deeppink;">
 
-        <p style="text-align:center">
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput type="password" formControlName="password">
+                                            <small id="username-error" class="text-danger"
+                                            *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required">
+                                            Username is required
+                                        </small>
+                                        </mat-form-field>
+                                    </p>
 
-                <small id="password-error" class="text-danger"
-                *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
-                Password is required
-            </small>
-            </mat-form-field>
-        </p>
-    </div>
-    <div  style="text-align:center" >
-    <button  mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">Log in</button>
-    
-    </div>
-</form>
-    <br>
-<div>
-    <p style="text-align:center">If you don't have an acount:</p>
-    <div style="text-align:center">
-        <button  mat-stroked-button color color="accent" >Sing up</button>
-    </div>
-</div>
+                                    <p style="text-align:center; height: 60px; width: 100px; margin-left: 150px;">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Password</mat-label>
+                                            <input matInput type="password" formControlName="password" style="color: deeppink;">
 
+                                            <small id="password-error" class="text-danger"
+                                            *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
+                                            Password is required
+                                        </small>
+                                        </mat-form-field>
+                                    </p>
+                                </div>
+                                <br/>
+                                <div  style="text-align:center" >
+                                <button  mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">Log in</button>
+                                </div>
+                            </form>
+                                <br/>
+                            <div>
+                                <p style="text-align:center;  color: deeppink;"><b>If you don't have an acount:</b></p>
+                                <div style="text-align:center">
+                                    <button  mat-stroked-button color color="accent" (click) = "onClickSignUp()">Sing up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

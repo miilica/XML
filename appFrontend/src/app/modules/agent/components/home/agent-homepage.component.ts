@@ -1,7 +1,6 @@
 import { OnInit, Component } from '@angular/core';
-import { ZAHTJEVI_ZA_VOZILA_URL } from 'src/app/config/api-paths';
 import { Router } from '@angular/router';
-import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH } from 'src/app/config/router-paths';
+import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH } from 'src/app/config/router-paths';
 
 @Component({
     selector: 'app-agent-homepage',
@@ -20,6 +19,9 @@ import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PAT
         this.router.navigate([ZAHTJEVI_ZA_VOZILA_AGENT_PATH]);
     }
 
+    onClickZauzece() : void{
+      this.router.navigate([AGENT_ZAUZECE]);
+    }
     onClickTermini(): void {
       this.router.navigate([TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH]);
   }

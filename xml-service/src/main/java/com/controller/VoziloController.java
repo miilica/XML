@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.xml.ws.Response;
 import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,7 +28,7 @@ public class VoziloController {
     @PostMapping("/dodaj")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody VoziloDTO mDTO) throws Base64DecodingException, SQLException {
-        voziloService.save(mDTO);
+        voziloService.dodajNovoVozilo(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
@@ -53,6 +54,17 @@ public class VoziloController {
     public ResponseEntity addKm (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable Double dodatiKM) {
         voziloService.addKmToVehicle(voziloDTO, dodatiKM);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/allVozila/kaca")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity<?> findAllVozila() throws AccessDeniedException {
+        return this.voziloService.findAllVozila();
+    }
+
+    @GetMapping(value = "getVozilaAgent")
+    public ResponseEntity<?> getAllVozilaAgent(){
+        return this.voziloService.getAllVozilaAgent();
     }
 
 }

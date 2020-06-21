@@ -2,6 +2,7 @@ import { MarkaAutomobila } from '../dodajMarkaAutomobila/markaAutomobila';
 import { KlasaAutomobila } from '../dodajKlasaAutomobila/klasaAutomobila';
 import { TipMjenjaca } from '../tipMjenjaca/tipMjenjaca';
 import { TipGoriva } from '../tipGoriva/tipGoriva';
+import { Slika } from './Slika';
 
 export class Vozilo {
     constructor(
@@ -17,5 +18,6 @@ export class Vozilo {
         public  imaAndroid: boolean,
         public  cdw: boolean,
         public ocjena: number,
+        public slike: Slika[]
     ){}
 }

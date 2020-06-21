@@ -1,17 +1,17 @@
 package com.service.impl;
 
+import com.dto.MarkaAutomobilaDTO;
 import com.dto.VoziloDTO;
 import com.model.*;
 import com.repository.TerminIznajmljivanjaRepository;
 import com.repository.UserRepository;
 import com.dto.ZauzeceDTO;
-import com.model.KorpaVozila;
-import com.model.Oglas;
-import com.model.Vozilo;
-import com.model.Zauzece;
+import com.model.*;
+import com.repository.AgentRepository;
 import com.repository.KorpaVozilaRepository;
 import com.repository.VoziloRepository;
 import com.service.VoziloService;
+import org.modelmapper.ModelMapper;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +40,13 @@ public class VoziloServiceImpl implements VoziloService {
 
     @Autowired
     private VoziloRepository voziloRepository;
+    @Autowired
     private MarkaAutomobilaService markaAutomobilaService;
+    @Autowired
     private VrstaGorivaService vrstaGorivaService;
+    @Autowired
     private KlasaAutomobilaService klasaAutomobilaService;
+    @Autowired
     private  TipMjenjacaService tipMjenjacaService;
 
     @Autowired
@@ -48,10 +55,29 @@ public class VoziloServiceImpl implements VoziloService {
     @Autowired
     private TerminIznajmljivanjaRepository terminIznajmljivanjaRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private AgentRepository agentRepository;
+
     @Override
     public List<Vozilo> findAll() {
         List<Vozilo> result = voziloRepository.findAll();
         return result;
+    }
+
+    public ResponseEntity<?> findAllVozila(){
+
+        List<Vozilo> vozila = this.voziloRepository.findAll();
+        List<VoziloDTO> vozilaDTO = new ArrayList<>();
+
+        for(Vozilo v: vozila){
+            VoziloDTO voziloDTO = new ModelMapper().map(v, VoziloDTO.class);
+            vozilaDTO.add(voziloDTO);
+        }
+
+        return new ResponseEntity<>(vozilaDTO,HttpStatus.OK);
     }
 
     public Vozilo findById(Long id) throws AccessDeniedException {
@@ -59,12 +85,22 @@ public class VoziloServiceImpl implements VoziloService {
         return u;
     }
 
-    public Vozilo save(VoziloDTO carDTO) throws SQLException, Base64DecodingException {
+    public Vozilo dodajNovoVozilo(VoziloDTO carDTO) throws SQLException, Base64DecodingException {
 
+        System.out.println("marka "+carDTO.getMarkaAutomobila().getId());
         MarkaAutomobila markaAutomobilak = this.markaAutomobilaService.findById(carDTO.getMarkaAutomobila().getId());
+
+        System.out.println("gorivo"+carDTO.getTipGoriva().getId() + markaAutomobilak.getNazivMarke());
         TipGoriva gorivo = this.vrstaGorivaService.findById(carDTO.getTipGoriva().getId());
+
+        System.out.println("klasa"+carDTO.getKlasaAutomobila().getID() + gorivo.getNaziv());
         KlasaAutomobila klasaAutomobila = this.klasaAutomobilaService.findById(carDTO.getKlasaAutomobila().getID());
+
+        System.out.println("mjenjac"+carDTO.getTipMjenjaca().getId() + klasaAutomobila.getNaziv());
         TipMjenjaca tipMjenjaca = this.tipMjenjacaService.findById(carDTO.getTipMjenjaca().getId());
+        System.out.println("mjenjac"+ tipMjenjaca.getNaziv());
+
+        System.out.println(markaAutomobilak.getId()+gorivo.getId()+klasaAutomobila.getId()+tipMjenjaca.getId());
 
         Set<Slika> slike = new HashSet<>();
         for (String slika: carDTO.getSlike()) {
@@ -143,4 +179,26 @@ public class VoziloServiceImpl implements VoziloService {
         return vozilo;
     }
 
+
+    public ResponseEntity<?> getAllVozilaAgent() {
+
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //Object object = authentication.getPrincipal();
+
+        Agent agent = this.agentRepository.getOne(6l);
+
+        List<Vozilo> vozila = this.voziloRepository.findAllByAgentId(agent.getId());
+        List<VoziloDTO> voziloDTOS = new ArrayList<>();
+
+        for(Vozilo v: vozila){
+            VoziloDTO vDTO = new VoziloDTO();
+            vDTO.setId(v.getId());
+
+            vDTO.setMarkaAutomobila(modelMapper.map(v.getMarkaAutomobila(), MarkaAutomobilaDTO.class));
+
+            voziloDTOS.add(vDTO);
+        }
+
+        return new ResponseEntity<>(voziloDTOS,HttpStatus.OK);
+    }
 }

@@ -27,6 +27,7 @@ public class KlasaAutomobilaService {
         m = this.klasaAutoRepository.save(m);
         return m;
     }
+
     public List<KlasaAutomobila> findAll() throws AccessDeniedException {
         List<KlasaAutomobila> result = klasaAutoRepository.findAll();
         return result;

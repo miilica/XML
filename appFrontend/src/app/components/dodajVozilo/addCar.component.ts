@@ -11,6 +11,7 @@ import { TipMjenjaca } from '../tipMjenjaca/tipMjenjaca';
 import { TipGorivaService } from '../tipGoriva/tipGoriva.service';
 import { TipMjenjacaService } from '../tipMjenjaca/tipMjenjaca.service';
 import { error } from '@angular/compiler/src/util';
+import { Slika } from './Slika';
 
 @Component({
   selector: 'app-addCar',
@@ -18,11 +19,13 @@ import { error } from '@angular/compiler/src/util';
 })
 export class AddCarComponent implements OnInit {
 
- vozilo =  new Vozilo(null,null,null, null,null,null, null,null,null, null,null,null);
+ vozilo =  new Vozilo(null,null,null, null,null,null, null,null,null, null,null,null,null);
  public marke : MarkaAutomobila[];
  public klase : KlasaAutomobila[];
  public gorivo : TipGoriva[];
  public mjenjac : TipMjenjaca[];
+ imageFiles = [];
+ imageURLs: Slika[] = [];
 
   constructor(private _klasaServis : DodajKlasuAutomobilaService, 
     private _markaServis : DodajMarkuAutomobilaService, private _voziloServis : DodajVoziloService, private router: Router,
@@ -31,6 +34,7 @@ export class AddCarComponent implements OnInit {
   ngOnInit(): void {
     this._klasaServis.getKlase().subscribe(
       data=>{ 
+        console.log(data+'klase');
           this.klase = data;
       },
       error=> console.error('Error!', error)
@@ -56,6 +60,7 @@ this._mjenjacServis.getTipoveMjenjaca().subscribe(
 )
 }
   onSubmit(){ 
+      this.vozilo.slike = this.imageURLs;
       console.log(this.vozilo);
         this._voziloServis.dodajVozilo(this.vozilo)
        .subscribe(
@@ -66,6 +71,23 @@ this._mjenjacServis.getTipoveMjenjaca().subscribe(
            } ,
             error=> console.error('Error!',error)
         )
+    }
+
+    fileUpload(event) {
+      if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        for (let i = 0; i < filesAmount; i++) {
+          var reader = new FileReader();
+  
+          this.imageFiles.push(event.target.files[i]);
+          reader.onload = (event: any) => {
+            console.log(event.target.result)
+            this.imageURLs.push(event.target.result);
+          }
+  
+          reader.readAsDataURL(event.target.files[i]);
+        }
+      }
     }
 
 }

@@ -8,8 +8,8 @@ import { TipGoriva } from './tipGoriva';
     providedIn: 'root'
 })
 export class TipGorivaService{
-    _url = 'http://localhost:8080/api/tipgoriva/dodaj';
-    _url2 = 'http://localhost:8080/api/tipgoriva/get';
+    _url = 'http://localhost:8089/api/tipgoriva/dodaj';
+    _url2 = 'http://localhost:8089/api/tipgoriva/get';
    
 
     constructor(private _http: HttpClient) { }
