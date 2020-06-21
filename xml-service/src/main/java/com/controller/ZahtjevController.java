@@ -32,6 +32,13 @@ public class ZahtjevController {
         return this.zahtjevService.findAll();
     }
 
+    @GetMapping("/allZahtjeve/kaca")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity<?> findAllZahtjeve() throws AccessDeniedException {
+        return this.zahtjevService.findAllZahtjeve();
+    }
+
+
     @GetMapping("/allZahtjeveRateComment")
     @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<Zahtjev> findAllPaid() throws AccessDeniedException {

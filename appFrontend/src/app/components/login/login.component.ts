@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { USER_ID_KEY, USER_ROLE_KEY, USERNAME_KEY, USER_TOKEN_KEY } from 'src/app/config/local-storage-keys';
 import { ROLE_ADMIN, ROLE_KORISNIK, ROLE_AGENT } from 'src/app/config/user-roles-keys';
-import { ADMIN_HOME_PATH, KORISNIK_HOME_PATH, AGENT_HOME_PATH } from 'src/app/config/router-paths';
+import { ADMIN_HOME_PATH, KORISNIK_HOME_PATH, AGENT_HOME_PATH, REGISTRATION_PATH } from 'src/app/config/router-paths';
 import LoginDTO from '../models/login-dto.model';
 
 @Component({
@@ -62,6 +62,10 @@ export class LoginComponent implements OnInit {
       this.loginError = true;
       this.toastr.error(error.error.message);
     });
+  }
+
+  onClickSignUp() : void{
+    this.router.navigate(['register']);
   }
 
 }

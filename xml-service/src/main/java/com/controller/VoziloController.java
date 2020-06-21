@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
@@ -39,5 +40,16 @@ public class VoziloController {
         return this.voziloService.findAll();
     }
 
+
+    @GetMapping("/allVozila/kaca")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity<?> findAllVozila() throws AccessDeniedException {
+        return this.voziloService.findAllVozila();
+    }
+
+    @GetMapping(value = "getVozilaAgent")
+    public ResponseEntity<?> getAllVozilaAgent(){
+        return this.voziloService.getAllVozilaAgent();
+    }
 
 }
