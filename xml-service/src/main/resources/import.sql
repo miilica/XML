@@ -23,13 +23,6 @@ INSERT INTO `user_authority` (user_id, authority_id) VALUES (7, 3);
 INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prezime) VALUES (6, 'Nikole Tesle 15', '1', 'Role', 'MarkoTrans', 'stagod', 'Rolic');
 INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prezime) VALUES (7, 'Mihajla Pupina 22', '2', 'Jelena', 'JelenaTrans', 'wthevr', 'Jelenic');
 
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 6);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3', 6);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (3, '0', '2150', false, false, '250000', '600', '5', 6);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (4, '1', '2250', true, true, '15000', '150', '5', 6);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (5, '1', '600', false, false, '270000', '500', '2', 7);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id) VALUES (6, '0', '5000', false, true, '10000', '1000', '5', 7);
-
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, true, 'Novi Sad', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
@@ -54,10 +47,16 @@ insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1
 insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
 insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
 
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 6, 2, 1,1,1);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3', 6, 1, 1,2,2);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (3, '0', '2150', false, false, '250000', '600', '5', 6, 3, 3,2,3);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (4, '1', '2250', true, true, '15000', '150', '5', 6, 1, 3,3,3);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (5, '1', '600', false, false, '270000', '500', '2', 7,2, 2,1,3 );
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (6, '0', '5000', false, true, '10000', '1000', '5', 7,3, 2,1,1);
 
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (1, '2020-06-20', '2020-06-28', 1);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (2, '2020-06-15', '2020-06-28', 2);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (3, '2020-06-18', '2020-07-08', 3);
-insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 2);
-insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 2);
-insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 1);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 4);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 5);
+insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 6);

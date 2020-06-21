@@ -17,6 +17,7 @@ import { AgentHomepage } from './modules/agent/components/home/agent-homepage.co
 import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-zahtjevi.component';
 import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
+import { ZauzeceComponent } from './zauzece/zauzece.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'admin/addklasu', component: DodajKlasuAutomobila },
   { path: 'admin/addtipgoriva', component: AddTipGoriva },
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
+  { path: 'zauzece', component: ZauzeceComponent},
 
 ];
 

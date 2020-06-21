@@ -1,19 +1,19 @@
 package com.service.impl;
 
+import com.dto.MarkaAutomobilaDTO;
 import com.dto.VoziloDTO;
 import com.model.*;
 import com.repository.TerminIznajmljivanjaRepository;
 import com.repository.UserRepository;
 import com.dto.ZauzeceDTO;
-import com.model.KorpaVozila;
-import com.model.Oglas;
-import com.model.Vozilo;
-import com.model.Zauzece;
+import com.model.*;
+import com.repository.AgentRepository;
 import com.repository.KorpaVozilaRepository;
 import com.repository.VoziloRepository;
 import com.service.VoziloService;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +29,9 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Date;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -48,10 +51,29 @@ public class VoziloServiceImpl implements VoziloService {
     @Autowired
     private TerminIznajmljivanjaRepository terminIznajmljivanjaRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private AgentRepository agentRepository;
+
     @Override
     public List<Vozilo> findAll() {
         List<Vozilo> result = voziloRepository.findAll();
         return result;
+    }
+
+    public ResponseEntity<?> findAllVozila(){
+
+        List<Vozilo> vozila = this.voziloRepository.findAll();
+        List<VoziloDTO> vozilaDTO = new ArrayList<>();
+
+        for(Vozilo v: vozila){
+            VoziloDTO voziloDTO = new ModelMapper().map(v, VoziloDTO.class);
+            vozilaDTO.add(voziloDTO);
+        }
+
+        return new ResponseEntity<>(vozilaDTO,HttpStatus.OK);
     }
 
     public Vozilo findById(Long id) throws AccessDeniedException {
@@ -143,4 +165,26 @@ public class VoziloServiceImpl implements VoziloService {
         return vozilo;
     }
 
+
+    public ResponseEntity<?> getAllVozilaAgent() {
+
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //Object object = authentication.getPrincipal();
+
+        Agent agent = this.agentRepository.getOne(6l);
+
+        List<Vozilo> vozila = this.voziloRepository.findAllByAgentId(agent.getId());
+        List<VoziloDTO> voziloDTOS = new ArrayList<>();
+
+        for(Vozilo v: vozila){
+            VoziloDTO vDTO = new VoziloDTO();
+            vDTO.setId(v.getId());
+
+            vDTO.setMarkaAutomobila(modelMapper.map(v.getMarkaAutomobila(), MarkaAutomobilaDTO.class));
+
+            voziloDTOS.add(vDTO);
+        }
+
+        return new ResponseEntity<>(voziloDTOS,HttpStatus.OK);
+    }
 }
