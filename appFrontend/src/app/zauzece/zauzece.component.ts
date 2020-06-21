@@ -34,7 +34,7 @@ import { Vozilo } from '../components/dodajVozilo/vozilo';
         id: null,
         zauzetOd: this.datumOd,
         zauzetDo: this.datumDo,
-        voziloId: this.vozilo
+        voziloId: this.vozilo.id
       }
 
       this.zauzeceService.zauzeceAutomobil(zauzece).subscribe(

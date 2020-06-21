@@ -16,7 +16,6 @@
         <th>CDW</th>
         <th>Andorid</th>
         <th>Dodaj u korpu</th>
-     
       </thead>
       <tbody>
           <tr *ngFor="let vozilo of vozila">
@@ -66,9 +65,6 @@
             <td *ngIf="vozilo.imaAndroid">
                 <mat-icon>check_circle_outline</mat-icon>
             </td>
-
-          
-            
 
             <td>
                 <mat-icon (click)="addToCart(vozilo)">add_shopping_cart</mat-icon>

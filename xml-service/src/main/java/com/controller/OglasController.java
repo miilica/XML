@@ -13,14 +13,14 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/oglasi", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/oglasi", produces = MediaType.APPLICATION_JSON_VALUE)
 public class OglasController {
 
     @Autowired
     private OglasService oglasService;
 
     @GetMapping("/allAds")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+   // @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<Oglas> findAll() throws AccessDeniedException {
         return this.oglasService.findAll();
     }
