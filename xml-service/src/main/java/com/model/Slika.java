@@ -11,14 +11,14 @@ public class Slika {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "info")
+    @Column(length = 30000)
     private String info;
 
-    @Column(name = "tip")
+    @Column(length = 30000)
     private String tip;
 
     @Lob
-    @Column(name = "slika", columnDefinition="BLOB")
+    @Column(name = "slika", columnDefinition="LONGBLOB")
     private Blob image;
 
     @ManyToOne(fetch = FetchType.LAZY)

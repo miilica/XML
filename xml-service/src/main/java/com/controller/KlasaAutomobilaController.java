@@ -25,9 +25,11 @@ public class KlasaAutomobilaController {
         klasaAutomobilaService.save(mDTO);
         return ResponseEntity.ok().build();
     }
+
     @GetMapping("/get")
     @PreAuthorize("hasRole('ADMIN')")
     public List<KlasaAutomobila> loadAll() {
+        System.out.println("load alll");
         return this.klasaAutomobilaService.findAll();
     }
 }
