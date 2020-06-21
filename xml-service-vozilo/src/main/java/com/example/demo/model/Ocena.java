@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,29 +13,20 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "komentar")
-public class Komentar {
+@Table(name = "ocena")
+public class Ocena {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String tekst;
-
-    @Column
-    private boolean odobren;
-
+    //vozilo koje se ocenjuje
     @ManyToOne()
     @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 
-    // user koji je ostavio komentar
-    @Column
+    private Double ocena;
+
+    //user koji je dao ocenu
     private Long userId;
-
-
-    // private Agent agent;
-    // private Korisnik korisnik;
 }

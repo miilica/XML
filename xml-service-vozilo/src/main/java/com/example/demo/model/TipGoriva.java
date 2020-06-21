@@ -1,14 +1,13 @@
 package com.example.demo.model;
 
-import com.example.demo.dto.TipMjenjacaDTO;
+import com.example.demo.dto.VrstaGorivaDTO;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "tipmjenjaca")
-public class TipMjenjaca {
-
+@Table(name = "vrstagoriva")
+public class TipGoriva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,17 +15,17 @@ public class TipMjenjaca {
     @Column
     private String naziv;
 
-    @OneToMany(mappedBy = "tipMjenjaca", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tipGoriva", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 
-    public TipMjenjaca(String naziv) {
+    public TipGoriva(String naziv) {
         this.naziv = naziv;
     }
 
-    public TipMjenjaca() {
+    public TipGoriva() {
     }
-    public TipMjenjaca(TipMjenjacaDTO t) {
-        this.setNaziv(t.getNaziv());
+    public TipGoriva(VrstaGorivaDTO g) {
+        this.setNaziv(g.getNaziv());
     }
 
     public Long getId() {

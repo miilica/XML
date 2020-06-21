@@ -8,7 +8,6 @@ import java.util.List;
 public interface VoziloService {
 
     Vozilo findById(Long id);
-    Vozilo findByMarkaAutomobila(String marka);
     List<Vozilo> findAll();
     Vozilo save(VoziloDTO voziloDTO);
     Vozilo delete(VoziloDTO voziloDTO);

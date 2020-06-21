@@ -1,19 +1,20 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.VoziloDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@AllArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "vozilo")
 public class Vozilo {
 
     @Id
@@ -30,28 +31,176 @@ public class Vozilo {
     private double mozePreciKM;
 
     @Column
-    private int brSjedistazaDjecu;
+    private int brSjedistaZaDjecu;
 
     @Column
     private double ocjena;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MarkaAutomobila markaAutomobila;
+    /*
+        @Column
+        private VrstaGoriva vrstaGoriva;
 
-    //private MarkaAutomobila markaAutomobila;
+    */
+    @ManyToOne( fetch = FetchType.LAZY)
+    private TipGoriva tipGoriva;
 
-    //private VrstaGoriva vrstaGoriva;
+    @ManyToOne( fetch = FetchType.LAZY)
+    private TipMjenjaca tipMjenjaca;
 
-    //private  TipMjenjaca tipMjenjaca;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private KlasaAutomobila klasaAutomobila;
 
-    //private KlasaAutomobila klasaAutomobila;
-
+    @Column
     private Boolean imaAndroid;
 
     @Column
     private boolean coliisionDamageWavier;
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ocjene_id")
+    private Set<Ocena> ocjene = new HashSet<>();
 
-    //private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-    //private List<Komentar> komentari;
-    //private List<Izvjestaj> izvjestaji;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "termini_iznajmljivanja_id")
+    private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "komentari_id")
+    private Set<Komentar> komentari;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    private Set<Izvjestaj> izvjestaji;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.EAGER)
+    private Set<Oglas> oglasi;
+
+    @ManyToOne()
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
+
+    // private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+    // private Set<Komentar> komentari;
+    //  private Set<Izvjestaj> izvjestaji;
+
+
+    public Vozilo() {
+    }
+
+    public Vozilo(VoziloDTO vDTO){
+        this.setId(vDTO.getId());
+        this.setCijena(vDTO.getCijena());
+        this.setKilometraza(vDTO.getKilometraza());
+        this.setMozePreciKM(vDTO.getMozePreciKM());
+        this.setBrSjedistaZaDjecu(vDTO.getBrSjedistaZaDjecu());
+        this.setOcjena(vDTO.getOcjena());
+        //this.setMarkaAutomobila(new MarkaAutomobila(vDTO.getMarkaAutomobila()));
+        //this.setKlasaAutomobila(new KlasaAutomobila(vDTO.getKlasaAutomobila()));
+        //this.setTipGoriva(new TipGoriva(vDTO.getTipGoriva()));
+        //this.setTipMjenjaca(new TipMjenjaca(vDTO.getTipMjenjaca()));
+        this.setImaAndroid(vDTO.getImaAndroid());
+        this.setColiisionDamageWavier(vDTO.isColiisionDamageWavier());
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(double cijena) {
+        this.cijena = cijena;
+    }
+
+    public double getKilometraza() {
+        return kilometraza;
+    }
+
+    public void setKilometraza(double kilometraza) {
+        this.kilometraza = kilometraza;
+    }
+
+    public double getMozePreciKM() {
+        return mozePreciKM;
+    }
+
+    public void setMozePreciKM(double mozePreciKM) {
+        this.mozePreciKM = mozePreciKM;
+    }
+
+    public int getBrSjedistaZaDjecu() {
+        return brSjedistaZaDjecu;
+    }
+
+    public void setBrSjedistaZaDjecu(int brSjedistaZaDjecu) {
+        this.brSjedistaZaDjecu = brSjedistaZaDjecu;
+    }
+
+    public double getOcjena() {
+        return ocjena;
+    }
+
+    public void setOcjena(double ocjena) {
+        this.ocjena = ocjena;
+    }
+
+    public MarkaAutomobila getMarkaAutomobila() {
+        return markaAutomobila;
+    }
+
+    public void setMarkaAutomobila(MarkaAutomobila markaAutomobila) {
+        this.markaAutomobila = markaAutomobila;
+    }
+
+    public TipGoriva getTipGoriva() {
+        return tipGoriva;
+    }
+
+    public void setTipGoriva(TipGoriva tipGoriva) {
+        this.tipGoriva = tipGoriva;
+    }
+
+    public TipMjenjaca getTipMjenjaca() {
+        return tipMjenjaca;
+    }
+
+    public void setTipMjenjaca(TipMjenjaca tipMjenjaca) {
+        this.tipMjenjaca = tipMjenjaca;
+    }
+
+    public KlasaAutomobila getKlasaAutomobila() {
+        return klasaAutomobila;
+    }
+
+    public void setKlasaAutomobila(KlasaAutomobila klasaAutomobila) {
+        this.klasaAutomobila = klasaAutomobila;
+    }
+
+    public Boolean getImaAndroid() {
+        return imaAndroid;
+    }
+
+    public void setImaAndroid(Boolean imaAndroid) {
+        this.imaAndroid = imaAndroid;
+    }
+
+    public boolean isColiisionDamageWavier() {
+        return coliisionDamageWavier;
+    }
+
+    public void setColiisionDamageWavier(boolean coliisionDamageWavier) {
+        this.coliisionDamageWavier = coliisionDamageWavier;
+    }
 
 }
