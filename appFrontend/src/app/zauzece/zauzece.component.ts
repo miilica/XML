@@ -32,7 +32,7 @@ import { zauzeceAutomobilaService } from '../services/zauzece.service';
         id: null,
         zauzetOd: this.datumOd,
         zauzetDo: this.datumDo,
-        voziloId: this.vozilo.id
+        voziloId: this.vozilo
       }
 
       this.zauzeceService.zauzeceAutomobil(zauzece).subscribe(
