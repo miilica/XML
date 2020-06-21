@@ -37,9 +37,13 @@ public class VoziloServiceImpl implements VoziloService {
 
     @Autowired
     private VoziloRepository voziloRepository;
+    @Autowired
     private MarkaAutomobilaService markaAutomobilaService;
+    @Autowired
     private VrstaGorivaService vrstaGorivaService;
+    @Autowired
     private KlasaAutomobilaService klasaAutomobilaService;
+    @Autowired
     private  TipMjenjacaService tipMjenjacaService;
 
     @Autowired
@@ -59,12 +63,22 @@ public class VoziloServiceImpl implements VoziloService {
         return u;
     }
 
-    public Vozilo save(VoziloDTO carDTO) throws SQLException, Base64DecodingException {
+    public Vozilo dodajNovoVozilo(VoziloDTO carDTO) throws SQLException, Base64DecodingException {
 
+        System.out.println("marka "+carDTO.getMarkaAutomobila().getId());
         MarkaAutomobila markaAutomobilak = this.markaAutomobilaService.findById(carDTO.getMarkaAutomobila().getId());
+
+        System.out.println("gorivo"+carDTO.getTipGoriva().getId() + markaAutomobilak.getNazivMarke());
         TipGoriva gorivo = this.vrstaGorivaService.findById(carDTO.getTipGoriva().getId());
+
+        System.out.println("klasa"+carDTO.getKlasaAutomobila().getID() + gorivo.getNaziv());
         KlasaAutomobila klasaAutomobila = this.klasaAutomobilaService.findById(carDTO.getKlasaAutomobila().getID());
+
+        System.out.println("mjenjac"+carDTO.getTipMjenjaca().getId() + klasaAutomobila.getNaziv());
         TipMjenjaca tipMjenjaca = this.tipMjenjacaService.findById(carDTO.getTipMjenjaca().getId());
+        System.out.println("mjenjac"+ tipMjenjaca.getNaziv());
+
+        System.out.println(markaAutomobilak.getId()+gorivo.getId()+klasaAutomobila.getId()+tipMjenjaca.getId());
 
         Set<Slika> slike = new HashSet<>();
         for (String slika: carDTO.getSlike()) {

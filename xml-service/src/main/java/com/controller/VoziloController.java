@@ -27,7 +27,7 @@ public class VoziloController {
     @PostMapping("/dodaj")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody VoziloDTO mDTO) throws Base64DecodingException, SQLException {
-        voziloService.save(mDTO);
+        voziloService.dodajNovoVozilo(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")

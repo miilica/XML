@@ -66,6 +66,27 @@
     <label>Coliision Damage Wavier:</label>
     <input type="checkbox"  class="form-control" name="cdw"  [(ngModel)]="vozilo.cdw" />
 
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+         <label for="Images">Slike</label>
+         <input
+            type="file"
+            id="image"
+            accept="image/*"
+            class="form-control"
+            multiple
+            (change)="fileUpload($event)"
+         />
+      </div>
+      <div class="col-sm-6">
+         <img
+            *ngFor="let url of imageURLs"
+            [src]="url"
+            style="max-width: 100px; max-height: 100px;"
+         />
+      </div>
+   </div>
+
     <button type="submit" class="btn btn-primary">Dodaj</button>
 </fieldset>       
 </form>
