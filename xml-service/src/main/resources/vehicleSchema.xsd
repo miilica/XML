@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0"
+           targetNamespace="http://localhost:8098/xml-service-schema"
+           xmlns:vehicleSchema="http://localhost:8098/xml-service-schema">
+
+    <xs:complexType name="Vehicle">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="cijena" type="xs:double" minOccurs="0"/>
+            <xs:element name="mozePreciKM" type="xs:double" minOccurs="0"/>
+            <xs:element name="brSjedistaZaDjecu" type="xs:int" minOccurs="0"/>
+            <xs:element name="ocjena" type="xs:double" minOccurs="0"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="vehicleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
+                <xs:element name="cijena" type="xs:double" minOccurs="0"/>
+                <xs:element name="mozePreciKM" type="xs:double" minOccurs="0"/>
+                <xs:element name="brSjedistaZaDjecu" type="xs:int" minOccurs="0"/>
+                <xs:element name="ocjena" type="xs:double" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="vehicleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
+                <xs:element name="cijena" type="xs:double" minOccurs="0"/>
+                <xs:element name="mozePreciKM" type="xs:double" minOccurs="0"/>
+                <xs:element name="brSjedistaZaDjecu" type="xs:int" minOccurs="0"/>
+                <xs:element name="ocjena" type="xs:double" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
