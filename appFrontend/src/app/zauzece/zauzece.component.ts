@@ -1,6 +1,8 @@
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { zauzeceAutomobilaService } from '../services/zauzece.service';
+import { Vozilo } from '../components/dodajVozilo/vozilo';
+
 
 @Component({
     selector: 'app-zauzece',
@@ -10,7 +12,8 @@ import { zauzeceAutomobilaService } from '../services/zauzece.service';
   export class ZauzeceComponent implements OnInit {
 
     public vozila: [];
-    vozilo: {} = {};
+    vozilo: {};
+
 
     public datumOd: "";
     public datumDo: "";
@@ -24,9 +27,8 @@ import { zauzeceAutomobilaService } from '../services/zauzece.service';
       this.zauzeceService.getVoziloAgent().subscribe(
         data => {this.vozila = data}
       );
-    }
-
-    onClickDodaj() : void{
+    } 
+       onClickDodaj() : void{
       console.log(this.vozilo);
       let zauzece: any = {
         id: null,
@@ -44,5 +46,7 @@ import { zauzeceAutomobilaService } from '../services/zauzece.service';
         err => console.error('Niste uspjeli da dodate zauzece automobila!')
       );
     }
+
+
   }
   
