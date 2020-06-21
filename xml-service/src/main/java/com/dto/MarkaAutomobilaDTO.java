@@ -10,16 +10,14 @@ import lombok.Setter;
 @Setter
 public class MarkaAutomobilaDTO {
     private Long id;
-    private String nazivMake;
+    private String nazivMarke;
     private String model;
 
     public  MarkaAutomobilaDTO (MarkaAutomobila markaAutomobila) {
         id = markaAutomobila.getId();
-        nazivMake = markaAutomobila.getNazivMarke();
+        nazivMarke = markaAutomobila.getNazivMarke();
         model = markaAutomobila.getModel();
     }
-
-
 
     public Long getId() {
         return id;
@@ -29,12 +27,12 @@ public class MarkaAutomobilaDTO {
         this.id = id;
     }
 
-    public String getNazivMake() {
-        return nazivMake;
+    public String getNazivMarke() {
+        return nazivMarke;
     }
 
-    public void setNazivMake(String nazivMake) {
-        this.nazivMake = nazivMake;
+    public void setNazivMarke(String nazivMarke) {
+        this.nazivMarke = nazivMarke;
     }
 
     public String getModel() {

@@ -1,60 +1,71 @@
-<h1>Admin homepage!</h1>
-<button><a style="color:white;" [routerLink]="['addcar']">Dodaj vozilo </a></button>
-<button><a style="color:white;" [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </a></button> 
-<button><a style="color:white;" [routerLink]="['addklasu']">Dodaj klasu automobila </a></button> 
-<button><a style="color:white;" [routerLink]="['addtipgoriva']">Dodaj tip goriva </a></button>
-<button><a style="color:white;" [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </a></button>
+<div class="card bg-dark text-white">
+    <img src="assets/img/roza.jpg" height="1000" width="800" class="card-img">
+    <div class="card-img-overlay">
+      <br/>
+        <div class="col-md-6">
 
-<div class="container">
-    <h2 class="ui header">Lista korisnika</h2>
+        <h1 style="color: deeppink; align-content: center;">Admin homepage!</h1>
+        <div class="d-flex flex-row" >
+           
+                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addcar']">Dodaj vozilo </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a style="color: deeppink;" [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </a></button> 
+                <button type="button" class="btn btn-outline-secondary" ><a style="color: deeppink;" [routerLink]="['addklasu']">Dodaj klasu automobila </a></button> 
+                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addtipgoriva']">Dodaj tip goriva </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </a></button>
+            
+        </div>
+        <br/><br/>
+            <div class="container">
+                <h2 class="ui header" style="color: deeppink; align-content: center;" ><b>Lista korisnika</b></h2>
 
-    <table class="ui celled striped table">
-        <thead>
-            <th>Name Surname Username</th>
-            <th>Delete</th>
-            <th>Activate/Block</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let category of categories">
-                <td>{{ category.name }} {{ category.surname }} -- {{ category.username }}</td>
-                <td>
-                    <mat-icon (click)="onClickDelete(category.id)">delete_outline</mat-icon>
-                </td>
-                <td *ngIf="category.enabled">
-                    <mat-icon (click)="onClickActivate(category.id)">block</mat-icon>
-                </td>
-                <td *ngIf="!category.enabled">
-                    <mat-icon (click)="onClickActivate(category.id)">check_circle_outline</mat-icon>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                <table class="ui celled striped table">
+                    <thead>
+                        <th>Name     Surname     Username</th>
+                        <th>Delete</th>
+                        <th>Activate/Block</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of categories">
+                            <td>{{ category.name }} {{ category.surname }} -- {{ category.username }}</td>
+                            <td>
+                                <mat-icon (click)="onClickDelete(category.id)" style="color: deeppink;">delete_outline</mat-icon>
+                            </td>
+                            <td *ngIf="category.enabled">
+                                <mat-icon (click)="onClickActivate(category.id)" style="color: deeppink;">block</mat-icon>
+                            </td>
+                            <td *ngIf="!category.enabled">
+                                <mat-icon (click)="onClickActivate(category.id)" style="color: deeppink;">check_circle_outline</mat-icon>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/><br/>
+            <div class="container">
+                <h2 class="ui header" style="color: deeppink; align-content: center;" ><b>Lista komentara</b></h2>
 
-</div>
-
-<div class="container">
-    <h2 class="ui header">Lista komentara</h2>
-
-    <table class="ui celled striped table">
-        <thead>
-            <th>Vozilo id</th>
-            <th>User id</th>
-            <th>Komentar</th>
-            <th>Odobri/Blokiraj</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let komentar of komentari">
-                <td>{{ komentar.vozilo.id }}</td>
-                <td>{{ komentar.userId }}</td>
-                <td>{{ komentar.tekst }}</td>
-                <td *ngIf="komentar.odobren">
-                    <mat-icon (click)="onClickActivateComment(komentar.id)">block</mat-icon>
-                </td>
-                <td *ngIf="!komentar.odobren">
-                    <mat-icon (click)="onClickActivateComment(komentar.id)">check_circle_outline</mat-icon>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+                <table class="ui celled striped table">
+                    <thead>
+                        <th>Vozilo id</th>
+                        <th>User id</th>
+                        <th>Komentar</th>
+                        <th>Odobri/Blokiraj</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let komentar of komentari">
+                            <td>{{ komentar.vozilo.id }}</td>
+                            <td>{{ komentar.userId }}</td>
+                            <td>{{ komentar.tekst }}</td>
+                            <td *ngIf="komentar.odobren">
+                                <mat-icon (click)="onClickActivateComment(komentar.id)" style="color: deeppink;">block</mat-icon>
+                            </td>
+                            <td *ngIf="!komentar.odobren">
+                                <mat-icon (click)="onClickActivateComment(komentar.id)" style="color: deeppink;"s>check_circle_outline</mat-icon>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

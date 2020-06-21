@@ -26,7 +26,7 @@ public class MarkaAutomobila {
     private Set<Vozilo> vozila;
 
     public MarkaAutomobila(MarkaAutomobilaDTO m) {
-        this.setNazivMarke(m.getNazivMake());
+        this.setNazivMarke(m.getNazivMarke());
         this.setModel(m.getModel());
     }
 

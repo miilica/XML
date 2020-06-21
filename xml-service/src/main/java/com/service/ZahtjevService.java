@@ -4,6 +4,7 @@ import com.dto.VoziloDTO;
 import com.dto.ZahtjevDTO;
 import com.model.Vozilo;
 import com.model.Zahtjev;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface ZahtjevService {
 
     Vozilo rateVehicle(VoziloDTO voziloDTO, Double rate);
     Vozilo commentVehicle(VoziloDTO voziloDTO, String komentar);
+
+    ResponseEntity<?> findAllZahtjeve();
 }
