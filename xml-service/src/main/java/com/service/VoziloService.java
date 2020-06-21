@@ -9,6 +9,7 @@ import java.util.List;
 public interface VoziloService {
     List<Vozilo> findAll();
 
+    Vozilo findById(Long voziloId);
     List<TerminIznajmljivanja> findAllTermineIznajmljivanja();
 
     Vozilo addKmToVehicle(VoziloDTO voziloDTO, Double rate);

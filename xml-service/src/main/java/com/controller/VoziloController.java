@@ -5,6 +5,7 @@ import com.model.TerminIznajmljivanja;
 import com.dto.ZauzeceDTO;
 import com.model.Vozilo;
 import com.service.impl.VoziloServiceImpl;
+import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.nio.file.AccessDeniedException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -24,7 +26,7 @@ public class VoziloController {
 
     @PostMapping("/dodaj")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity add(@RequestBody VoziloDTO mDTO) {
+    public ResponseEntity add(@RequestBody VoziloDTO mDTO) throws Base64DecodingException, SQLException {
         voziloService.save(mDTO);
         return ResponseEntity.ok().build();
     }

@@ -29,4 +29,6 @@ public class MarkaAutomobilaService {
         List<MarkaAutomobila> result = markaAutomobilaRepository.findAll();
         return result;
     }
+
+
 }

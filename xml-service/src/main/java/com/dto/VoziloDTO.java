@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class VoziloDTO {
@@ -23,7 +25,7 @@ public class VoziloDTO {
     private Boolean imaAndroid;
     private boolean coliisionDamageWavier;
     private Agent agent;
-
+    private List<String> slike;
     //private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
     public VoziloDTO() {
@@ -152,4 +154,19 @@ public class VoziloDTO {
         this.coliisionDamageWavier = coliisionDamageWavier;
     }
 
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public List<String> getSlike() {
+        return slike;
+    }
+
+    public void setSlike(List<String> slike) {
+        this.slike = slike;
+    }
 }
