@@ -10,7 +10,7 @@ import { zauzeceAutomobilaService } from '../services/zauzece.service';
   export class ZauzeceComponent implements OnInit {
 
     public vozila: [];
-    vozilo: {};
+    vozilo: {} = {};
 
     public datumOd: "";
     public datumDo: "";
@@ -26,5 +26,23 @@ import { zauzeceAutomobilaService } from '../services/zauzece.service';
       );
     }
 
+    onClickDodaj() : void{
+      console.log(this.vozilo);
+      let zauzece: any = {
+        id: null,
+        zauzetOd: this.datumOd,
+        zauzetDo: this.datumDo,
+        voziloId: this.vozilo
+      }
+
+      this.zauzeceService.zauzeceAutomobil(zauzece).subscribe(
+        data => {console.log('Uspjesno dodato zauzece automobila!')
+          this.datumDo = "";
+          this.datumOd = "";
+          this.vozilo ={};
+      },
+        err => console.error('Niste uspjeli da dodate zauzece automobila!')
+      );
+    }
   }
   
