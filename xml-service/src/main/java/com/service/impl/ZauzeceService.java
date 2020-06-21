@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,9 +50,13 @@ public class ZauzeceService {
         Vozilo vozilo = voziloService.getVozilo(zauzeceDTO.getVoziloId());
         zauzece.setVozilo(vozilo);
 
+        List<Long> oglasi = new ArrayList<>();
+
         for(Oglas o: vozilo.getOglasi()){
-            zauzeceDTO.getOglasId().add(o.getId());
+            oglasi.add(o.getId());
         }
+
+        zauzeceDTO.setOglasId(oglasi);
 
         DateTime zauzetOd = zauzece.getZauzetOd();
         DateTime zauzetDo = zauzece.getZauzetDo();
