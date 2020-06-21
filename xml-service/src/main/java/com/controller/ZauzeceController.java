@@ -7,7 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/zauzece")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/api/zauzece")
 public class ZauzeceController {
 
     @Autowired
@@ -18,7 +19,7 @@ public class ZauzeceController {
         return this.zauzeceService.getZauzece(id);
     }
 
-    @PostMapping
+    @PostMapping(value = "/dodaj")
     public ResponseEntity<?> zauzeceAutomobila(@RequestBody ZauzeceDTO zauzeceDTO){
         return this.zauzeceService.zauzeceAutomobila(zauzeceDTO);
     }

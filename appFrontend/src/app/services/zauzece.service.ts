@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GET_ALL_VOZILO_AGENT } from '../config/api-paths';
+import { GET_ALL_VOZILO_AGENT, VOZILO_ZAUZECE_KREIRAJ_AGENT } from '../config/api-paths';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -19,4 +19,7 @@ export class zauzeceAutomobilaService {
         return this.http.get(GET_ALL_VOZILO_AGENT);
     }
 
+    zauzeceAutomobil(zauzece: any): Observable<any> {
+        return this.http.post(VOZILO_ZAUZECE_KREIRAJ_AGENT, zauzece);
+    }
 }
