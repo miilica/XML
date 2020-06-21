@@ -1,6 +1,7 @@
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH } from 'src/app/config/router-paths';
+import { PORUKE_HOME_PAGE } from 'src/app/config/api-paths';
 
 @Component({
     selector: 'app-agent-homepage',
@@ -15,10 +16,9 @@ import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_V
 
     }
 
-    onClickPoruka(): void {
-      
-  }
-
+    onClickPoruke() : void{
+      this.router.navigate([PORUKE_HOME_PAGE]);
+    }
 
     onClickZahtjevi(): void {
         this.router.navigate([ZAHTJEVI_ZA_VOZILA_AGENT_PATH]);

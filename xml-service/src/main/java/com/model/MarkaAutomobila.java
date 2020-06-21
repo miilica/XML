@@ -1,6 +1,7 @@
 package com.model;
 
 import com.dto.MarkaAutomobilaDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class MarkaAutomobila {
     @Column
     private String model;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "markaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 

@@ -3,6 +3,8 @@ import { AdsService } from 'src/app/services/ads.service';
 import { ToastrService } from 'ngx-toastr';
 import VehicleDTO from 'src/app/components/models/vehicle-dto.model';
 import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
+import { Router } from '@angular/router';
+import { PORUKE_HOME_PAGE } from 'src/app/config/api-paths';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -15,7 +17,8 @@ export class VehicleListComponent implements OnInit {
   vozila = [];
 
   constructor(private adsService: AdsService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService, 
+              private router: Router) { }
 
   ngOnInit() {
     this.getAllAds();
@@ -43,5 +46,9 @@ export class VehicleListComponent implements OnInit {
     }, error => {
       this.toastr.error(error.error.message);
     });
+  }
+
+  onClickPoruke() : void{
+    this.router.navigate([PORUKE_HOME_PAGE]);
   }
 }
