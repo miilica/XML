@@ -37,11 +37,7 @@ public class TerminIznajmljivanja {
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
     })
     private DateTime dateTo;
-    @Column
-    private Date odKad;
 
-    @Column
-    private Date doKad;
 
     //koji user iznajmljuje
     @Column
@@ -85,4 +81,6 @@ public class TerminIznajmljivanja {
     public void setVozilo(Vozilo vozilo) {
         this.vozilo = vozilo;
     }
+
+
 }

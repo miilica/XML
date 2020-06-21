@@ -134,7 +134,7 @@ public class VoziloServiceImpl implements VoziloService {
 
         for(TerminIznajmljivanja ti : all) {
             if(ti.getVozilo().getAgent().getId() == u.getId()) {
-                if(ti.getDoKad().before(currentUtilDate)) {
+                if(ti.getDateFrom().isBeforeNow()) {
                     result.add(ti);
                 }
             }
@@ -144,11 +144,13 @@ public class VoziloServiceImpl implements VoziloService {
     }
 
     @Override
-    public Vozilo addKmToVehicle(VoziloDTO voziloDTO, Double predjeniKM){
+    public Vozilo addKmToVehicle(VoziloDTO voziloDTO, Double predjeniKM) {
         Vozilo vozilo = voziloRepository.findById(voziloDTO.getId()).orElseGet(null);
         Double km = vozilo.getKilometraza() + predjeniKM;
         vozilo.setKilometraza(km);
         vozilo = voziloRepository.save(vozilo);
+        return vozilo;
+    }
 
     public Vozilo getVozilo(Long id){
         Vozilo vozilo = voziloRepository.getOne(id);

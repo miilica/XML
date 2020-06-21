@@ -5,6 +5,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Blob;
 
+@Entity
 public class Slika {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
