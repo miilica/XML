@@ -9,8 +9,8 @@ import { Vozilo } from './vozilo';
     providedIn: 'root'
 })
 export class DodajVoziloService{
-    _url = 'http://localhost:8089/api/vozilo/dodaj';
-    _url2 = 'http://localhost:8089/api/vozilo/get';
+    _url = 'http://localhost:8099/api/vozilo/dodaj';
+    _url2 = 'http://localhost:8099/api/vozilo/get';
    
 
     constructor(private _http: HttpClient) { }
