@@ -27,7 +27,7 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
         this.adsService.getAllZahtjevi().subscribe(data => {
           this.zahtjevi = data;
           for(let z of this.zahtjevi) {
-            if(z.vozilo == null) {
+            if(z.bundle == true) {
               this.bundleZahtjevi.push(z);
             } else {
               this.pojedinacniZahtjevi.push(z);

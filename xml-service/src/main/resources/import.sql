@@ -51,7 +51,6 @@ INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id)
 INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id) VALUES (2, '2020-05-05 21:58:58', '2020-05-17 21:58:58', 1, 2);
 INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id) VALUES (3, '2020-06-20 21:58:58', '2020-06-24 21:58:58', 1, 3);
 
-
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, true, 'Novi Sad', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
@@ -59,10 +58,6 @@ INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, fa
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (1, '2020-06-20', '2020-06-28', 1);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (2, '2020-06-15', '2020-06-28', 2);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (3, '2020-06-18', '2020-07-08', 3);
-
-insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 2);
-insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 2);
-insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 1);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (4, '2020-06-21', '2020-06-28', 4);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (5, '2020-05-15', '2020-06-28', 5);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-15', '2020-07-28', 6);
@@ -70,3 +65,17 @@ insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-
 INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Hi', '2020-06-17T10:00', 1, 6, 1);
 INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Hey', '2020-06-17T10:00', 6, 1, 1);
 
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (1, true, 'Vrh auto', 6, 1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, true, 'Udobno', 2, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, true, 'Svidja mi se', 3, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, true, 'Super', 2, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, true, 'Predobro auto', 2, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (6, true, 'Moze bolje', 2, 1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (7, true, 'NiĐe veze', 3, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (8, true, 'Malo troši', 3, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (9, true, 'Top top top', 3, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (10, true, 'Okej je', 3,4);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (11, true, 'Nije nesto', 2, 4);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (12, true, 'Nisam zadovoljan', 2, 4);
+
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-18 21:58:58', 'STATUS_PENDING');

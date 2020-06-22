@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8089';
+const BASE_URL = 'http://localhost:8099';
 
 // Auth
 export const LOGIN_URL = `${BASE_URL}/auth/login`;
@@ -41,3 +41,5 @@ export const USER_COMMENT_VEHICLE_URL = `${BASE_URL}/api/zahtjev/commentVehicle`
 //zauzece
 export const GET_ALL_VOZILO_AGENT = `${BASE_URL}/api/vozilo/getVozilaAgent`;
 export const VOZILO_ZAUZECE_KREIRAJ_AGENT = `${BASE_URL}/api/zauzece/dodaj`;
+
+

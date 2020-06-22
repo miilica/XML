@@ -40,6 +40,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
+import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ZauzeceComponent } from './zauzece/zauzece.component';
     AgentZahtjevi,
     OceniKomentarisiComponent,
     AgentTermini,
-    ZauzeceComponent
+    ZauzeceComponent,
+    KomentarAgentComponent
   ],
   imports: [
     BrowserModule,
