@@ -12,7 +12,7 @@ import { Poruka } from './poruka';
 })
 export class PorukeService{
     _url = 'http://localhost:8099/api/poruke';
-    _url2 = 'http://localhost:8099/api/poruke/';
+    _url2 = 'http://localhost:8099/api/poruke/{posiljalacId}/{primalacId}/{oglasId}';
    
 
     constructor(private _http: HttpClient) { }

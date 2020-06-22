@@ -41,6 +41,7 @@ import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKo
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
 import { PorukaComponent } from './poruka/poruka.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
+import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { ZauzeceComponent } from './zauzece/zauzece.component';
     OceniKomentarisiComponent,
     AgentTermini,
     PorukaComponent,
-    ZauzeceComponent
+    ZauzeceComponent,
+    ListaPorukaComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { Oglas } from '../components/dodajVozilo/Oglas';
 export class PorukaComponent implements OnInit {
   po =  new Poruka(null,null,null, null,null,null);
   oglasi : Oglas[];
- public posilj ;
+  public posilj ;
 
 
   constructor(private porukaServis: PorukeService, private dodajVoziloServis : DodajVoziloService) { }
