@@ -4,6 +4,8 @@ import com.model.Authority;
 import com.repository.AuthorityRepository;
 import com.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class AuthorityServiceImpl implements AuthorityService {
     Authority auth = this.authorityRepository.getOne(id);
     List<Authority> auths = new ArrayList<>();
     auths.add(auth);
+
     return auths;
   }
 

@@ -48,8 +48,13 @@ public class UserController {
 		return this.userService.findById(userId);
 	}
 
+	@GetMapping("/getLoggedIn")
+	public User getLoggedIn() {
+		return this.userService.getLoogedIn();
+	}
+
 	@GetMapping("/user/all")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<User> loadAll() {
 		return this.userService.findAll();
 	}
