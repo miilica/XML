@@ -20,16 +20,14 @@
     <div>
       <label  class="col-form-label" for="inputDefault">Posiljalac</label>
       <select class="form-control" id="mjenj"  [(ngModel)]="po.posiljalacId" name="tipMjenjaca" >
-        <option >6</option>
-     <!----   <option *ngFor = 'let c of mjenjac' name="m" [ngValue]="c">{{c.naziv}}</option>-->
+        <option [ngValue]="posilj.id" selected = "selected" >{{posilj.name}}</option>
       </select>
     </div>
     
     <div>
       <label  class="col-form-label" for="inputDefault">Primalac</label>
       <select class="form-control" id="klasa"  [(ngModel)]="po.primalacId" name="klasa" >
-        <option>1</option>
-        <!----  <option *ngFor = 'let c of korisnici' name="klasa" [ngValue]="c.id">{{c.ime}}</option>-->
+       <option *ngFor = 'let c of useri' name="klasa" [ngValue]="c.id">{{c.name}} {{c.surname}}</option>
       </select>
     </div>
 
