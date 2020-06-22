@@ -1,5 +1,6 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class KlasaAutomobila {
     @Column
     private String naziv;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "klasaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozilo;
 

@@ -1,6 +1,7 @@
 package com.model;
 
 import com.dto.TipMjenjacaDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,6 +17,7 @@ public class TipMjenjaca {
         @Column
         private String naziv;
 
+        @JsonIgnore
     @OneToMany(mappedBy = "tipMjenjaca", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 

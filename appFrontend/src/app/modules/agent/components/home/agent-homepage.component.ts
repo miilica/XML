@@ -1,7 +1,7 @@
 import { OnInit, Component } from '@angular/core';
-import { ZAHTJEVI_ZA_VOZILA_URL } from 'src/app/config/api-paths';
 import { Router } from '@angular/router';
-import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH } from 'src/app/config/router-paths';
+import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH } from 'src/app/config/router-paths';
+import { PORUKE_HOME_PAGE } from 'src/app/config/api-paths';
 
 @Component({
     selector: 'app-agent-homepage',
@@ -16,13 +16,21 @@ import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PAT
 
     }
 
+    onClickPoruke() : void{
+      this.router.navigate([PORUKE_HOME_PAGE]);
+    }
+
     onClickZahtjevi(): void {
         this.router.navigate([ZAHTJEVI_ZA_VOZILA_AGENT_PATH]);
     }
 
+    onClickZauzece() : void{
+      this.router.navigate([AGENT_ZAUZECE]);
+    }
     onClickTermini(): void {
       this.router.navigate([TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH]);
   }
+
 
   }
   

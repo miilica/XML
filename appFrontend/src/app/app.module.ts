@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router'
+import {RouterModule} from '@angular/router';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,8 @@ import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-za
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
+import { PorukaComponent } from './poruka/poruka.component';
+import { ZauzeceComponent } from './zauzece/zauzece.component';
 
 
 @NgModule({
@@ -60,6 +63,8 @@ import { AgentTermini } from './modules/agent/components/listaTermina/agent-term
     AgentZahtjevi,
     OceniKomentarisiComponent,
     AgentTermini,
+    PorukaComponent,
+    ZauzeceComponent
   ],
   imports: [
     BrowserModule,
