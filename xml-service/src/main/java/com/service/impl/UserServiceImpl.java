@@ -15,6 +15,9 @@ import com.service.AuthorityService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -50,6 +53,21 @@ public class UserServiceImpl implements UserService {
 	public User findByUsername(String username) throws UsernameNotFoundException {
 		User u = userRepository.findByUsername(username);
 		return u;
+	}
+
+
+
+	public User getLoogedIn() throws AccessDeniedException {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+		if (principal instanceof UserDetails) {
+			 username = ((UserDetails)principal).getUsername();
+		} else {
+			 username = principal.toString();
+		}
+		System.out.println(username+"userko");
+
+		return  findByUsername(username);
 	}
 
 	public User findById(Long id) throws AccessDeniedException {
