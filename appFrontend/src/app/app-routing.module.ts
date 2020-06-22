@@ -20,6 +20,7 @@ import { AgentTermini } from './modules/agent/components/listaTermina/agent-term
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { PorukaComponent } from './poruka/poruka.component';
 import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
+import { Poruka } from './poruka/poruka';
 
 const routes: Routes = [
   {
@@ -70,6 +71,7 @@ const routes: Routes = [
   { path: 'zauzece', component: ZauzeceComponent},
   { path: 'agent/poruke', component: PorukaComponent},
   { path: 'agent/listaporuka', component: ListaPorukaComponent},
+  { path: 'agent/listaporuka/poruke', component: PorukaComponent},
   //{ path: 'zauzece', component: ZauzeceComponent},
 
 ];
