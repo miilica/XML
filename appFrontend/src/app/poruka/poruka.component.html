@@ -1,0 +1,51 @@
+
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Posalji poruku:</legend>
+
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Sadrzaj poruke:</label>
+      <input type="text"  class="form-control" id="brsj" name="brsj" [(ngModel)]="po.sadrzaj"/>
+    </div>
+     
+    <div>
+        <label  class="col-form-label" for="inputDefault">Vrijeme:</label>
+        <input type="date"  class="form-control" id="brssj" name="brsj" [(ngModel)]="po.datum" value='2020-06-23'/>
+      </div>
+    
+    
+ 
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Posiljalac</label>
+      <select class="form-control" id="mjenj"  [(ngModel)]="po.posiljalacId" name="tipMjenjaca" >
+        <option >6</option>
+     <!----   <option *ngFor = 'let c of mjenjac' name="m" [ngValue]="c">{{c.naziv}}</option>-->
+      </select>
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Primalac</label>
+      <select class="form-control" id="klasa"  [(ngModel)]="po.primalacId" name="klasa" >
+        <option>1</option>
+        <!----  <option *ngFor = 'let c of korisnici' name="klasa" [ngValue]="c.id">{{c.ime}}</option>-->
+      </select>
+    </div>
+
+    <div>
+        <label  class="col-form-label" for="inputDefault">Oglas</label>
+        <select class="form-control" id="klassa"  [(ngModel)]="po.oglasId" name="klasa" >
+          <option *ngFor = 'let c of oglasi' name="klasa" [ngValue]="c.id">{{c.id}}</option>
+        </select>
+      </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</fieldset>       
+</form>
+
+
+
+

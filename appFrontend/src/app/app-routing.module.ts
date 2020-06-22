@@ -18,6 +18,7 @@ import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-za
 import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
+import { PorukaComponent } from './poruka/poruka.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,8 @@ const routes: Routes = [
   { path: 'admin/addtipgoriva', component: AddTipGoriva },
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
   { path: 'zauzece', component: ZauzeceComponent},
+  { path: 'agent/poruke', component: PorukaComponent},
+  //{ path: 'zauzece', component: ZauzeceComponent},
 
 ];
 

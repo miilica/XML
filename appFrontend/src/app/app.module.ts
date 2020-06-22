@@ -39,6 +39,7 @@ import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-za
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
+import { PorukaComponent } from './poruka/poruka.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 
 
@@ -62,6 +63,7 @@ import { ZauzeceComponent } from './zauzece/zauzece.component';
     AgentZahtjevi,
     OceniKomentarisiComponent,
     AgentTermini,
+    PorukaComponent,
     ZauzeceComponent
   ],
   imports: [

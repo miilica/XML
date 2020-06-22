@@ -30,4 +30,8 @@ public class MarkaAutomobilaController {
     public List<MarkaAutomobila> loadAll() {
         return this.markaAutomobilaService.findAll();
     }
+
+
+
+
 }

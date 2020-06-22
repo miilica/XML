@@ -19,7 +19,6 @@ public class TipMjenjacaService {
         return u;
     }
 
-
     public TipMjenjaca save(TipMjenjacaDTO mDTO) {
         TipMjenjaca m = new TipMjenjaca();
         m.setNaziv(mDTO.getNaziv());

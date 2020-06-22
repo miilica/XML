@@ -1,5 +1,6 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +44,7 @@ public class TerminIznajmljivanja {
     @Column
     private Long userId;
 
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
