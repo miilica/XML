@@ -37,4 +37,6 @@ public class Poruka {
     @Column
     private Long oglasId;
 
+
+
 }

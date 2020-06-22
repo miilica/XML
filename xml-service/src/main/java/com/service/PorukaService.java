@@ -14,4 +14,6 @@ public interface PorukaService {
     void  posaljiPoruku(PorukaDTO porukaDTO);
 
     List<PorukaDTO> get(Long posiljalacId, Long primalacId, Long oglasId);
+
+    List<PorukaDTO> getMojePoruke(Long id);
 }

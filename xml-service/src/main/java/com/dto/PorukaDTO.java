@@ -1,5 +1,6 @@
 package com.dto;
 
+import com.model.Poruka;
 import lombok.*;
 
 import java.util.Date;
@@ -21,4 +22,14 @@ public class PorukaDTO {
     private Long primalacId;
 
     private Long oglasId;
+
+    public PorukaDTO(Poruka p){
+        this.id = p.getId();
+        this.sadrzaj = p.getSadrzaj();
+        this.datum = p.getDatum();
+        this.oglasId = p.getOglasId();
+        this.posiljalacId = p.getPosiljalacId();
+        this.primalacId = p.getPrimalacId();
+
+    }
 }

@@ -19,6 +19,8 @@ import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKo
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { PorukaComponent } from './poruka/poruka.component';
+import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
+import { Poruka } from './poruka/poruka';
 
 const routes: Routes = [
   {
@@ -68,6 +70,8 @@ const routes: Routes = [
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
   { path: 'zauzece', component: ZauzeceComponent},
   { path: 'agent/poruke', component: PorukaComponent},
+  { path: 'agent/listaporuka', component: ListaPorukaComponent},
+  { path: 'agent/listaporuka/poruke', component: PorukaComponent},
   //{ path: 'zauzece', component: ZauzeceComponent},
 
 ];
