@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { DodajMarkuAutomobilaService } from 'src/app/components/dodajMarkaAutomobila/dodajMarkuAutomobila.service';
+import { DodajKlasuAutomobilaService } from 'src/app/components/dodajKlasaAutomobila/dodajKlasuAutomobila.service';
+import { TipGorivaService } from 'src/app/components/tipGoriva/tipGoriva.service';
+import { TipMjenjacaService } from 'src/app/components/tipMjenjaca/tipMjenjaca.service';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +15,54 @@ export class AdminHomeComponent implements OnInit {
 
   categories = [];
   komentari = [];
+  marke = [];
+  goriva = [];
+  klase = [];
+  menjaci = [];
   categoryName: string = '';
 
-  constructor(private usersService: UserService,
-              private toastr: ToastrService) { }
+  constructor(private usersService: UserService, private dodajMarkuAutomobilaService: DodajMarkuAutomobilaService,
+              private tipMenjacaService : TipMjenjacaService,private tipGorivaService : TipGorivaService,private dodajKlasuAutomobilaService : DodajKlasuAutomobilaService ,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getAll();
     this.getComments();
+    this.getAllMarkaAutomobila();
+    this.getAllKlase();
+    this.getAllTipGoriva();
+    this.getAllTipMenjaca();
+  }
+
+  private getAllMarkaAutomobila(): void{
+    this.dodajMarkuAutomobilaService.getMarke().subscribe(data => {
+      this.marke = data;
+    },error => {
+      this.toastr.error('Greska prilikom dobavljanja marki automobila');
+    });
+  }
+
+  private getAllKlase(): void{
+    this.dodajKlasuAutomobilaService.getKlase().subscribe(data => {
+      this.klase = data;
+    },error => {
+      this.toastr.error('Greska prilikom dobavljanja klasi automobila');
+    });
+  }
+
+  private getAllTipGoriva(): void{
+    this.tipGorivaService.getTipoveGoriva().subscribe(data => {
+      this.goriva = data;
+    },error => {
+      this.toastr.error('Greska prilikom dobavljanja tipova goriva');
+    });
+  }
+
+  private getAllTipMenjaca(): void{
+    this.tipMenjacaService.getTipoveMjenjaca().subscribe(data => {
+      this.menjaci = data;
+    },error => {
+      this.toastr.error('Greska prilikom dobavljanja tipova menjaca');
+    });
   }
 
   private getAll(): void {

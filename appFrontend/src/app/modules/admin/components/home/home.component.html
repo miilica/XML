@@ -1,48 +1,43 @@
-<div class="card bg-dark text-white">
-    <img src="assets/img/roza.jpg" height="1000" width="800" class="card-img">
-    <div class="card-img-overlay">
-      <br/>
-        <div class="col-md-6">
+<h1 >Admin homepage!</h1>
 
-        <h1 style="color: deeppink; align-content: center;">Admin homepage!</h1>
-        <div class="d-flex flex-row" >
-           
-                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addcar']">Dodaj vozilo </a></button>
-                <button type="button" class="btn btn-outline-secondary" ><a style="color: deeppink;" [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </a></button> 
-                <button type="button" class="btn btn-outline-secondary" ><a style="color: deeppink;" [routerLink]="['addklasu']">Dodaj klasu automobila </a></button> 
-                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addtipgoriva']">Dodaj tip goriva </a></button>
-                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </a></button>
-            
-        </div>
-        <br/><br/>
-            <div class="container">
-                <h2 class="ui header" style="color: deeppink; align-content: center;" ><b>Lista korisnika</b></h2>
+                <button mat-raised-button color="accent"  [routerLink]="['addcar']">Dodaj vozilo </button>
+                <button mat-raised-button color="accent" [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </button> 
+                <button mat-raised-button color="accent" [routerLink]="['addklasu']">Dodaj klasu automobila </button> 
+                <button mat-raised-button color="accent" [routerLink]="['addtipgoriva']">Dodaj tip goriva </button>
+                <button mat-raised-button color="accent" [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </button>
+
+
+<h2>Lista korisnika</h2>
 
                 <table class="ui celled striped table">
                     <thead>
-                        <th>Name     Surname     Username</th>
+                        <th>Name </th>
+                        <th>Surname </th> 
+                        <th>Username</th>
                         <th>Delete</th>
                         <th>Activate/Block</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let category of categories">
-                            <td>{{ category.name }} {{ category.surname }} -- {{ category.username }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>{{category.surname }}</td>
+                            <td>{{ category.username }}</td>
                             <td>
-                                <mat-icon (click)="onClickDelete(category.id)" style="color: deeppink;">delete_outline</mat-icon>
+                                <mat-icon (click)="onClickDelete(category.id)" >delete_outline</mat-icon>
                             </td>
                             <td *ngIf="category.enabled">
-                                <mat-icon (click)="onClickActivate(category.id)" style="color: deeppink;">block</mat-icon>
+                                <mat-icon (click)="onClickActivate(category.id)" >block</mat-icon>
                             </td>
                             <td *ngIf="!category.enabled">
-                                <mat-icon (click)="onClickActivate(category.id)" style="color: deeppink;">check_circle_outline</mat-icon>
+                                <mat-icon (click)="onClickActivate(category.id)" >check_circle_outline</mat-icon>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            
             <br/><br/>
-            <div class="container">
-                <h2 class="ui header" style="color: deeppink; align-content: center;" ><b>Lista komentara</b></h2>
+
+                <h2>Lista komentara</h2>
 
                 <table class="ui celled striped table">
                     <thead>
@@ -57,15 +52,90 @@
                             <td>{{ komentar.userId }}</td>
                             <td>{{ komentar.tekst }}</td>
                             <td *ngIf="komentar.odobren">
-                                <mat-icon (click)="onClickActivateComment(komentar.id)" style="color: deeppink;">block</mat-icon>
+                                <mat-icon (click)="onClickActivateComment(komentar.id)" >block</mat-icon>
                             </td>
                             <td *ngIf="!komentar.odobren">
-                                <mat-icon (click)="onClickActivateComment(komentar.id)" style="color: deeppink;"s>check_circle_outline</mat-icon>
+                                <mat-icon (click)="onClickActivateComment(komentar.id)" >check_circle_outline</mat-icon>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-</div>
+<br/>
+<h2>Lista marki automobila</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv marke</th>
+      <th>Model</th>
+      <th>Izmeni</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let marka of marke">
+            <td>
+                {{marka.nazivMarke}}
+            </td>
+            <td>
+                {{marka.model}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" [routerLink]="['izmeni']"> Izmeni </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br/>
+<h2>Lista klasa</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv klase</th>
+      <th>Izmeni</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let klasa of klase">
+            <td>
+                {{klasa.naziv}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" [routerLink]="['izmeni']"> Izmeni </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br/>
+<h2>Lista tipa goriva</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv tipa goriva</th>
+      <th>Izmeni</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let gorivo of goriva">
+            <td>
+                {{gorivo.naziv}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" [routerLink]="['izmeni']"> Izmeni </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br/>
+<h2>Lista tipa menjaca</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv tipa menjaca</th>
+      <th>Izmeni</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menjac of menjaci">
+            <td>
+                {{menjac.naziv}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" [routerLink]="['izmeni']"> Izmeni </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
