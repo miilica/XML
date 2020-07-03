@@ -89,6 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/auth/**").permitAll()
 				.antMatchers("/zauzece/**").permitAll()
 				.antMatchers("/api/poruke/**").permitAll()
+				.antMatchers("/api/users/getLoggedIn").permitAll()
 				// All other requests must be authorized
 				.anyRequest().authenticated().and()
 

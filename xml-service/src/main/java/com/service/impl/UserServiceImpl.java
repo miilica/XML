@@ -58,16 +58,28 @@ public class UserServiceImpl implements UserService {
 
 
 	public User getLoogedIn() throws AccessDeniedException {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String username;
-		if (principal instanceof UserDetails) {
-			 username = ((UserDetails)principal).getUsername();
-		} else {
-			 username = principal.toString();
-		}
-		System.out.println(username+"userko");
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		String username;
+//		if (principal instanceof UserDetails) {
+//			 username = ((UserDetails)principal).getUsername();
+//		} else {
+//			 username = principal.toString();
+//		}
+//		System.out.println(username+"userko");
+//
+//		return  findByUsername(username);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Object currentUser = auth.getPrincipal();
 
-		return  findByUsername(username);
+		String username = "";
+		if(currentUser instanceof UserDetails){
+			username = ((UserDetails)currentUser).getUsername();
+		}else{
+			username = currentUser.toString();
+		}
+		System.out.println(username);
+		User u = userRepository.findByUsername(username);
+		return u;
 	}
 
 	public User findById(Long id) throws AccessDeniedException {
