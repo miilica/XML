@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Vozilo } from './vozilo';
-import { Oglas } from './Oglas';
+import { Oglas } from '../dodajOglas/Oglas';
+
 
 
 

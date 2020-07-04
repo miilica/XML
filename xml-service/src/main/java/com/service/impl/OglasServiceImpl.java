@@ -6,6 +6,7 @@ import com.model.User;
 import com.model.Vozilo;
 import com.repository.OglasRepository;
 import com.service.OglasService;
+import com.service.UserService;
 import com.service.VoziloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ public class OglasServiceImpl implements OglasService {
 
     @Autowired
     private VoziloService voziloService;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public Oglas findById(Long id) {
@@ -43,7 +47,7 @@ public class OglasServiceImpl implements OglasService {
     public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
         Vozilo vozilo = this.voziloService.findById(oglasDTO.getVozilo().getId());
         //PriceList priceList = this.priceListService.getPriceListById(adDTO.getPriceListId());
-        //User user = vozilo.get(); vozilo nema vlasnika
+        User user = userService.findById(oglasDTO.getUserId());
 
         Oglas oglas = new Oglas();
         oglas.setVozilo(vozilo);
@@ -51,7 +55,7 @@ public class OglasServiceImpl implements OglasService {
         oglas.setFromDate(oglasDTO.getFromDate());
         oglas.setToDate(oglasDTO.getToDate());
         oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
-        //oglas.setUser(adDTO.getToDate());
+        oglas.setUser(user);
         //ad.setPriceList(priceList);
 
 

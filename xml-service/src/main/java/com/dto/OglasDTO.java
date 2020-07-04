@@ -9,7 +9,7 @@ import lombok.Setter;
 import lombok.*;
 import org.joda.time.DateTime;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -21,7 +21,7 @@ public class OglasDTO {
     private String mestoPreuzimanja;
     private DateTime fromDate;
     private DateTime toDate;
-    private UserDTO user;
+    private Long userId;
     private Long cjenovnikID;
 
     public OglasDTO() {
@@ -75,12 +75,12 @@ public class OglasDTO {
         this.toDate = toDate;
     }
 
-    public UserDTO getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(UserDTO user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getCjenovnikID() {

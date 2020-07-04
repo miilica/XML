@@ -25,7 +25,7 @@ public class OglasController {
         return this.oglasService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/dodaj")
     public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
         return this.oglasService.noviOglas(oglasDTO);
     }

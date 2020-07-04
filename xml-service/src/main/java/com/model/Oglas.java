@@ -16,7 +16,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "oglasi")
 public class Oglas {
@@ -54,8 +53,8 @@ public class Oglas {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cjenovnik cjenovnik;
+  //  @ManyToOne(fetch = FetchType.LAZY)
+  //  private Cjenovnik cjenovnik;
 
     @OneToMany(mappedBy = "oglas", fetch = FetchType.LAZY)
     private Set<Zahtjev> zahtjevp;
@@ -126,13 +125,7 @@ public class Oglas {
         this.user = user;
     }
 
-    public Cjenovnik getCjenovnik() {
-        return cjenovnik;
-    }
 
-    public void setCjenovnik(Cjenovnik cjenovnik) {
-        this.cjenovnik = cjenovnik;
-    }
 
     public Set<Zahtjev> getZahtjevp() {
         return zahtjevp;

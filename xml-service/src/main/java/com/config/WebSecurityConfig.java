@@ -89,8 +89,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/auth/**").permitAll()
 				.antMatchers("/zauzece/**").permitAll()
 				.antMatchers("/api/poruke/**").permitAll()
+				.antMatchers("/api/vozilo/get/**").permitAll()
 				// All other requests must be authorized
 				.anyRequest().authenticated().and()
+
 
 				// Intercept every request with filter
 				.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService), BasicAuthenticationFilter.class);

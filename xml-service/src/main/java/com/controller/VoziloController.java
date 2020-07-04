@@ -32,7 +32,6 @@ public class VoziloController {
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    @PreAuthorize("hasRole('ADMIN')")
     public List<Vozilo> loadAll() {
         return this.voziloService.findAll();
     }
