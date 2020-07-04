@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,5 +38,12 @@ public class TipMjenjacaService {
         tipMenjaca.setNaziv(tipMjenjacaDTO.getNaziv());
         this.tipMjenjacaRepository.save(tipMenjaca);
         return tipMenjaca;
+    }
+
+    public String delete (TipMjenjacaDTO tipMjenjacaDTO){
+        TipMjenjaca tipMjenjaca = this.findById(tipMjenjacaDTO.getId());
+        tipMjenjaca.setNijeObrisan(false);
+        this.tipMjenjacaRepository.save(tipMjenjaca);
+        return "Obrisan tip menjaca";
     }
 }

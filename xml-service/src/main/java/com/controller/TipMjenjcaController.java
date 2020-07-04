@@ -36,4 +36,10 @@ public class TipMjenjcaController {
     public ResponseEntity<TipMjenjaca> edit(@RequestBody TipMjenjacaDTO tipMjenjacaDTO){
         return new ResponseEntity<>(this.tipMjenjacaService.edit(tipMjenjacaDTO), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> delete(@RequestBody TipMjenjacaDTO tipMjenjacaDTO){
+        return new ResponseEntity<>(this.tipMjenjacaService.delete(tipMjenjacaDTO),HttpStatus.OK);
+    }
 }
