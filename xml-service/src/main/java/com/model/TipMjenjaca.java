@@ -56,11 +56,11 @@ public class TipMjenjaca {
         this.naziv = naziv;
     }
 
-    public Boolean getNijeObrisan() {
-        return nijeObrisan;
+    public Boolean getObrisan() {
+        return obrisan;
     }
 
-    public void setNijeObrisan(Boolean nijeObrisan) {
-        this.nijeObrisan = nijeObrisan;
+    public void setObrisan(Boolean nijeObrisan) {
+        this.obrisan = nijeObrisan;
     }
 }
