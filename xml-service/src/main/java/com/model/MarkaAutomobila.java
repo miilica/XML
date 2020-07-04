@@ -24,6 +24,9 @@ public class MarkaAutomobila {
     @Column
     private String model;
 
+    @Column
+    private Boolean obrisan;
+
     @JsonIgnore
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OneToMany(mappedBy = "markaAutomobila", fetch = FetchType.LAZY)
