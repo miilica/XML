@@ -37,4 +37,10 @@ public class VrstaGorivaController {
     public ResponseEntity<TipGoriva> edit(@RequestBody VrstaGorivaDTO vrstaGorivaDTO){
         return new ResponseEntity<>(this.vrstaGorivaService.edit(vrstaGorivaDTO), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> delete(@RequestBody VrstaGorivaDTO vrstaGorivaDTO){
+        return new ResponseEntity<>(this.vrstaGorivaService.delete(vrstaGorivaDTO), HttpStatus.OK);
+    }
 }

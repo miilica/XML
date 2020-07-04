@@ -39,4 +39,11 @@ public class VrstaGorivaService {
         this.vrstaGorivaRepository.save(tipGoriva);
         return tipGoriva;
     }
+
+    public String delete(VrstaGorivaDTO vrstaGorivaDTO){
+            TipGoriva tipGoriva = this.findById(vrstaGorivaDTO.getId());
+            tipGoriva.setNijeObrisan(false);
+            this.vrstaGorivaRepository.save(tipGoriva);
+            return "Obrisan tip goriva";
+    }
 }
