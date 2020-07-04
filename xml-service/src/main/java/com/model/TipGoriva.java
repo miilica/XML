@@ -23,7 +23,7 @@ public class TipGoriva {
     private String naziv;
 
     @Column
-    private Boolean nijeObrisan;
+    private Boolean obrisan;
 
     @JsonIgnore
     @OneToMany(mappedBy = "tipGoriva", fetch = FetchType.LAZY)

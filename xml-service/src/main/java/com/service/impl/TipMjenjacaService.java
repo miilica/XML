@@ -42,7 +42,7 @@ public class TipMjenjacaService {
 
     public String delete (TipMjenjacaDTO tipMjenjacaDTO){
         TipMjenjaca tipMjenjaca = this.findById(tipMjenjacaDTO.getId());
-        tipMjenjaca.setNijeObrisan(false);
+        tipMjenjaca.setObrisan(true);
         this.tipMjenjacaRepository.save(tipMjenjaca);
         return "Obrisan tip menjaca";
     }

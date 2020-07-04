@@ -24,7 +24,7 @@ public class TipMjenjaca {
         private String naziv;
 
         @Column
-        private Boolean nijeObrisan;
+        private Boolean obrisan;
 
         @JsonIgnore
     @OneToMany(mappedBy = "tipMjenjaca", fetch = FetchType.LAZY)

@@ -39,4 +39,10 @@ public class KlasaAutomobilaController {
     public ResponseEntity<KlasaAutomobila> edit(@RequestBody KlasaAutomobilaDTO klasaAutomobilaDTO){
         return new ResponseEntity<>(this.klasaAutomobilaService.edit(klasaAutomobilaDTO), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> delete(@RequestBody KlasaAutomobilaDTO klasaAutomobilaDTO){
+        return new ResponseEntity<>(this.klasaAutomobilaService.delete(klasaAutomobilaDTO), HttpStatus.OK);
+    }
 }

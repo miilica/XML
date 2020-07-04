@@ -24,6 +24,9 @@ public class KlasaAutomobila {
     @Column
     private String naziv;
 
+    @Column
+    private Boolean obrisan;
+
     @JsonIgnore
     @OneToMany(mappedBy = "klasaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozilo;

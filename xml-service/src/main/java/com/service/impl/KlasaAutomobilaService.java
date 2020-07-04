@@ -40,4 +40,11 @@ public class KlasaAutomobilaService {
         this.klasaAutoRepository.save(klasaAutomobila);
         return klasaAutomobila;
     }
+
+    public String delete(KlasaAutomobilaDTO klasaAutomobilaDTO){
+        KlasaAutomobila klasaAutomobila = this.findById(klasaAutomobilaDTO.getID());
+        klasaAutomobila.setObrisan(true);
+        this.klasaAutoRepository.save(klasaAutomobila);
+        return "Obrisana klasa automobila";
+    }
 }
