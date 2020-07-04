@@ -10,6 +10,7 @@ import { TipGoriva } from './tipGoriva';
 export class TipGorivaService{
     _url = 'http://localhost:8099/api/tipgoriva/dodaj';
     _url2 = 'http://localhost:8099/api/tipgoriva/get';
+    _url3 = 'http://localhost:8099/api/tipgoriva/edit';
    
 
     constructor(private _http: HttpClient) { }
@@ -21,5 +22,9 @@ export class TipGorivaService{
     
     getTipoveGoriva():Observable<any>{
         return this._http.get<TipGoriva[]>(this._url2);
+    }
+
+    editTipGoriva(gorivo: TipGoriva){
+        return this._http.put<TipGoriva>(this._url3, gorivo);
     }
 }

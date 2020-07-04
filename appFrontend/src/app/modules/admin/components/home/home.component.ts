@@ -8,6 +8,7 @@ import { TipMjenjacaService } from 'src/app/components/tipMjenjaca/tipMjenjaca.s
 import { MarkaAutomobila } from 'src/app/components/dodajMarkaAutomobila/markaAutomobila';
 import { Router } from '@angular/router';
 import { KlasaAutomobila } from 'src/app/components/dodajKlasaAutomobila/klasaAutomobila';
+import { TipGoriva } from 'src/app/components/tipGoriva/tipGoriva';
 
 
 
@@ -20,14 +21,17 @@ export class AdminHomeComponent implements OnInit {
 
   editModel = new MarkaAutomobila(null,null,null);
   editModelKlasa = new KlasaAutomobila(null, null);
+  editModelTipGoriva = new TipGoriva(null, null);
   edit : boolean = false;
   edit1 : boolean = false;
+  edit2 : boolean = false;
   categories = [];
   komentari = [];
   marke = [];
   marka = new MarkaAutomobila(null,null,null);
   public editedMarka:MarkaAutomobila;
   public editedKlasa:KlasaAutomobila;
+  public editedTipGoriva:TipGoriva;
   goriva = [];
   klase = [];
   menjaci = [];
@@ -71,6 +75,19 @@ export class AdminHomeComponent implements OnInit {
     this.edit1 = false; 
   }
 
+  onSubmit2(){
+    this.tipGorivaService.editTipGoriva(this.editModelTipGoriva).subscribe(
+        data=>{
+            alert('Tip goriva izmenjen!');
+            this.editedTipGoriva = data as TipGoriva;
+            this.getAllTipGoriva();
+            this.router.navigate(['/admin']);
+        },
+        error=> console.error('Error!', error)
+    )
+    this.edit2 = false; 
+  }
+
     editMarku(marka: MarkaAutomobila):void{   
       this.edit = true;
       this.editModel.nazivMarke = marka.nazivMarke;
@@ -83,6 +100,13 @@ editKlasu(klasa: KlasaAutomobila):void{
   this.edit1 = true;
   this.editModelKlasa.naziv = klasa.naziv;
   this.editModelKlasa.id = klasa.id;
+  
+}
+
+editTipGoriva(gorivo: TipGoriva):void{   
+  this.edit2 = true;
+  this.editModelTipGoriva.naziv = gorivo.naziv;
+  this.editModelTipGoriva.id = gorivo.id;
   
 }
 

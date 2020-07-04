@@ -31,4 +31,12 @@ public class VrstaGorivaService {
         List<TipGoriva> result = vrstaGorivaRepository.findAll();
         return result;
     }
+
+    public TipGoriva edit(VrstaGorivaDTO vrstaGorivaDTO){
+        TipGoriva tipGoriva = this.findById(vrstaGorivaDTO.getId());
+        tipGoriva.setId(vrstaGorivaDTO.getId());
+        tipGoriva.setNaziv(vrstaGorivaDTO.getNaziv());
+        this.vrstaGorivaRepository.save(tipGoriva);
+        return tipGoriva;
+    }
 }

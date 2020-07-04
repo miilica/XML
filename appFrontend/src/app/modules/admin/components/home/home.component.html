@@ -144,11 +144,25 @@
                 {{gorivo.naziv}}
             </td>
             <td>
-                <button type="submit" mat-button color="accent" [routerLink]="['izmeni']"> Izmeni </button>
+                <button type="submit" mat-button color="accent" (click)='editTipGoriva(gorivo)'> Izmeni </button>
             </td>
         </tr>
     </tbody>
 </table>
+<div  class="col-md-3 offset-md-9" *ngIf = 'edit2'   >
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit2()">
+    <fieldset>
+        Edit tip goriva:  
+        <br/>
+        <label>Naziv:</label>
+        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelTipGoriva.naziv" />
+
+        
+    <button mat-raised-button color="accent">Edit</button>
+    </fieldset>
+    </form>
+</div>
+
 
 <br/>
 <h2>Lista tipa menjaca</h2>
