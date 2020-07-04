@@ -73,6 +73,7 @@ const routes: Routes = [
   { path: 'agent/poruke', component: PorukaComponent},
   { path: 'agent/listaporuka', component: ListaPorukaComponent},
   { path: 'agent/listaporuka/poruke', component: PorukaComponent},
+  { path: 'agent/dodajOglas', component: DodajOglasComponent},
   { path: 'korisnik/poruke', component: PorukaComponent},
   { path: 'korisnik/listaporuka', component: ListaPorukaComponent},
   { path: 'korisnik/listaporuka/poruke', component: PorukaComponent},

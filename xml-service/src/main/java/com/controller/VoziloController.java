@@ -56,7 +56,6 @@ public class VoziloController {
     }
 
     @GetMapping("/allVozila/kaca")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity<?> findAllVozila() throws AccessDeniedException {
         return this.voziloService.findAllVozila();
     }
