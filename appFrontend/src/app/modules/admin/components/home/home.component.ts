@@ -5,6 +5,11 @@ import { DodajMarkuAutomobilaService } from 'src/app/components/dodajMarkaAutomo
 import { DodajKlasuAutomobilaService } from 'src/app/components/dodajKlasaAutomobila/dodajKlasuAutomobila.service';
 import { TipGorivaService } from 'src/app/components/tipGoriva/tipGoriva.service';
 import { TipMjenjacaService } from 'src/app/components/tipMjenjaca/tipMjenjaca.service';
+import { MarkaAutomobila } from 'src/app/components/dodajMarkaAutomobila/markaAutomobila';
+import { Router } from '@angular/router';
+import { KlasaAutomobila } from 'src/app/components/dodajKlasaAutomobila/klasaAutomobila';
+
+
 
 @Component({
   selector: 'app-home',
@@ -13,15 +18,22 @@ import { TipMjenjacaService } from 'src/app/components/tipMjenjaca/tipMjenjaca.s
 })
 export class AdminHomeComponent implements OnInit {
 
+  editModel = new MarkaAutomobila(null,null,null);
+  editModelKlasa = new KlasaAutomobila(null, null);
+  edit : boolean = false;
+  edit1 : boolean = false;
   categories = [];
   komentari = [];
   marke = [];
+  marka = new MarkaAutomobila(null,null,null);
+  public editedMarka:MarkaAutomobila;
+  public editedKlasa:KlasaAutomobila;
   goriva = [];
   klase = [];
   menjaci = [];
   categoryName: string = '';
 
-  constructor(private usersService: UserService, private dodajMarkuAutomobilaService: DodajMarkuAutomobilaService,
+  constructor(private usersService: UserService, private dodajMarkuAutomobilaService: DodajMarkuAutomobilaService,private router: Router,
               private tipMenjacaService : TipMjenjacaService,private tipGorivaService : TipGorivaService,private dodajKlasuAutomobilaService : DodajKlasuAutomobilaService ,private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -32,6 +44,47 @@ export class AdminHomeComponent implements OnInit {
     this.getAllTipGoriva();
     this.getAllTipMenjaca();
   }
+
+  onSubmit1(){
+    this.dodajMarkuAutomobilaService.editMarku(this.editModel).subscribe(
+        data=>{
+            alert('Marka izmenjena!');
+            this.editedMarka = data as MarkaAutomobila;
+            this.getAllMarkaAutomobila();
+            this.router.navigate(['/admin']);
+        },
+        error=> console.error('Error!', error)
+    )
+    this.edit = false; 
+  }
+
+  onSubmit(){
+    this.dodajKlasuAutomobilaService.editKlasu(this.editModelKlasa).subscribe(
+        data=>{
+            alert('Klasa izmenjena!');
+            this.editedKlasa = data as KlasaAutomobila;
+            this.getAllKlase();
+            this.router.navigate(['/admin']);
+        },
+        error=> console.error('Error!', error)
+    )
+    this.edit1 = false; 
+  }
+
+    editMarku(marka: MarkaAutomobila):void{   
+      this.edit = true;
+      this.editModel.nazivMarke = marka.nazivMarke;
+      this.editModel.model = marka.model;
+      this.editModel.id = marka.id;
+      
+  }
+
+editKlasu(klasa: KlasaAutomobila):void{   
+  this.edit1 = true;
+  this.editModelKlasa.naziv = klasa.naziv;
+  this.editModelKlasa.id = klasa.id;
+  
+}
 
   private getAllMarkaAutomobila(): void{
     this.dodajMarkuAutomobilaService.getMarke().subscribe(data => {

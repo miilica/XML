@@ -4,6 +4,7 @@ import com.dto.MarkaAutomobilaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class MarkaAutomobila {
     private String model;
 
     @JsonIgnore
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OneToMany(mappedBy = "markaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 

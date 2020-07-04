@@ -32,4 +32,12 @@ public class KlasaAutomobilaService {
         List<KlasaAutomobila> result = klasaAutoRepository.findAll();
         return result;
     }
+
+    public KlasaAutomobila edit(KlasaAutomobilaDTO klasaAutomobilaDTO){
+        KlasaAutomobila klasaAutomobila = this.findById(klasaAutomobilaDTO.getID());
+        klasaAutomobila.setId(klasaAutomobilaDTO.getID());
+        klasaAutomobila.setNaziv(klasaAutomobilaDTO.getNaziv());
+        this.klasaAutoRepository.save(klasaAutomobila);
+        return klasaAutomobila;
+    }
 }

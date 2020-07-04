@@ -31,4 +31,13 @@ public class MarkaAutomobilaService {
     }
 
 
+    public MarkaAutomobila edit(MarkaAutomobilaDTO markaAutomobilaDTO){
+        MarkaAutomobila markaAutomobila = this.findById(markaAutomobilaDTO.getId());
+        markaAutomobila.setId(markaAutomobilaDTO.getId());
+        markaAutomobila.setModel(markaAutomobilaDTO.getModel());
+        markaAutomobila.setNazivMarke(markaAutomobilaDTO.getNazivMarke());
+        this.markaAutomobilaRepository.save(markaAutomobila);
+        return markaAutomobila;
+    }
+
 }

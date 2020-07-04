@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class DodajKlasuAutomobilaService{
     _url = 'http://localhost:8099/api/klasa/dodaj';
     _url2 = 'http://localhost:8099/api/klasa/get';
-   
+    _url3 = 'http://localhost:8099/api/klasa/edit';
 
     constructor(private _http: HttpClient) { }
 
@@ -22,4 +22,9 @@ export class DodajKlasuAutomobilaService{
     getKlase():Observable<any> {
         return this._http.get<KlasaAutomobila[]>(this._url2);
     }
+
+    editKlasu(klasa: KlasaAutomobila){
+        return this._http.put<KlasaAutomobila>(this._url3, klasa);
+    }
+   
 }
