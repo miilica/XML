@@ -30,4 +30,12 @@ public class TipMjenjacaService {
         List<TipMjenjaca> result = tipMjenjacaRepository.findAll();
         return result;
     }
+
+    public TipMjenjaca edit(TipMjenjacaDTO tipMjenjacaDTO){
+        TipMjenjaca tipMenjaca = this.findById(tipMjenjacaDTO.getId());
+        tipMenjaca.setId(tipMjenjacaDTO.getId());
+        tipMenjaca.setNaziv(tipMjenjacaDTO.getNaziv());
+        this.tipMjenjacaRepository.save(tipMenjaca);
+        return tipMenjaca;
+    }
 }

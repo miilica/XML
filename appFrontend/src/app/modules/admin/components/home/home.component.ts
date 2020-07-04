@@ -9,6 +9,7 @@ import { MarkaAutomobila } from 'src/app/components/dodajMarkaAutomobila/markaAu
 import { Router } from '@angular/router';
 import { KlasaAutomobila } from 'src/app/components/dodajKlasaAutomobila/klasaAutomobila';
 import { TipGoriva } from 'src/app/components/tipGoriva/tipGoriva';
+import { TipMjenjaca } from 'src/app/components/tipMjenjaca/tipMjenjaca';
 
 
 
@@ -22,9 +23,11 @@ export class AdminHomeComponent implements OnInit {
   editModel = new MarkaAutomobila(null,null,null);
   editModelKlasa = new KlasaAutomobila(null, null);
   editModelTipGoriva = new TipGoriva(null, null);
+  editModelTipMenjaca = new TipMjenjaca(null, null);
   edit : boolean = false;
   edit1 : boolean = false;
   edit2 : boolean = false;
+  edit3 : boolean = false;
   categories = [];
   komentari = [];
   marke = [];
@@ -32,6 +35,7 @@ export class AdminHomeComponent implements OnInit {
   public editedMarka:MarkaAutomobila;
   public editedKlasa:KlasaAutomobila;
   public editedTipGoriva:TipGoriva;
+  public editedTipMenjaca:TipMjenjaca;
   goriva = [];
   klase = [];
   menjaci = [];
@@ -88,6 +92,19 @@ export class AdminHomeComponent implements OnInit {
     this.edit2 = false; 
   }
 
+  onSubmit3(){
+    this.tipMenjacaService.editTipMenjaca(this.editModelTipMenjaca).subscribe(
+        data=>{
+            alert('Tip menjaca izmenjen!');
+            this.editedTipMenjaca = data as TipMjenjaca;
+            this.getAllTipMenjaca();
+            this.router.navigate(['/admin']);
+        },
+        error=> console.error('Error!', error)
+    )
+    this.edit3 = false; 
+  }
+
     editMarku(marka: MarkaAutomobila):void{   
       this.edit = true;
       this.editModel.nazivMarke = marka.nazivMarke;
@@ -107,6 +124,13 @@ editTipGoriva(gorivo: TipGoriva):void{
   this.edit2 = true;
   this.editModelTipGoriva.naziv = gorivo.naziv;
   this.editModelTipGoriva.id = gorivo.id;
+  
+}
+
+editTipMenjaca(menjac: TipMjenjaca):void{   
+  this.edit3 = true;
+  this.editModelTipMenjaca.naziv = menjac.naziv;
+  this.editModelTipMenjaca.id = menjac.id;
   
 }
 

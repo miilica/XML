@@ -4,6 +4,7 @@ import com.dto.TipMjenjacaDTO;
 import com.model.TipMjenjaca;
 import com.service.impl.TipMjenjacaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,5 +29,11 @@ public class TipMjenjcaController {
     @PreAuthorize("hasRole('ADMIN')")
     public List<TipMjenjaca> loadAll() {
         return this.tipMjenjacaService.findAll();
+    }
+
+    @PutMapping("/edit")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<TipMjenjaca> edit(@RequestBody TipMjenjacaDTO tipMjenjacaDTO){
+        return new ResponseEntity<>(this.tipMjenjacaService.edit(tipMjenjacaDTO), HttpStatus.OK);
     }
 }
