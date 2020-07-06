@@ -27,6 +27,9 @@ public class Oglas {
     @Column
     private boolean dostupan;
 
+    @Column
+    private boolean obrisan;
+
     @JsonIgnore//uleti u neku beskonacnu petlju kad uzimam sve oglase pa sam morao ovo
     @ManyToOne(fetch = FetchType.EAGER)
     private Vozilo vozilo;

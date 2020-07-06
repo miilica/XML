@@ -28,7 +28,20 @@ public class OglasServiceImpl implements OglasService {
 
     @Override
     public void delete(Long id) {
-
+        Oglas oglas = this.findById(id);
+        oglas.setObrisan(true);
+        this.oglasRepository.save(oglas);
     }
+
+    public Oglas edit(OglasDTO oglasDTO){
+        Oglas oglas = this.findById(oglasDTO.getId());
+        oglas.setId(oglasDTO.getId());
+        oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
+        oglas.setVozilo(oglasDTO.getVozilo());
+        oglas.setDostupan(oglasDTO.isDostupan());
+        this.oglasRepository.save(oglas);
+        return oglas;
+    }
+
 
 }

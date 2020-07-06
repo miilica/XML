@@ -24,5 +24,4 @@ public class OglasDTO {
         this.vozilo = oglas.getVozilo();
         this.mestoPreuzimanja = oglas.getMjestoPreuzimanja();
     }
-
 }
