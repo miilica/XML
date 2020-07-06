@@ -120,6 +120,16 @@ editKlasu(klasa: KlasaAutomobila):void{
   
 }
 
+deleteKlasu(id):void{
+  this.dodajKlasuAutomobilaService.deleteKlasu(id).subscribe(
+    data=>{
+      alert('Obrisana klasa!');
+      
+  },
+  error=> console.error('Error!', error)
+  )
+}
+
 editTipGoriva(gorivo: TipGoriva):void{   
   this.edit2 = true;
   this.editModelTipGoriva.naziv = gorivo.naziv;

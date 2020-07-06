@@ -40,9 +40,10 @@ public class KlasaAutomobilaController {
         return new ResponseEntity<>(this.klasaAutomobilaService.edit(klasaAutomobilaDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> delete(@RequestBody KlasaAutomobilaDTO klasaAutomobilaDTO){
-        return new ResponseEntity<>(this.klasaAutomobilaService.delete(klasaAutomobilaDTO), HttpStatus.OK);
+    public ResponseEntity delete(@PathVariable Long id){
+        klasaAutomobilaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
