@@ -21,6 +21,7 @@ import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { PorukaComponent } from './poruka/poruka.component';
 import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
 import { Poruka } from './poruka/poruka';
+import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
 
 const routes: Routes = [
   {
@@ -72,9 +73,11 @@ const routes: Routes = [
   { path: 'agent/poruke', component: PorukaComponent},
   { path: 'agent/listaporuka', component: ListaPorukaComponent},
   { path: 'agent/listaporuka/poruke', component: PorukaComponent},
+  { path: 'agent/dodajOglas', component: DodajOglasComponent},
   { path: 'korisnik/poruke', component: PorukaComponent},
   { path: 'korisnik/listaporuka', component: ListaPorukaComponent},
   { path: 'korisnik/listaporuka/poruke', component: PorukaComponent},
+  { path: 'korisnik/dodajOglas', component: DodajOglasComponent},
   //{ path: 'zauzece', component: ZauzeceComponent},
 
 ];

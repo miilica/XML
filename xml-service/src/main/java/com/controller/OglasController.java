@@ -1,13 +1,13 @@
 package com.controller;
 
+import com.dto.OglasDTO;
 import com.model.Oglas;
 import com.service.OglasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
@@ -23,6 +23,11 @@ public class OglasController {
    // @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<Oglas> findAll() throws AccessDeniedException {
         return this.oglasService.findAll();
+    }
+
+    @PostMapping("/dodaj")
+    public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
+        return this.oglasService.noviOglas(oglasDTO);
     }
 
 

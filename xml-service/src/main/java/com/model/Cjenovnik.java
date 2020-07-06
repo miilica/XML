@@ -20,8 +20,8 @@ public class Cjenovnik {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "cjenovnik", fetch = FetchType.LAZY)
-    private Set<Oglas> oglasi;
+ //   @OneToMany(mappedBy = "cjenovnik", fetch = FetchType.LAZY)
+   // private Set<Oglas> oglasi;
 
     @Column
     private double ponCijena;

@@ -71,6 +71,9 @@ public class User implements UserDetails{
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Oglas> oglasi;
+
 
     public User() {
     }
@@ -185,5 +188,57 @@ public class User implements UserDetails{
 
     public String getAddress() {
         return address;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public Set<Oglas> getOglasi() {
+        return oglasi;
+    }
+
+    public void setOglasi(Set<Oglas> oglasi) {
+        this.oglasi = oglasi;
     }
 }
