@@ -123,7 +123,17 @@ editKlasu(klasa: KlasaAutomobila):void{
 deleteKlasu(id):void{
   this.dodajKlasuAutomobilaService.deleteKlasu(id).subscribe(
     data=>{
-      alert('Obrisana klasa!');
+      alert('Obrisana klasa automobila!');
+      
+  },
+  error=> console.error('Error!', error)
+  )
+}
+
+deleteMarku(id):void{
+  this.dodajMarkuAutomobilaService.deleteMarku(id).subscribe(
+    data=>{
+      alert('Obrisana marka autmobila!');
       
   },
   error=> console.error('Error!', error)

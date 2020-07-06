@@ -40,11 +40,10 @@ public class MarkaAutomobilaService {
         return markaAutomobila;
     }
 
-    public String delete(MarkaAutomobilaDTO markaAutomobilaDTO){
-        MarkaAutomobila markaAutomobila = this.findById(markaAutomobilaDTO.getId());
+    public void delete(Long id){
+        MarkaAutomobila markaAutomobila = this.findById(id);
         markaAutomobila.setObrisan(true);
         this.markaAutomobilaRepository.save(markaAutomobila);
-        return "Obrisana marka automobila";
     }
 
 }

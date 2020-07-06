@@ -38,10 +38,11 @@ public class MarkaAutomobilaController {
         return new ResponseEntity<>(this.markaAutomobilaService.edit(markaAutomobilaDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> delete(@RequestBody MarkaAutomobilaDTO markaAutomobilaDTO){
-        return new ResponseEntity<>(this.markaAutomobilaService.delete(markaAutomobilaDTO), HttpStatus.OK);
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        markaAutomobilaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
 

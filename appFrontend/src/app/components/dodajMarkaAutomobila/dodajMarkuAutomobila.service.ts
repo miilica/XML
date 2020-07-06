@@ -11,6 +11,7 @@ export class DodajMarkuAutomobilaService{
     _url = 'http://localhost:8099/api/marka/dodaj';
     _url2 = 'http://localhost:8099/api/marka/get';
     _url3 = 'http://localhost:8099/api/marka/edit';
+    _url4 = 'http://localhost:8099/api/marka/delete';
    
 
     constructor(private _http: HttpClient) { }
@@ -26,6 +27,10 @@ export class DodajMarkuAutomobilaService{
 
     editMarku(marka: MarkaAutomobila){
         return this._http.put<MarkaAutomobila>(this._url3, marka);
+    }
+
+    deleteMarku(id: number){
+        return this._http.delete<MarkaAutomobila>(`${this._url4}/${id}`);
     }
     
 }
