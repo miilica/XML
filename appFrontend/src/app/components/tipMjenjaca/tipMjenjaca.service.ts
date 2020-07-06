@@ -11,7 +11,7 @@ export class TipMjenjacaService{
     _url = 'http://localhost:8099/api/tipmjenjaca/dodaj';
     _url2 = 'http://localhost:8099/api/tipmjenjaca/get';
     _url3 = 'http://localhost:8099/api/tipmjenjaca/edit';
-   
+    _url4 = 'http://localhost:8099/api/tipmjenjaca/delete';
 
     constructor(private _http: HttpClient) { }
 
@@ -26,5 +26,9 @@ export class TipMjenjacaService{
 
     editTipMenjaca(menjac: TipMjenjaca){
         return this._http.put<TipMjenjaca>(this._url3, menjac);
+    }
+
+    deleteTipMenjaca(id: number){
+        return this._http.delete<TipMjenjaca>(`${this._url4}/${id}`);
     }
 }

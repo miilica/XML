@@ -40,10 +40,9 @@ public class TipMjenjacaService {
         return tipMenjaca;
     }
 
-    public String delete (TipMjenjacaDTO tipMjenjacaDTO){
-        TipMjenjaca tipMjenjaca = this.findById(tipMjenjacaDTO.getId());
+    public void delete (Long id){
+        TipMjenjaca tipMjenjaca = this.findById(id);
         tipMjenjaca.setObrisan(true);
         this.tipMjenjacaRepository.save(tipMjenjaca);
-        return "Obrisan tip menjaca";
     }
 }

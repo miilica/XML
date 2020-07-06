@@ -140,6 +140,16 @@ deleteMarku(id):void{
   )
 }
 
+deleteTipMenjaca(id):void{
+  this.tipMenjacaService.deleteTipMenjaca(id).subscribe(
+    data=>{
+      alert('Obrisan tip menjaca!');
+      
+  },
+  error=> console.error('Error!', error)
+  )
+}
+
 editTipGoriva(gorivo: TipGoriva):void{   
   this.edit2 = true;
   this.editModelTipGoriva.naziv = gorivo.naziv;

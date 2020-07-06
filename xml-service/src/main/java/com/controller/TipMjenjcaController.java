@@ -37,9 +37,10 @@ public class TipMjenjcaController {
         return new ResponseEntity<>(this.tipMjenjacaService.edit(tipMjenjacaDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> delete(@RequestBody TipMjenjacaDTO tipMjenjacaDTO){
-        return new ResponseEntity<>(this.tipMjenjacaService.delete(tipMjenjacaDTO),HttpStatus.OK);
+    public ResponseEntity delete(@PathVariable Long id){
+        tipMjenjacaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
