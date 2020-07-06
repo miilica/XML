@@ -42,6 +42,7 @@ import { AgentTermini } from './modules/agent/components/listaTermina/agent-term
 import { PorukaComponent } from './poruka/poruka.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
+import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
     AgentTermini,
     PorukaComponent,
     ZauzeceComponent,
-    ListaPorukaComponent
+    ListaPorukaComponent,
+    DodajOglasComponent,
   ],
   imports: [
     BrowserModule,

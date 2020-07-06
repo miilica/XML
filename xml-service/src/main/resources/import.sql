@@ -52,9 +52,9 @@ INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id)
 INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id) VALUES (3, '2020-06-20 21:58:58', '2020-06-24 21:58:58', 1, 3);
 
 
-INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (1, true, 'Novi Sad', 1);
-INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (2, true, 'Veternik', 1);
-INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id) VALUES (3, false, 'Beograd', 1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, user_id) VALUES (1, true, 'Novi Sad', 1, 1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, user_id) VALUES (2, true, 'Veternik', 1, 1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, user_id) VALUES (3, false, 'Beograd', 1, 1);
 
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (1, '2020-06-20', '2020-06-28', 1);
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (2, '2020-06-15', '2020-06-28', 2);

@@ -29,4 +29,8 @@ public class Ocena {
 
     //user koji je dao ocenu
     private Long userId;
+
+    @ManyToOne
+    @JoinColumn(name = "oglas_id")
+    private Oglas oglas;
 }

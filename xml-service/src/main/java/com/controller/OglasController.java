@@ -35,6 +35,12 @@ public class OglasController {
         return new ResponseEntity<>(this.oglasServiceImpl.edit(oglasDTO), HttpStatus.OK);
     }
 
+    @PostMapping("/dodaj")
+    public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
+        return this.oglasService.noviOglas(oglasDTO);
+    }
+
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         oglasServiceImpl.delete(id);

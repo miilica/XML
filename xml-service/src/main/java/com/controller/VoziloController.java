@@ -32,7 +32,6 @@ public class VoziloController {
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    @PreAuthorize("hasRole('ADMIN')")
     public List<Vozilo> loadAll() {
         return this.voziloService.findAll();
     }
@@ -57,7 +56,6 @@ public class VoziloController {
     }
 
     @GetMapping("/allVozila/kaca")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity<?> findAllVozila() throws AccessDeniedException {
         return this.voziloService.findAllVozila();
     }

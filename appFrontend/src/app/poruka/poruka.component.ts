@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Poruka } from './poruka';
 import { PorukeService } from './poruka.service';
 import { DodajVoziloService } from '../components/dodajVozilo/dodajVozilo.service';
-import { Oglas } from '../components/dodajVozilo/Oglas';
+import { Oglas } from '../components/dodajOglas/Oglas';
 import { User } from '../services/user';
 import { UserService } from '../services/user.service';
 
