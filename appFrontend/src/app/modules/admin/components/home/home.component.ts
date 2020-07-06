@@ -150,6 +150,16 @@ deleteTipMenjaca(id):void{
   )
 }
 
+deleteTipGoriva(id):void{
+  this.tipGorivaService.deleteTiGoriva(id).subscribe(
+    data=>{
+      alert('Obrisan tip goriva!');
+      
+  },
+  error=> console.error('Error!', error)
+  )
+}
+
 editTipGoriva(gorivo: TipGoriva):void{   
   this.edit2 = true;
   this.editModelTipGoriva.naziv = gorivo.naziv;

@@ -40,10 +40,9 @@ public class VrstaGorivaService {
         return tipGoriva;
     }
 
-    public String delete(VrstaGorivaDTO vrstaGorivaDTO){
-            TipGoriva tipGoriva = this.findById(vrstaGorivaDTO.getId());
+    public void delete(Long id){
+            TipGoriva tipGoriva = this.findById(id);
             tipGoriva.setObrisan(true);
             this.vrstaGorivaRepository.save(tipGoriva);
-            return "Obrisan tip goriva";
     }
 }

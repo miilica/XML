@@ -38,9 +38,10 @@ public class VrstaGorivaController {
         return new ResponseEntity<>(this.vrstaGorivaService.edit(vrstaGorivaDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> delete(@RequestBody VrstaGorivaDTO vrstaGorivaDTO){
-        return new ResponseEntity<>(this.vrstaGorivaService.delete(vrstaGorivaDTO), HttpStatus.OK);
+    public ResponseEntity delete(@PathVariable Long id){
+        vrstaGorivaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
