@@ -46,7 +46,6 @@ import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
 import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
 import { SearchComponent } from './search/search.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

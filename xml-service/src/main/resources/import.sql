@@ -81,6 +81,8 @@ insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (10, true,
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (11, true, 'Nije nesto', 2, 4);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (12, true, 'Nisam zadovoljan', 2, 4);
 
+
 insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');
 insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-12 21:58:58', '2020-06-16 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-18 21:58:58', 'STATUS_PENDING');
 

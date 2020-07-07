@@ -68,7 +68,6 @@ public class Vozilo {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "komentari_id")
     private Set<Komentar> komentari;
 
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)

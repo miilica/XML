@@ -19,8 +19,8 @@ public class PorukaController {
 
     @GetMapping(value = "/{posiljalacId}/{primalacId}/{oglasId}")
     //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
-    public List<PorukaDTO>get(@PathVariable("posiljalacId") Long posiljalacId, @PathVariable("primalacId") Long primalacId, @PathVariable("oglasId") Long oglasId){
-        return porukaService.get(posiljalacId,primalacId,oglasId);
+    public List<PorukaDTO> get(@PathVariable("posiljalacId") Long posiljalacId, @PathVariable("primalacId") Long primalacId, @PathVariable("oglasId") Long oglasId) {
+        return porukaService.get(posiljalacId, primalacId, oglasId);
     }
 
     @GetMapping(value = "/{Id}")
@@ -32,8 +32,7 @@ public class PorukaController {
 
     @PostMapping
     //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
-    public void posaljiPoruku(@RequestBody PorukaDTO porukaDTO){
+    public void posaljiPoruku(@RequestBody PorukaDTO porukaDTO) {
         porukaService.posaljiPoruku(porukaDTO);
     }
-
 }

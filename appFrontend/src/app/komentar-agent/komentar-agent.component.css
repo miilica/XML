@@ -1,0 +1,35 @@
+.card {
+    max-width: 400;
+    max-height: 500;
+    margin-top: 50px;
+    margin-right: 500px;
+    margin-left: 500px;
+    text-align: left;
+}
+
+.card-body{
+    text-align: center;
+}
+
+.btn{
+    margin-right: 10px;
+    height: 70px;
+    width: 300px;
+    text-align: center;
+    align-content: center;
+}
+
+.container{
+    max-width: 650;
+    margin-right: 400px;
+    margin-left: 400px ;
+}
+
+.d-flex {
+    border-style: solid;
+    border-color: deeppink;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    width: 400px;
+    height: 80px;
+}
