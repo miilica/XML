@@ -3,6 +3,7 @@ package com.controller;
 import com.dto.TipMjenjacaDTO;
 import com.model.TipMjenjaca;
 import com.service.impl.TipMjenjacaService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,4 +30,10 @@ public class TipMjenjcaController {
     public List<TipMjenjaca> loadAll() {
         return this.tipMjenjacaService.findAll();
     }
+
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        return this.tipMjenjacaService.getAll();
+    }
+
 }

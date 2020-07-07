@@ -32,4 +32,10 @@ public class KlasaAutomobilaController {
         System.out.println("load alll");
         return this.klasaAutomobilaService.findAll();
     }
+
+    // Katarina radila(ne brisati)
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        return this.klasaAutomobilaService.getAll();
+    }
 }

@@ -1,5 +1,10 @@
 package com.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class KlasaAutomobilaDTO {
     private String naziv;
     private Long id;

@@ -24,25 +24,7 @@ public class Cjenovnik {
     private Set<Oglas> oglasi;
 
     @Column
-    private double ponCijena;
-
-    @Column
-    private double utoCijena;
-
-    @Column
-    private double sriCijena;
-
-    @Column
-    private double cetCijena;
-
-    @Column
-    private double petCijena;
-
-    @Column
-    private double subotaCijena;
-
-    @Column
-    private double nedeljaCijena;
+    private double cijenaPoDanu;
 
     @Column
     private double cijenaPoKM;

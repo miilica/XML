@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -27,6 +29,21 @@ public class Oglas {
     @Column
     private boolean dostupan;
 
+    @Column(name = "doo")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
+            @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
+            @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
+    })
+    private DateTime doo;
+
+    @Column(name = "od")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
+            @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
+            @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
+    })
+    private DateTime od;
+
+
     @JsonIgnore//uleti u neku beskonacnu petlju kad uzimam sve oglase pa sam morao ovo
     @ManyToOne(fetch = FetchType.EAGER)
     private Vozilo vozilo;
@@ -34,7 +51,11 @@ public class Oglas {
     @Column
     private String mjestoPreuzimanja;
 
-    //private TerminIznajmljivanja terminIznajmljivanja;
+    @Column
+    private Double dozvoljenaKilometraza;
+
+   // @Column
+   // private TerminIznajmljivanja terminIznajmljivanja;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Cjenovnik cjenovnik;

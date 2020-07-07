@@ -17,10 +17,10 @@ import { AgentHomepage } from './modules/agent/components/home/agent-homepage.co
 import { AgentZahtjevi } from './modules/agent/components/ListaZahtjeva/agent-zahtjevi.component';
 import { OceniKomentarisiComponent } from './modules/korisnik/components/oceniKomentarisi/oceniKomentarisi.component';
 import { AgentTermini } from './modules/agent/components/listaTermina/agent-termini.component';
-import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { PorukaComponent } from './poruka/poruka.component';
 import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
 import { Poruka } from './poruka/poruka';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -68,7 +68,7 @@ const routes: Routes = [
   { path: 'admin/addklasu', component: DodajKlasuAutomobila },
   { path: 'admin/addtipgoriva', component: AddTipGoriva },
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
-  { path: 'zauzece', component: ZauzeceComponent},
+  //{ path: 'zauzece', component: ZauzeceComponent},
   { path: 'agent/poruke', component: PorukaComponent},
   { path: 'agent/listaporuka', component: ListaPorukaComponent},
   { path: 'agent/listaporuka/poruke', component: PorukaComponent},
@@ -76,7 +76,7 @@ const routes: Routes = [
   { path: 'korisnik/listaporuka', component: ListaPorukaComponent},
   { path: 'korisnik/listaporuka/poruke', component: PorukaComponent},
   //{ path: 'zauzece', component: ZauzeceComponent},
-
+  { path: 'pretraga', component: SearchComponent }
 ];
 
 @NgModule({

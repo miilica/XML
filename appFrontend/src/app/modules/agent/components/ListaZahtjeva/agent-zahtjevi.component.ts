@@ -37,7 +37,7 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
           console.log("Pojedinacni: ", this.pojedinacniZahtjevi);
           console.log("Bundle: ", this.bundleZahtjevi);
         }, error => {
-          this.toastr.error('There was an error while getting the ads');
+          //this.toastr.error('There was an error while getting the ads');
         });
     }
 
