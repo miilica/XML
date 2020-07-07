@@ -45,6 +45,8 @@ import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
 import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
 import { SearchComponent } from './search/search.component';
+import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import { SearchComponent } from './search/search.component';
     ZauzeceComponent,
     ListaPorukaComponent,
     KomentarAgentComponent,
-    SearchComponent
+    SearchComponent,
+    DodajOglasComponent,
   ],
   imports: [
     BrowserModule,

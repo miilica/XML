@@ -1,5 +1,6 @@
 package com.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +19,13 @@ public class VoziloDTO {
     private double mozePreciKM;
     private int brSjedistaZaDjecu;
     private double ocjena;
+
     private MarkaAutomobilaDTO markaAutomobila;
+
     private VrstaGorivaDTO tipGoriva;
+
     private TipMjenjacaDTO tipMjenjaca;
+
     private KlasaAutomobilaDTO klasaAutomobila;
     private Boolean imaAndroid;
     private boolean coliisionDamageWavier;

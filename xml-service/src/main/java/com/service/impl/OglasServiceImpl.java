@@ -1,7 +1,11 @@
 package com.service.impl;
 
 import com.dto.*;
+import com.dto.OglasDTO;
+import com.model.Agent;
 import com.model.Oglas;
+import com.model.User;
+import com.model.Vozilo;
 import com.repository.OglasRepository;
 import com.service.OglasService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import com.service.UserService;
+import com.service.VoziloService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,7 +33,18 @@ public class OglasServiceImpl implements OglasService {
     private OglasRepository oglasRepository;
 
     @Autowired
+
     private ModelMapper modelMapper;
+
+    @Autowired
+    private VoziloService voziloService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private  AgentService agentService;
+
 
     @Override
     public Oglas findById(Long id) {
@@ -43,6 +60,7 @@ public class OglasServiceImpl implements OglasService {
     public void delete(Long id) {
 
     }
+
 
     public ResponseEntity<?> pretraziMjesta() {
         List<String> mjesta = new ArrayList<>();
@@ -132,4 +150,36 @@ public class OglasServiceImpl implements OglasService {
 
         return new ResponseEntity<>(oglasDTO, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
+        Vozilo vozilo = this.voziloService.findById(oglasDTO.getVozilo().getId());
+        //PriceList priceList = this.priceListService.getPriceListById(adDTO.getPriceListId());
+        User user = userService.findById(oglasDTO.getUserId());
+        Agent pom = agentService.findById(oglasDTO.getUserId());
+        if(pom.getImeKompanije() == null || pom.getImeKompanije().equals("")){
+            System.out.println("null");
+            if(user.getOglasi().size()>2){
+                return new ResponseEntity<>(HttpStatus.valueOf("Korisnik ne moze dodati vise od 3 oglasa"));
+            }
+        }
+
+
+        Oglas oglas = new Oglas();
+        oglas.setVozilo(vozilo);
+       oglas.setDostupan(oglasDTO.isDostupan());
+        oglas.setFromDate(oglasDTO.getFromDate());
+        oglas.setToDate(oglasDTO.getToDate());
+        oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
+        oglas.setUser(user);
+        //ad.setPriceList(priceList);
+
+
+
+
+        this.oglasRepository.save(oglas);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+
 }

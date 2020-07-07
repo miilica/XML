@@ -23,6 +23,7 @@ import { Poruka } from './poruka/poruka';
 import { SearchComponent } from './search/search.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
+import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
 
 const routes: Routes = [
   {
@@ -82,9 +83,11 @@ const routes: Routes = [
   { path: 'agent/poruke', component: PorukaComponent},
   { path: 'agent/listaporuka', component: ListaPorukaComponent},
   { path: 'agent/listaporuka/poruke', component: PorukaComponent},
+  { path: 'agent/dodajOglas', component: DodajOglasComponent},
   { path: 'korisnik/poruke', component: PorukaComponent},
   { path: 'korisnik/listaporuka', component: ListaPorukaComponent},
   { path: 'korisnik/listaporuka/poruke', component: PorukaComponent},
+  { path: 'korisnik/dodajOglas', component: DodajOglasComponent},
   //{ path: 'zauzece', component: ZauzeceComponent},
   { path: 'pretraga', component: SearchComponent },
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca }

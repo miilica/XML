@@ -34,6 +34,10 @@ public class Komentar {
     @Column
     private Long userId;
 
+    @ManyToOne
+    @JoinColumn(name = "oglas_id")
+    private Oglas oglas;
+
 
    // private Agent agent;
    // private Korisnik korisnik;

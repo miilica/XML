@@ -1,6 +1,7 @@
 package com.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,14 +39,18 @@ public class Vozilo {
     @Column
     private double ocjena;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     private MarkaAutomobila markaAutomobila;
+
 
     @ManyToOne( fetch = FetchType.LAZY)
     private TipGoriva tipGoriva;
 
+
     @ManyToOne( fetch = FetchType.LAZY)
     private TipMjenjaca tipMjenjaca;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     private KlasaAutomobila klasaAutomobila;
@@ -56,24 +61,25 @@ public class Vozilo {
     @Column
     private boolean coliisionDamageWavier;
 
-    @JsonIgnore
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ocjene_id")
     private Set<Ocena> ocjene = new HashSet<>();
 
-    @JsonIgnore
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "termini_iznajmljivanja_id")
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
-    @JsonIgnore
+
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Komentar> komentari;
 
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<Izvjestaj> izvjestaji;
 
-    @OneToMany(mappedBy = "vozilo", fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<Oglas> oglasi;
 
     @ManyToOne()

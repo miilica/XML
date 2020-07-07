@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.dto.PretragaDTO;
+import com.dto.OglasDTO;
 import com.model.Oglas;
 import com.service.OglasService;
 import com.service.impl.OglasServiceImpl;
@@ -34,6 +35,11 @@ public class OglasController {
     @PostMapping(value = "/pretraga/{page}/{sort}")
     public ResponseEntity<?> pretraziOglase(@RequestBody PretragaDTO pretraga, @PathVariable int page, @PathVariable String sort) {
         return this.oglasService.pretraziOglase(pretraga,page, sort);
+    }
+
+    @PostMapping("/dodaj")
+    public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
+        return this.oglasService.noviOglas(oglasDTO);
     }
 
     @GetMapping(value = "/{id}")
