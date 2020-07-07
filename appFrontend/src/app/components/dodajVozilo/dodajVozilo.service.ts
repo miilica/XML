@@ -22,7 +22,6 @@ export class DodajVoziloService{
        return  this._http.post<any>(this._url, vozilo);
     }
 
-    
     getVozila():Observable<any>{
         return this._http.get<Vozilo[]>(this._url2);
     }

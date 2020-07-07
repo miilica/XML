@@ -106,6 +106,38 @@ public class Oglas {
         this.dostupan = dostupan;
     }
 
+    public DateTime getDoo() {
+        return doo;
+    }
+
+    public void setDoo(DateTime doo) {
+        this.doo = doo;
+    }
+
+    public DateTime getOd() {
+        return od;
+    }
+
+    public void setOd(DateTime od) {
+        this.od = od;
+    }
+
+    public Double getDozvoljenaKilometraza() {
+        return dozvoljenaKilometraza;
+    }
+
+    public void setDozvoljenaKilometraza(Double dozvoljenaKilometraza) {
+        this.dozvoljenaKilometraza = dozvoljenaKilometraza;
+    }
+
+    public Cjenovnik getCjenovnik() {
+        return cjenovnik;
+    }
+
+    public void setCjenovnik(Cjenovnik cjenovnik) {
+        this.cjenovnik = cjenovnik;
+    }
+
     public Vozilo getVozilo() {
         return vozilo;
     }

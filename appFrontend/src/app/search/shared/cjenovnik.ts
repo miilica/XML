@@ -5,5 +5,6 @@ export interface Cjenovnik {
     cijenaPoDanu: number,
     cijenaPoKM: number,
     cijenaCDW: number,
-    popust: number
+    popust: number,
+    userUsername: string
 }

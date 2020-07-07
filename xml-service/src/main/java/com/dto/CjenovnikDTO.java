@@ -15,4 +15,5 @@ public class CjenovnikDTO {
     private double cijenaPoKM;
     private double cijenaCDW;
     private double popust;
+    private String userUsername;
 }

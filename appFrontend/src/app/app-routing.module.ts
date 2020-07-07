@@ -24,6 +24,7 @@ import { SearchComponent } from './search/search.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
 import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
+import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
 
 const routes: Routes = [
   {
@@ -90,7 +91,8 @@ const routes: Routes = [
   { path: 'korisnik/dodajOglas', component: DodajOglasComponent},
   //{ path: 'zauzece', component: ZauzeceComponent},
   { path: 'pretraga', component: SearchComponent },
-  { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca }
+  { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
+  { path: 'cjenovnik', component: CjenovnikComponent}
 ];
 
 @NgModule({

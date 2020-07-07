@@ -2,10 +2,8 @@ package com.service.impl;
 
 import com.dto.*;
 import com.dto.OglasDTO;
-import com.model.Agent;
-import com.model.Oglas;
-import com.model.User;
-import com.model.Vozilo;
+import com.model.*;
+import com.repository.CjenovnikRepository;
 import com.repository.OglasRepository;
 import com.service.OglasService;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +42,9 @@ public class OglasServiceImpl implements OglasService {
 
     @Autowired
     private  AgentService agentService;
+
+    @Autowired
+    private CjenovnikRepository cjenovnikRepository;
 
 
     @Override
@@ -117,17 +118,17 @@ public class OglasServiceImpl implements OglasService {
     }
 
     public Sort sortBy(String sort){
-        if(sort.equals("Price higher")){
+        if(sort.equals("Cijena rastuce")){
             return Sort.by(Sort.Direction.ASC, "cjenovnik.cijenaPoDanu");
-        }else if(sort.equals("Price lower")){
+        }else if(sort.equals("Cijena opadajuce")){
             return Sort.by(Sort.Direction.DESC, "cjenovnik.cijenaPoDanu");
-        }else if(sort.equals("Kilometrage higher")){
+        }else if(sort.equals("Kilometraza rastuce")){
             return Sort.by(Sort.Direction.ASC, "vozilo.kilometraza");
-        }else if(sort.equals("Kilometrage lower")){
+        }else if(sort.equals("Kilometraza opadajuce")){
             return Sort.by(Sort.Direction.DESC, "vozilo.kilometraza");
-        }else if(sort.equals("Grade higher")){
+        }else if(sort.equals("Ocjena rastuce")){
             return Sort.by(Sort.Direction.ASC, "vozilo.ocjena");
-        }else if(sort.equals("Grade lower")){
+        }else if(sort.equals("Ocjena opadajuce")){
             return Sort.by(Sort.Direction.DESC, "vozilo.ocjena");
         }
         return Sort.by(Sort.Direction.ASC, "od");
@@ -155,6 +156,7 @@ public class OglasServiceImpl implements OglasService {
     public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
         Vozilo vozilo = this.voziloService.findById(oglasDTO.getVozilo().getId());
         //PriceList priceList = this.priceListService.getPriceListById(adDTO.getPriceListId());
+       // Cjenovnik cjenovnik = this.cjenovnikRepository.getOne();
         User user = userService.findById(oglasDTO.getUserId());
         Agent pom = agentService.findById(oglasDTO.getUserId());
         if(pom.getImeKompanije() == null || pom.getImeKompanije().equals("")){
@@ -167,15 +169,12 @@ public class OglasServiceImpl implements OglasService {
 
         Oglas oglas = new Oglas();
         oglas.setVozilo(vozilo);
-       oglas.setDostupan(oglasDTO.isDostupan());
+        oglas.setDostupan(oglasDTO.isDostupan());
         oglas.setFromDate(oglasDTO.getFromDate());
         oglas.setToDate(oglasDTO.getToDate());
         oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
         oglas.setUser(user);
         //ad.setPriceList(priceList);
-
-
-
 
         this.oglasRepository.save(oglas);
         return new ResponseEntity<>(HttpStatus.CREATED);

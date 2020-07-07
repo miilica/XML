@@ -1,18 +1,21 @@
 #sp{
     margin-right: 10px;
-    width: 300px;
+    width: 350px;
+    border-color: deeppink;
 }
 
 #btnSearch{
     width: 100px;
     margin-top: 25px;
     margin-left: 20px;
+    background-color: palevioletred;
+    color: black;
 }
 
 #basicSearch{
     border-style: double;
     border-radius: 10px;
-    border-color:cadetblue;
+    border-color:deeppink;
     padding: 10px;
 }
 
@@ -20,6 +23,8 @@
     width: 200px;
     margin-top: 15px;
     margin-left: 10px;
+    background-color: palevioletred;
+    color: black;
 }
 
 #ss{
@@ -29,7 +34,7 @@
     margin-right: 10px;
     border-style: double;
     border-radius: 10px;
-    border-color:cadetblue;
+    border-color:deeppink;
     padding: 10px;
 }
 
@@ -43,7 +48,7 @@
     margin-left: 10px;
     border-style: double;
     border-radius: 10px;
-    border-color:cadetblue;
+    border-color:deeppink;
     padding: 10px;
 }
 
@@ -70,6 +75,6 @@
 #d1{
     border-style: double;
     border-radius: 10px;
-    border-color:cadetblue;
+    border-color:deeppink;
     padding: 10px; 
 }

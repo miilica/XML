@@ -9,7 +9,7 @@ import { MarkaAutomobila } from './markaAutomobila';
 })
 export class DodajMarkuAutomobilaService{
     _url = 'http://localhost:8099/api/marka/dodaj';
-    _url2 = 'http://localhost:8099/api/marka/get';
+    _url2 = 'http://localhost:8099/api/marka';
    
 
     constructor(private _http: HttpClient) { }

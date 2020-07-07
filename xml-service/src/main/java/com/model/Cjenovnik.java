@@ -20,9 +20,6 @@ public class Cjenovnik {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "cjenovnik", fetch = FetchType.LAZY)
-    private Set<Oglas> oglasi;
-
     @Column
     private double cijenaPoDanu;
 
@@ -34,4 +31,67 @@ public class Cjenovnik {
 
     @Column
     private double popust;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "cjenovnik", fetch = FetchType.LAZY)
+    private Set<Oglas> oglasi;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getCijenaPoDanu() {
+        return cijenaPoDanu;
+    }
+
+    public void setCijenaPoDanu(double cijenaPoDanu) {
+        this.cijenaPoDanu = cijenaPoDanu;
+    }
+
+    public double getCijenaPoKM() {
+        return cijenaPoKM;
+    }
+
+    public void setCijenaPoKM(double cijenaPoKM) {
+        this.cijenaPoKM = cijenaPoKM;
+    }
+
+    public double getCijenaCDW() {
+        return cijenaCDW;
+    }
+
+    public void setCijenaCDW(double cijenaCDW) {
+        this.cijenaCDW = cijenaCDW;
+    }
+
+    public double getPopust() {
+        return popust;
+    }
+
+    public void setPopust(double popust) {
+        this.popust = popust;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Oglas> getOglasi() {
+        return oglasi;
+    }
+
+    public void setOglasi(Set<Oglas> oglasi) {
+        this.oglasi = oglasi;
+    }
 }

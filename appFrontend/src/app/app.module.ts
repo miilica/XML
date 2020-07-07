@@ -46,6 +46,7 @@ import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
 import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
 import { SearchComponent } from './search/search.component';
 import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
+import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.componen
     KomentarAgentComponent,
     SearchComponent,
     DodajOglasComponent,
+    CjenovnikComponent,
   ],
   imports: [
     BrowserModule,

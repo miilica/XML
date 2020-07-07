@@ -130,7 +130,7 @@ export class SearchComponent implements OnInit {
   
   pretraziOglase(page: number){
     if(this.pretraga.mjestoPreuzimanja == '' || this.pretraga.od == null || this.pretraga.doo == null){
-      this._toastr.info('Please fill place, date from and date to','Search');
+      this._toastr.info('Molimo popunite sva polja');
       return;
   }
 
@@ -142,16 +142,16 @@ export class SearchComponent implements OnInit {
           this.pages[i - 1] = i;
         }
         if(this.oglasi.length > 0){
-          this._toastr.success('Search succesfully eneded','Search');
+          this._toastr.success('Pretraga uspješno završena');
         }else{
-          this._toastr.info('No results found','Search');
+          this._toastr.info('Nema pronađenih rezultata');
         }
     },
     error =>{
       if(error.status == 400){
-        this._toastr.info('Dates are not valid','Search');
+        this._toastr.info('Datumi nisu validini');
       }else{
-        this._toastr.error('Error during search', 'Search');
+        this._toastr.error('Greška tokom pretrage');
       }
     }
   );

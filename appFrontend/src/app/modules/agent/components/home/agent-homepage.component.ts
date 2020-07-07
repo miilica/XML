@@ -35,5 +35,9 @@ import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_V
     this.router.navigate([KOMENTARI_AGENT]);
   }
 
+  onClickCjenovnik() : void{
+    this.router.navigate(['cjenovnik']);
+  }
+
   }
   
