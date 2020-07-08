@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.dto.KlasaAutomobilaDTO;
 import com.dto.MarkaAutomobilaDTO;
 import com.dto.VrstaGorivaDTO;
 import com.model.MarkaAutomobila;
@@ -31,15 +32,17 @@ public class MarkaAutomobilaService {
 
     public MarkaAutomobila save(MarkaAutomobilaDTO mDTO) {
         MarkaAutomobila m = new MarkaAutomobila(mDTO);
+        m.setNazivMarke(mDTO.getNazivMarke());
+        m.setObrisan(false);
         m = this.markaAutomobilaRepository.save(m);
         return m;
     }
-    public List<MarkaAutomobila> findAll() throws AccessDeniedException {
+    public List<MarkaAutomobilaDTO> findAll() throws AccessDeniedException {
         List<MarkaAutomobila> result = markaAutomobilaRepository.findAll();
-        List<MarkaAutomobila> finalResult = new ArrayList<>();
+        List<MarkaAutomobilaDTO> finalResult = new ArrayList<>();
         for(MarkaAutomobila markaAutomobila: result){
             if(!markaAutomobila.getObrisan()){
-                finalResult.add(markaAutomobila);
+                finalResult.add(modelMapper.map(markaAutomobila, MarkaAutomobilaDTO.class));
 
             }
         }

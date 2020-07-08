@@ -28,7 +28,7 @@ public class VrstaGorivaController {
     }
     @GetMapping("/get")
     //@PreAuthorize("hasRole('ADMIN')")
-    public List<TipGoriva> loadAll() {
+    public List<VrstaGorivaDTO> loadAll() {
         return this.vrstaGorivaService.findAll();
     }
 

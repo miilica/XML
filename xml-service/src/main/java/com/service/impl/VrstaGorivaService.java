@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.dto.KlasaAutomobilaDTO;
 import com.dto.VrstaGorivaDTO;
 import com.model.TipGoriva;
 import com.repository.VrstaGorivaRepository;
@@ -30,17 +31,18 @@ public class VrstaGorivaService {
     public TipGoriva save(VrstaGorivaDTO mDTO) {
         TipGoriva m = new TipGoriva();
         m.setNaziv(mDTO.getNaziv());
+        m.setObrisan(false);
 
         m = this.vrstaGorivaRepository.save(m);
         return m;
     }
 
-    public List<TipGoriva> findAll() throws AccessDeniedException {
+    public List<VrstaGorivaDTO> findAll() throws AccessDeniedException {
         List<TipGoriva> result = vrstaGorivaRepository.findAll();
-        List<TipGoriva> finalResult = new ArrayList<>();
+        List<VrstaGorivaDTO> finalResult = new ArrayList<>();
         for(TipGoriva tipGoriva : result){
             if(!tipGoriva.getObrisan()){
-                finalResult.add(tipGoriva);
+                finalResult.add(modelMapper.map(tipGoriva, VrstaGorivaDTO.class));
             }
         }
         return finalResult;

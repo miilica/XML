@@ -14,11 +14,6 @@
         <input type="date"  class="form-control" id="brssj" name="brssj" [(ngModel)]="po.datum" value='2020-06-23'/>
       </div>
     
-    
- 
-
-  
-    
     <div>
       <label  class="col-form-label" for="inputDefault">Primalac</label>
       <select class="form-control" id="primalac"  [(ngModel)]="po.primalacId" name="primalac" >
@@ -32,9 +27,6 @@
           <option *ngFor = 'let c of oglasi' name="klasa" [ngValue]="c.id">{{c.id}}</option>
         </select>
       </div>
-
-
-
     <button type="submit" class="btn btn-primary">Dodaj</button>
 </fieldset>       
 </form>

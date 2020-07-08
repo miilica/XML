@@ -29,8 +29,7 @@ public class KlasaAutomobilaController {
 
     @GetMapping("/get")
    // @PreAuthorize("hasRole('ADMIN')")
-    public List<KlasaAutomobila> loadAll() {
-        System.out.println("load alll");
+    public List<KlasaAutomobilaDTO> loadAll() {
         return this.klasaAutomobilaService.findAll();
     }
 

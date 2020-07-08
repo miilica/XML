@@ -52,16 +52,10 @@ public class OglasServiceImpl implements OglasService {
         return null;
     }
 
-    /*public List<Oglas> findAll() throws AccessDeniedException {
+    public List<Oglas> findAll() throws AccessDeniedException {
         List<Oglas> result = oglasRepository.findAll();
         return result;
-    }*/
-
-
-
-
-
-
+    }
 
     public ResponseEntity<?> pretraziMjesta() {
         List<String> mjesta = new ArrayList<>();

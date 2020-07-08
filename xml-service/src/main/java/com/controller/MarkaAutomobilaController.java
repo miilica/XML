@@ -28,7 +28,7 @@ public class MarkaAutomobilaController {
     }
     @GetMapping("/get")
     //@PreAuthorize("hasRole('ADMIN')")
-    public List<MarkaAutomobila> loadAll() {
+    public List<MarkaAutomobilaDTO> loadAll() {
         return this.markaAutomobilaService.findAll();
     }
 

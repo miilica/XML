@@ -33,17 +33,18 @@ public class KlasaAutomobilaService {
     public KlasaAutomobila save(KlasaAutomobilaDTO mDTO) {
         KlasaAutomobila m = new KlasaAutomobila();
         m.setNaziv(mDTO.getNaziv());
+        m.setObrisan(false);
 
         m = this.klasaAutoRepository.save(m);
         return m;
     }
 
-    public List<KlasaAutomobila> findAll() throws AccessDeniedException {
+    public List<KlasaAutomobilaDTO> findAll() throws AccessDeniedException {
         List<KlasaAutomobila> result = klasaAutoRepository.findAll();
-        List<KlasaAutomobila>finalResult = new ArrayList<>();
+        List<KlasaAutomobilaDTO>finalResult = new ArrayList<>();
         for(KlasaAutomobila klasaAutomobila : result){
             if(!klasaAutomobila.getObrisan()){
-                finalResult.add(klasaAutomobila);
+                finalResult.add(modelMapper.map(klasaAutomobila, KlasaAutomobilaDTO.class));
             }
         }
         return finalResult;
@@ -69,7 +70,9 @@ public class KlasaAutomobilaService {
         List<KlasaAutomobilaDTO> klasaAutomobilaDTOS = new ArrayList<>();
 
         for(KlasaAutomobila k: result){
-            klasaAutomobilaDTOS.add(modelMapper.map(k, KlasaAutomobilaDTO.class));
+            if(!k.getObrisan()) {
+                klasaAutomobilaDTOS.add(modelMapper.map(k, KlasaAutomobilaDTO.class));
+            }
         }
 
         return new ResponseEntity<>(klasaAutomobilaDTOS, HttpStatus.OK);

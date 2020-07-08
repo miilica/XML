@@ -28,7 +28,7 @@ public class TipMjenjcaController {
     }
     @GetMapping("/get")
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
-    public List<TipMjenjaca> loadAll() {
+    public List<TipMjenjacaDTO> loadAll() {
         return this.tipMjenjacaService.findAll();
     }
 

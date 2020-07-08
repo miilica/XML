@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.dto.KlasaAutomobilaDTO;
 import com.dto.TipMjenjacaDTO;
 import com.dto.VrstaGorivaDTO;
 import com.model.TipGoriva;
@@ -31,16 +32,17 @@ public class TipMjenjacaService {
     public TipMjenjaca save(TipMjenjacaDTO mDTO) {
         TipMjenjaca m = new TipMjenjaca();
         m.setNaziv(mDTO.getNaziv());
+        m.setObrisan(false);
 
         m = this.tipMjenjacaRepository.save(m);
         return m;
     }
-    public List<TipMjenjaca> findAll() throws AccessDeniedException {
+    public List<TipMjenjacaDTO> findAll() throws AccessDeniedException {
         List<TipMjenjaca> result = tipMjenjacaRepository.findAll();
-        List<TipMjenjaca> finalResult = new ArrayList<>();
+        List<TipMjenjacaDTO> finalResult = new ArrayList<>();
         for(TipMjenjaca tipMjenjaca : result){
             if(!tipMjenjaca.getObrisan()){
-                finalResult.add(tipMjenjaca);
+                finalResult.add(modelMapper.map(tipMjenjaca, TipMjenjacaDTO.class));
             }
         }
         return finalResult;
