@@ -96,7 +96,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// All other requests must be authorized
 				.anyRequest().authenticated().and()
 
-
 				// Intercept every request with filter
 				.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService), BasicAuthenticationFilter.class);
 
@@ -116,10 +115,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers(HttpMethod.POST, "/**/public/**");
 		web.ignoring().antMatchers(HttpMethod.PUT, "/**/public/**");
 		web.ignoring().antMatchers(HttpMethod.DELETE, "/**/public/**");
-		web.ignoring().antMatchers(HttpMethod.GET,  "/**/api/**");
-		web.ignoring().antMatchers(HttpMethod.POST,  "/**/api/**");
-
-
 	}
 
 }

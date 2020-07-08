@@ -42,16 +42,16 @@ public class AuthenticationController {
 
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
-	
+
 	@Autowired
 	private UserService userService;
 
 	// Prvi endpoint koji pogadja korisnik kada se loguje.
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
-    @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody @Valid LoginDTO authenticationRequest) {
-        return new ResponseEntity<>(userDetailsService.login(authenticationRequest), HttpStatus.OK);
-    }
+	@PostMapping("/login")
+	public ResponseEntity<UserDTO> login(@RequestBody @Valid LoginDTO authenticationRequest) {
+		return new ResponseEntity<>(userDetailsService.login(authenticationRequest), HttpStatus.OK);
+	}
 
 	// U slucaju isteka vazenja JWT tokena, endpoint koji se poziva da se token osvezi
 	@PostMapping(value = "/refresh")

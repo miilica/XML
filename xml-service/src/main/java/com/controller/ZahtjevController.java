@@ -27,13 +27,13 @@ public class ZahtjevController {
     private ZahtjevRepository zahtjevRepository;
 
     @GetMapping("/allZahtjeve")
-    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     public List<Zahtjev> findAll() throws AccessDeniedException {
         return this.zahtjevService.findAll();
     }
 
     @GetMapping("/allZahtjeve/kaca")
-    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity<?> findAllZahtjeve() throws AccessDeniedException {
         return this.zahtjevService.findAllZahtjeve();
     }
