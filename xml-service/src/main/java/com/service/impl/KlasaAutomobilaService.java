@@ -40,7 +40,28 @@ public class KlasaAutomobilaService {
 
     public List<KlasaAutomobila> findAll() throws AccessDeniedException {
         List<KlasaAutomobila> result = klasaAutoRepository.findAll();
-        return result;
+        List<KlasaAutomobila>finalResult = new ArrayList<>();
+        for(KlasaAutomobila klasaAutomobila : result){
+            if(!klasaAutomobila.getObrisan()){
+                finalResult.add(klasaAutomobila);
+            }
+        }
+        return finalResult;
+    }
+
+    public KlasaAutomobila edit(KlasaAutomobilaDTO klasaAutomobilaDTO){
+        KlasaAutomobila klasaAutomobila = this.findById(klasaAutomobilaDTO.getID());
+        klasaAutomobila.setId(klasaAutomobilaDTO.getID());
+        klasaAutomobila.setNaziv(klasaAutomobilaDTO.getNaziv());
+        this.klasaAutoRepository.save(klasaAutomobila);
+        return klasaAutomobila;
+    }
+
+    public void delete(Long id){
+        KlasaAutomobila klasaAutomobila = this.findById(id);
+        klasaAutomobila.setObrisan(true);
+        this.klasaAutoRepository.save(klasaAutomobila);
+        //return "Obrisana klasa automobila";
     }
 
     public ResponseEntity<?> getAll() {

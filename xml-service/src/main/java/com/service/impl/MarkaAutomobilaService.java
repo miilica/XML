@@ -36,7 +36,14 @@ public class MarkaAutomobilaService {
     }
     public List<MarkaAutomobila> findAll() throws AccessDeniedException {
         List<MarkaAutomobila> result = markaAutomobilaRepository.findAll();
-        return result;
+        List<MarkaAutomobila> finalResult = new ArrayList<>();
+        for(MarkaAutomobila markaAutomobila: result){
+            if(!markaAutomobila.getObrisan()){
+                finalResult.add(markaAutomobila);
+
+            }
+        }
+        return finalResult;
     }
 
 
@@ -63,4 +70,19 @@ public class MarkaAutomobilaService {
         return new ResponseEntity<>(modeli, HttpStatus.OK);
 
     }
+    public MarkaAutomobila edit(MarkaAutomobilaDTO markaAutomobilaDTO){
+        MarkaAutomobila markaAutomobila = this.findById(markaAutomobilaDTO.getId());
+        markaAutomobila.setId(markaAutomobilaDTO.getId());
+        markaAutomobila.setModel(markaAutomobilaDTO.getModel());
+        markaAutomobila.setNazivMarke(markaAutomobilaDTO.getNazivMarke());
+        this.markaAutomobilaRepository.save(markaAutomobila);
+        return markaAutomobila;
+    }
+
+    public void delete(Long id){
+        MarkaAutomobila markaAutomobila = this.findById(id);
+        markaAutomobila.setObrisan(true);
+        this.markaAutomobilaRepository.save(markaAutomobila);
+    }
+
 }

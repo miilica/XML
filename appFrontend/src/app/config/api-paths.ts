@@ -29,6 +29,7 @@ export const AGENT_ADD_KM_VEHICLE_URL = `${BASE_URL}/api/vozilo/user/agent/dodaj
 
 //Oglasi
 //export const USER_ALL_ADS_URL = `${BASE_URL}/api/oglasi/allAds`;
+export const USER_ALL_ADS_URL = `${BASE_URL}/api/oglasi/allAds`;
 export const USER_ALL_VEHICLES_URL = `${BASE_URL}/api/vozilo/allVozila/kaca`;
 export const VEHICLE_TO_CART_URL = `${BASE_URL}/korpa/addVehicleToCart`;
 export const ALL_VEHICLEs_IN_CART_URL = `${BASE_URL}/korpa/allVozila`;

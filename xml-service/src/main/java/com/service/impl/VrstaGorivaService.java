@@ -37,7 +37,27 @@ public class VrstaGorivaService {
 
     public List<TipGoriva> findAll() throws AccessDeniedException {
         List<TipGoriva> result = vrstaGorivaRepository.findAll();
-        return result;
+        List<TipGoriva> finalResult = new ArrayList<>();
+        for(TipGoriva tipGoriva : result){
+            if(!tipGoriva.getObrisan()){
+                finalResult.add(tipGoriva);
+            }
+        }
+        return finalResult;
+    }
+
+    public TipGoriva edit(VrstaGorivaDTO vrstaGorivaDTO){
+        TipGoriva tipGoriva = this.findById(vrstaGorivaDTO.getId());
+        tipGoriva.setId(vrstaGorivaDTO.getId());
+        tipGoriva.setNaziv(vrstaGorivaDTO.getNaziv());
+        this.vrstaGorivaRepository.save(tipGoriva);
+        return tipGoriva;
+    }
+
+    public void delete(Long id){
+            TipGoriva tipGoriva = this.findById(id);
+            tipGoriva.setObrisan(true);
+            this.vrstaGorivaRepository.save(tipGoriva);
     }
 
     public ResponseEntity<?> getAll() {

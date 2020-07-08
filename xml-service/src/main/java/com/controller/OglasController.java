@@ -6,6 +6,7 @@ import com.model.Oglas;
 import com.service.OglasService;
 import com.service.impl.OglasServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,11 +22,11 @@ public class OglasController {
     @Autowired
     private OglasServiceImpl oglasService;
 
-   /* @GetMapping("/allAds")
+    @GetMapping("/allAds")
    // @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<Oglas> findAll() throws AccessDeniedException {
         return this.oglasService.findAll();
-    }*/
+    }
 
     @GetMapping( value = "/mjesta")
     public ResponseEntity<?> pretraziMjesta() {
@@ -36,6 +37,8 @@ public class OglasController {
     public ResponseEntity<?> pretraziOglase(@RequestBody PretragaDTO pretraga, @PathVariable int page, @PathVariable String sort) {
         return this.oglasService.pretraziOglase(pretraga,page, sort);
     }
+
+
 
     @PostMapping("/dodaj")
     public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {

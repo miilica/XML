@@ -90,4 +90,5 @@ public class OglasDTO {
     public void setCjenovnikID(Long cjenovnikID) {
         this.cjenovnikID = cjenovnikID;
     }
+
 }

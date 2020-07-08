@@ -2,11 +2,17 @@ package com.model;
 
 import com.dto.TipMjenjacaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
 @Table(name = "tipmjenjaca")
 public class TipMjenjaca {
 
@@ -16,6 +22,9 @@ public class TipMjenjaca {
 
         @Column
         private String naziv;
+
+        @Column
+        private Boolean obrisan;
 
         @JsonIgnore
     @OneToMany(mappedBy = "tipMjenjaca", fetch = FetchType.LAZY)
@@ -45,5 +54,13 @@ public class TipMjenjaca {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
+    }
+
+    public Boolean getObrisan() {
+        return obrisan;
+    }
+
+    public void setObrisan(Boolean nijeObrisan) {
+        this.obrisan = nijeObrisan;
     }
 }

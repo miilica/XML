@@ -23,21 +23,21 @@ INSERT INTO `user_authority` (user_id, authority_id) VALUES (7, 3);
 INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prezime) VALUES (6, 'Nikole Tesle 15', '1', 'Role', 'MarkoTrans', 'stagod', 'Rolic');
 INSERT INTO `agent` (id, adresa, br_oglasa, ime, ime_kompanije, poslovnimb, prezime) VALUES (7, 'Mihajla Pupina 22', '2', 'Jelena', 'JelenaTrans', 'wthevr', 'Jelenic');
 
-insert into `tipmjenjaca` (id, naziv) values (1, 'manuelni');
-insert into `tipmjenjaca` (id, naziv) values (2, 'automatski');
-insert into `tipmjenjaca` (id, naziv) values (3, 'poluautomatski');
+insert into `tipmjenjaca` (id, naziv, obrisan) values (1, 'manuelni', false);
+insert into `tipmjenjaca` (id, naziv,obrisan) values (2, 'automatski', false);
+insert into `tipmjenjaca` (id, naziv, obrisan) values (3, 'poluautomatski', false);
 
-insert into `klasaautomobila` (id, naziv) values (1, 'klasa1');
-insert into `klasaautomobila` (id, naziv) values (2, 'klasa2');
-insert into `klasaautomobila` (id, naziv) values (3, 'klasa3');
+insert into `klasaautomobila` (id, naziv, obrisan) values (1, 'klasa1', false);
+insert into `klasaautomobila` (id, naziv, obrisan) values (2, 'klasa2', false);
+insert into `klasaautomobila` (id, naziv, obrisan) values (3, 'klasa3', false);
 
-insert into `vrstagoriva` (id, naziv) values (1, 'benzin');
-insert into `vrstagoriva` (id, naziv) values (2, 'dizel');
-insert into `vrstagoriva` (id, naziv) values (3, 'plin');
+insert into `vrstagoriva` (id, naziv, obrisan) values (1, 'benzin', false);
+insert into `vrstagoriva` (id, naziv, obrisan) values (2, 'dizel', false);
+insert into `vrstagoriva` (id, naziv, obrisan) values (3, 'plin', false);
 
-insert into `markaautomobila` (id, naziv_marke, model) values (1, 'BMW', 'model1');
-insert into `markaautomobila` (id, naziv_marke, model) values (2, 'Audi', 'model2');
-insert into `markaautomobila` (id, naziv_marke, model) values (3, 'Wolsvagen', 'model3');
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (1, 'BMW', 'model1', false);
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (2, 'Audi', 'model2', false);
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (3, 'Wolsvagen', 'model3', false);
 
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 6, 2, 1,1,1);
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3', 6, 1, 1,2,2);
@@ -67,6 +67,8 @@ insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (6, '2020-03-
 
 INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Hi', '2020-06-17T10:00', 1, 6, 1);
 INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Hey', '2020-06-17T10:00', 6, 1, 1);
+INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Kada?', '2020-06-17T10:00', 2, 1, 1);
+INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Sada', '2020-06-17T10:00', 1, 2, 1);
 
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (1, true, 'Vrh auto', 6, 1);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, true, 'Udobno', 2, 2);

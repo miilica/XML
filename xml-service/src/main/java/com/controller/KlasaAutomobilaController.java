@@ -4,6 +4,7 @@ import com.dto.KlasaAutomobilaDTO;
 import com.model.KlasaAutomobila;
 import com.service.impl.KlasaAutomobilaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,5 +38,19 @@ public class KlasaAutomobilaController {
     @GetMapping()
     public ResponseEntity<?> getAll() {
         return this.klasaAutomobilaService.getAll();
+    }
+
+
+    @PutMapping("/edit")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<KlasaAutomobila> edit(@RequestBody KlasaAutomobilaDTO klasaAutomobilaDTO){
+        return new ResponseEntity<>(this.klasaAutomobilaService.edit(klasaAutomobilaDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity delete(@PathVariable Long id){
+        klasaAutomobilaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

@@ -37,7 +37,27 @@ public class TipMjenjacaService {
     }
     public List<TipMjenjaca> findAll() throws AccessDeniedException {
         List<TipMjenjaca> result = tipMjenjacaRepository.findAll();
-        return result;
+        List<TipMjenjaca> finalResult = new ArrayList<>();
+        for(TipMjenjaca tipMjenjaca : result){
+            if(!tipMjenjaca.getObrisan()){
+                finalResult.add(tipMjenjaca);
+            }
+        }
+        return finalResult;
+    }
+
+    public TipMjenjaca edit(TipMjenjacaDTO tipMjenjacaDTO){
+        TipMjenjaca tipMenjaca = this.findById(tipMjenjacaDTO.getId());
+        tipMenjaca.setId(tipMjenjacaDTO.getId());
+        tipMenjaca.setNaziv(tipMjenjacaDTO.getNaziv());
+        this.tipMjenjacaRepository.save(tipMenjaca);
+        return tipMenjaca;
+    }
+
+    public void delete (Long id){
+        TipMjenjaca tipMjenjaca = this.findById(id);
+        tipMjenjaca.setObrisan(true);
+        this.tipMjenjacaRepository.save(tipMjenjaca);
     }
 
     public ResponseEntity<?> getAll() {

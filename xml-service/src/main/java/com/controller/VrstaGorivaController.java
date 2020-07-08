@@ -4,6 +4,7 @@ import com.dto.VrstaGorivaDTO;
 import com.model.TipGoriva;
 import com.service.impl.VrstaGorivaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,4 +38,16 @@ public class VrstaGorivaController {
         return this.vrstaGorivaService.getAll();
     }
 
+    @PutMapping("/edit")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<TipGoriva> edit(@RequestBody VrstaGorivaDTO vrstaGorivaDTO){
+        return new ResponseEntity<>(this.vrstaGorivaService.edit(vrstaGorivaDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity delete(@PathVariable Long id){
+        vrstaGorivaService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 }

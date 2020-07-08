@@ -57,10 +57,10 @@ public class OglasServiceImpl implements OglasService {
         return result;
     }*/
 
-    @Override
-    public void delete(Long id) {
 
-    }
+
+
+
 
 
     public ResponseEntity<?> pretraziMjesta() {

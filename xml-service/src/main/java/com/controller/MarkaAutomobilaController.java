@@ -4,6 +4,7 @@ import com.dto.MarkaAutomobilaDTO;
 import com.model.MarkaAutomobila;
 import com.service.impl.MarkaAutomobilaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,6 +36,19 @@ public class MarkaAutomobilaController {
     @GetMapping()
     public ResponseEntity<?> getAll() {
         return this.markaAutomobilaService.getAll();
+    }
+    
+    @PutMapping("/edit")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<MarkaAutomobila> edit(@RequestBody MarkaAutomobilaDTO markaAutomobilaDTO){
+        return new ResponseEntity<>(this.markaAutomobilaService.edit(markaAutomobilaDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        markaAutomobilaService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
     // Katarina radila(ne brisati)
