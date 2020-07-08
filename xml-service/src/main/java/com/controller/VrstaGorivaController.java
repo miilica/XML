@@ -30,4 +30,11 @@ public class VrstaGorivaController {
     public List<TipGoriva> loadAll() {
         return this.vrstaGorivaService.findAll();
     }
+
+    // Katarina radila(ne brisati)
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        return this.vrstaGorivaService.getAll();
+    }
+
 }

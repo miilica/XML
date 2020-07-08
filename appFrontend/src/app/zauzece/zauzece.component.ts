@@ -12,8 +12,9 @@ import { Vozilo } from '../components/dodajVozilo/vozilo';
   export class ZauzeceComponent implements OnInit {
 
     public vozila: [];
-    vozilo: {};
-
+    vozilo: {
+      id: null
+    };
 
     public datumOd: "";
     public datumDo: "";
@@ -41,7 +42,7 @@ import { Vozilo } from '../components/dodajVozilo/vozilo';
         data => {console.log('Uspjesno dodato zauzece automobila!')
           this.datumDo = "";
           this.datumOd = "";
-          this.vozilo ={};
+          this.vozilo = null;
       },
         err => console.error('Niste uspjeli da dodate zauzece automobila!')
       );

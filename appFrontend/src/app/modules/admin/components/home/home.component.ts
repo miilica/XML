@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class AdminHomeComponent implements OnInit {
   categoryName: string = '';
 
   constructor(private usersService: UserService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getAll();
@@ -63,6 +65,10 @@ export class AdminHomeComponent implements OnInit {
     }, error => {
       this.toastr.error(error.error.message);
     });
+  }
+
+  onClickCjenovnik() : void{
+    this.router.navigate(['cjenovnik']);
   }
 
 }

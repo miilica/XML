@@ -1,18 +1,28 @@
 package com.service.impl;
 
 import com.dto.KlasaAutomobilaDTO;
+import com.dto.VrstaGorivaDTO;
 import com.model.KlasaAutomobila;
+import com.model.TipGoriva;
 import com.repository.KlasaAutoRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class KlasaAutomobilaService {
+
     @Autowired
     private KlasaAutoRepository klasaAutoRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public KlasaAutomobila findById(Long id) throws AccessDeniedException {
         KlasaAutomobila u = klasaAutoRepository.findById(id).orElseGet(null);
@@ -31,5 +41,16 @@ public class KlasaAutomobilaService {
     public List<KlasaAutomobila> findAll() throws AccessDeniedException {
         List<KlasaAutomobila> result = klasaAutoRepository.findAll();
         return result;
+    }
+
+    public ResponseEntity<?> getAll() {
+        List<KlasaAutomobila> result = klasaAutoRepository.findAll();
+        List<KlasaAutomobilaDTO> klasaAutomobilaDTOS = new ArrayList<>();
+
+        for(KlasaAutomobila k: result){
+            klasaAutomobilaDTOS.add(modelMapper.map(k, KlasaAutomobilaDTO.class));
+        }
+
+        return new ResponseEntity<>(klasaAutomobilaDTOS, HttpStatus.OK);
     }
 }

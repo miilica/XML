@@ -18,3 +18,4 @@ export const AGENT_HOME_PATH = 'agent';
 export const ZAHTJEVI_ZA_VOZILA_AGENT_PATH = `agent/zahjeviZaVozila`;
 export const AGENT_ZAUZECE = 'zauzece';
 export const TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH = `agent/terminiIznajmljenihVozila`;
+export const KOMENTARI_AGENT = `agentKomentar`;

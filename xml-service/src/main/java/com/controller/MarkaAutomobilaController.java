@@ -31,7 +31,15 @@ public class MarkaAutomobilaController {
         return this.markaAutomobilaService.findAll();
     }
 
+    // Katarina radila(ne brisati)
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        return this.markaAutomobilaService.getAll();
+    }
 
-
-
+    // Katarina radila(ne brisati)
+    @GetMapping(value = "/models/{markId}")
+    public ResponseEntity<?> getAllModels(@PathVariable Long markId) {
+        return this.markaAutomobilaService.getAllModels(markId);
+    }
 }

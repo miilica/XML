@@ -15,13 +15,13 @@
 
     <div>
       <label  class="col-form-label" for="inputDefault">Može preći kilometra:</label>
-      <input type="num4" class="form-control" name="mozePreci" id="mozePreci" [(ngModel)]="vozilo.mozePreci"/>
+      <input type="num4" class="form-control" name="mozePreci" id="mozePreci" [(ngModel)]="vozilo.mozePreciKM"/>
     </div>
 
     
     <div>
       <label  class="col-form-label" for="inputDefault">Broj sjedišta za djecu:</label>
-      <input type="number"  class="form-control" id="brsj" name="brsj" [(ngModel)]="vozilo.brSjedista"/>
+      <input type="number"  class="form-control" id="brsj" name="brsj" [(ngModel)]="vozilo.brSjedistaZaDjecu"/>
     </div>
     
     <div>
@@ -64,7 +64,7 @@
     <input type="checkbox"  class="form-control" name="android"  [(ngModel)]="vozilo.imaAndroid"/>
 
     <label>Coliision Damage Wavier:</label>
-    <input type="checkbox"  class="form-control" name="cdw"  [(ngModel)]="vozilo.cdw" />
+    <input type="checkbox"  class="form-control" name="cdw"  [(ngModel)]="vozilo.coliisionDamageWavier" />
 
     <div class="form-row">
       <div class="form-group col-sm-6">

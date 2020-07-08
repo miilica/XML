@@ -1,8 +1,10 @@
 package com.controller;
 
+import com.dto.PretragaDTO;
 import com.dto.OglasDTO;
 import com.model.Oglas;
 import com.service.OglasService;
+import com.service.impl.OglasServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ import java.util.List;
 public class OglasController {
 
     @Autowired
-    private OglasService oglasService;
+    private OglasServiceImpl oglasService;
 
    /* @GetMapping("/allAds")
    // @PreAuthorize("hasRole('ROLE_KORISNIK')")
@@ -25,10 +27,24 @@ public class OglasController {
         return this.oglasService.findAll();
     }*/
 
+    @GetMapping( value = "/mjesta")
+    public ResponseEntity<?> pretraziMjesta() {
+        return this.oglasService.pretraziMjesta();
+    }
+
+    @PostMapping(value = "/pretraga/{page}/{sort}")
+    public ResponseEntity<?> pretraziOglase(@RequestBody PretragaDTO pretraga, @PathVariable int page, @PathVariable String sort) {
+        return this.oglasService.pretraziOglase(pretraga,page, sort);
+    }
+
     @PostMapping("/dodaj")
     public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
+
         return this.oglasService.noviOglas(oglasDTO);
     }
 
-
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> getOneOglasById(@PathVariable Long id) {
+        return this.oglasService.getOneOglasById(id);
+    }
 }

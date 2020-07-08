@@ -27,7 +27,7 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
         this.adsService.getAllZahtjevi().subscribe(data => {
           this.zahtjevi = data;
           for(let z of this.zahtjevi) {
-            if(z.vozilo == null) {
+            if(z.bundle == true) {
               this.bundleZahtjevi.push(z);
             } else {
               this.pojedinacniZahtjevi.push(z);
@@ -37,7 +37,7 @@ import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
           console.log("Pojedinacni: ", this.pojedinacniZahtjevi);
           console.log("Bundle: ", this.bundleZahtjevi);
         }, error => {
-          this.toastr.error('There was an error while getting the ads');
+          //this.toastr.error('There was an error while getting the ads');
         });
     }
 

@@ -45,3 +45,7 @@ export const VOZILO_ZAUZECE_KREIRAJ_AGENT = `${BASE_URL}/api/zauzece/dodaj`;
 //poruke
 export const PORUKE_HOME_PAGE = `${BASE_URL}/api/poruke`;
 
+//cjenovnik
+export const CJENOVNIK = `${BASE_URL}/api/cjenovnik`;
+
+
