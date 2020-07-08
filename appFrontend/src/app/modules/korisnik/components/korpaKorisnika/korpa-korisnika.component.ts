@@ -90,7 +90,6 @@ export class KorpaKorisnikaComponent implements OnInit {
 
   public onClickCloseZahtjev(): void {
     this.vidiZahtjev = false;
-    
   }
 
   public onClickPlati(zahtjev: ZahtjevDTO): void {

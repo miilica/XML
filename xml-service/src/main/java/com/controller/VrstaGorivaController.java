@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/tipgoriva", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/tipgoriva")
 public class VrstaGorivaController {
 
     @Autowired
@@ -21,15 +21,21 @@ public class VrstaGorivaController {
 
 
     @PostMapping("/dodaj")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody VrstaGorivaDTO mDTO) {
         vrstaGorivaService.save(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<TipGoriva> loadAll() {
+    //@PreAuthorize("hasRole('ADMIN')")
+    public List<VrstaGorivaDTO> loadAll() {
         return this.vrstaGorivaService.findAll();
+    }
+
+    // Katarina radila(ne brisati)
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        return this.vrstaGorivaService.getAll();
     }
 
     @PutMapping("/edit")

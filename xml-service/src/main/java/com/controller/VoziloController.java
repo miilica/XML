@@ -19,14 +19,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/vozilo", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/vozilo")
 public class VoziloController {
 
     @Autowired
     private VoziloServiceImpl voziloService;
 
     @PostMapping("/dodaj")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody VoziloDTO mDTO) throws Base64DecodingException, SQLException {
         voziloService.dodajNovoVozilo(mDTO);
         return ResponseEntity.ok().build();
@@ -37,19 +37,19 @@ public class VoziloController {
     }
 
     @GetMapping("/allVozila")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<Vozilo> findAll() throws AccessDeniedException {
         return this.voziloService.findAll();
     }
 
     @GetMapping("/user/agent/allTermineIznajmljivanja")
-    @PreAuthorize("hasRole('ROLE_AGENT')")
+    //@PreAuthorize("hasRole('ROLE_AGENT')")
     public List<TerminIznajmljivanja> loadAllTermineIznajmljivanja() {
         return this.voziloService.findAllTermineIznajmljivanja();
     }
 
     @PutMapping(value = "/user/agent/dodajKM/{dodatiKM}")
-    @PreAuthorize("hasRole('ROLE_AGENT')")
+    //@PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity addKm (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable Double dodatiKM) {
         voziloService.addKmToVehicle(voziloDTO, dodatiKM);
         return ResponseEntity.ok().build();

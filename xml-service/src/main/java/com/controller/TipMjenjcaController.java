@@ -3,6 +3,7 @@ package com.controller;
 import com.dto.TipMjenjacaDTO;
 import com.model.TipMjenjaca;
 import com.service.impl.TipMjenjacaService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,15 +21,20 @@ public class TipMjenjcaController {
 
 
     @PostMapping("/dodaj")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody TipMjenjacaDTO mDTO) {
         tipMjenjacaService.save(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<TipMjenjaca> loadAll() {
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    public List<TipMjenjacaDTO> loadAll() {
         return this.tipMjenjacaService.findAll();
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> getAll() {
+        return this.tipMjenjacaService.getAll();
     }
 
     @PutMapping("/edit")

@@ -14,7 +14,7 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/korpa", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/korpa")
 public class KorpaVozilaKontroler {
 
     @Autowired
@@ -28,21 +28,21 @@ public class KorpaVozilaKontroler {
     }
 
     @GetMapping("/allVozila")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<KorpaVozila> findAll() throws AccessDeniedException {
         return this.korpaVozilaService.findAll();
     }
 
     @PostMapping("/rentACarRequest")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity rentACarRequest(@Valid @RequestBody KorpaVozilaDTO vozilo) {
         korpaVozilaService.rentACarRequest(vozilo);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/rentACarRequestBundle")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
-    public ResponseEntity rentACarRequestBundle(@Valid @RequestBody KorpaVozilaDTO[] listaVozila) {
+    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity rentACarRequestBundle(@RequestBody KorpaVozilaDTO[] listaVozila) {
         korpaVozilaService.rentACarRequestBundle(listaVozila);
         return ResponseEntity.ok().build();
     }

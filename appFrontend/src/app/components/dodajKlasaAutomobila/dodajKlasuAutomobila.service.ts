@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class DodajKlasuAutomobilaService{
     _url = 'http://localhost:8099/api/klasa/dodaj';
+   // _url2 = 'http://localhost:8099/api/klasa';
+   
     _url2 = 'http://localhost:8099/api/klasa/get';
     _url3 = 'http://localhost:8099/api/klasa/edit';
     _url4 = 'http://localhost:8099/api/klasa/delete';

@@ -28,6 +28,7 @@ export const AGENT_ADD_KM_VEHICLE_URL = `${BASE_URL}/api/vozilo/user/agent/dodaj
 
 
 //Oglasi
+//export const USER_ALL_ADS_URL = `${BASE_URL}/api/oglasi/allAds`;
 export const USER_ALL_ADS_URL = `${BASE_URL}/api/oglasi/allAds`;
 export const USER_ALL_VEHICLES_URL = `${BASE_URL}/api/vozilo/allVozila/kaca`;
 export const VEHICLE_TO_CART_URL = `${BASE_URL}/korpa/addVehicleToCart`;
@@ -44,4 +45,8 @@ export const VOZILO_ZAUZECE_KREIRAJ_AGENT = `${BASE_URL}/api/zauzece/dodaj`;
 
 //poruke
 export const PORUKE_HOME_PAGE = `${BASE_URL}/api/poruke`;
+
+//cjenovnik
+export const CJENOVNIK = `${BASE_URL}/api/cjenovnik`;
+
 

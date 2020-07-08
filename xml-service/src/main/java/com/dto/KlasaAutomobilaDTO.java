@@ -1,5 +1,6 @@
 package com.dto;
 
+import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

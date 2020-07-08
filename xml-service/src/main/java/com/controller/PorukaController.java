@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/poruke" , produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/poruke")
 public class PorukaController {
 
     @Autowired
@@ -19,21 +19,21 @@ public class PorukaController {
 
     @GetMapping(value = "/{posiljalacId}/{primalacId}/{oglasId}")
     //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
-    public List<PorukaDTO>get(@PathVariable("posiljalacId") Long posiljalacId, @PathVariable("primalacId") Long primalacId, @PathVariable("oglasId") Long oglasId){
-        return porukaService.get(posiljalacId,primalacId,oglasId);
+    public List<PorukaDTO> get(@PathVariable("posiljalacId") Long posiljalacId, @PathVariable("primalacId") Long primalacId, @PathVariable("oglasId") Long oglasId) {
+        return porukaService.get(posiljalacId, primalacId, oglasId);
     }
 
     @GetMapping(value = "/{Id}")
     //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
     public List<PorukaDTO>getMojePoruke(@PathVariable("Id") Long Id){
+
         return porukaService.getMojePoruke(Id);
     }
 
 
     @PostMapping
     //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
-    public void posaljiPoruku(@RequestBody PorukaDTO porukaDTO){
+    public void posaljiPoruku(@RequestBody PorukaDTO porukaDTO) {
         porukaService.posaljiPoruku(porukaDTO);
     }
-
 }

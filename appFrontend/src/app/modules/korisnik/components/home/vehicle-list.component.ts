@@ -25,13 +25,6 @@ export class VehicleListComponent implements OnInit {
   }
 
   private getAllAds(): void {
-    this.adsService.getAllAds().subscribe(data => {
-      this.oglasi = data;
-      console.log("Svi oglasi: ", this.oglasi);
-    }, error => {
-      this.toastr.error('There was an error while getting all ads');
-    });
-
     this.adsService.getAllVehicles().subscribe(data => {
       this.vozila = data;
       console.log("Sva vozila: ", this.vozila);

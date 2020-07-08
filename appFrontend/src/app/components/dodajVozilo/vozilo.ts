@@ -9,15 +9,15 @@ export class Vozilo {
         public id: number,
         public  cijena: number,
         public  kilometraza: number,
-        public  mozePreci: number,
-        public  brSjedista: number,
+        public  mozePreciKM: number,
+        public  brSjedistaZaDjecu: number,
         public  markaAutomobila: MarkaAutomobila,
         public  tipGoriva: TipGoriva,
         public  tipMjenjaca: TipMjenjaca,
         public  klasaAutomobila: KlasaAutomobila,
         public  imaAndroid: boolean,
-        public  cdw: boolean,
-        public ocjena: number,
-        public slike: Slika[]
+        public  coliisionDamageWavier: boolean,
+        public  ocjena: number,
+        public  slike: Slika[]
     ){}
 }

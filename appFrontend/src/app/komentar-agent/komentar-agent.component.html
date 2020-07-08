@@ -1,0 +1,29 @@
+<div class="card bg-dark text-white">
+    <img src="assets/img/roza.jpg" height="1000" width="300" class="card-img">
+    <div class="card-img-overlay">
+      <br/>
+        <div class="col-md-6">
+
+            <h1 style="color: deeppink; align-content: center;">Komentari automobila!</h1>
+            
+            <div class="flex">
+                <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Vozila:</label>
+                <select class="form-control" id="vozilo" style="color: deeppink; width: 250px;" [(ngModel)]="vozilo" (change) = "voziloPromjena(vozilo)">
+                    <option *ngFor = "let v of vozila" [ngValue]="v">
+                        {{v.markaAutomobila.nazivMarke}} {{v.markaAutomobila.model}}
+                    </option>
+                </select>
+                <br/>
+            </div>
+            <div class="d-flex flex-column" *ngFor = "let k of komentari" style="color: deeppink; align-content: center;">
+                    <p>&nbsp;&nbsp;Komentar postavio: @{{k.userUsername}}</p>
+                    <p>&nbsp;&nbsp;Tekst komentara: {{k.tekst}}</p><br/><br/>
+            </div><br/>
+            <textarea *ngIf = "mode == 'ADD'" class="form-control" style="width: 300px; height: 100px;" [(ngModel)] ="komentar"></textarea>
+            <br>
+            <button type="button" *ngIf = "vozilo != null" class="btn btn-outline-secondary" style="color:deeppink; width: 150px; height: 30px;" 
+            (click) = "onClickDodaj()">Dodaj</button>
+
+        </div>
+    </div>
+</div>

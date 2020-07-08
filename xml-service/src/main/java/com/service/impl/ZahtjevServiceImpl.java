@@ -51,6 +51,9 @@ public class ZahtjevServiceImpl implements ZahtjevService {
     @Autowired
     private OcenaService ocenaService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public List<Zahtjev> findAll() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -201,19 +204,23 @@ public class ZahtjevServiceImpl implements ZahtjevService {
     }
 
     @Override
-    public Zahtjev findByIds(Long voziloId, Long agentId) throws AccessDeniedException {
+    public ZahtjevDTO findByIds(Long voziloId, Long agentId) throws AccessDeniedException {
         List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
         for(Zahtjev z: listaZahtjeva) {
             if(!z.isBundle()) {
                 if (z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId) {
                     z = zahtjevRepository.findById(z.getId()).orElseGet(null);
-                    return z;
+                    ZahtjevDTO zahtjevDTO = new ZahtjevDTO();
+                    modelMapper.map(z, Zahtjev.class);
+                    return zahtjevDTO;
                 }
             } else {
                 for(KorpaVozila kv: z.getKorpaVozila()) {
                     if(kv.getVehicleId() == voziloId && kv.getAgent().getId() == agentId) {
                         z = zahtjevRepository.findById(z.getId()).orElseGet(null);
-                        return z;
+                        ZahtjevDTO zahtjevDTO = new ZahtjevDTO();
+                        modelMapper.map(z, Zahtjev.class);
+                        return zahtjevDTO;
                     }
                 }
             }

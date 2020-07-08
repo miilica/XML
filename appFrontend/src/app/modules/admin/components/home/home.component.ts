@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { DodajMarkuAutomobilaService } from 'src/app/components/dodajMarkaAutomobila/dodajMarkuAutomobila.service';
-import { DodajKlasuAutomobilaService } from 'src/app/components/dodajKlasaAutomobila/dodajKlasuAutomobila.service';
-import { TipGorivaService } from 'src/app/components/tipGoriva/tipGoriva.service';
-import { TipMjenjacaService } from 'src/app/components/tipMjenjaca/tipMjenjaca.service';
-import { MarkaAutomobila } from 'src/app/components/dodajMarkaAutomobila/markaAutomobila';
 import { Router } from '@angular/router';
+import { TipMjenjacaService } from 'src/app/components/tipMjenjaca/tipMjenjaca.service';
+import { DodajMarkuAutomobilaService } from 'src/app/components/dodajMarkaAutomobila/dodajMarkuAutomobila.service';
+import { TipGorivaService } from 'src/app/components/tipGoriva/tipGoriva.service';
+import { MarkaAutomobila } from 'src/app/components/dodajMarkaAutomobila/markaAutomobila';
 import { KlasaAutomobila } from 'src/app/components/dodajKlasaAutomobila/klasaAutomobila';
 import { TipGoriva } from 'src/app/components/tipGoriva/tipGoriva';
 import { TipMjenjaca } from 'src/app/components/tipMjenjaca/tipMjenjaca';
-
+import { DodajKlasuAutomobilaService } from 'src/app/components/dodajKlasaAutomobila/dodajKlasuAutomobila.service';
 
 
 @Component({
@@ -250,6 +249,10 @@ editTipMenjaca(menjac: TipMjenjaca):void{
     }, error => {
       this.toastr.error(error.error.message);
     });
+  }
+
+  onClickCjenovnik() : void{
+    this.router.navigate(['cjenovnik']);
   }
 
 }

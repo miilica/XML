@@ -1,7 +1,7 @@
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH } from 'src/app/config/router-paths';
 import { PORUKE_HOME_PAGE } from 'src/app/config/api-paths';
+import { ZAHTJEVI_ZA_VOZILA_AGENT_PATH, AGENT_ZAUZECE, TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH, KOMENTARI_AGENT } from 'src/app/config/router-paths';
 
 @Component({
     selector: 'app-agent-homepage',
@@ -31,6 +31,13 @@ import { PORUKE_HOME_PAGE } from 'src/app/config/api-paths';
       this.router.navigate([TERMINI_IZNAJMLJENIH_ZA_VOZILA_AGENT_PATH]);
   }
 
+  onClickKomentarAgent() : void{
+    this.router.navigate([KOMENTARI_AGENT]);
+  }
+
+  onClickCjenovnik() : void{
+    this.router.navigate(['cjenovnik']);
+  }
 
   }
   

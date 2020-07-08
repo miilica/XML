@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping(value = "/api/zauzece")
 public class ZauzeceController {
 
@@ -20,7 +19,7 @@ public class ZauzeceController {
     }
 
     @PostMapping(value = "/dodaj")
-    public ResponseEntity<?> zauzeceAutomobila(@RequestBody ZauzeceDTO zauzeceDTO){
+    public ResponseEntity<?> zauzeceAutomobila(@RequestBody ZauzeceDTO zauzeceDTO) {
         return this.zauzeceService.zauzeceAutomobila(zauzeceDTO);
     }
 

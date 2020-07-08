@@ -28,6 +28,20 @@ public class Oglas {
     @Column
     private boolean dostupan;
 
+    @Column(name = "doo")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
+            @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
+            @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
+    })
+    private DateTime doo;
+
+    @Column(name = "od")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
+            @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
+            @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
+    })
+    private DateTime od;
+
 
     @JsonIgnore//uleti u neku beskonacnu petlju kad uzimam sve oglase pa sam morao ovo
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,6 +49,12 @@ public class Oglas {
 
     @Column
     private String mjestoPreuzimanja;
+
+    @Column
+    private Double dozvoljenaKilometraza;
+
+   // @Column
+   // private TerminIznajmljivanja terminIznajmljivanja;
 
     @Column(name = "from_date")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
@@ -55,8 +75,8 @@ public class Oglas {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    //  @ManyToOne(fetch = FetchType.LAZY)
-    //  private Cjenovnik cjenovnik;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cjenovnik cjenovnik;
 
     @OneToMany(mappedBy = "oglas", fetch = FetchType.LAZY)
     private Set<Zahtjev> zahtjevp;
@@ -87,6 +107,38 @@ public class Oglas {
 
     public void setDostupan(boolean dostupan) {
         this.dostupan = dostupan;
+    }
+
+    public DateTime getDoo() {
+        return doo;
+    }
+
+    public void setDoo(DateTime doo) {
+        this.doo = doo;
+    }
+
+    public DateTime getOd() {
+        return od;
+    }
+
+    public void setOd(DateTime od) {
+        this.od = od;
+    }
+
+    public Double getDozvoljenaKilometraza() {
+        return dozvoljenaKilometraza;
+    }
+
+    public void setDozvoljenaKilometraza(Double dozvoljenaKilometraza) {
+        this.dozvoljenaKilometraza = dozvoljenaKilometraza;
+    }
+
+    public Cjenovnik getCjenovnik() {
+        return cjenovnik;
+    }
+
+    public void setCjenovnik(Cjenovnik cjenovnik) {
+        this.cjenovnik = cjenovnik;
     }
 
     public Vozilo getVozilo() {

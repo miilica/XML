@@ -18,6 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Poruka {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,7 +37,4 @@ public class Poruka {
 
     @Column
     private Long oglasId;
-
-
-
 }

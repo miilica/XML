@@ -76,6 +76,8 @@ public class User implements UserDetails{
     @OneToMany(mappedBy = "user")
     private Set<Oglas> oglasi;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Cjenovnik> cjenovnici;
 
     public User() {
     }
@@ -242,5 +244,13 @@ public class User implements UserDetails{
 
     public void setOglasi(Set<Oglas> oglasi) {
         this.oglasi = oglasi;
+    }
+
+    public Set<Cjenovnik> getCjenovnici() {
+        return cjenovnici;
+    }
+
+    public void setCjenovnici(Set<Cjenovnik> cjenovnici) {
+        this.cjenovnici = cjenovnici;
     }
 }

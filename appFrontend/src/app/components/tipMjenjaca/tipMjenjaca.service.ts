@@ -9,6 +9,8 @@ import { TipMjenjaca } from './tipMjenjaca';
 })
 export class TipMjenjacaService{
     _url = 'http://localhost:8099/api/tipmjenjaca/dodaj';
+    //_url2 = 'http://localhost:8099/api/tipmjenjaca';
+   
     _url2 = 'http://localhost:8099/api/tipmjenjaca/get';
     _url3 = 'http://localhost:8099/api/tipmjenjaca/edit';
     _url4 = 'http://localhost:8099/api/tipmjenjaca/delete';

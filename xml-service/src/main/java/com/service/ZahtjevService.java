@@ -22,7 +22,7 @@ public interface ZahtjevService {
 
     void payForRentACar(Zahtjev zahtjev);
 
-    Zahtjev findByIds(Long vehicleId, Long agentId);
+    ZahtjevDTO findByIds(Long vehicleId, Long agentId);
 
     Vozilo rateVehicle(VoziloDTO voziloDTO, Double rate);
     Vozilo commentVehicle(VoziloDTO voziloDTO, String komentar);

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -42,7 +43,10 @@ import { AgentTermini } from './modules/agent/components/listaTermina/agent-term
 import { PorukaComponent } from './poruka/poruka.component';
 import { ZauzeceComponent } from './zauzece/zauzece.component';
 import { ListaPorukaComponent } from './lista-poruka/lista-poruka.component';
+import { KomentarAgentComponent } from './komentar-agent/komentar-agent.component';
+import { SearchComponent } from './search/search.component';
 import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
+import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
 
 
 @NgModule({
@@ -68,7 +72,10 @@ import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.componen
     PorukaComponent,
     ZauzeceComponent,
     ListaPorukaComponent,
+    KomentarAgentComponent,
+    SearchComponent,
     DodajOglasComponent,
+    CjenovnikComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +92,13 @@ import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.componen
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true,
+      resetTimeoutOnDuplicate: true,
+      progressBar: true,
+      enableHtml: true
+    }),
     MatIconModule,
     MatCheckboxModule,
   ],
