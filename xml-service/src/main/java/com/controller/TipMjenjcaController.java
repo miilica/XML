@@ -3,7 +3,6 @@ package com.controller;
 import com.dto.TipMjenjacaDTO;
 import com.model.TipMjenjaca;
 import com.service.impl.TipMjenjacaService;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
