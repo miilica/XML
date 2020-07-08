@@ -75,9 +75,11 @@ public class Oglas {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Cjenovnik cjenovnik;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "oglas", fetch = FetchType.LAZY)
     private Set<Zahtjev> zahtjevp;
 

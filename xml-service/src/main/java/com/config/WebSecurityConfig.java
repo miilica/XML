@@ -91,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/poruke/**").permitAll()
 				.antMatchers("/api/**").permitAll()
 				.antMatchers("/api/users/getLoggedIn").permitAll()
-				.antMatchers("/api/vozilo//allVozila/kaca**").permitAll()
+				.antMatchers("/api/vozilo/allVozila/kaca**").permitAll()
 
 				// All other requests must be authorized
 				.anyRequest().authenticated().and()
