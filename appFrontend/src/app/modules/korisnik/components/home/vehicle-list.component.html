@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="ui header">Lista oglasa</h2>
+  <h2 class="ui header">Lista vozila</h2>
   <br>
   <button [routerLink]="['korpaKorisnika']">Vasa korpa</button>
   <button [routerLink]="['listaporuka']">Lista poruka</button>
@@ -17,6 +17,7 @@
         <th>CDW</th>
         <th>Andorid</th>
         <th>Dodaj u korpu</th>
+        <th>Obrisi</th>
       </thead>
       <tbody>
           <tr *ngFor="let vozilo of vozila">

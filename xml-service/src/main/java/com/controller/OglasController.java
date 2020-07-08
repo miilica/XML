@@ -30,10 +30,7 @@ public class OglasController {
         return this.oglasService.findAll();
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<Oglas> edit(@RequestBody OglasDTO oglasDTO){
-        return new ResponseEntity<>(this.oglasServiceImpl.edit(oglasDTO), HttpStatus.OK);
-    }
+
 
     @PostMapping("/dodaj")
     public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {

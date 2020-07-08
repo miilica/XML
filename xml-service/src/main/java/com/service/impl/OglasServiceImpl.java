@@ -49,18 +49,9 @@ public class OglasServiceImpl implements OglasService {
         this.oglasRepository.save(oglas);
     }
 
-    public Oglas edit(OglasDTO oglasDTO){
-        Oglas oglas = this.findById(oglasDTO.getId());
-        oglas.setId(oglasDTO.getId());
-        oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
-        oglas.setVozilo(oglasDTO.getVozilo());
-        oglas.setDostupan(oglasDTO.isDostupan());
-        this.oglasRepository.save(oglas);
-        return oglas;
-    }
 
-<<<<<<< HEAD
-=======
+
+
     @Override
     public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
         Vozilo vozilo = this.voziloService.findById(oglasDTO.getVozilo().getId());
@@ -90,6 +81,6 @@ public class OglasServiceImpl implements OglasService {
         this.oglasRepository.save(oglas);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
->>>>>>> master
+
 
 }
