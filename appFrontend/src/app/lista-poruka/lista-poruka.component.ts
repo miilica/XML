@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ListaPorukaService } from './lista-poruka.service';
 import { User } from '../services/user';
 import { UserService } from '../services/user.service';
+import { USER_ID_KEY, USER_ROLE_KEY, USERNAME_KEY, USER_TOKEN_KEY } from './../config/local-storage-keys';
 
 @Component({
   selector: 'app-lista-poruka',
@@ -21,29 +22,30 @@ export class ListaPorukaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._userService.getLoggedUser().subscribe(
-      data=>{ 
-       
-        console.log(data+'tu samm'+data.id);
-          this.user = data;
-          console.log(this.user.id+"jajajjajajajjjaj")
-          this.Id = this.user.id;
-          this.pom = 1;
-      },
-      error=> console.error('Error!', error)
-  )
-if(this.pom=1){
-    this._listaServis.getMojePoruke(6).subscribe(
+    //this._userService.getLoggedUser().subscribe(
+      //data=>{ 
+       // var userId = parseInt(localStorage.getItem(USER_ID_KEY));
+        //console.log(data+'tu samm'+data.id);
+       //   this.user = data;
+        //  console.log(userId+"jajajjajajajjjaj")
+        //  this.Id = this.user.id;
+        //  this.pom = 1;
+      //},
+      //error=> console.error('Error!', error)
+  //)
+//if(this.pom=1){
+    var userId = parseInt(localStorage.getItem(USER_ID_KEY));
+    this._listaServis.getMojePoruke(userId).subscribe(
     
       data=>{ 
        
-        console.log('ziv samm')
+        console.log('ziv samm, SAD ISPISI ID ' + userId)
           this.poruke = data;
       },
       error=> console.error('Error!', error)
   )
     }
-  }
+  //}
 
   onSubmit(){ 
     this.router.navigate(['lista-poruka']);

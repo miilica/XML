@@ -28,8 +28,6 @@ public class Oglas {
     @Column
     private boolean dostupan;
 
-    @Column
-    private boolean obrisan;
 
     @JsonIgnore//uleti u neku beskonacnu petlju kad uzimam sve oglase pa sam morao ovo
     @ManyToOne(fetch = FetchType.EAGER)
@@ -56,8 +54,8 @@ public class Oglas {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-  //  @ManyToOne(fetch = FetchType.LAZY)
-  //  private Cjenovnik cjenovnik;
+    //  @ManyToOne(fetch = FetchType.LAZY)
+    //  private Cjenovnik cjenovnik;
 
     @OneToMany(mappedBy = "oglas", fetch = FetchType.LAZY)
     private Set<Zahtjev> zahtjevp;

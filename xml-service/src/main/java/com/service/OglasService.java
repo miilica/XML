@@ -12,6 +12,6 @@ import java.util.List;
 public interface OglasService {
     Oglas findById(Long id);
     List<Oglas> findAll() throws AccessDeniedException;
-    void delete(Long id);
+    //void delete(Long id);
     ResponseEntity<Void> noviOglas(OglasDTO oglasDTO);
 }

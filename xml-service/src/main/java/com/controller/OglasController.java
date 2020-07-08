@@ -38,9 +38,5 @@ public class OglasController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable Long id){
-        oglasServiceImpl.delete(id);
-        return ResponseEntity.ok().build();
-    }
+
 }

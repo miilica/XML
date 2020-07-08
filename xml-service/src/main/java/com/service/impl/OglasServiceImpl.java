@@ -42,12 +42,7 @@ public class OglasServiceImpl implements OglasService {
         return result;
     }
 
-    @Override
-    public void delete(Long id) {
-        Oglas oglas = this.findById(id);
-        oglas.setObrisan(true);
-        this.oglasRepository.save(oglas);
-    }
+
 
 
 
