@@ -55,7 +55,7 @@ export class KomentarAgentComponent implements OnInit {
 
     
 
-    this.komentarService.dodajKomentar(newKomenatar).subscribe(
+    this.komentarService.dodajKomentar(newKomenatar, localStorage.getItem('user-username-key')).subscribe(
       data=>{
         this.refresh();
         

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/marka", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/marka")
 public class MarkaAutomobilaController {
 
     @Autowired
@@ -20,13 +20,13 @@ public class MarkaAutomobilaController {
 
 
     @PostMapping("/dodaj")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody MarkaAutomobilaDTO mDTO) {
         markaAutomobilaService.save(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public List<MarkaAutomobila> loadAll() {
         return this.markaAutomobilaService.findAll();
     }

@@ -15,8 +15,9 @@ export class DodajTipMjenjaca implements OnInit {
   constructor(private _tipMjenjcaServis : TipMjenjacaService, private router : Router) { }
 
   ngOnInit(): void {
-
   }
+
+  
   onSubmit(){ 
       this._tipMjenjcaServis.dodajTipMjenjaca(this.tip)
      .subscribe(

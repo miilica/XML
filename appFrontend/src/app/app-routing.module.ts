@@ -80,7 +80,6 @@ const routes: Routes = [
   { path: 'admin/addklasu', component: DodajKlasuAutomobila },
   { path: 'admin/addtipgoriva', component: AddTipGoriva },
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
-  //{ path: 'zauzece', component: ZauzeceComponent},
   { path: 'agent/poruke', component: PorukaComponent},
   { path: 'agent/listaporuka', component: ListaPorukaComponent},
   { path: 'agent/listaporuka/poruke', component: PorukaComponent},
@@ -89,7 +88,7 @@ const routes: Routes = [
   { path: 'korisnik/listaporuka', component: ListaPorukaComponent},
   { path: 'korisnik/listaporuka/poruke', component: PorukaComponent},
   { path: 'korisnik/dodajOglas', component: DodajOglasComponent},
-  //{ path: 'zauzece', component: ZauzeceComponent},
+  { path: 'zauzece', component: ZauzeceComponent},
   { path: 'pretraga', component: SearchComponent },
   { path: 'admin/addtipmjenjaca', component: DodajTipMjenjaca },
   { path: 'cjenovnik', component: CjenovnikComponent}

@@ -21,7 +21,7 @@ export class KomenatarAgentService {
         return this.http.get<any>(`${this.urlKomenatariAuto}/${vozilo_id}`, );
     }
 
-    dodajKomentar(komentar: any): Observable<any> {
-        return this.http.post(`${this.urlKomentarDodaj}`, komentar);
+    dodajKomentar(komentar: any, username: string): Observable<any> {
+        return this.http.post(`${this.urlKomentarDodaj}/${username}`, komentar);
     }
 }

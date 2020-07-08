@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/komentar", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/komentar")
 public class KomentarController {
     private KomentarService komentarService;
 
@@ -17,9 +17,9 @@ public class KomentarController {
         this.komentarService = komentarService;
     }
 
-    @PostMapping(value = "/dodaj")
-    private ResponseEntity<?> dodajKomentar(@RequestBody KomentarDTO komentarDTO){
-        return this.komentarService.kreirajKomentar(komentarDTO);
+    @PostMapping(value = "/dodaj/{username}")
+    private ResponseEntity<?> dodajKomentar(@RequestBody KomentarDTO komentarDTO, @PathVariable String username){
+        return this.komentarService.kreirajKomentar(komentarDTO, username);
     }
 
     @GetMapping(value = "/getKomentareVozilo/{voziloId}")

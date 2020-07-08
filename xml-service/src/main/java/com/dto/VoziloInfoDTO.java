@@ -20,6 +20,6 @@ public class VoziloInfoDTO {
     private VrstaGorivaDTO tipGoriva;
     private TipMjenjacaDTO tipMjenjaca;
     private KlasaAutomobilaDTO klasaAutomobila;
-    private Boolean imaAndroid;
+    private boolean imaAndroid;
     private boolean coliisionDamageWavier;
 }

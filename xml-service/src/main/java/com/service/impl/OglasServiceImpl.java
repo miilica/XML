@@ -78,7 +78,7 @@ public class OglasServiceImpl implements OglasService {
     }
 
     public ResponseEntity<?> pretraziOglase(PretragaDTO pretraga, int page, String sort) {
-        if(pretraga.getOd().isAfter(pretraga.getDoo()) || pretraga.getOd().isBefore(DateTime.now())){
+        if(pretraga.getOd().isAfter(pretraga.getDoo()) || pretraga.getOd().isBefore(DateTime.now().plusDays(2))){
             return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

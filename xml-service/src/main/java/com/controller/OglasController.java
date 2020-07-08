@@ -15,7 +15,7 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/oglasi", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/oglasi")
 public class OglasController {
 
     @Autowired

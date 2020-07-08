@@ -13,10 +13,13 @@ import org.joda.time.DateTime;
 @NoArgsConstructor
 public class PretragaDTO {
     private String mjestoPreuzimanja;
+
     @JsonSerialize(using = JsonJodaDateTimeSerializer.class)
     private DateTime od;
+
     @JsonSerialize(using = JsonJodaDateTimeSerializer.class)
     private DateTime doo;
+
     private MarkaAutomobilaDTO marka;
     private VrstaGorivaDTO gorivo;
     private TipMjenjacaDTO mjenjac;

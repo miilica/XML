@@ -34,14 +34,11 @@ public class KomentarService {
         this.userRepository = userRepository;
     }
 
-    public ResponseEntity<?> kreirajKomentar(KomentarDTO komentarDTO) {
+    public ResponseEntity<?> kreirajKomentar(KomentarDTO komentarDTO, String username) {
         Komentar komentar = new Komentar();
         komentar.setOdobren(true);
         komentar.setTekst(komentarDTO.getTekst());
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        //Agent agent = this.agentRepository.getOne(6l);
 
         User user = this.userRepository.findByUsername(username);
         komentar.setUserId(user.getId());

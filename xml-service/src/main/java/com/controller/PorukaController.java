@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/poruke" , produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/poruke")
 public class PorukaController {
 
     @Autowired
