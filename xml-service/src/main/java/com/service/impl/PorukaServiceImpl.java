@@ -39,6 +39,7 @@ public class PorukaServiceImpl implements PorukaService {
     }
 
 
+
     @Override
     public List<PorukaDTO> get(Long posiljalacId, Long primalacId, Long oglasId){
         List<Poruka> messages = porukaRepository.findAll();
@@ -53,9 +54,9 @@ public class PorukaServiceImpl implements PorukaService {
         return messageDTOS;
     };
 
-    @Override
-    public  List<PorukaDTO> getMojePoruke(Long id){
-        List<PorukaDTO> poruke = porukaRepository.findAllByPrimalacId(id);
-        return  poruke;
-    }
+//    @Override
+//    public  List<PorukaDTO> getMojePoruke(Long id){
+//        List<PorukaDTO> poruke = porukaRepository.findAllByPrimalacId(id);
+//        return  poruke;
+//    }
 }

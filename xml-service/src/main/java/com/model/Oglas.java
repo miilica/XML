@@ -50,6 +50,7 @@ public class Oglas {
     })
     private DateTime toDate;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -61,9 +62,11 @@ public class Oglas {
     private Set<Zahtjev> zahtjevp;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "oglas")
     private Set<Komentar> komentari;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "oglas")
     private Set<Ocena> ocjene;
 

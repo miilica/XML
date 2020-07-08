@@ -23,11 +23,11 @@ public class PorukaController {
         return porukaService.get(posiljalacId,primalacId,oglasId);
     }
 
-    @GetMapping(value = "/{Id}")
-    //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
-    public List<PorukaDTO>getMojePoruke(@PathVariable("Id") Long Id){
-        return porukaService.getMojePoruke(Id);
-    }
+//    @GetMapping(value = "/{Id}")
+//    //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
+//    public List<PorukaDTO>getMojePoruke(@PathVariable("Id") Long Id){
+//        return porukaService.getMojePoruke(Id);
+//    }
 
 
     @PostMapping

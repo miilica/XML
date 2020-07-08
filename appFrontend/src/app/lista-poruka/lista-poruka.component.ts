@@ -22,18 +22,6 @@ export class ListaPorukaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this._userService.getLoggedUser().subscribe(
-      //data=>{ 
-       // var userId = parseInt(localStorage.getItem(USER_ID_KEY));
-        //console.log(data+'tu samm'+data.id);
-       //   this.user = data;
-        //  console.log(userId+"jajajjajajajjjaj")
-        //  this.Id = this.user.id;
-        //  this.pom = 1;
-      //},
-      //error=> console.error('Error!', error)
-  //)
-//if(this.pom=1){
     var userId = parseInt(localStorage.getItem(USER_ID_KEY));
     this._listaServis.getMojePoruke(userId).subscribe(
     
@@ -45,7 +33,6 @@ export class ListaPorukaComponent implements OnInit {
       error=> console.error('Error!', error)
   )
     }
-  //}
 
   onSubmit(){ 
     this.router.navigate(['lista-poruka']);

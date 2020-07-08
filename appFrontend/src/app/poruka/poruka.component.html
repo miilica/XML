@@ -11,29 +11,24 @@
      
     <div>
         <label  class="col-form-label" for="inputDefault">Vrijeme:</label>
-        <input type="date"  class="form-control" id="brssj" name="brsj" [(ngModel)]="po.datum" value='2020-06-23'/>
+        <input type="date"  class="form-control" id="brssj" name="brssj" [(ngModel)]="po.datum" value='2020-06-23'/>
       </div>
     
     
  
 
-    <div>
-      <label  class="col-form-label" for="inputDefault">Posiljalac</label>
-      <select class="form-control" id="mjenj"  [(ngModel)]="po.posiljalacId" name="tipMjenjaca" >
-        <option [ngValue]="posilj.id" selected = "selected" >{{posilj.name}}</option>
-      </select>
-    </div>
+  
     
     <div>
       <label  class="col-form-label" for="inputDefault">Primalac</label>
-      <select class="form-control" id="klasa"  [(ngModel)]="po.primalacId" name="klasa" >
+      <select class="form-control" id="primalac"  [(ngModel)]="po.primalacId" name="primalac" >
        <option *ngFor = 'let c of useri' name="klasa" [ngValue]="c.id">{{c.name}} {{c.surname}}</option>
       </select>
     </div>
 
     <div>
         <label  class="col-form-label" for="inputDefault">Oglas</label>
-        <select class="form-control" id="klassa"  [(ngModel)]="po.oglasId" name="klasa" >
+        <select class="form-control" id="oglas"  [(ngModel)]="po.oglasId" name="oglas" >
           <option *ngFor = 'let c of oglasi' name="klasa" [ngValue]="c.id">{{c.id}}</option>
         </select>
       </div>

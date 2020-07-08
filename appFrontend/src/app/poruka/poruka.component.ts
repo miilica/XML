@@ -5,6 +5,7 @@ import { DodajVoziloService } from '../components/dodajVozilo/dodajVozilo.servic
 import { Oglas } from '../components/dodajOglas/Oglas';
 import { User } from '../services/user';
 import { UserService } from '../services/user.service';
+import { USER_ID_KEY, USER_ROLE_KEY, USERNAME_KEY, USER_TOKEN_KEY } from './../config/local-storage-keys';
 
 
 @Component({
@@ -18,12 +19,13 @@ export class PorukaComponent implements OnInit {
   posilj = new User (null,null,null,null,null, null, null,null);
   useri : User[];
   useri2: User[];
- 
+ userId: number;
 
 
   constructor(private porukaServis: PorukeService, private dodajVoziloServis : DodajVoziloService, private _userService : UserService) { }
 
   ngOnInit(): void {
+     this.userId = parseInt(localStorage.getItem(USER_ID_KEY));
     this.dodajVoziloServis.getOglasi().subscribe(
       data=>{ 
         console.log(data+'oglasi');
@@ -32,14 +34,7 @@ export class PorukaComponent implements OnInit {
       error=> console.error('Error!', error)
   )
 
-  this._userService.getLoggedUser().subscribe(
-    data=>{ 
-      console.log('cao')
-      console.log(data);
-        this.posilj = data;
-    },
-    error=> console.error('Error!', error)
-)
+  
 this._userService.getAll().subscribe(
   data=>{ 
     console.log('cao2')
@@ -61,6 +56,7 @@ this._userService.getAll().subscribe(
   }
   onSubmit(){ 
    
+    this.po.posiljalacId=this.userId;
     console.log(this.po);
       this.porukaServis.posalji(this.po)
      .subscribe(

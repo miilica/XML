@@ -15,5 +15,5 @@ public interface PorukaService {
 
     List<PorukaDTO> get(Long posiljalacId, Long primalacId, Long oglasId);
 
-    List<PorukaDTO> getMojePoruke(Long id);
+    //List<PorukaDTO> getMojePoruke(Long id);
 }
