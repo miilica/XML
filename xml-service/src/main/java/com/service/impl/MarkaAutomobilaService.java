@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,7 +28,14 @@ public class MarkaAutomobilaService {
     }
     public List<MarkaAutomobila> findAll() throws AccessDeniedException {
         List<MarkaAutomobila> result = markaAutomobilaRepository.findAll();
-        return result;
+        List<MarkaAutomobila> finalResult = new ArrayList<>();
+        for(MarkaAutomobila markaAutomobila: result){
+            if(!markaAutomobila.getObrisan()){
+                finalResult.add(markaAutomobila);
+
+            }
+        }
+        return finalResult;
     }
 
 

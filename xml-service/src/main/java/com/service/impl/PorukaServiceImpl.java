@@ -54,9 +54,9 @@ public class PorukaServiceImpl implements PorukaService {
         return messageDTOS;
     };
 
-//    @Override
-//    public  List<PorukaDTO> getMojePoruke(Long id){
-//        List<PorukaDTO> poruke = porukaRepository.findAllByPrimalacId(id);
-//        return  poruke;
-//    }
+    @Override
+    public  List<PorukaDTO> getMojePoruke(Long id){
+        List<PorukaDTO> poruke = porukaRepository.findAllByPrimalacId(id);
+        return  poruke;
+    }
 }

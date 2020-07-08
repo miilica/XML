@@ -30,7 +30,13 @@ public class VrstaGorivaService {
         }
     public List<TipGoriva> findAll() throws AccessDeniedException {
         List<TipGoriva> result = vrstaGorivaRepository.findAll();
-        return result;
+        List<TipGoriva> finalResult = new ArrayList<>();
+        for(TipGoriva tipGoriva : result){
+            if(!tipGoriva.getObrisan()){
+                finalResult.add(tipGoriva);
+            }
+        }
+        return finalResult;
     }
 
     public TipGoriva edit(VrstaGorivaDTO vrstaGorivaDTO){

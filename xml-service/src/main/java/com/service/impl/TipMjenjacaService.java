@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.dto.TipMjenjacaDTO;
+import com.model.TipGoriva;
 import com.model.TipMjenjaca;
 import com.repository.TipMjenjacaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,13 @@ public class TipMjenjacaService {
     }
     public List<TipMjenjaca> findAll() throws AccessDeniedException {
         List<TipMjenjaca> result = tipMjenjacaRepository.findAll();
-        return result;
+        List<TipMjenjaca> finalResult = new ArrayList<>();
+        for(TipMjenjaca tipMjenjaca : result){
+            if(!tipMjenjaca.getObrisan()){
+                finalResult.add(tipMjenjaca);
+            }
+        }
+        return finalResult;
     }
 
     public TipMjenjaca edit(TipMjenjacaDTO tipMjenjacaDTO){

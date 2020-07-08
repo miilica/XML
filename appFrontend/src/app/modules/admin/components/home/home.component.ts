@@ -124,6 +124,7 @@ deleteKlasu(id):void{
   this.dodajKlasuAutomobilaService.deleteKlasu(id).subscribe(
     data=>{
       alert('Obrisana klasa automobila!');
+      this.getAllKlase();
       
   },
   error=> console.error('Error!', error)
@@ -134,6 +135,7 @@ deleteMarku(id):void{
   this.dodajMarkuAutomobilaService.deleteMarku(id).subscribe(
     data=>{
       alert('Obrisana marka autmobila!');
+      this.getAllMarkaAutomobila();
       
   },
   error=> console.error('Error!', error)
@@ -144,7 +146,7 @@ deleteTipMenjaca(id):void{
   this.tipMenjacaService.deleteTipMenjaca(id).subscribe(
     data=>{
       alert('Obrisan tip menjaca!');
-      
+      this.getAllTipMenjaca();
   },
   error=> console.error('Error!', error)
   )
@@ -154,7 +156,7 @@ deleteTipGoriva(id):void{
   this.tipGorivaService.deleteTiGoriva(id).subscribe(
     data=>{
       alert('Obrisan tip goriva!');
-      
+      this.getAllTipGoriva();
   },
   error=> console.error('Error!', error)
   )
