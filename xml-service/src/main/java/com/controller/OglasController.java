@@ -19,11 +19,11 @@ public class OglasController {
     @Autowired
     private OglasService oglasService;
 
-    @GetMapping("/allAds")
+   /* @GetMapping("/allAds")
    // @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<Oglas> findAll() throws AccessDeniedException {
         return this.oglasService.findAll();
-    }
+    }*/
 
     @PostMapping("/dodaj")
     public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {

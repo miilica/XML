@@ -37,10 +37,10 @@ public class OglasServiceImpl implements OglasService {
         return null;
     }
 
-    public List<Oglas> findAll() throws AccessDeniedException {
+    /*public List<Oglas> findAll() throws AccessDeniedException {
         List<Oglas> result = oglasRepository.findAll();
         return result;
-    }
+    }*/
 
     @Override
     public void delete(Long id) {
@@ -63,15 +63,12 @@ public class OglasServiceImpl implements OglasService {
 
         Oglas oglas = new Oglas();
         oglas.setVozilo(vozilo);
-       oglas.setDostupan(oglasDTO.isDostupan());
+        oglas.setDostupan(oglasDTO.isDostupan());
         oglas.setFromDate(oglasDTO.getFromDate());
         oglas.setToDate(oglasDTO.getToDate());
         oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
         oglas.setUser(user);
         //ad.setPriceList(priceList);
-
-
-
 
         this.oglasRepository.save(oglas);
         return new ResponseEntity<>(HttpStatus.CREATED);

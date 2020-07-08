@@ -42,7 +42,7 @@ public class KorpaVozilaKontroler {
 
     @PostMapping("/rentACarRequestBundle")
     @PreAuthorize("hasRole('ROLE_KORISNIK')")
-    public ResponseEntity rentACarRequestBundle(@Valid @RequestBody KorpaVozilaDTO[] listaVozila) {
+    public ResponseEntity rentACarRequestBundle(@RequestBody KorpaVozilaDTO[] listaVozila) {
         korpaVozilaService.rentACarRequestBundle(listaVozila);
         return ResponseEntity.ok().build();
     }
