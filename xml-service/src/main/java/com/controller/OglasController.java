@@ -42,7 +42,6 @@ public class OglasController {
 
     @PostMapping("/dodaj")
     public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
-
         return this.oglasService.noviOglas(oglasDTO);
     }
 

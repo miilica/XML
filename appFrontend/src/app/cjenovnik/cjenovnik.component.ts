@@ -15,7 +15,7 @@ export class CjenovnikComponent implements OnInit {
 
   modal: NgbModalRef;
   cjenovnik: Cjenovnik;
-  cjenovnici: Cjenovnik[];
+  cjenovnici: Cjenovnik[] = [];
   role: string='';
   username: string='';
   mode: string = 'ADD';
@@ -49,6 +49,16 @@ export class CjenovnikComponent implements OnInit {
     );
   }
 
+  refresh(){
+    this.cjenovnikService.getCjenovnik(this.username).subscribe(
+      data => {
+        this.cjenovnici = data;
+      },
+      error => {
+        this.toaster.error('Greska prilikom dobavljanja cjenovnika');
+      }
+    );
+  }
 
   dodajCjenovnik(sadrzaj: any){
     this.clear();
@@ -68,7 +78,7 @@ export class CjenovnikComponent implements OnInit {
         data => {
           this.toaster.success("Cjenovnik uspjesno kreiran");
           this.clear();
-         // this.refresh();
+          this.refresh();
           this.modal.close();
         },
         error => {
@@ -90,9 +100,9 @@ export class CjenovnikComponent implements OnInit {
     }
       this.cjenovnikService.izmjeniCjenovnik(this.cjenovnik).subscribe(
         data => {
-          this.toaster.success("Cjenovnik uspjesno kreiran");
+          this.toaster.success("Cjenovnik uspjesno izmjenjen");
           this.clear();
-         // this.refresh();
+          this.refresh();
           this.modal.close();
           this.mode = 'ADD';
         },

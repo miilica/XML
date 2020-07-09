@@ -8,10 +8,10 @@ export class Oglas {
         public dostupan: Boolean,
         public vozilo: Vozilo,
         public mestoPreuzimanja: String,
-        public fromDate : Date,
-        public toDate : Date,
+        public od : Date,
+        public doo : Date,
         public userId : number,
-        private cjenovnikID : number
+        public cjenovnikID : number
 
     ){}
 }

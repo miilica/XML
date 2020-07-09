@@ -26,7 +26,6 @@ public class PorukaController {
     @GetMapping(value = "/{Id}")
     //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
     public List<PorukaDTO>getMojePoruke(@PathVariable("Id") Long Id){
-
         return porukaService.getMojePoruke(Id);
     }
 

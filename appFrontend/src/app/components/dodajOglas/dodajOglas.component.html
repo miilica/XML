@@ -10,13 +10,19 @@
 
     <div>
         <label  class="col-form-label" for="inputDefault">Vozilo: </label>
-        
           <select class="form-control" id="vozilo"  [(ngModel)]="oglas.vozilo" name="vozilo" >
             <option [ngValue]="null">Izaberi vozilo</option>
             <option *ngFor = 'let c of vozila' name="vozilo1" [ngValue]="c">{{c.markaAutomobila.nazivMarke}} {{c.klasaAutomobila.naziv}}</option>
           </select>
-        
-      </div>
+    </div>
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Cjenovnici: </label>
+        <select class="form-control" id="cjenovnik"  [(ngModel)]="oglas.cjenovnikID" name="cjenovnik" >
+          <option [ngValue]="null">Izaberi cjenovnik</option>
+          <option *ngFor = 'let c of cjenovnici' name="cjenovnik" [ngValue]="c.id">{{c.cijenaPoDanu}}€/poDanu - {{c.cijenaPoKM}}€/poKilometru</option>
+        </select>
+  </div>
 
     <div>
       <label  class="col-form-label" for="inputDefault">Mjesto preuzimanja:</label>
@@ -26,12 +32,12 @@
     
     <div>
       <label  class="col-form-label" for="inputDefault">Slobodno od:</label>
-      <input type="datetime"  class="form-control" id="fromDate" name="fromDate" [(ngModel)]="oglas.fromDate"/>
+      <input type="datetime"  class="form-control" id="fromDate" name="fromDate" [(ngModel)]="oglas.od"/>
     </div>
     
     <div>
         <label  class="col-form-label" for="inputDefault">Slobodno do:</label>
-        <input type="datetime"  class="form-control" id="ff" name="fff" [(ngModel)]="oglas.toDate"/>
+        <input type="datetime"  class="form-control" id="ff" name="fff" [(ngModel)]="oglas.doo"/>
     </div>
 
 

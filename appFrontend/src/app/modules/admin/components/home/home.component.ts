@@ -251,8 +251,4 @@ editTipMenjaca(menjac: TipMjenjaca):void{
     });
   }
 
-  onClickCjenovnik() : void{
-    this.router.navigate(['cjenovnik']);
-  }
-
 }
