@@ -42,7 +42,7 @@ public class ZahtjevDTO {
     //iznajmljivanje pojedinacnih vozila
     private VoziloDTO vozilo;
 
-    private Set<KorpaVozilaDTO> listaVozila;
+    private Set<KorpaVozilaDTO> korpaVozilaDTOS = new HashSet<>();
 
     public ZahtjevDTO(Zahtjev zahtjev) {
         this.id = zahtjev.getId();
@@ -51,8 +51,15 @@ public class ZahtjevDTO {
         this.bundle = zahtjev.isBundle();
         this.agent = new AgentDTO(zahtjev.getAgent());
         this.userPoslao = new UserDTO(zahtjev.getUserPoslao());
-        this.userIzdao = new UserDTO(zahtjev.getUserIzdao());
+        //this.userIzdao = new UserDTO(zahtjev.getUserIzdao());
         this.zahtjevStatus = zahtjev.getZahtjevStatus();
-        this.vozilo = new VoziloDTO(zahtjev.getVozilo());
+        if(zahtjev.getVozilo() != null) {
+            this.vozilo = new VoziloDTO(zahtjev.getVozilo());
+        } else {
+            for(KorpaVozila kv: zahtjev.getKorpaVozilaDTOS()){
+                KorpaVozilaDTO kvDTO = new KorpaVozilaDTO(kv);
+                this.korpaVozilaDTOS.add(kvDTO);
+            }
+        }
     }
 }

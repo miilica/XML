@@ -18,20 +18,20 @@ public class PorukaController {
     private PorukaService porukaService;
 
     @GetMapping(value = "/{posiljalacId}/{primalacId}/{oglasId}")
-    //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
     public List<PorukaDTO> get(@PathVariable("posiljalacId") Long posiljalacId, @PathVariable("primalacId") Long primalacId, @PathVariable("oglasId") Long oglasId) {
         return porukaService.get(posiljalacId, primalacId, oglasId);
     }
 
     @GetMapping(value = "/{Id}")
-    //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
     public List<PorukaDTO>getMojePoruke(@PathVariable("Id") Long Id){
         return porukaService.getMojePoruke(Id);
     }
 
 
     @PostMapping
-    //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_KORISNIK')")
     public void posaljiPoruku(@RequestBody PorukaDTO porukaDTO) {
         porukaService.posaljiPoruku(porukaDTO);
     }

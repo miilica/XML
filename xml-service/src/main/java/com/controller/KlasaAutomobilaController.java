@@ -21,7 +21,7 @@ public class KlasaAutomobilaController {
 
 
     @PostMapping("/dodaj")
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody KlasaAutomobilaDTO mDTO) {
         klasaAutomobilaService.save(mDTO);
         return ResponseEntity.ok().build();

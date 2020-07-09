@@ -10,8 +10,7 @@ import java.util.List;
 
 public interface ZahtjevService {
 
-    List<Zahtjev> findAll();
-    List<Zahtjev> findAllVehiclesToRateComment();
+    List<ZahtjevDTO> findAllVehiclesToRateComment();
 
     Zahtjev findById(Long id);
 

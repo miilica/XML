@@ -21,13 +21,13 @@ public class VrstaGorivaController {
 
 
     @PostMapping("/dodaj")
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody VrstaGorivaDTO mDTO) {
         vrstaGorivaService.save(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<VrstaGorivaDTO> loadAll() {
         return this.vrstaGorivaService.findAll();
     }

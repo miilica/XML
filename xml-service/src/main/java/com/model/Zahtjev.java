@@ -74,7 +74,7 @@ public class Zahtjev {
     //iznajmljivanje vozila u bundle
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "korpavozila_id")
-    private Set<KorpaVozila> korpaVozila = new HashSet<>();
+    private Set<KorpaVozila> korpaVozilaDTOS = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Oglas oglas;

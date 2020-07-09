@@ -158,9 +158,9 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         }
 
         if(listaVozila != null) {
-            zahtjev.setKorpaVozila(listaVozilaPomocna);
+            zahtjev.setKorpaVozilaDTOS(listaVozilaPomocna);
         } else {
-            zahtjev.setKorpaVozila(null);
+            zahtjev.setKorpaVozilaDTOS(null);
         }
 
         zahtjev.setDatumKreiranja(currentUtilDate);
