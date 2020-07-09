@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
   oglasi: OglasInfo[] = [];
   role: string = '';
   mjesta: string[];
-  pages: number[];
+  pages: number[] = [];
   viewModal: NgbModalRef;
   sortiranje: string = 'Sort by';
   oglas: OglasInfo;

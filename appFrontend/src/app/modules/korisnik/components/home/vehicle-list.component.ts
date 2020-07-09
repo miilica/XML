@@ -44,4 +44,12 @@ export class VehicleListComponent implements OnInit {
   onClickPoruke() : void{
     this.router.navigate([PORUKE_HOME_PAGE]);
   }
+
+  onClickDodajOglas(): void{
+    this.router.navigate(['agent/dodajOglas']);
+  }
+
+  onClickDodajCjenovnik() : void{
+    this.router.navigate(['cjenovnik']);
+  }
 }

@@ -2,6 +2,8 @@ package com.service.impl;
 
 import com.common.TimeProvider;
 import com.config.consts.UserRoles;
+import com.dto.KlasaAutomobilaDTO;
+import com.dto.UserDTO;
 import com.dto.UserRegistrationDTO;
 import com.exception.ApiRequestException;
 import com.exception.ResourceNotFoundException;
@@ -13,6 +15,7 @@ import com.repository.KomentarRepository;
 import com.repository.UserRepository;
 import com.service.AuthorityService;
 import com.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
@@ -49,13 +52,14 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private KomentarRepository komentarRepository;
 
+	@Autowired
+	private ModelMapper modelMapper;
+
 	@Override
 	public User findByUsername(String username) throws UsernameNotFoundException {
 		User u = userRepository.findByUsername(username);
 		return u;
 	}
-
-
 
 	public User getLoogedIn() throws AccessDeniedException {
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -87,17 +91,23 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 
-	public List<User> findAll() throws AccessDeniedException {
+	public List<UserDTO> findAll() throws AccessDeniedException {
 		List<User> result = userRepository.findAll();
-		return result;
+		List<UserDTO> userDTOS = new ArrayList<>();
+
+		for(User u: result){
+			userDTOS.add(modelMapper.map(u, UserDTO.class));
+		}
+
+		return userDTOS;
 	}
 
-	public List<User> findAllKorisnike() throws AccessDeniedException {
+	public List<UserDTO> findAllKorisnike() throws AccessDeniedException {
 		List<User> allUsers = userRepository.findAll();
-		List<User> result = new ArrayList<>();
+		List<UserDTO> result = new ArrayList<>();
 		for(User u : allUsers) {
 			if(!u.isAdmin()) {
-				result.add(u);
+				result.add(modelMapper.map(u, UserDTO.class));
 			}
 		}
 		return result;

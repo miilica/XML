@@ -2,6 +2,7 @@ package com.dto;
 
 import com.model.Authority;
 import com.model.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,9 +10,10 @@ import lombok.Setter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 
     private Long id;

@@ -1,29 +1,49 @@
-<div class="card bg-dark text-white">
-    <img src="assets/img/roza.jpg" height="1000" width="300" class="card-img">
-    <div class="card-img-overlay">
-      <br/>
-        <div class="col-md-6">
 
-            <h1 style="color: deeppink; align-content: center;">Komentari automobila!</h1>
-            
-            <div class="flex">
-                <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Vozila:</label>
-                <select class="form-control" id="vozilo" style="color: deeppink; width: 250px;" [(ngModel)]="vozilo" (change) = "voziloPromjena(vozilo)">
+<div class="d-flex justify-content-center" style="margin-top:15px ;">
+    <div class="d-flex flex-column col-sm-10 " style="background-color:lightgray;">
+        <div>
+            <h1 class="display-4" style="text-align: center;">Komentari i ocene</h1>
+        </div>
+        <div class="d-flex justify-content-center flex-column" >
+            <div class="form-group">
+                <h4 class="border-bottom border-gray pb-2 mb-0">Auta</h4>
+                <select class="form-control" [(ngModel)]="vozilo" (change) = "voziloPromjena(vozilo)" id="selectedCar">
                     <option *ngFor = "let v of vozila" [ngValue]="v">
                         {{v.markaAutomobila.nazivMarke}} {{v.markaAutomobila.model}}
                     </option>
                 </select>
-                <br/>
-            </div>
-            <div class="d-flex flex-column" *ngFor = "let k of komentari" style="color: deeppink; align-content: center;">
-                    <p>&nbsp;&nbsp;Komentar postavio: @{{k.userUsername}}</p>
-                    <p>&nbsp;&nbsp;Tekst komentara: {{k.tekst}}</p><br/><br/>
-            </div><br/>
-            <textarea *ngIf = "mode == 'ADD'" class="form-control" style="width: 300px; height: 100px;" [(ngModel)] ="komentar"></textarea>
-            <br>
-            <button type="button" *ngIf = "vozilo != null" class="btn btn-outline-secondary" style="color:deeppink; width: 150px; height: 30px;" 
-            (click) = "onClickDodaj()">Dodaj</button>
-
+             </div>
         </div>
+        <div class="d-flex flex-row">
+            <div class="my-3 p-3 bg-white rounded shadow-sm" style="width: 50%; height: min-content;">
+                <h6 class="border-bottom border-gray pb-2 mb-0">Komentari</h6>
+                <div class="media text-muted pt-3  border-bottom border-gray" class="d-flex flex-row" *ngFor = "let k of komentari">
+                  <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+                  <p class="media-body pb-3 mb-0 small lh-125">
+                    <strong class="d-block text-gray-dark">@{{k.userUsername}}</strong>
+                    {{k.tekst}}
+                  </p>
+                </div>
+                <textarea *ngIf = "mode == 'ADD'" class="form-control" style="width: 300px; height: 100px;" [(ngModel)] ="komentar"></textarea>
+                <br>
+                <button type="button" *ngIf = "vozilo != null" class="btn btn-outline-secondary" style="color:deeppink; width: 150px; height: 30px;" 
+                (click) = "onClickDodaj()">Dodaj</button>
+            </div>
+            <div class=" my-3 p-3 bg-white rounded shadow-sm" style="width: 50%; margin-left: 10px; height: min-content;">
+                <h6 class="border-bottom border-gray pb-2 mb-0">Ocene</h6>
+                <div class="media text-muted pt-3" *ngFor = " let o of ocene">
+                  <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+                  <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@{{o.userUsername}}</strong>
+                    <ngb-rating  [rate]="o.ocena" readonly = false [max]="5" >
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 0">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                  </p>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>

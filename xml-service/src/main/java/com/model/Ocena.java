@@ -25,6 +25,7 @@ public class Ocena {
     @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 
+    @Column
     private Double ocena;
 
     //user koji je dao ocenu

@@ -46,7 +46,7 @@ INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier,
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (5, '1', '600', false, false, '270000', '500', '2', 7,2, 2,1,3 );
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (6, '0', '5000', false, true, '10000', '1000', '5', 7,3, 2,1,1);
 
-insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust) values (1, 55, 55, 55, 10);
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (1, 55, 55, 55, 10, 6);
 
 INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id) VALUES (1, '2020-06-18 21:58:58', '2020-06-17 21:58:58', 1, 1);
 INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id) VALUES (2, '2020-05-05 21:58:58', '2020-05-17 21:58:58', 1, 2);
@@ -82,6 +82,10 @@ insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (9, true, 
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (10, true, 'Okej je', 3,4);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (11, true, 'Nije nesto', 2, 4);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (12, true, 'Nisam zadovoljan', 2, 4);
+
+insert into `ocena` (id, ocena, user_id, oglas_id, vozilo_id ) values (1,4,6,1,1);
+insert into `ocena` (id, ocena, user_id, oglas_id, vozilo_id ) values (2,4.5,6,1,1);
+insert into `ocena` (id, ocena, user_id, oglas_id, vozilo_id ) values (3,4.6,6,1,1);
 
 
 insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');

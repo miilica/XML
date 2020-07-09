@@ -149,8 +149,7 @@ public class OglasServiceImpl implements OglasService {
     @Override
     public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
         Vozilo vozilo = this.voziloService.findById(oglasDTO.getVozilo().getId());
-        //PriceList priceList = this.priceListService.getPriceListById(adDTO.getPriceListId());
-       // Cjenovnik cjenovnik = this.cjenovnikRepository.getOne();
+        Cjenovnik cjenovnik = this.cjenovnikRepository.getOne(oglasDTO.getCjenovnikID());
         User user = userService.findById(oglasDTO.getUserId());
         Agent pom = agentService.findById(oglasDTO.getUserId());
         if(pom.getImeKompanije() == null || pom.getImeKompanije().equals("")){
@@ -160,15 +159,14 @@ public class OglasServiceImpl implements OglasService {
             }
         }
 
-
         Oglas oglas = new Oglas();
         oglas.setVozilo(vozilo);
         oglas.setDostupan(oglasDTO.isDostupan());
-        oglas.setFromDate(oglasDTO.getFromDate());
-        oglas.setToDate(oglasDTO.getToDate());
+        oglas.setOd(oglasDTO.getOd());
+        oglas.setDoo(oglasDTO.getDoo());
         oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
         oglas.setUser(user);
-        //ad.setPriceList(priceList);
+        oglas.setCjenovnik(cjenovnik);
 
         this.oglasRepository.save(oglas);
         return new ResponseEntity<>(HttpStatus.CREATED);

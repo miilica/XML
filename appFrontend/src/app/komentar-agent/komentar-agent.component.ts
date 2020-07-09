@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { zauzeceAutomobilaService } from '../services/zauzece.service';
 import { KomenatarAgentService } from '../services/komenatar.service';
+import { Ocena } from '../search/shared/ocena';
 
 @Component({
   selector: 'app-komentar-agent',
@@ -16,6 +17,7 @@ export class KomentarAgentComponent implements OnInit {
   } = null;
   public komentar: string;
   public komentari: [];
+  public ocene: Ocena[];
   mode: string = 'VIEW';
 
   constructor(private router: Router, private zauzeceService: zauzeceAutomobilaService, private komentarService: KomenatarAgentService) { }
@@ -38,6 +40,12 @@ export class KomentarAgentComponent implements OnInit {
           this.komentari =  data;
         }
       );
+
+      this.komentarService.getOcjene(vozilo.id).subscribe(
+        data=> {
+          this.ocene =  data;
+        }
+      );
   }
   onClickDodaj(){
     if(this.mode == 'VIEW'){
@@ -57,16 +65,14 @@ export class KomentarAgentComponent implements OnInit {
 
     this.komentarService.dodajKomentar(newKomenatar, localStorage.getItem('user-username-key')).subscribe(
       data=>{
-        this.refresh();
-        
+        this.refresh();      
       }
     );
     this.vozilo = null;
         this.komentar = '';
         this.mode = 'VIEW';
         this.komentari = [];
-    
-    
+        this.ocene = [];
   }
 
 }

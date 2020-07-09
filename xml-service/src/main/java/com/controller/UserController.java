@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.dto.UserDTO;
 import com.dto.UserRegistrationDTO;
 import com.model.Komentar;
 import com.model.User;
@@ -55,13 +56,14 @@ public class UserController {
 
 	@GetMapping("/user/all")
 	//@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public List<User> loadAll() {
-		return this.userService.findAll();
+	public List<UserDTO> loadAll() {
+
+    	return this.userService.findAll();
 	}
 
 	@GetMapping("/user/allKorisnike")
 	//@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public List<User> loadAllKorisnike() {
+	public List<UserDTO> loadAllKorisnike() {
 		return this.userService.findAllKorisnike();
 	}
 
