@@ -99,10 +99,7 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
         for(Zahtjev z: zahtjevi){
             if(z.getAgent().getId() == u.getId()) {
-
-                ZahtjevDTO zahtjev =  new ZahtjevDTO();
-
-
+                ZahtjevDTO zahtjev =  new ZahtjevDTO(z);
                 zahtjevDTO.add(zahtjev);
             }
         }

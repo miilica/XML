@@ -21,9 +21,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class AgentDTO {
 
-    @Autowired
-    private ModelMapper modelMapper;
-
     private Long id;
     private String ime;
     private String prezime;
@@ -42,17 +39,5 @@ public class AgentDTO {
         this.imeKompanije = agent.getImeKompanije();
         this.poslovniMB = agent.getPoslovniMB();
         this.brOglasa = agent.getBrOglasa();
-
-        Set<VoziloDTO> v = new HashSet<>();
-        for(Vozilo vozilo: agent.getVozila()){
-            v.add(modelMapper.map(vozilo, VoziloDTO.class));
-        }
-        this.vozila = v;
-
-        Set<ZahtjevDTO> z = new HashSet<>();
-        for(Zahtjev zahtjev: agent.getPristigliZahtjevi()){
-            z.add(modelMapper.map(zahtjev, ZahtjevDTO.class));
-        }
-        this.pristigliZahtjevi = z;
     }
 }

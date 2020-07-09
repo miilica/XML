@@ -20,9 +20,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class ZahtjevDTO {
 
-    @Autowired
-    private ModelMapper modelMapper;
-
     private Long id;
 
     private Date datumKreiranja;
@@ -52,16 +49,10 @@ public class ZahtjevDTO {
         this.datumKreiranja = zahtjev.getDatumKreiranja();
         this.potvrdjen = zahtjev.isPotvrdjen();
         this.bundle = zahtjev.isBundle();
-        this.agent = modelMapper.map(zahtjev.getAgent(), AgentDTO.class);
-        this.userPoslao = modelMapper.map(zahtjev.getUserPoslao(), UserDTO.class);
-        this.userIzdao = modelMapper.map(zahtjev.getUserIzdao(), UserDTO.class);
+        this.agent = new AgentDTO(zahtjev.getAgent());
+        this.userPoslao = new UserDTO(zahtjev.getUserPoslao());
+        this.userIzdao = new UserDTO(zahtjev.getUserIzdao());
         this.zahtjevStatus = zahtjev.getZahtjevStatus();
-        this.vozilo = modelMapper.map(zahtjev.getVozilo(), VoziloDTO.class);
-        Set<KorpaVozilaDTO> k = new HashSet<>();
-        for(KorpaVozila kv: zahtjev.getKorpaVozila()){
-            k.add(modelMapper.map(kv, KorpaVozilaDTO.class));
-        }
-
-        this.listaVozila = k;
+        this.vozilo = new VoziloDTO(zahtjev.getVozilo());
     }
 }
