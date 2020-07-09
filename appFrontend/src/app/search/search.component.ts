@@ -11,6 +11,7 @@ import { OglasInfo } from './shared/oglasinfo';
 import { SearchService } from './shared/search.service';
 import { VoziloService } from '../services/vozilo.service';
 import { KomenatarAgentService } from '../services/komenatar.service';
+import { AdsService } from '../services/ads.service';
 
 @Component({
   selector: 'app-search',
@@ -41,7 +42,9 @@ export class SearchComponent implements OnInit {
               private komentarService: KomenatarAgentService,
               private _toastr: ToastrService,
               private router: Router,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private adsService: AdsService,
+              private toastr: ToastrService) {
     this.pretraga = {
         mjestoPreuzimanja: '',
         od: null,
@@ -170,6 +173,15 @@ export class SearchComponent implements OnInit {
 
   sortiraj(){
     this.pretraziOglase(0);
+  }
+
+  public addToCart(oglas: OglasInfo): void {
+    console.log("Oglas: ",oglas);
+    this.adsService.addVehicleToCart(oglas.vozilo).subscribe(data => {
+      this.toastr.success('Vehicle has been added to cart');
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
   }
 
 }

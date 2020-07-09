@@ -5,6 +5,7 @@ import VehicleDTO from 'src/app/components/models/vehicle-dto.model';
 import ZahtjevDTO from 'src/app/components/models/zahtjev-dto.model';
 import { Router } from '@angular/router';
 import { PORUKE_HOME_PAGE } from 'src/app/config/api-paths';
+import { Vozilo } from 'src/app/components/dodajVozilo/vozilo';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -33,7 +34,7 @@ export class VehicleListComponent implements OnInit {
     });
   }
 
-  public addToCart(vehicle: VehicleDTO): void {
+  public addToCart(vehicle: Vozilo): void {
     this.adsService.addVehicleToCart(vehicle).subscribe(data => {
       this.toastr.success('Vehicle has been added to cart');
     }, error => {
