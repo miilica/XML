@@ -56,7 +56,7 @@
                 <td>{{ bzahtjev.datumKreiranja|date: 'mediumDate' }}</td>
                 <td>{{ bzahtjev.userPoslao.username }}</td>
                 <td>{{ bzahtjev.zahtjevStatus }}</td>
-                <td *ngFor="let kv of bzahtjev.korpaVozila"> {{ kv.vehicleId }} </td>
+                <td *ngFor="let kv of bzahtjev.korpaVozilaDTOS"> {{ kv.vehicleId }} </td>
             </tr>
         </tbody>
     </table>

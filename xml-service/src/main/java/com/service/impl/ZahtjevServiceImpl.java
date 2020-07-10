@@ -55,32 +55,6 @@ public class ZahtjevServiceImpl implements ZahtjevService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<Zahtjev> findAll() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Object currentUser = auth.getPrincipal();
-
-        String username = "";
-        if (currentUser instanceof UserDetails) {
-            username = ((UserDetails)currentUser).getUsername();
-        } else {
-            username = currentUser.toString();
-        }
-
-        User u = userRepository.findByUsername(username);
-
-        List<Zahtjev> all = zahtjevRepository.findAll();
-        List<Zahtjev> result = new ArrayList<>();
-
-        for(Zahtjev zahtjev : all) {
-            if(zahtjev.getAgent().getId() == u.getId()) {
-                result.add(zahtjev);
-            }
-        }
-
-        return result;
-    }
-
-    @Override
     public ResponseEntity<?> findAllZahtjeve() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -178,8 +152,8 @@ public class ZahtjevServiceImpl implements ZahtjevService {
         for(Zahtjev z: listaZahtjeva) {
             if(z.isBundle()) {
                 if (z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED) && z.getAgent().getId() == zahtjev.getAgent().getId()) {
-                    for (KorpaVozila korpaVozila : z.getKorpaVozila()) {
-                        for (KorpaVozila korpaVozila1 : zahtjev.getKorpaVozila()) {
+                    for (KorpaVozila korpaVozila : z.getKorpaVozilaDTOS()) {
+                        for (KorpaVozila korpaVozila1 : zahtjev.getKorpaVozilaDTOS()) {
                             if (korpaVozila.getVehicleId() == korpaVozila1.getVehicleId()) {
                                 vecRezervisan = true;
                             }
@@ -193,8 +167,8 @@ public class ZahtjevServiceImpl implements ZahtjevService {
             for(Zahtjev z: listaZahtjeva) {
                 if(z.isBundle()) {
                     if (z.getAgent().getId() == zahtjev.getAgent().getId()) {
-                        for (KorpaVozila korpaVozila : z.getKorpaVozila()) {
-                            for (KorpaVozila korpaVozila1 : zahtjev.getKorpaVozila()) {
+                        for (KorpaVozila korpaVozila : z.getKorpaVozilaDTOS()) {
+                            for (KorpaVozila korpaVozila1 : zahtjev.getKorpaVozilaDTOS()) {
                                 if(korpaVozila.getVehicleId() == korpaVozila1.getVehicleId()) {
                                     if (zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
                                         zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_RESERVED);
@@ -233,19 +207,31 @@ public class ZahtjevServiceImpl implements ZahtjevService {
     @Override
     public ZahtjevDTO findByIds(Long voziloId, Long agentId) throws AccessDeniedException {
         List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+
+        User u = userRepository.findByUsername(username);
+
         for(Zahtjev z: listaZahtjeva) {
             if(!z.isBundle()) {
-                if (z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId) {
+                if (z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId && u.getId() == z.getUserPoslao().getId()) {
                     z = zahtjevRepository.findById(z.getId()).orElseGet(null);
                     ZahtjevDTO zahtjevDTO = new ZahtjevDTO(z);
                     return zahtjevDTO;
                 }
             } else {
-                for(KorpaVozila kv: z.getKorpaVozila()) {
-                    if(kv.getVehicleId() == voziloId && kv.getAgent().getId() == agentId) {
+                for(KorpaVozila kv: z.getKorpaVozilaDTOS()) {
+                    if(kv.getVehicleId() == voziloId && kv.getAgent().getId() == agentId && u.getId() == z.getUserPoslao().getId()) {
                         z = zahtjevRepository.findById(z.getId()).orElseGet(null);
                         ZahtjevDTO zahtjevDTO = new ZahtjevDTO(z);
-
                         return zahtjevDTO;
                     }
                 }
@@ -256,14 +242,59 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
     @Override
     public void payForRentACar(Zahtjev zahtjev){
+        List<Zahtjev> listaZahtjeva = zahtjevRepository.findAll();
+
         if(zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_RESERVED)) {
             zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PAID);
             zahtjevRepository.save(zahtjev);
         }
+
+        //izbaci sve ostale pendinge za vozilo koje je placeno
+        for(Zahtjev z: listaZahtjeva) {
+            if(!z.isBundle() && !zahtjev.isBundle()) {
+                if (z.getAgent().getId() == zahtjev.getAgent().getId() && z.getVozilo().getId() == zahtjev.getVozilo().getId()) {
+                    if (z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                        z.setZahtjevStatus(ZahtjevStatus.STATUS_CANCELED);
+                        zahtjevRepository.save(z);
+                    }
+                }
+            } else if(z.isBundle() && zahtjev.isBundle()) {
+                if (z.getAgent().getId() == zahtjev.getAgent().getId()) {
+                    for(KorpaVozila kv: z.getKorpaVozilaDTOS()) {
+                        for(KorpaVozila kv2: zahtjev.getKorpaVozilaDTOS()) {
+                            if (kv.getVehicleId() == kv2.getVehicleId()) {
+                                if (z.getZahtjevStatus().equals((ZahtjevStatus.STATUS_PENDING))) {
+                                    z.setZahtjevStatus(ZahtjevStatus.STATUS_CANCELED);
+                                    zahtjevRepository.save(z);
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if(!z.isBundle() && zahtjev.isBundle()) {
+                for(KorpaVozila kv: zahtjev.getKorpaVozilaDTOS()) {
+                    if(z.getVozilo().getId() == kv.getVehicleId()) {
+                        if(z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                            z.setZahtjevStatus(ZahtjevStatus.STATUS_CANCELED);
+                            zahtjevRepository.save(z);
+                        }
+                    }
+                }
+            } else if(z.isBundle() && !zahtjev.isBundle()) {
+                for(KorpaVozila kv: z.getKorpaVozilaDTOS()) {
+                    if(zahtjev.getVozilo().getId() == kv.getVehicleId()) {
+                        if(z.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PENDING)) {
+                            z.setZahtjevStatus(ZahtjevStatus.STATUS_CANCELED);
+                            zahtjevRepository.save(z);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @Override
-    public List<Zahtjev> findAllVehiclesToRateComment() {
+    public List<ZahtjevDTO> findAllVehiclesToRateComment() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Object currentUser = auth.getPrincipal();
 
@@ -277,11 +308,12 @@ public class ZahtjevServiceImpl implements ZahtjevService {
         User u = userRepository.findByUsername(username);
 
         List<Zahtjev> all = zahtjevRepository.findAll();
-        List<Zahtjev> result = new ArrayList<>();
+        List<ZahtjevDTO> result = new ArrayList<>();
 
         for(Zahtjev zahtjev : all) {
             if(zahtjev.getUserPoslao().getId() == u.getId() && zahtjev.getZahtjevStatus().equals(ZahtjevStatus.STATUS_PAID)) { // TODO: dodati uslov nakon isteka vremna
-                result.add(zahtjev);
+                ZahtjevDTO zahtjevDTO = new ZahtjevDTO(zahtjev);
+                result.add(zahtjevDTO);
             }
         }
 

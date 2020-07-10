@@ -28,20 +28,20 @@ public class KorpaVozilaKontroler {
     }
 
     @GetMapping("/allVozila")
-    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<KorpaVozila> findAll() throws AccessDeniedException {
         return this.korpaVozilaService.findAll();
     }
 
     @PostMapping("/rentACarRequest")
-    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity rentACarRequest(@Valid @RequestBody KorpaVozilaDTO vozilo) {
         korpaVozilaService.rentACarRequest(vozilo);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/rentACarRequestBundle")
-    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity rentACarRequestBundle(@RequestBody KorpaVozilaDTO[] listaVozila) {
         korpaVozilaService.rentACarRequestBundle(listaVozila);
         return ResponseEntity.ok().build();

@@ -18,7 +18,7 @@ export const ADMIN_ALL_COMMENTS_URL = `${BASE_URL}/api/users/allComments`;
 export const ADMIN_ACTIVATE_COMMENT_KORISNIKA_URL = `${BASE_URL}/api/users/activateComment`;
 
 //agent
-export const ZAHTJEVI_ZA_VOZILA_URL = `${BASE_URL}/api/zahtjev/allZahtjeve/kaca`;
+export const ZAHTJEVI_ZA_VOZILA_URL = `${BASE_URL}/api/zahtjev/allZahtjeve`;
 export const VEHICLE_STATUS_TO_RESERVED_URL = `${BASE_URL}/api/zahtjev/toReserved`;
 export const VEHICLE_STATUS_TO_RESERVED_BUNDLE_URL = `${BASE_URL}/api/zahtjev/toReservedBundle`;
 export const VEHICLE_STATUS_TO_CANCELED_URL = `${BASE_URL}/api/zahtjev/toCanceled`;

@@ -25,7 +25,7 @@ export class AdsService {
         return this.http.get(USER_RATE_COMMENT_URL);
     }
 
-    addVehicleToCart(vehicle: VehicleDTO): Observable<any> {
+    addVehicleToCart(vehicle: Vozilo): Observable<any> {
         console.log(vehicle);
         return this.http.post(VEHICLE_TO_CART_URL, vehicle);
     }
@@ -54,7 +54,7 @@ export class AdsService {
     }
 
     vehicleStatusToReservedBundle(zahtjev: ZahtjevDTO): Observable<any> {
-        console.log(zahtjev);
+        console.log("Potvrdi bundle ",zahtjev);
         return this.http.post(VEHICLE_STATUS_TO_RESERVED_BUNDLE_URL, zahtjev);
     }
 

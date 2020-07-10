@@ -28,12 +28,6 @@ public class ZahtjevController {
 
     @GetMapping("/allZahtjeve")
     @PreAuthorize("hasRole('ROLE_AGENT')")
-    public List<Zahtjev> findAll() throws AccessDeniedException {
-        return this.zahtjevService.findAll();
-    }
-
-    @GetMapping("/allZahtjeve/kaca")
-    @PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity<?> findAllZahtjeve() throws AccessDeniedException {
         return this.zahtjevService.findAllZahtjeve();
     }
@@ -47,47 +41,47 @@ public class ZahtjevController {
 
 
     @GetMapping("/allZahtjeveRateComment")
-    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
-    public List<Zahtjev> findAllPaid() throws AccessDeniedException {
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public List<ZahtjevDTO> findAllPaid() throws AccessDeniedException {
         return this.zahtjevService.findAllVehiclesToRateComment();
     }
 
     @PostMapping("/toReserved")
-    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity vehicleToReserved(@Valid @RequestBody Zahtjev zahtjev) {
         zahtjevService.vehicleToReserved(zahtjev);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/toReservedBundle")
-    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity vehicleToReservedBundle(@Valid @RequestBody Zahtjev zahtjev) {
         zahtjevService.vehicleToReservedBundle(zahtjev);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/toCanceled")
-    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
     public ResponseEntity vehicleToCanceled(@Valid @RequestBody Zahtjev zahtjev) {
         zahtjevService.vehicleToCanceled(zahtjev);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/findVehicleById/{vehicleId}/{agentId}")
-    //@PreAuthorize("hasRole('ROLE_AGENT')" + "|| hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_AGENT')" + "|| hasRole('ROLE_KORISNIK')")
     public ZahtjevDTO loadById(@PathVariable Long vehicleId, @PathVariable Long agentId) {
         return this.zahtjevService.findByIds(vehicleId, agentId);
     }
 
     @PutMapping(value = "/rateVehicle/{rate}")
-    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity rateVehicleGrade (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable Double rate) {
         zahtjevService.rateVehicle(voziloDTO, rate);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping(value = "/commentVehicle/{kom}")
-    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity commentVehicleGrade (@Valid @RequestBody VoziloDTO voziloDTO, @PathVariable String kom) {
         zahtjevService.commentVehicle(voziloDTO, kom);
         return ResponseEntity.ok().build();
