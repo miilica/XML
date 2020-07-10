@@ -237,16 +237,15 @@ public class ZahtjevServiceImpl implements ZahtjevService {
             if(!z.isBundle()) {
                 if (z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId) {
                     z = zahtjevRepository.findById(z.getId()).orElseGet(null);
-                    ZahtjevDTO zahtjevDTO = new ZahtjevDTO();
-                    modelMapper.map(z, Zahtjev.class);
+                    ZahtjevDTO zahtjevDTO = new ZahtjevDTO(z);
                     return zahtjevDTO;
                 }
             } else {
                 for(KorpaVozila kv: z.getKorpaVozila()) {
                     if(kv.getVehicleId() == voziloId && kv.getAgent().getId() == agentId) {
                         z = zahtjevRepository.findById(z.getId()).orElseGet(null);
-                        ZahtjevDTO zahtjevDTO = new ZahtjevDTO();
-                        modelMapper.map(z, Zahtjev.class);
+                        ZahtjevDTO zahtjevDTO = new ZahtjevDTO(z);
+
                         return zahtjevDTO;
                     }
                 }

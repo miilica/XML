@@ -26,4 +26,9 @@ public class KomentarController {
     private ResponseEntity<?> pokupiKomentare(@PathVariable Long voziloId){
         return this.komentarService.pokupiKomentare(voziloId);
     }
+
+    @GetMapping()
+    private ResponseEntity<?> pokupiKomentareSve(){
+        return this.komentarService.pokupiSveKomentare();
+    }
 }
