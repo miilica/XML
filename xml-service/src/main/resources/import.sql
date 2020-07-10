@@ -72,12 +72,12 @@ INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALU
 INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Sada', '2020-06-17T10:00', 1, 2, 1);
 
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (1, true, 'Vrh auto', 6, 1);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, true, 'Udobno', 2, 2);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, true, 'Svidja mi se', 3, 3);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, true, 'Super', 2, 2);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, true, 'Predobro auto', 2, 3);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (6, true, 'Moze bolje', 2, 1);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (7, true, 'NiĐe veze', 3, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, false, 'Udobno', 2, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, false, 'Svidja mi se', 3, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, false, 'Super', 2, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, false, 'Predobro auto', 2, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (6, false, 'Moze bolje', 2, 1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (7, false, 'NiĐe veze', 3, 2);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (8, true, 'Malo troši', 3, 2);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (9, true, 'Top top top', 3, 3);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (10, true, 'Okej je', 3,4);

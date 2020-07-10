@@ -44,18 +44,19 @@
                         <th>Vozilo id</th>
                         <th>User id</th>
                         <th>Komentar</th>
-                        <th>Odobri/Blokiraj</th>
+                        <th>Odobri</th>
+                        <th>Odbij</th>
                     </thead>    
                     <tbody>
                         <tr *ngFor="let komentar of komentari">
                             <td>{{ komentar.vozilo.id }}</td>
                             <td>{{ komentar.userId }}</td>
                             <td>{{ komentar.tekst }}</td>
-                            <td *ngIf="komentar.odobren">
-                                <mat-icon (click)="onClickActivateComment(komentar.id)" >block</mat-icon>
-                            </td>
-                            <td *ngIf="!komentar.odobren">
+                            <td>
                                 <mat-icon (click)="onClickActivateComment(komentar.id)" >check_circle_outline</mat-icon>
+                            </td>
+                            <td >
+                                <mat-icon (click)="onClickDeactivateComment(komentar.id)" >block</mat-icon>
                             </td>
                         </tr>
                     </tbody>

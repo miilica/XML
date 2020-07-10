@@ -54,6 +54,7 @@ public class ZahtjevDTO {
         this.agent = new AgentDTO(zahtjev.getAgent());
         this.userPoslao = new UserDTO(zahtjev.getUserPoslao());
         //this.userIzdao = new UserDTO(zahtjev.getUserIzdao());
+        this.oglas = new OglasInfoDTO(zahtjev.getOglas());
         this.zahtjevStatus = zahtjev.getZahtjevStatus();
         if(zahtjev.getVozilo() != null) {
             this.vozilo = new VoziloDTO(zahtjev.getVozilo());

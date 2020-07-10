@@ -69,6 +69,7 @@ export class ZavrseniZahtjeviComponent implements OnInit {
         oglasId: this.zahtjev.oglas.id
       }
 
+      
       this.komentarService.dodajOcjenu(ocjena).subscribe(
         data => {
           this.toaster.success("Ocjena uspjesno postavljena", "Ocjena");

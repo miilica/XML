@@ -89,4 +89,16 @@ public class KomentarService {
         }
         return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);
     }
+
+    public ResponseEntity<?> odobriKomentar(Boolean flag, Long id) {
+        if(flag == true){
+            Komentar komentar = this.komentarRepository.getOne(id);
+            komentar.setOdobren(true);
+            this.komentarRepository.save(komentar);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            this.komentarRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+    }
 }

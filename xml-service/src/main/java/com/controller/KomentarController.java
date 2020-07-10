@@ -31,4 +31,9 @@ public class KomentarController {
     private ResponseEntity<?> pokupiKomentareSve(){
         return this.komentarService.pokupiSveKomentare();
     }
+
+    @GetMapping(value = "/odobri/{flag}/{id}")
+    private ResponseEntity<?> odobriKomentar(@PathVariable Boolean flag, @PathVariable Long id){
+        return this.komentarService.odobriKomentar(flag, id);
+    }
 }

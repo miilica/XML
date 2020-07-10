@@ -244,8 +244,17 @@ editTipMenjaca(menjac: TipMjenjaca):void{
   }
 
   onClickActivateComment(id: number): void {
-    this.usersService.activateComment(id).subscribe(data => {
-      this.toastr.success('Comment has been activated/deactivated');
+    this.komentarService.odobriKomentar(true,id).subscribe(data => {
+      this.toastr.success('Komentar je odobren');
+      this.getComments();
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
+  }
+
+  onClickDeactivateComment(id: number): void {
+    this.komentarService.odobriKomentar(false,id).subscribe(data => {
+      this.toastr.success('Komentar je odbijen');
       this.getComments();
     }, error => {
       this.toastr.error(error.error.message);

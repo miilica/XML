@@ -14,6 +14,7 @@ export class KomenatarAgentService {
     private urlGetKomentare : string = `http://localhost:8099/api/komentar`;
     private urlgetOcjena : string = `http://localhost:8099/api/ocena/vozilo`;
     private urlOcjenaDodaj : string = `http://localhost:8099/api/ocena`;
+    private urlOdobriKomentar : string = `http://localhost:8099/api/komentar/odobri`;
 
 
     constructor(private http: HttpClient) { 
@@ -26,6 +27,10 @@ export class KomenatarAgentService {
 
     dodajKomentar(komentar: any, username: string): Observable<any> {
         return this.http.post(`${this.urlKomentarDodaj}/${username}`, komentar);
+    }
+
+    odobriKomentar(flag: any, id: number): Observable<any> {
+        return this.http.get<any>(`${this.urlOdobriKomentar}/${flag}/${id}`);
     }
 
     getKomentare(): Observable<any> {
