@@ -47,6 +47,7 @@ import { KomentarAgentComponent } from './komentar-agent/komentar-agent.componen
 import { SearchComponent } from './search/search.component';
 import { DodajOglasComponent } from './components/dodajOglas/dodajOglas.component';
 import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
+import { ZavrseniZahtjeviComponent } from './components/zavrseni-zahtjevi/zavrseni-zahtjevi.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
     SearchComponent,
     DodajOglasComponent,
     CjenovnikComponent,
+    ZavrseniZahtjeviComponent,
   ],
   imports: [
     BrowserModule,

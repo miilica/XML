@@ -52,4 +52,8 @@ export class VehicleListComponent implements OnInit {
   onClickDodajCjenovnik() : void{
     this.router.navigate(['cjenovnik']);
   }
+
+  onClickZavreniZahtjevi(){
+    this.router.navigate(['zavrseniZahtjevi']);
+  }
 }

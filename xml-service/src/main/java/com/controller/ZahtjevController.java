@@ -38,6 +38,13 @@ public class ZahtjevController {
         return this.zahtjevService.findAllZahtjeve();
     }
 
+    @GetMapping("/user/prosli")
+    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity<?> findAllZahtjeveProsli() throws AccessDeniedException {
+        return this.zahtjevService.findAllZahtjeveUserProsli();
+    }
+
+
 
     @GetMapping("/allZahtjeveRateComment")
     //@PreAuthorize("hasRole('ROLE_KORISNIK')")

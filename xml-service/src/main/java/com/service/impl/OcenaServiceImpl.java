@@ -10,6 +10,7 @@ import com.repository.VoziloRepository;
 import com.service.OcenaService;
 import com.service.OglasService;
 import com.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service
+@Service @Slf4j
 public class OcenaServiceImpl implements OcenaService {
 
     @Autowired
@@ -60,15 +61,19 @@ public class OcenaServiceImpl implements OcenaService {
         Ocena ocena = modelMapper.map(ocenaDTO, Ocena.class);
         User user = this.userService.findByUsername(ocenaDTO.getUserUsername());
         ocena.setUserId(user.getId());
+        log.info("id ; " + ocenaDTO.getOglasId());
         Oglas oglas = this.oglasService.findById(ocenaDTO.getOglasId());
         ocena.setOglas(oglas);
         ocena.setVozilo(oglas.getVozilo());
         Vozilo vozilo = oglas.getVozilo();
         double sum = 0;
-        for(Ocena o: vozilo.getOcjene()){
-            sum = sum + o.getOcena();
+        if(vozilo.getOcjene().size() != 0) {
+            for (Ocena o : vozilo.getOcjene()) {
+                sum = sum + o.getOcena();
+            }
+            vozilo.setOcjena(sum/vozilo.getOcjene().size());
         }
-        vozilo.setOcjena(sum/vozilo.getOcjene().size());
+
         this.voziloRepository.save(vozilo);
         this.ocenaRepository.save(ocena);
 

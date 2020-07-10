@@ -58,6 +58,10 @@ public class VoziloDTO {
         this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
         this.kilometraza = v.getKilometraza();
         this.agent = v.getAgent();
+        this.markaAutomobila = new MarkaAutomobilaDTO(v.getMarkaAutomobila());
+        this.klasaAutomobila = new KlasaAutomobilaDTO(v.getKlasaAutomobila());
+        this.tipGoriva = new VrstaGorivaDTO(v.getTipGoriva());
+        this.tipMjenjaca = new TipMjenjacaDTO(v.getTipMjenjaca());
         this.mozePreciKM = v.getMozePreciKM();
         this.imaAndroid = v.getImaAndroid();
         this.coliisionDamageWavier = v.isColiisionDamageWavier();
