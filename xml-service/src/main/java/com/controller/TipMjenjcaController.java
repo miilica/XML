@@ -20,13 +20,13 @@ public class TipMjenjcaController {
 
 
     @PostMapping("/dodaj")
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity add(@RequestBody TipMjenjacaDTO mDTO) {
         tipMjenjacaService.save(mDTO);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<TipMjenjacaDTO> loadAll() {
         return this.tipMjenjacaService.findAll();
     }

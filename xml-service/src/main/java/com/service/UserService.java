@@ -1,5 +1,6 @@
 package com.service;
 
+import com.dto.KomentarDTO;
 import com.dto.UserDTO;
 import com.dto.UserRegistrationDTO;
 import com.model.User;
@@ -18,4 +19,5 @@ public interface UserService {
     void activateUser(Long id);
     void activateComment(Long id);
     public User getLoogedIn();
+    List<KomentarDTO> loadAllComments();
 }

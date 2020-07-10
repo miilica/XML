@@ -19,7 +19,7 @@ import { Slika } from './Slika';
 })
 export class AddCarComponent implements OnInit {
 
- vozilo =  new Vozilo(null,null,null, null,null,null, null,null,null, null,null,null,null);
+ vozilo =  new Vozilo(null,null,null, null,null,null, null,null,null, null,null,null,null,null);
  public marke : MarkaAutomobila[];
  public klase : KlasaAutomobila[];
  public gorivo : TipGoriva[];

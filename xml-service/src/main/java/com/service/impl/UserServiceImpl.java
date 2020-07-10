@@ -3,6 +3,7 @@ package com.service.impl;
 import com.common.TimeProvider;
 import com.config.consts.UserRoles;
 import com.dto.KlasaAutomobilaDTO;
+import com.dto.KomentarDTO;
 import com.dto.UserDTO;
 import com.dto.UserRegistrationDTO;
 import com.exception.ApiRequestException;
@@ -84,6 +85,18 @@ public class UserServiceImpl implements UserService {
 		System.out.println(username);
 		User u = userRepository.findByUsername(username);
 		return u;
+	}
+
+	@Override
+	public List<KomentarDTO> loadAllComments() {
+		List<Komentar> result = komentarRepository.findAll();
+		List<KomentarDTO> komentarDTOS = new ArrayList<>();
+
+		for(Komentar k: result){
+			komentarDTOS.add(modelMapper.map(k, KomentarDTO.class));
+		}
+
+		return komentarDTOS;
 	}
 
 	public User findById(Long id) throws AccessDeniedException {

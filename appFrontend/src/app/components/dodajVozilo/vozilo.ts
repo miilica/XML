@@ -18,6 +18,7 @@ export class Vozilo {
         public  imaAndroid: boolean,
         public  coliisionDamageWavier: boolean,
         public  ocjena: number,
-        public  slike: Slika[]
+        public  slike: Slika[],
+        public bundle: boolean
     ){}
 }
