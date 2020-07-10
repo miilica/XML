@@ -1,9 +1,11 @@
 package com.example.demo.model;
 
-
 import java.util.Set;
 
 public class Korisnik extends User {
 
-    private Long id;
+    private Set<Oglas> korpa;
+    private Set<Zahtjev> mojiZahtjevi;
+
+    private Set<Oglas> mojiOglasi; //maks3
 }

@@ -12,30 +12,28 @@ import java.util.Set;
 @Getter
 @Setter
 @AllArgsConstructor
-@Table(name = "tipmjenjaca")
-public class TipMjenjaca {
+@Table(name = "vrstagoriva")
+public class TipGoriva {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Column
+    private String naziv;
 
-        @Column
-        private String naziv;
+    @Column
+    private Boolean obrisan;
 
-        @Column
-        private Boolean obrisan;
-
-        @JsonIgnore
-    @OneToMany(mappedBy = "tipMjenjaca", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "tipGoriva", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 
-    public TipMjenjaca(String naziv) {
+    public TipGoriva(String naziv) {
         this.naziv = naziv;
     }
 
-    public TipMjenjaca() {
+    public TipGoriva() {
     }
-
 
     public Long getId() {
         return id;
@@ -51,13 +49,5 @@ public class TipMjenjaca {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
-    }
-
-    public Boolean getObrisan() {
-        return obrisan;
-    }
-
-    public void setObrisan(Boolean nijeObrisan) {
-        this.obrisan = nijeObrisan;
     }
 }
