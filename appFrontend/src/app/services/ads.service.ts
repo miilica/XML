@@ -12,7 +12,7 @@ import { Vozilo } from '../components/dodajVozilo/vozilo';
 })
 
 export class AdsService {
-
+    private urlGetProsleZahtjeve : string = `http://localhost:8099/api/zahtjev/user/prosli`;
 
     constructor(private http: HttpClient) { 
     }
@@ -86,6 +86,10 @@ export class AdsService {
 
     addKmToVehicle(v: Vozilo, brojKM: number) {
         return this.http.put<Vozilo>(`${AGENT_ADD_KM_VEHICLE_URL}/${brojKM}`, v);
+    }
+
+    getZavrseniZahtjevi() {
+        return this.http.get<any>(`${this.urlGetProsleZahtjeve}`);
     }
 
 }

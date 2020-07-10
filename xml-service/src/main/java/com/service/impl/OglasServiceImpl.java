@@ -49,7 +49,7 @@ public class OglasServiceImpl implements OglasService {
 
     @Override
     public Oglas findById(Long id) {
-        return null;
+        return this.oglasRepository.getOne(id);
     }
 
     public List<Oglas> findAll() throws AccessDeniedException {

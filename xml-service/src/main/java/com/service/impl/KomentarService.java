@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.dto.KomentarDTO;
+import com.dto.VoziloDTO;
 import com.model.Agent;
 import com.model.Komentar;
 import com.model.User;
@@ -36,7 +37,7 @@ public class KomentarService {
 
     public ResponseEntity<?> kreirajKomentar(KomentarDTO komentarDTO, String username) {
         Komentar komentar = new Komentar();
-        komentar.setOdobren(true);
+        komentar.setOdobren(false);
         komentar.setTekst(komentarDTO.getTekst());
 
 
@@ -63,9 +64,41 @@ public class KomentarService {
                     .tekst(k.getTekst())
                     .userId(k.getUserId())
                     .userUsername(user.getUsername())
+                    .vozilo(new VoziloDTO(k.getVozilo()))
                     .build();
             komentariDTO.add(komentarDTO);
         }
         return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> pokupiSveKomentare() {
+        List<Komentar> komentari = this.komentarRepository.findAllByOdobren(false);
+        List<KomentarDTO> komentariDTO = new ArrayList<>();
+
+        for(Komentar k: komentari){
+            User user = this.userRepository.getOne(k.getUserId());
+            KomentarDTO komentarDTO = KomentarDTO.builder()
+                    .id(k.getId())
+                    .odobren(k.isOdobren())
+                    .tekst(k.getTekst())
+                    .userId(k.getUserId())
+                    .userUsername(user.getUsername())
+                    .vozilo(new VoziloDTO(k.getVozilo()))
+                    .build();
+            komentariDTO.add(komentarDTO);
+        }
+        return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> odobriKomentar(Boolean flag, Long id) {
+        if(flag == true){
+            Komentar komentar = this.komentarRepository.getOne(id);
+            komentar.setOdobren(true);
+            this.komentarRepository.save(komentar);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            this.komentarRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 }

@@ -20,7 +20,7 @@ public class OcenaKontroler {
     }
 
     @PostMapping()
-    private ResponseEntity<?> kreijarOcjenu(@RequestBody OcenaDTO ocenaDTO){
+    private ResponseEntity<?> kreirajOcjenu(@RequestBody OcenaDTO ocenaDTO){
        return this.ocenaService.kreirajOcjenu(ocenaDTO);
     }
 

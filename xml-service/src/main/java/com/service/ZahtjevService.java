@@ -27,4 +27,6 @@ public interface ZahtjevService {
     Vozilo commentVehicle(VoziloDTO voziloDTO, String komentar);
 
     ResponseEntity<?> findAllZahtjeve();
+
+    ResponseEntity<?> findAllZahtjeveUserProsli();
 }

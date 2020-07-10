@@ -72,12 +72,12 @@ INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALU
 INSERT INTO `poruka` (sadrzaj, datum, posiljalac_id, primalac_id, oglas_id) VALUES ('Sada', '2020-06-17T10:00', 1, 2, 1);
 
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (1, true, 'Vrh auto', 6, 1);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, true, 'Udobno', 2, 2);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, true, 'Svidja mi se', 3, 3);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, true, 'Super', 2, 2);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, true, 'Predobro auto', 2, 3);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (6, true, 'Moze bolje', 2, 1);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (7, true, 'NiĐe veze', 3, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, false, 'Udobno', 2, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, false, 'Svidja mi se', 3, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, false, 'Super', 2, 2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, false, 'Predobro auto', 2, 3);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (6, false, 'Moze bolje', 2, 1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (7, false, 'NiĐe veze', 3, 2);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (8, true, 'Malo troši', 3, 2);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (9, true, 'Top top top', 3, 3);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (10, true, 'Okej je', 3,4);
@@ -89,7 +89,11 @@ insert into `ocena` (id, ocena, user_id, oglas_id, vozilo_id ) values (2,4.5,6,1
 insert into `ocena` (id, ocena, user_id, oglas_id, vozilo_id ) values (3,4.6,6,1,1);
 
 
-insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');
-insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-12 21:58:58', '2020-06-16 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');
-insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 2, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-18 21:58:58', 'STATUS_PENDING');
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 6, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 6, 2, 1, '2020-06-12 21:58:58', '2020-06-16 21:58:58', false, false, '2020-06-23 21:58:58', 'STATUS_PENDING');
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 6, 2, 1, '2020-06-18 21:58:58', '2020-06-20 21:58:58', false, false, '2020-06-18 21:58:58', 'STATUS_PENDING');
+
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 6, 2, 1, '2020-06-02 21:58:58', '2020-06-25 21:58:58', false, true, '2020-06-01 21:58:58', 'STATUS_PAID');
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 6, 2, 2, '2020-06-13 21:58:58', '2020-06-17 21:58:58', false, true, '2020-06-01 21:58:58', 'STATUS_PAID');
+insert into `zahtjev` (agent_id, oglas_id, user_izdao_id, user_poslao_id, vozilo_id, od, doo, bundle, potvrdjen, datum_kreiranja, zahtjev_status) values (6,1, 6, 2, 3, '2020-06-14 21:58:58', '2020-06-25 21:58:58', false, true, '2020-06-01 21:58:58', 'STATUS_PAID');
 

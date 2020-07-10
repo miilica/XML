@@ -1,5 +1,6 @@
 package com.dto;
 
+import com.model.KlasaAutomobila;
 import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,11 @@ public class KlasaAutomobilaDTO {
 
     public KlasaAutomobilaDTO(String naziv) {
         this.naziv = naziv;
+    }
+
+    public KlasaAutomobilaDTO(KlasaAutomobila k) {
+        this.naziv = k.getNaziv();
+        this.id = k.getId();
     }
 
     public String getNaziv() {

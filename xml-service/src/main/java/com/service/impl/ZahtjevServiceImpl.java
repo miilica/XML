@@ -8,6 +8,7 @@ import com.repository.*;
 import com.service.OcenaService;
 import com.service.VoziloService;
 import com.service.ZahtjevService;
+import org.joda.time.DateTime;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,17 +69,47 @@ public class ZahtjevServiceImpl implements ZahtjevService {
 
         User u = userRepository.findByUsername(username);
 
-        List<Zahtjev> zahtjevi = this.zahtjevRepository.findAll();
+        List<Zahtjev> zahtjevi = this.zahtjevRepository.findAllByUserIzdao(u);
         List<ZahtjevDTO> zahtjevDTO = new ArrayList<>();
 
         for(Zahtjev z: zahtjevi){
             if(z.getAgent().getId() == u.getId()) {
-                ZahtjevDTO zahtjev =  new ZahtjevDTO(z);
+                if(z.getZahtjevStatus().equals("STATUS_PENDING")){
+                    ZahtjevDTO zahtjev = new ZahtjevDTO(z);
+                    zahtjevDTO.add(zahtjev);
+                }
+            }
+        }
+
+        return new ResponseEntity<>(zahtjevDTO, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> findAllZahtjeveUserProsli(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object currentUser = auth.getPrincipal();
+
+        String username = "";
+        if (currentUser instanceof UserDetails) {
+            username = ((UserDetails)currentUser).getUsername();
+        } else {
+            username = currentUser.toString();
+        }
+
+        User u = userRepository.findByUsername(username);
+
+        List<Zahtjev> zahtjevi = this.zahtjevRepository.findAllByUserPoslao(u);
+        List<ZahtjevDTO> zahtjevDTO = new ArrayList<>();
+
+        for(Zahtjev z: zahtjevi){
+            if(z.getZahtjevStatus().equals("STATUS_PAID") && z.getDoo().isBefore(DateTime.now())) {
+                ZahtjevDTO zahtjev = new ZahtjevDTO(z);
                 zahtjevDTO.add(zahtjev);
             }
         }
 
         return new ResponseEntity<>(zahtjevDTO, HttpStatus.OK);
+
     }
 
     //obican zahtev
@@ -194,7 +225,6 @@ public class ZahtjevServiceImpl implements ZahtjevService {
                 if (z.getVozilo().getId() == voziloId && z.getVozilo().getAgent().getId() == agentId && u.getId() == z.getUserPoslao().getId()) {
                     z = zahtjevRepository.findById(z.getId()).orElseGet(null);
                     ZahtjevDTO zahtjevDTO = new ZahtjevDTO(z);
-                    modelMapper.map(z, Zahtjev.class);
                     return zahtjevDTO;
                 }
             } else {
@@ -202,7 +232,6 @@ public class ZahtjevServiceImpl implements ZahtjevService {
                     if(kv.getVehicleId() == voziloId && kv.getAgent().getId() == agentId && u.getId() == z.getUserPoslao().getId()) {
                         z = zahtjevRepository.findById(z.getId()).orElseGet(null);
                         ZahtjevDTO zahtjevDTO = new ZahtjevDTO(z);
-                        modelMapper.map(z, Zahtjev.class);
                         return zahtjevDTO;
                     }
                 }

@@ -10,6 +10,7 @@ import { KlasaAutomobila } from 'src/app/components/dodajKlasaAutomobila/klasaAu
 import { TipGoriva } from 'src/app/components/tipGoriva/tipGoriva';
 import { TipMjenjaca } from 'src/app/components/tipMjenjaca/tipMjenjaca';
 import { DodajKlasuAutomobilaService } from 'src/app/components/dodajKlasaAutomobila/dodajKlasuAutomobila.service';
+import { KomenatarAgentService } from 'src/app/services/komenatar.service';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class AdminHomeComponent implements OnInit {
   categoryName: string = '';
 
   constructor(private usersService: UserService, private dodajMarkuAutomobilaService: DodajMarkuAutomobilaService,private router: Router,
-              private tipMenjacaService : TipMjenjacaService,private tipGorivaService : TipGorivaService,private dodajKlasuAutomobilaService : DodajKlasuAutomobilaService ,private toastr: ToastrService) { }
+              private tipMenjacaService : TipMjenjacaService,private tipGorivaService : TipGorivaService,private dodajKlasuAutomobilaService : DodajKlasuAutomobilaService ,private toastr: ToastrService, private komentarService: KomenatarAgentService) { }
 
   ngOnInit() {
     this.getAll();
@@ -216,7 +217,7 @@ editTipMenjaca(menjac: TipMjenjaca):void{
   }
 
   private getComments(): void {
-    this.usersService.getAllComments().subscribe(data => {
+    this.komentarService.getKomentare().subscribe(data => {
       this.komentari = data;
       console.log("Svi komentari: ",this.komentari);
     }, error => {
@@ -243,8 +244,17 @@ editTipMenjaca(menjac: TipMjenjaca):void{
   }
 
   onClickActivateComment(id: number): void {
-    this.usersService.activateComment(id).subscribe(data => {
-      this.toastr.success('Comment has been activated/deactivated');
+    this.komentarService.odobriKomentar(true,id).subscribe(data => {
+      this.toastr.success('Komentar je odobren');
+      this.getComments();
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
+  }
+
+  onClickDeactivateComment(id: number): void {
+    this.komentarService.odobriKomentar(false,id).subscribe(data => {
+      this.toastr.success('Komentar je odbijen');
       this.getComments();
     }, error => {
       this.toastr.error(error.error.message);

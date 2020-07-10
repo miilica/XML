@@ -3,6 +3,7 @@ package com.dto;
 import com.Util.JsonJodaDateTimeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.model.Cjenovnik;
+import com.model.Oglas;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,12 @@ public class OglasInfoDTO {
     private double dozvoljenaKilometraza;
     private VoziloInfoDTO vozilo;
     private CjenovnikDTO cjenovnik;
+
+    public OglasInfoDTO(Oglas o) {
+        this.id = o.getId();
+        this.mjestoPreuzimanja = o.getMjestoPreuzimanja();
+        this.od = o.getOd();
+        this.doo = o.getDoo();
+        this.dozvoljenaKilometraza = o.getDozvoljenaKilometraza();
+    }
 }
