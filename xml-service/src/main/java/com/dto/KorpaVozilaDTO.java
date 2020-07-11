@@ -30,11 +30,11 @@ public class KorpaVozilaDTO {
 
     private  boolean bundle;
 
-    private MarkaAutomobila markaAutomobila;
+    private MarkaAutomobilaDTO markaAutomobila;
 
-    private KlasaAutomobila klasaAutomobila;
+    private KlasaAutomobilaDTO klasaAutomobila;
 
-    private Agent agent;
+    private AgentDTO agent;
 
     private Long vehicleId;
 

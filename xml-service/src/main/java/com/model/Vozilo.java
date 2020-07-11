@@ -89,9 +89,6 @@ public class Vozilo {
     @OneToMany(mappedBy = "vozilo", cascade = CascadeType.ALL)
     private Set<Slika> slike;
 
-   // private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-   // private Set<Komentar> komentari;
-  //  private Set<Izvjestaj> izvjestaji;
 
     @OneToMany(mappedBy = "vozilo")
     private Set<Zauzece> zauzece;
