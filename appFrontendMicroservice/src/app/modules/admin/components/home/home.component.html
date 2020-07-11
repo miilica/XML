@@ -1,14 +1,14 @@
 <h1 style="color: deeppink; align-content: center;">Admin homepage!</h1>
         <div class="d-flex flex-row" >
-                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addcar']">Dodaj vozilo </a></button>
-                <button type="button" class="btn btn-outline-secondary" ><a style="color: deeppink;" [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </a></button> 
-                <button type="button" class="btn btn-outline-secondary" ><a style="color: deeppink;" [routerLink]="['addklasu']">Dodaj klasu automobila </a></button> 
-                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addtipgoriva']">Dodaj tip goriva </a></button>
-                <button type="button" class="btn btn-outline-secondary" ><a style="color:deeppink;" [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addcar']">Dodaj vozilo </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </a></button> 
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addklasu']">Dodaj klasu automobila </a></button> 
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addtipgoriva']">Dodaj tip goriva </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </a></button>
         </div>
         <br/><br/>
             <div class="container">
-                <h2 class="ui header" style="color: deeppink; align-content: center;" ><b>Lista korisnika</b></h2>
+                <h2 class="ui header" style=" align-content: center;" ><b>Lista korisnika</b></h2>
                 <table class="ui celled striped table">
                     <thead>
                         <th>Name </th>
@@ -208,7 +208,7 @@
         <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelTipMenjaca.naziv" />
 
         
-    <button mat-raised-button color="accent">Edit</button>
+    <button mat-raised-button color="primary">Edit</button>
     </fieldset>
     </form>
 </div>

@@ -47,19 +47,19 @@
        <div class="d-flex flex-column">
           <div class="d-flex flex-column">
                 <div class="d-flex flex-column" id ="ap">
-                    <label id = "label" for="cijenaPoDanu" style="color: deeppink;">Cijena po danu</label>
+                    <label id = "label" for="cijenaPoDanu"  >Cijena po danu</label>
                     <input [(ngModel)] = "cjenovnik.cijenaPoDanu" type="number" min="0" name="cijenaPoDanu" id="cijenaPoDanu" class="form-control"/>
                 </div>
                 <div class="d-flex flex-column" id ="ap">
-                    <label id = "label" for="cijenaPoKM" style="color: deeppink;">Cijena po kilometru</label>
+                    <label id = "label" for="cijenaPoKM"  >Cijena po kilometru</label>
                     <input [(ngModel)] = "cjenovnik.cijenaPoKM" type="number" min="0" name="cijenaPoKM" id="cijenaPoKM" class="form-control"/>
                 </div>
                 <div class="d-flex flex-column" id ="ap">
-                    <label id = "label" for="cijenaCDW" style="color: deeppink;">Cijena za Collision Damage Waiver</label>
+                    <label id = "label" for="cijenaCDW"  >Cijena za Collision Damage Waiver</label>
                     <input [(ngModel)] = "cjenovnik.cijenaCDW" type="number" min="0" name="cijenaCDW" id="cijenaCDW" class="form-control"/>
                 </div>
                     <div class="d-flex flex-column" *ngIf ="role == 'ROLE_AGENT'" id ="sp">
-                        <label id = "label" for="popust" style="color: deeppink;">Popust</label>
+                        <label id = "label" for="popust"  >Popust</label>
                         <input [(ngModel)] = "cjenovnik.popust" type="number" min="0" name="popust" id="popust" class="form-control"/>
                     </div>
               </div>

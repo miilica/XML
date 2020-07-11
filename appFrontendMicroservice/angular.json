@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appFrontend": {
+    "appFrontendMicroservice": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/appFrontend",
+            "outputPath": "dist/appFrontendMicroservice",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "appFrontend:build"
+            "browserTarget": "appFrontendMicroservice:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "appFrontend:build:production"
+              "browserTarget": "appFrontendMicroservice:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "appFrontend:build"
+            "browserTarget": "appFrontendMicroservice:build"
           }
         },
         "test": {
@@ -114,18 +114,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appFrontend:serve"
+            "devServerTarget": "appFrontendMicroservice:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "appFrontend:serve:production"
+              "devServerTarget": "appFrontendMicroservice:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "appFrontend",
+  "defaultProject": "appFrontendMicroservice",
   "cli": {
     "analytics": false
   }

@@ -11,7 +11,7 @@ import { Poruka } from './poruka';
     providedIn: 'root'
 })
 export class PorukeService{
-    _url = 'http://localhost:8099/api/poruke';
+    _url = 'http://localhost:8095/api/poruke';
     //_url2 = 'http://localhost:8099/api/poruke/{posiljalacId}/{primalacId}/{oglasId}';
    
 

@@ -7,12 +7,12 @@
         <br/>
         <div class="d-flex flex-row" id="basicSearch">
             <div class="d-flex flex-column" style="border-color: deeppink;" id="sp">
-                <label id = "label" for="mjestoPreuzimanja" style="color: deeppink;">Mjesto preuzimanja</label>
+                <label id = "label" for="mjestoPreuzimanja"  >Mjesto preuzimanja</label>
                 <select class="form-control" [(ngModel)]="pretraga.mjestoPreuzimanja" id="mjestoPreuzimanja">
                   <option *ngFor="let m of mjesta" [ngValue]="m">{{m}}</option>
                </select>
             </div>
-            <div class="d-flex flex-column" id="sp" style="color: deeppink;">
+            <div class="d-flex flex-column" id="sp"  >
                 <label id = "label" for="od" style="border-color: deeppink;">Od </label>
                 <input
                 [(ngModel)] = "pretraga.od"
@@ -22,7 +22,7 @@
                 class="form-control"
                 />
             </div>
-            <div class="d-flex flex-column" id="sp" style="color: deeppink;">
+            <div class="d-flex flex-column" id="sp"  >
                 <label id = "label" for="do"  style="border-color: deeppink;">Do</label>
                 <input
                 [(ngModel)] = "pretraga.doo"
@@ -41,67 +41,67 @@
         </div>
         <div class="d-flex flex-row">
             <div class="d-flex flex-column" id="ss">
-                <h4 style="color: deeppink;">Dodatna pretraga</h4>
-                <div class="form-group" style="color: deeppink;">
+                <h4  >Dodatna pretraga</h4>
+                <div class="form-group"  >
                     <label id = "label" for="mark">Marka</label>
                     <select class="form-control" [(ngModel)]="pretraga.marka" id="marka" (change) = "change(pretraga.marka.id)">
                        <option *ngFor="let marka of marke" [ngValue]="marka">{{marka.nazivMarke}}</option>
                     </select>
                  </div>
-                 <div class="form-group" *ngIf = "pretraga.marka.id != null" style="color: deeppink;">
+                 <div class="form-group" *ngIf = "pretraga.marka.id != null"  >
                     <label id = "label" for="model">Model</label>
                     <select class="form-control" [(ngModel)]= "pretraga.marka.model" id="model">
                        <option *ngFor="let model of modeli" [ngValue] = "model">{{model}}</option>
                     </select>
                  </div>
-                 <div class="form-group" style="color: deeppink;">
+                 <div class="form-group"  >
                     <label id = "label" for="fuel">Vrsta goriva</label>
                     <select class="form-control" [(ngModel)]= "pretraga.gorivo" id="goriva">
                        <option *ngFor="let g of goriva" [ngValue]="g">{{g.naziv}}</option>
                     </select>
                  </div>
-                 <div class="form-group" style="color: deeppink;">
+                 <div class="form-group"  >
                     <label id = "label" for="gearbox">Tip mjenjaca</label>
                     <select class="form-control" [(ngModel)]= "pretraga.mjenjac" id="mjenjac">
                        <option *ngFor="let g of mjenjaci" [ngValue]="g">{{g.naziv}}</option>
                     </select>
                  </div>
-                 <div class="form-group" style="color: deeppink;">
+                 <div class="form-group"  >
                     <label id = "label" for="carClass">Class</label>
                     <select class="form-control" [(ngModel)]= "pretraga.klasa" id="klasa">
                        <option *ngFor="let k of klase" [ngValue]="k">{{k.naziv}}</option>
                     </select>
                  </div>
-                 <div class="d-flex flex-row" style="color: deeppink;">
+                 <div class="d-flex flex-row"  >
                     <div class="form-group flex-column" style="margin-right: 5px;">
                         <label id = "label" for="cijenaOd">Cijena od</label>
                         <input [(ngModel)] = "pretraga.cijenaOd" type="number" min="0" name="cijenaOd" id="cijenaOd" class="form-control"/>
                      </div> 
-                     <div class="form-group flex-column" style="color: deeppink;">
+                     <div class="form-group flex-column"  >
                         <label id = "label" for="cijenaDo">Cijena do</label>
                         <input [(ngModel)] = "pretraga.cijenaDo" type="number" min="0" name="cijenaDo" id="cijenaDo" class="form-control"/>
                      </div> 
                  </div>
-                 <div class="d-flex flex-row" style="color: deeppink;">
+                 <div class="d-flex flex-row"  >
                     <div class="form-group flex-column" style="margin-right: 5px;">
                         <label id = "label" for="kilometrazaOd">Kilometraza od</label>
                         <input [(ngModel)] = "pretraga.kilometrazaOd" type="number" min="0" name="kilometrazaOd" id="kilometrazaOd" class="form-control"/>
                      </div> 
-                     <div class="form-group flex-column" style="color: deeppink;">
+                     <div class="form-group flex-column"  >
                         <label id = "label" for="kilometrazaDo">Kilometraza do</label>
                         <input [(ngModel)] = "pretraga.kilometrazaDo" type="number" min="0" name="kilometrazaDo" id="kilometrazaDo" class="form-control"/>
                      </div> 
                  </div>
-                 <div class="form-group" style="color: deeppink;">
+                 <div class="form-group"  >
                     <label id = "label" for="kilometrazaDozvoljena">Planirana kilometraza</label>
                     <input [(ngModel)] = "pretraga.kilometrazaDozvoljena" type="number" min="0" name="kilometrazaDozvoljena" id="kilometrazaDozvoljena" class="form-control"/>
                  </div>
-                 <div class="d-flex flex-row" style="color: deeppink;">
+                 <div class="d-flex flex-row"  >
                     <div class="form-group flex-column" style="margin-right: 5px;">
                         <label id = "label" for="brojDjecijihMjesta">Broj djecijih mjesta</label>
                         <input [(ngModel)] = "pretraga.brojDjecijihMjesta" type="number" min="0" name="brojDjecijihMjesta" id="brojDjecijihMjesta" class="form-control"/>
                      </div> 
-                     <div class="form-group flex-column" style="color: deeppink;">
+                     <div class="form-group flex-column"  >
                         <label id = "label" for="cdw">CDW</label>
                         <input [(ngModel)] = "pretraga.cdw" type="checkbox" name="cdw" id="cdw" class="form-control"/>
                      </div> 

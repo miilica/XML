@@ -7,14 +7,14 @@
         <h1 style="color: deeppink; align-content: center;">Zauzece automobila!</h1>
        
         <div class="flex">
-            <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Datum od:</label>
+            <label  class="col-form-label" for="inputDefault"  >Datum od:</label>
             <input type="date"  class="form-control" id="zauzetOd" name="zauzetOd" style="width: 250px; color: deeppink;" [(ngModel)] = "datumOd"/>
 
-            <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Datum do:</label>
+            <label  class="col-form-label" for="inputDefault"  >Datum do:</label>
             <input type="date"  class="form-control" id="zauzetDo" name="zauzetOd" style="width: 250px; color: deeppink;"  [(ngModel)] = "datumDo"/>
 
 
-            <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Vozila:</label>
+            <label  class="col-form-label" for="inputDefault"  >Vozila:</label>
             <select class="form-control" id="vozilo" style="color: deeppink; width: 250px;" [(ngModel)]="vozilo">
                 <option *ngFor = "let v of vozila" [ngValue]="v">
                     {{v.markaAutomobila.nazivMarke}} {{v.markaAutomobila.model}}
