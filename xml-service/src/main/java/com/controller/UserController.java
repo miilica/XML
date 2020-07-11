@@ -46,7 +46,7 @@ public class UserController {
 	// Ukoliko nema, server ce vratiti gresku 403 Forbidden
 	// Korisnik jeste autentifikovan, ali nije autorizovan da pristupi resursu
 	@GetMapping("/user/{userId}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public User loadById(@PathVariable Long userId) {
 		return this.userService.findById(userId);
 	}
@@ -57,47 +57,47 @@ public class UserController {
 	}
 
 	@GetMapping("/user/all")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<UserDTO> loadAll() {
 
     	return this.userService.findAll();
 	}
 
 	@GetMapping("/user/allKorisnike")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<UserDTO> loadAllKorisnike() {
 		return this.userService.findAllKorisnike();
 	}
 
 	@GetMapping("/allComments")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<KomentarDTO> loadAllComments() {
 		return this.userService.loadAllComments();
 	}
 
 	@GetMapping("activateComment/{id}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity activateComment(@PathVariable Long id) {
 		userService.activateComment(id);
 		return ResponseEntity.ok().build();
 	}
 
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity delete(@PathVariable Long id) {
 		userService.delete(id);
 		return ResponseEntity.ok().build();
 	}
 
 	@GetMapping("activate/{id}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity activate(@PathVariable Long id) {
 		userService.activateUser(id);
 		return ResponseEntity.ok().build();
 	}
 
 	@PostMapping("/payForRent")
-	@PreAuthorize("hasRole('ROLE_KORISNIK')")
+	//@PreAuthorize("hasRole('ROLE_KORISNIK')")
 	public ResponseEntity payForRent(@Valid @RequestBody Zahtjev zahtjev) {
 		zahtjevService.payForRentACar(zahtjev);
 		return ResponseEntity.ok().build();

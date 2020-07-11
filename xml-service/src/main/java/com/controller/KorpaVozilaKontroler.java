@@ -4,7 +4,6 @@ import com.dto.KorpaVozilaDTO;
 import com.model.KorpaVozila;
 import com.service.KorpaVozilaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +20,14 @@ public class KorpaVozilaKontroler {
     private KorpaVozilaService korpaVozilaService;
 
     @PostMapping("/addVehicleToCart")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+   // @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity add(@Valid @RequestBody KorpaVozilaDTO vozilo) {
         korpaVozilaService.addVehicleToCart(vozilo);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/allVozila")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<KorpaVozila> findAll() throws AccessDeniedException {
         return this.korpaVozilaService.findAll();
     }
