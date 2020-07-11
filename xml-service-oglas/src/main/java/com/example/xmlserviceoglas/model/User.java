@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.InheritanceType.JOINED;
 
@@ -33,29 +34,11 @@ public class User {
     private String username;
 
     @Column
-    private String ucidn;
-
-    @Column
-    private String address;
-
-    @Column
-    private String city;
-
-    @Column
-    private String country;
-
-    @Column
     private String email;
 
-    @Column
-    private String phone;
+    @OneToMany(mappedBy = "user")
+    private Set<Cjenovnik> cjenovnici;
 
-    @Column
-    private String password;
-
-    @Column
-    private  String role;
-
-    @Column
-    private boolean isAdmin;
+    @OneToMany(mappedBy = "user")
+    private Set<Oglas> oglasi;
 }

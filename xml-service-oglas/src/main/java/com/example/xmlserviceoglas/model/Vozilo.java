@@ -1,12 +1,20 @@
 package com.example.xmlserviceoglas.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
+import com.example.xmlserviceoglas.dto.VoziloDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Vozilo {
 
     @Id
@@ -29,20 +37,52 @@ public class Vozilo {
     private double ocjena;
 
     @Column
-    private MarkaAutomobila markaAutomobila;
-
-    private VrstaGoriva vrstaGoriva;
-
-    private  TipMjenjaca tipMjenjaca;
-
-    private KlasaAutomobila klasaAutomobila;
-
     private Boolean imaAndroid;
 
     @Column
     private boolean coliisionDamageWavier;
 
-    private Set<TerminIznajmljivanja> terminiIznajmljivanja;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private KlasaAutomobila klasaAutomobila;
+
+    @ManyToOne( fetch = FetchType.LAZY)
+    private TipGoriva tipGoriva;
+
+    @ManyToOne( fetch = FetchType.LAZY)
+    private TipMjenjaca tipMjenjaca;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MarkaAutomobila markaAutomobila;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Komentar> komentari;
+
+    @ManyToOne()
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<Izvjestaj> izvjestaji;
+
+    @OneToMany(mappedBy = "vozilo")
+    private Set<Zauzece> zauzece;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    private Set<Oglas> oglasi;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ocjene_id")
+    private Set<Ocena> ocjene = new HashSet<>();
+
+
+    public Vozilo(VoziloDTO v){
+        this.id = v.getId();
+        this.cijena = v.getCijena();
+        this.kilometraza = v.getKilometraza();
+        this.mozePreciKM = v.getMozePreciKM();
+        this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
+        this.ocjena = v.getOcjena();
+        this.coliisionDamageWavier = v.isColiisionDamageWavier();
+        this.imaAndroid = v.isImaAndroid();
+    }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="https://ftn.uns.ac.rs/oglas" xmlns:oglas="https://ftn.uns.ac.rs/oglas">
+    <xs:element name="PostOglasRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="oglasRequest" type="oglas:TOglas"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostOglasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="oglasResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TOglas">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="mjestoPreuzimanja" type="xs:string"/>
+            <xs:element name="od" type="xs:long"/>
+            <xs:element name="doo" type="xs:long"/>
+            <xs:element name="dozvoljenaKilometraza" type="xs:double"/>
+            <xs:element name="cjenovnikId" type="xs:long"/>
+            <xs:element name="voziloId" type="oglas:TVozilo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TVozilo">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="markaAutomobilaId" type="xs:long"/>
+            <xs:element name="tipGorivaId" type="xs:long"/>
+            <xs:element name="tipMjenjacaId" type="xs:long"/>
+            <xs:element name="klasaAutomobilaId" type="xs:long"/>
+            <xs:element name="userId" type="xs:long"/>
+            <xs:element name="kilometraza" type="xs:double"/>
+            <xs:element name="brSjedistaZaDjecu" type="xs:int"/>
+            <xs:element name="imaAndroid" type="xs:boolean"/>
+            <xs:element name="coliisionDamageWavier" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,15 +1,47 @@
 package com.example.xmlserviceoglas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Agent{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String ime;
+
+    @Column
     private String prezime;
-    private String adresa;
+
+    @Column
     private String imeKompanije;
+
+    @Column
     private String poslovniMB;
-    private Set<Vozilo> vozila;
-    private Set<Oglas> oglasi;
+
+    @Column
     private int brOglasa;
+
+    @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
+    private Set<Vozilo> vozila;
+
+    @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Zahtjev> pristigliZahtjevi;
+
+    @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
+    private Set<KorpaVozila> korpaVozila;
+
 }
