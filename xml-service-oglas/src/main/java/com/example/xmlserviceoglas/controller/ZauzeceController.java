@@ -23,5 +23,9 @@ public class ZauzeceController {
         return this.zauzeceService.zauzeceAutomobila(zauzeceDTO);
     }
 
+    @GetMapping(value = "/getVozilaAgent")
+    public ResponseEntity<?> getAllVozilaAgent(){
+        return this.zauzeceService.getAllVozilaAgent();
+    }
 
 }

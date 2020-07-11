@@ -1,1 +1,0 @@
-insert into `user` (id, name, surname, email, username) values (2,'Nole', 'Nolic','user1@rentacar.com','user1');

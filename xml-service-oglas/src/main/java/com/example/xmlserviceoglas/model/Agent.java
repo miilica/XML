@@ -29,12 +29,6 @@ public class Agent{
     @Column
     private String imeKompanije;
 
-    @Column
-    private String poslovniMB;
-
-    @Column
-    private int brOglasa;
-
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 

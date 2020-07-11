@@ -18,8 +18,6 @@ public class AgentDTO {
     private String ime;
     private String prezime;
     private String imeKompanije;
-    private String poslovniMB;
-    private int brOglasa;
     private Set<VoziloDTO> vozila;
     private Set<ZahtjevDTO> pristigliZahtjevi;
 
@@ -28,7 +26,5 @@ public class AgentDTO {
         this.ime = agent.getIme();
         this.prezime = agent.getPrezime();
         this.imeKompanije = agent.getImeKompanije();
-        this.poslovniMB = agent.getPoslovniMB();
-        this.brOglasa = agent.getBrOglasa();
     }
 }

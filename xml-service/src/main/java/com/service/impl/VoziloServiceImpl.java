@@ -183,9 +183,6 @@ public class VoziloServiceImpl implements VoziloService {
 
     public ResponseEntity<?> getAllVozilaAgent() {
 
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //Object object = authentication.getPrincipal();
-
         Agent agent = this.agentRepository.getOne(6l);
 
         List<Vozilo> vozila = this.voziloRepository.findAllByAgentId(agent.getId());

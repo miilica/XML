@@ -1,14 +1,15 @@
 package com.example.xmlserviceoglas.services;
 
+import com.example.xmlserviceoglas.dto.MarkaAutomobilaDTO;
+import com.example.xmlserviceoglas.dto.VoziloDTO;
 import com.example.xmlserviceoglas.dto.ZauzeceDTO;
-import com.example.xmlserviceoglas.model.Oglas;
-import com.example.xmlserviceoglas.model.Vozilo;
-import com.example.xmlserviceoglas.model.Zahtjev;
-import com.example.xmlserviceoglas.model.Zauzece;
+import com.example.xmlserviceoglas.model.*;
+import com.example.xmlserviceoglas.repository.AgentRepository;
 import com.example.xmlserviceoglas.repository.VoziloRepository;
 import com.example.xmlserviceoglas.repository.ZahtjevRepository;
 import com.example.xmlserviceoglas.repository.ZauzeceRepository;
 import org.joda.time.DateTime;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,12 @@ public class ZauzeceService {
 
     @Autowired
     private VoziloRepository voziloRepository;
+
+    @Autowired
+    private AgentRepository agentRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
 
     public ResponseEntity<?> getZauzece(Long id) {
@@ -96,4 +103,22 @@ public class ZauzeceService {
     }
 
 
+    public ResponseEntity<?> getAllVozilaAgent() {
+
+            Agent agent = this.agentRepository.getOne(6l);
+
+            List<Vozilo> vozila = this.voziloRepository.findAllByAgentId(agent.getId());
+            List<VoziloDTO> voziloDTOS = new ArrayList<>();
+
+            for(Vozilo v: vozila){
+                VoziloDTO vDTO = new VoziloDTO();
+                vDTO.setId(v.getId());
+
+                vDTO.setMarkaAutomobila(modelMapper.map(v.getMarkaAutomobila(), MarkaAutomobilaDTO.class));
+
+                voziloDTOS.add(vDTO);
+            }
+
+            return new ResponseEntity<>(voziloDTOS,HttpStatus.OK);
+        }
 }
