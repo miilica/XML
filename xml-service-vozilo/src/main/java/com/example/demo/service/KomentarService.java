@@ -56,14 +56,7 @@ public class KomentarService {
 
         for(Komentar k: komentari){
             User user = this.userRepository.getOne(k.getUserId());
-            KomentarDTO komentarDTO = KomentarDTO.builder()
-                    .id(k.getId())
-                    .odobren(k.isOdobren())
-                    .tekst(k.getTekst())
-                    .userId(k.getUserId())
-                    .userUsername(user.getUsername())
-                    .vozilo(new VoziloDTO(k.getVozilo()))
-                    .build();
+            KomentarDTO komentarDTO = new KomentarDTO(k);
             komentariDTO.add(komentarDTO);
         }
         return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);
@@ -75,14 +68,8 @@ public class KomentarService {
 
         for(Komentar k: komentari){
             User user = this.userRepository.getOne(k.getUserId());
-            KomentarDTO komentarDTO = KomentarDTO.builder()
-                    .id(k.getId())
-                    .odobren(k.isOdobren())
-                    .tekst(k.getTekst())
-                    .userId(k.getUserId())
-                    .userUsername(user.getUsername())
-                    .vozilo(new VoziloDTO(k.getVozilo()))
-                    .build();
+            KomentarDTO komentarDTO = new KomentarDTO(k);
+
             komentariDTO.add(komentarDTO);
         }
         return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);

@@ -58,4 +58,108 @@ public class KorpaVozilaDTO {
         this.vehicleId = v.getVehicleId();
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(double cijena) {
+        this.cijena = cijena;
+    }
+
+    public double getKilometraza() {
+        return kilometraza;
+    }
+
+    public void setKilometraza(double kilometraza) {
+        this.kilometraza = kilometraza;
+    }
+
+    public double getMozePreciKM() {
+        return mozePreciKM;
+    }
+
+    public void setMozePreciKM(double mozePreciKM) {
+        this.mozePreciKM = mozePreciKM;
+    }
+
+    public int getBrSjedistaZaDjecu() {
+        return brSjedistaZaDjecu;
+    }
+
+    public void setBrSjedistaZaDjecu(int brSjedistaZaDjecu) {
+        this.brSjedistaZaDjecu = brSjedistaZaDjecu;
+    }
+
+    public double getOcjena() {
+        return ocjena;
+    }
+
+    public void setOcjena(double ocjena) {
+        this.ocjena = ocjena;
+    }
+
+    public Boolean getImaAndroid() {
+        return imaAndroid;
+    }
+
+    public void setImaAndroid(Boolean imaAndroid) {
+        this.imaAndroid = imaAndroid;
+    }
+
+    public boolean isColiisionDamageWavier() {
+        return coliisionDamageWavier;
+    }
+
+    public void setColiisionDamageWavier(boolean coliisionDamageWavier) {
+        this.coliisionDamageWavier = coliisionDamageWavier;
+    }
+
+    public boolean isBundle() {
+        return bundle;
+    }
+
+    public void setBundle(boolean bundle) {
+        this.bundle = bundle;
+    }
+
+    public MarkaAutomobilaDTO getMarkaAutomobila() {
+        return markaAutomobila;
+    }
+
+    public void setMarkaAutomobila(MarkaAutomobilaDTO markaAutomobila) {
+        this.markaAutomobila = markaAutomobila;
+    }
+
+    public KlasaAutomobilaDTO getKlasaAutomobila() {
+        return klasaAutomobila;
+    }
+
+    public void setKlasaAutomobila(KlasaAutomobilaDTO klasaAutomobila) {
+        this.klasaAutomobila = klasaAutomobila;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public Long getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Long vehicleId) {
+        this.vehicleId = vehicleId;
+    }
 }

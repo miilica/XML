@@ -87,4 +87,5 @@ public class Komentar {
     public void setOglas(Oglas oglas) {
         this.oglas = oglas;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.Komentar;
 import lombok.*;
 
 @Builder
@@ -14,6 +15,14 @@ public class KomentarDTO {
     private VoziloDTO vozilo;
     private Long userId;
     private String userUsername;
+
+    public KomentarDTO(Komentar k) {
+        this.id = k.getId();
+        this.tekst = k.getTekst();
+        this.odobren = k.isOdobren();
+        this.vozilo = new VoziloDTO(k.getVozilo());
+        this.userId = k.getUserId();
+    }
 
     public Long getId() {
         return id;
