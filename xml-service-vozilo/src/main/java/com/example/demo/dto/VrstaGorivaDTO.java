@@ -8,7 +8,8 @@ public class VrstaGorivaDTO {
     private Long id;
     private String naziv;
 
-
+    public VrstaGorivaDTO() {
+    }
 
     public VrstaGorivaDTO(TipGoriva tipGoriva) {
         this.id = tipGoriva.getId();

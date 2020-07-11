@@ -11,8 +11,8 @@ import { Oglas } from '../dodajOglas/Oglas';
     providedIn: 'root'
 })
 export class DodajVoziloService{
-    _url = 'http://localhost:8099/api/vozilo/dodaj';
-    _url2 = 'http://localhost:8099/api/vozilo/get';
+    _url = 'http://localhost:8088/api/vozilo/dodaj';
+    _url2 = 'http://localhost:8088/api/vozilo/get';
     _url3 = 'http://localhost:8099/api/oglasi/allAds';
    
 

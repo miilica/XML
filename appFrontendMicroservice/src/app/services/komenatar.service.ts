@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 
 export class KomenatarAgentService {
 
-    private urlKomenatariAuto : string = `http://localhost:8099/api/komentar/getKomentareVozilo`;
-    private urlKomentarDodaj : string = `http://localhost:8099/api/komentar/dodaj`;
-    private urlGetKomentare : string = `http://localhost:8099/api/komentar`;
+    private urlKomenatariAuto : string = `http://localhost:8088/api/komentar/getKomentareVozilo`;
+    private urlKomentarDodaj : string = `http://localhost:8088/api/komentar/dodaj`;
+    private urlGetKomentare : string = `http://localhost:8088/api/komentar`;
     private urlgetOcjena : string = `http://localhost:8099/api/ocena/vozilo`;
     private urlOcjenaDodaj : string = `http://localhost:8099/api/ocena`;
-    private urlOdobriKomentar : string = `http://localhost:8099/api/komentar/odobri`;
+    private urlOdobriKomentar : string = `http://localhost:8088/api/komentar/odobri`;
 
 
     constructor(private http: HttpClient) { 
