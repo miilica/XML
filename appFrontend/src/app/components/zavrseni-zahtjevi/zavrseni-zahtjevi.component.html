@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="ui header">Lista zavrsenih zahtjeva</h2>
+    <h2 class="ui header">Lista završenih zahtjeva</h2>
 
     <table class="ui celled striped table">
         <thead>
@@ -13,7 +13,7 @@
                 <td>{{ z.Od |date: 'mediumDate' }}</td>
                 <td>{{ z.Doo |date: 'mediumDate' }}</td>
                 <td>{{ z.vozilo.markaAutomobila.nazivMarke }}</td>
-                <td><button (click)="open(mymodal, z)">Comment</button></td>
+                <td><button (click)="open(mymodal, z)">Komentariši</button></td>
             </tr>
         </tbody>
     </table>
@@ -41,7 +41,7 @@
               [(ngModel)]="textComment"
            ></textarea>
            <br />
-           <label> Ocena </label><br />
+           <label> Ocjena </label><br />
            <ngb-rating  [(rate)]="currentRate" [max]="5">
             <ng-template let-fill="fill" let-index="index">
                 <span class="star" [class.filled]="fill === 100" [class.bad]="index < 0">&#9733;</span>
@@ -50,7 +50,7 @@
         </div>
         <div class="modal-footer">
            <button type="button" class="btn btn-outline-dark" (click)="send()">
-              Send
+              Pošalji
            </button>
         </div>
      </ng-template>
