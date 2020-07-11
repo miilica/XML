@@ -1,0 +1,93 @@
+
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Dodaj vozilo:</legend>
+
+     <div>
+      <label  class="col-form-label" for="inputDefault">Cijena:</label>
+      <input type="number"  class="form-control" id="cijena" name="cijena"  [(ngModel)]="vozilo.cijena" />
+    </div>
+
+    <div>
+         <label class="col-form-label" for="inputDefault">Kilometraža:</label>
+         <input type="number" class="form-control" id="km" name="km" [(ngModel)]="vozilo.kilometraza"/>
+    </div>  
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Može preći kilometra:</label>
+      <input type="num4" class="form-control" name="mozePreci" id="mozePreci" [(ngModel)]="vozilo.mozePreciKM"/>
+    </div>
+
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Broj sjedišta za djecu:</label>
+      <input type="number"  class="form-control" id="brsj" name="brsj" [(ngModel)]="vozilo.brSjedistaZaDjecu"/>
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Marka automobila: </label>
+      
+        <select class="form-control" id="marka"  [(ngModel)]="vozilo.markaAutomobila" name="marka" >
+          <option [ngValue]="null">Izaberi marku</option>
+          <option *ngFor = 'let c of marke' name="markaAutomobila" [ngValue]="c">{{c.nazivMarke}}</option>
+        </select>
+      
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault"  >Vrsta goriva:</label>
+
+        <select class="form-control" id="gor"  [(ngModel)]="vozilo.tipGoriva" name="vg" >
+          <option [ngValue]="null">Izaberi vrstu goriva</option>
+          <option *ngFor = 'let c of gorivo' name="g" [ngValue]="c">{{c.naziv}}</option>
+        </select>
+      
+    </div>
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Tip mjenjača</label>
+      <select class="form-control" id="mjenj"  [(ngModel)]="vozilo.tipMjenjaca" name="tipMjenjaca" >
+        <option [ngValue]="null">Izaberi vrstu mjenjaca</option>
+        <option *ngFor = 'let c of mjenjac' name="m" [ngValue]="c">{{c.naziv}}</option>
+      </select>
+    </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Klasa automobila</label>
+      <select class="form-control" id="klasa"  [(ngModel)]="vozilo.klasaAutomobila" name="klasa" >
+        <option [ngValue]="null">Izaberi klasu</option>
+        <option *ngFor = 'let c of klase' name="klasa" [ngValue]="c">{{c.naziv}}</option>
+      </select>
+    </div>
+
+    <label>Ima android</label>
+    <input type="checkbox"  class="form-control" name="android"  [(ngModel)]="vozilo.imaAndroid"/>
+
+    <label>Coliision Damage Wavier:</label>
+    <input type="checkbox"  class="form-control" name="cdw"  [(ngModel)]="vozilo.coliisionDamageWavier" />
+
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+         <label for="Images">Slike</label>
+         <input
+            type="file"
+            id="image"
+            accept="image/*"
+            class="form-control"
+            multiple
+            (change)="fileUpload($event)"
+         />
+      </div>
+      <div class="col-sm-6">
+         <img
+            *ngFor="let url of imageURLs"
+            [src]="url"
+            style="max-width: 100px; max-height: 100px;"
+         />
+      </div>
+   </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</fieldset>       
+</form>
+

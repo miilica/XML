@@ -1,0 +1,30 @@
+<div class="card bg-dark text-white">
+    <img src="assets/img/roza.jpg" height="500" width="400" class="card-img">
+    <div class="card-img-overlay">
+      <br/>
+        <div class="col-md-6">
+
+        <h1 style="color: deeppink; align-content: center;">Zauzece automobila!</h1>
+       
+        <div class="flex">
+            <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Datum od:</label>
+            <input type="date"  class="form-control" id="zauzetOd" name="zauzetOd" style="width: 250px; color: deeppink;" [(ngModel)] = "datumOd"/>
+
+            <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Datum do:</label>
+            <input type="date"  class="form-control" id="zauzetDo" name="zauzetOd" style="width: 250px; color: deeppink;"  [(ngModel)] = "datumDo"/>
+
+
+            <label  class="col-form-label" for="inputDefault" style="color: deeppink;">Vozila:</label>
+            <select class="form-control" id="vozilo" style="color: deeppink; width: 250px;" [(ngModel)]="vozilo">
+                <option *ngFor = "let v of vozila" [ngValue]="v">
+                    {{v.markaAutomobila.nazivMarke}} {{v.markaAutomobila.model}}
+                </option>
+            </select>
+            <br/>
+            <button type="button" class="btn btn-outline-secondary" style="color:deeppink; width: 150px; height: 30px;" 
+            (click) = "onClickDodaj()">Dodaj zauzece</button>
+
+          </div>
+        </div>
+    </div>
+</div>

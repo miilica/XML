@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 class="ui header">Lista poruka</h2>
+    <br>
+
+<table class="ui celled striped table">
+    <thead>
+      <th>PosiljalacId</th>
+      <th>Poruka</th>
+      <th>Odgovori</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let poruka of poruke">
+            <td>
+                {{poruka.posiljalacId}}
+            </td>
+            <td>
+                {{poruka.sadrzaj}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" [routerLink]="['poruke']"> Odgovori </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

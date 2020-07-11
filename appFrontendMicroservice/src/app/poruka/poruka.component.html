@@ -1,0 +1,36 @@
+
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Posalji poruku:</legend>
+
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Sadrzaj poruke:</label>
+      <input type="text"  class="form-control" id="brsj" name="brsj" [(ngModel)]="po.sadrzaj"/>
+    </div>
+     
+    <div>
+        <label  class="col-form-label" for="inputDefault">Vrijeme:</label>
+        <input type="date"  class="form-control" id="brssj" name="brssj" [(ngModel)]="po.datum" value='2020-06-23'/>
+      </div>
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Primalac</label>
+      <select class="form-control" id="primalac"  [(ngModel)]="po.primalacId" name="primalac" >
+       <option *ngFor = 'let c of useri' name="klasa" [ngValue]="c.id">{{c.name}} {{c.surname}}</option>
+      </select>
+    </div>
+
+    <div>
+        <label  class="col-form-label" for="inputDefault">Oglas</label>
+        <select class="form-control" id="oglas"  [(ngModel)]="po.oglasId" name="oglas" >
+          <option *ngFor = 'let c of oglasi' name="klasa" [ngValue]="c.id">{{c.id}}</option>
+        </select>
+      </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</fieldset>       
+</form>
+
+
+
+
