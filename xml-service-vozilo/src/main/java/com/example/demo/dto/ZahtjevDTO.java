@@ -1,8 +1,10 @@
 package com.example.demo.dto;
 
-import com.Util.JsonJodaDateTimeSerializer;
+import com.example.demo.Util.JsonJodaDateTimeSerializer;
+import com.example.demo.model.KorpaVozila;
+import com.example.demo.model.Zahtjev;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.model.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

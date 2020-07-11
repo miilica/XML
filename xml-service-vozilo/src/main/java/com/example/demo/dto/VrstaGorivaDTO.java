@@ -1,18 +1,18 @@
 package com.example.demo.dto;
 
-import com.model.TipGoriva;
+
+import com.example.demo.model.TipGoriva;
 
 public class VrstaGorivaDTO {
 
     private Long id;
     private String naziv;
 
-    public  VrstaGorivaDTO (TipGoriva tipGoriva) {
-        id = tipGoriva.getId();
-        naziv = tipGoriva.getNaziv();
-    }
 
-    public VrstaGorivaDTO() {
+
+    public VrstaGorivaDTO(TipGoriva tipGoriva) {
+        this.id = tipGoriva.getId();
+        this.naziv = tipGoriva.getNaziv();
     }
 
     public Long getId() {

@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.model.KlasaAutomobila;
+import com.example.demo.model.KlasaAutomobila;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.model.MarkaAutomobila;
+import com.example.demo.model.MarkaAutomobila;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +17,12 @@ public class MarkaAutomobilaDTO {
     private String nazivMarke;
     private String model;
 
-    public  MarkaAutomobilaDTO (MarkaAutomobila markaAutomobila) {
-        id = markaAutomobila.getId();
-        nazivMarke = markaAutomobila.getNazivMarke();
-        model = markaAutomobila.getModel();
+    public MarkaAutomobilaDTO(MarkaAutomobila markaAutomobila) {
+        this.id = markaAutomobila.getId();
+        this.nazivMarke = markaAutomobila.getNazivMarke();
+        this.model = markaAutomobila.getModel();
     }
+
 
     public Long getId() {
         return id;

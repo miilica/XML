@@ -50,4 +50,12 @@ public class TipGoriva {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
+
+    public void setObrisan(boolean b) {
+        this.obrisan = b;
+    }
+
+    public boolean getObrisan() {
+        return  obrisan;
+    }
 }

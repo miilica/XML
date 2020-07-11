@@ -77,9 +77,7 @@ public class Oglas {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cjenovnik cjenovnik;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "oglas", fetch = FetchType.LAZY)
-    private Set<Zahtjev> zahtjevp;
+
 
 
     @JsonIgnore
@@ -179,16 +177,6 @@ public class Oglas {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-
-
-    public Set<Zahtjev> getZahtjevp() {
-        return zahtjevp;
-    }
-
-    public void setZahtjevp(Set<Zahtjev> zahtjevp) {
-        this.zahtjevp = zahtjevp;
     }
 
     public Set<Komentar> getKomentari() {

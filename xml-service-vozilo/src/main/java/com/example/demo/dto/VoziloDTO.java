@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
-import com.model.*;
+import com.example.demo.model.Agent;
+import com.example.demo.model.Vozilo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,20 +50,21 @@ public class VoziloDTO {
         this.coliisionDamageWavier = coliisionDamageWavier;
     }
 
-    public VoziloDTO(Vozilo v) {
-        this.id = v.getId();
-        this.cijena = v.getCijena();
-        this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
-        this.kilometraza = v.getKilometraza();
-        this.agent = v.getAgent();
-        this.markaAutomobila = new MarkaAutomobilaDTO(v.getMarkaAutomobila());
-        this.klasaAutomobila = new KlasaAutomobilaDTO(v.getKlasaAutomobila());
-        this.tipGoriva = new VrstaGorivaDTO(v.getTipGoriva());
-        this.tipMjenjaca = new TipMjenjacaDTO(v.getTipMjenjaca());
-        this.mozePreciKM = v.getMozePreciKM();
-        this.imaAndroid = v.getImaAndroid();
-        this.coliisionDamageWavier = v.isColiisionDamageWavier();
+    public VoziloDTO(Vozilo vozilo) {
+        this.id = vozilo.getId();
+        this.cijena = vozilo.getCijena();
+        this.kilometraza = vozilo.getKilometraza();
+        this.mozePreciKM = vozilo.getMozePreciKM();
+        this.brSjedistaZaDjecu = vozilo.getBrSjedistaZaDjecu();
+        this.ocjena = vozilo.getOcjena();
+        this.markaAutomobila = new MarkaAutomobilaDTO(vozilo.getMarkaAutomobila());
+        this.tipGoriva = new VrstaGorivaDTO(vozilo.getTipGoriva());
+        this.tipMjenjaca = new TipMjenjacaDTO(vozilo.getTipMjenjaca());
+        this.klasaAutomobila = new KlasaAutomobilaDTO(vozilo.getKlasaAutomobila());
+        this.imaAndroid = vozilo.getImaAndroid();
+        this.coliisionDamageWavier = vozilo.isColiisionDamageWavier();
     }
+
 
     public Long getId() {
         return id;

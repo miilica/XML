@@ -1,8 +1,8 @@
 package com.example.demo.dto;
 
-import com.Util.JsonJodaDateTimeSerializer;
+import com.example.demo.Util.JsonJodaDateTimeSerializer;
+import com.example.demo.model.Oglas;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.model.Oglas;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

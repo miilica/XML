@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Agent{
+public class Agent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,15 +42,10 @@ public class Agent{
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 
-    @JsonIgnore//uleti u neku beskonacnu petlju kad uzimam sve oglase pa sam morao ovo
-    @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
-    private Set<Zahtjev> pristigliZahtjevi;
-
-
 
     //private Set<Oglas> oglasi;
     public Long getId() {
-        return  id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -111,13 +106,5 @@ public class Agent{
 
     public void setVozila(Set<Vozilo> vozila) {
         this.vozila = vozila;
-    }
-
-    public Set<Zahtjev> getPristigliZahtjevi() {
-        return pristigliZahtjevi;
-    }
-
-    public void setPristigliZahtjevi(Set<Zahtjev> pristigliZahtjevi) {
-        this.pristigliZahtjevi = pristigliZahtjevi;
     }
 }

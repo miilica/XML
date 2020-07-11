@@ -41,4 +41,15 @@ public class KlasaAutomobila {
         this.id = id;
     }
 
+    public void setObrisan(boolean b) {
+        this.obrisan = b;
+    }
+
+    public boolean getObrisan() {
+        return obrisan;
+    }
+
+    public KlasaAutomobila() {
+
+    }
 }

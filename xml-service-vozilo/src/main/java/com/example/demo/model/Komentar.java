@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "komentar")
 public class Komentar {
@@ -38,5 +37,54 @@ public class Komentar {
     @JoinColumn(name = "oglas_id")
     private Oglas oglas;
 
+    public Komentar() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTekst() {
+        return tekst;
+    }
+
+    public void setTekst(String tekst) {
+        this.tekst = tekst;
+    }
+
+    public boolean isOdobren() {
+        return odobren;
+    }
+
+    public void setOdobren(boolean odobren) {
+        this.odobren = odobren;
+    }
+
+    public Vozilo getVozilo() {
+        return vozilo;
+    }
+
+    public void setVozilo(Vozilo vozilo) {
+        this.vozilo = vozilo;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Oglas getOglas() {
+        return oglas;
+    }
+
+    public void setOglas(Oglas oglas) {
+        this.oglas = oglas;
+    }
 }

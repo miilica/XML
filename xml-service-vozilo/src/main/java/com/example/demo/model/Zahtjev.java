@@ -77,5 +77,109 @@ public class Zahtjev {
     @ManyToOne(fetch = FetchType.LAZY)
     private Oglas oglas;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDatumKreiranja() {
+        return datumKreiranja;
+    }
+
+    public void setDatumKreiranja(Date datumKreiranja) {
+        this.datumKreiranja = datumKreiranja;
+    }
+
+    public DateTime getOd() {
+        return Od;
+    }
+
+    public void setOd(DateTime od) {
+        Od = od;
+    }
+
+    public DateTime getDoo() {
+        return Doo;
+    }
+
+    public void setDoo(DateTime doo) {
+        Doo = doo;
+    }
+
+    public boolean isPotvrdjen() {
+        return potvrdjen;
+    }
+
+    public void setPotvrdjen(boolean potvrdjen) {
+        this.potvrdjen = potvrdjen;
+    }
+
+    public boolean isBundle() {
+        return bundle;
+    }
+
+    public void setBundle(boolean bundle) {
+        this.bundle = bundle;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public User getUserPoslao() {
+        return userPoslao;
+    }
+
+    public void setUserPoslao(User userPoslao) {
+        this.userPoslao = userPoslao;
+    }
+
+    public User getUserIzdao() {
+        return userIzdao;
+    }
+
+    public void setUserIzdao(User userIzdao) {
+        this.userIzdao = userIzdao;
+    }
+
+    public String getZahtjevStatus() {
+        return zahtjevStatus;
+    }
+
+    public void setZahtjevStatus(String zahtjevStatus) {
+        this.zahtjevStatus = zahtjevStatus;
+    }
+
+    public Vozilo getVozilo() {
+        return vozilo;
+    }
+
+    public void setVozilo(Vozilo vozilo) {
+        this.vozilo = vozilo;
+    }
+
+    public Set<KorpaVozila> getKorpaVozilaDTOS() {
+        return korpaVozilaDTOS;
+    }
+
+    public void setKorpaVozilaDTOS(Set<KorpaVozila> korpaVozilaDTOS) {
+        this.korpaVozilaDTOS = korpaVozilaDTOS;
+    }
+
+    public Oglas getOglas() {
+        return oglas;
+    }
+
+    public void setOglas(Oglas oglas) {
+        this.oglas = oglas;
+    }
+
     //private StatusZahtjeva statusZahtjeva;
 }
