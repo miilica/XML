@@ -15,6 +15,7 @@ import static javax.persistence.InheritanceType.JOINED;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User {
 
     @Id
