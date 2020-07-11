@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/komentar")
 public class KomentarController {
-    private KomentarService komentarService;
 
     @Autowired
-    public KomentarController(KomentarService komentarService) {
-        this.komentarService = komentarService;
-    }
+    private KomentarService komentarService;
 
     @PostMapping(value = "/dodaj/{username}")
     private ResponseEntity<?> dodajKomentar(@RequestBody KomentarDTO komentarDTO, @PathVariable String username){

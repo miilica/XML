@@ -42,7 +42,7 @@ insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (3, 'Wols
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 6, 2, 1,1,1);
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3', 6, 1, 1,2,2);
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (3, '0', '2150', false, false, '250000', '600', '5', 6, 3, 3,2,3);
-INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (4, '1', '2250', true, true, '15000', '150', '5', 6, 1, 3,3,3);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (4, '1', '2250', true, true, '15000', '150', '5', 7, 1, 3,3,3);
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (5, '3', '1000', true, true, '15510', '121', '4', 6, 1, 3,3,3);
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (6, '1', '600', false, false, '270000', '500', '2', 7,2, 2,1,3 );
 INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, agent_id, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (7, '0', '5000', false, true, '10000', '1000', '5', 7,3, 2,1,1);
@@ -55,8 +55,11 @@ INSERT INTO `termin_iznajmljivanja` (id, date_from, date_to, user_id, vozilo_id)
 
 
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (1, true, 'Novi Sad', 1, '2020-06-18', '2020-08-17', 1, 0,1);
-INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (2, true, 'Veternik', 1, '2020-06-18', '2020-08-17', 1, 0,1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (2, true, 'Veternik', 1, '2020-06-18', '2020-08-17', 1, 0,2);
 INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (3, false, 'Beograd', 1, '2020-06-18', '2020-08-17', 1, 0,1);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (4, false, 'Foca', 2, '2020-06-18', '2020-08-17', 1, 0, 2);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (5, false, 'Foca', 3, '2020-06-18', '2020-08-17', 1, 0, 2);
+INSERT INTO `oglasi` (id, dostupan, mjesto_preuzimanja, vozilo_id, od, doo, cjenovnik_id, dozvoljena_kilometraza, user_id) VALUES (6, false, 'Foca', 4, '2020-06-18', '2020-08-17', 1, 0, 1);
 
 
 insert into `zauzece` (id, zauzet_od, zauzet_do, vozilo_id) values (1, '2020-06-20', '2020-06-28', 1);

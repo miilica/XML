@@ -28,8 +28,8 @@ public class AgentDTO {
     private String imeKompanije;
     private String poslovniMB;
     private int brOglasa;
-    private Set<VoziloDTO> vozila;
-    private Set<ZahtjevDTO> pristigliZahtjevi;
+   // private Set<VoziloDTO> vozila;
+    //private Set<ZahtjevDTO> pristigliZahtjevi;
 
     public AgentDTO(Agent agent){
         this.id = agent.getId();

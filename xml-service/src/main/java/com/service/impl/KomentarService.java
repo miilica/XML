@@ -40,7 +40,6 @@ public class KomentarService {
         komentar.setOdobren(false);
         komentar.setTekst(komentarDTO.getTekst());
 
-
         User user = this.userRepository.findByUsername(username);
         komentar.setUserId(user.getId());
 

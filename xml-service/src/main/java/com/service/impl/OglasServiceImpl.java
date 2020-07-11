@@ -1,7 +1,10 @@
 package com.service.impl;
 
+import com.client.OglasClient;
 import com.dto.*;
 import com.dto.OglasDTO;
+import com.generated.PostOglasResponse;
+import com.generated.TOglas;
 import com.model.*;
 import com.repository.CjenovnikRepository;
 import com.repository.OglasRepository;
@@ -45,6 +48,9 @@ public class OglasServiceImpl implements OglasService {
 
     @Autowired
     private CjenovnikRepository cjenovnikRepository;
+
+    @Autowired
+    private OglasClient oglasClient;
 
 
     @Override
@@ -167,6 +173,15 @@ public class OglasServiceImpl implements OglasService {
         oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
         oglas.setUser(user);
         oglas.setCjenovnik(cjenovnik);
+
+        log.info("Sending soap request to oglas service");
+        TOglas tOglas = new TOglas();
+        try {
+            PostOglasResponse response = this.oglasClient.postOglas(tOglas);
+            log.info("Soap request successfully finished");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         this.oglasRepository.save(oglas);
         return new ResponseEntity<>(HttpStatus.CREATED);

@@ -1,0 +1,85 @@
+package com.example.xmlserviceoglas.controller;
+
+
+import com.example.xmlserviceoglas.dto.VoziloDTO;
+import com.example.xmlserviceoglas.dto.ZahtjevDTO;
+import com.example.xmlserviceoglas.model.Zahtjev;
+import com.example.xmlserviceoglas.repository.ZahtjevRepository;
+import com.example.xmlserviceoglas.services.ZahtjevServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.AccessDeniedException;
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/api/zahtjev")
+public class ZahtjevController {
+
+    @Autowired
+    private ZahtjevServiceImpl zahtjevService;
+
+    @Autowired
+    private ZahtjevRepository zahtjevRepository;
+
+    @GetMapping("/allZahtjeve")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity<?> findAllZahtjeve() throws AccessDeniedException {
+        return this.zahtjevService.findAllZahtjeve();
+    }
+
+    @GetMapping("/user/prosli")
+    //@PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity<?> findAllZahtjeveProsli() throws AccessDeniedException {
+        return this.zahtjevService.findAllZahtjeveUserProsli();
+    }
+
+    @GetMapping("/allZahtjeveRateComment")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public List<ZahtjevDTO> findAllPaid() throws AccessDeniedException {
+        return this.zahtjevService.findAllVehiclesToRateComment();
+    }
+
+    @PostMapping("/toReserved")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity vehicleToReserved(@RequestBody Zahtjev zahtjev) {
+        zahtjevService.vehicleToReserved(zahtjev);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/toReservedBundle")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity vehicleToReservedBundle(@RequestBody Zahtjev zahtjev) {
+        zahtjevService.vehicleToReservedBundle(zahtjev);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/toCanceled")
+    @PreAuthorize("hasRole('ROLE_AGENT')")
+    public ResponseEntity vehicleToCanceled(@RequestBody Zahtjev zahtjev) {
+        zahtjevService.vehicleToCanceled(zahtjev);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/findVehicleById/{vehicleId}/{agentId}")
+    @PreAuthorize("hasRole('ROLE_AGENT')" + "|| hasRole('ROLE_KORISNIK')")
+    public ZahtjevDTO loadById(@PathVariable Long vehicleId, @PathVariable Long agentId) {
+        return this.zahtjevService.findByIds(vehicleId, agentId);
+    }
+
+    @PutMapping(value = "/rateVehicle/{rate}")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity rateVehicleGrade (@RequestBody VoziloDTO voziloDTO, @PathVariable Double rate) {
+        zahtjevService.rateVehicle(voziloDTO, rate);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping(value = "/commentVehicle/{kom}")
+    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    public ResponseEntity commentVehicleGrade (@RequestBody VoziloDTO voziloDTO, @PathVariable String kom) {
+        zahtjevService.commentVehicle(voziloDTO, kom);
+        return ResponseEntity.ok().build();
+    }
+}

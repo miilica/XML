@@ -50,7 +50,7 @@ public class KorpaVozilaDTO {
         this.cijena = v.getCijena();
         this.kilometraza = v.getKilometraza();
         this.mozePreciKM = v.getMozePreciKM();
-        this.agent =  v.getAgent();
+        this.agent = new AgentDTO(v.getAgent());
         this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
         this.imaAndroid = v.getImaAndroid();
         this.coliisionDamageWavier = v.isColiisionDamageWavier();

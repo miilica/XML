@@ -89,7 +89,6 @@ public class Vozilo {
     @OneToMany(mappedBy = "vozilo", cascade = CascadeType.ALL)
     private Set<Slika> slike;
 
-
     @OneToMany(mappedBy = "vozilo")
     private Set<Zauzece> zauzece;
 
@@ -103,10 +102,6 @@ public class Vozilo {
         this.setMozePreciKM(vDTO.getMozePreciKM());
         this.setBrSjedistaZaDjecu(vDTO.getBrSjedistaZaDjecu());
         this.setOcjena(vDTO.getOcjena());
-        //this.setMarkaAutomobila(new MarkaAutomobila(vDTO.getMarkaAutomobila()));
-        //this.setKlasaAutomobila(new KlasaAutomobila(vDTO.getKlasaAutomobila()));
-        //this.setTipGoriva(new TipGoriva(vDTO.getTipGoriva()));
-        //this.setTipMjenjaca(new TipMjenjaca(vDTO.getTipMjenjaca()));
         this.setImaAndroid(vDTO.getImaAndroid());
         this.setColiisionDamageWavier(vDTO.isColiisionDamageWavier());
 
