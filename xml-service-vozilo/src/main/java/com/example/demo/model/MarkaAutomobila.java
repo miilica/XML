@@ -6,6 +6,7 @@ import com.example.demo.dto.MarkaAutomobilaDTO;
 import javax.persistence.*;
 
 @Entity
+@Table(name="markaautomobila")
 public class MarkaAutomobila {
 
     @Id
