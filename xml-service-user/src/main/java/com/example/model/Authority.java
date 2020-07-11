@@ -3,19 +3,28 @@ package com.example.model;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 //import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 
 // POJO koji implementira Spring Security GrantedAuthority kojim se mogu definisati role u aplikaciji
 
-public class Authority{
+@Entity
+@Table(name="authorities")
+public class Authority implements GrantedAuthority {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(name="name")
     String name;
 
-    //@Override
+    @Override
     public String getAuthority() {
         return name;
     }
@@ -24,12 +33,12 @@ public class Authority{
         this.name = name;
     }
 
-    // @JsonIgnore
+    @JsonIgnore
     public String getName() {
         return name;
     }
 
-    // @JsonIgnore
+    @JsonIgnore
     public Long getId() {
         return id;
     }
