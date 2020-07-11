@@ -1,0 +1,13 @@
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Dodaj tip goriva:</legend>
+
+     <div>
+      <label  class="col-form-label" for="inputDefault">Naziv tipa goriva:</label>
+      <input type="text"  class="form-control" id="Naziv" name="naziv"  [(ngModel)]="gorivo.naziv" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</fieldset>       
+</form>
+

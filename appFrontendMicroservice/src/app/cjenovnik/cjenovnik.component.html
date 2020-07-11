@@ -1,0 +1,72 @@
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column col-sm-10">
+        <br/><br/>
+        <div >
+            <h3 class="display-4" style="text-align: center;">Ovdje imate mogućnost da kreirate i mijenjate cjenovnik</h3>
+        </div>
+        <br/>
+        <div class="d-flex justify-content-center border-bottom border-gray p-2">
+            <button class="btn btn-outline" id="btnSearchSecondary" (click) = "dodajCjenovnik(modal)">Dodaj cjenovnik</button>
+         </div>
+         <br/><br/>
+        <div class="d-flex justify-content-center border p-2" style="border-color: deeppink;">
+            <div class="d-flex flex-row flex-wrap justify-content-center " >
+            <div *ngIf = "cjenovnici.length == 0">
+                <h4 class="display-4" style="text-align: center; color: deeppink;">Nema nijednog cjenovnika</h4>
+            </div>
+            <div class="d-flex flex-row" style="width: 275px; max-width: 275px; min-width: 275px; margin-right: 10px; margin-top: 10px;" *ngFor = "let c of cjenovnici">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Cijena po danu: {{c.cijenaPoDanu}}€ </div>
+                    <div class="card-body">
+                    <p class="card-text">Cijena po kilometru: {{c.cijenaPoKM}}€/km</p>
+                    <p class="card-text">Colision Damage Waiver: {{c.cijenaCDW}}€</p>
+                    <p class="card-text" *ngIf = "role == 'ROLE_AGENT'">Popust: {{c.popust}}%</p>
+                    <button class="btn btn-outline" id="btnSearchSecondary" (click) = "izmjeniCjenovnik(modal,c)">Izmjeni cjenovnik</button>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+ 
+<ng-template #modal let-modal>
+    <div class="modal-header">
+       <h4 class="modal-title " id="modal-basic-title" *ngIf="mode == 'ADD'"><b style="color: deeppink; text-align: center;">Dodaj cjenovnik</b></h4>
+       <h4 class="modal-title " id="modal-basic-title" *ngIf="mode == 'EDIT'"><b style="color: deeppink; text-align: center;">Izmjeni cjenovnik</b></h4>
+       <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+       >
+          <span aria-hidden="true">&times;</span>
+       </button>
+    </div>
+    <div class="modal-body">
+       <div class="d-flex flex-column">
+          <div class="d-flex flex-column">
+                <div class="d-flex flex-column" id ="ap">
+                    <label id = "label" for="cijenaPoDanu"  >Cijena po danu</label>
+                    <input [(ngModel)] = "cjenovnik.cijenaPoDanu" type="number" min="0" name="cijenaPoDanu" id="cijenaPoDanu" class="form-control"/>
+                </div>
+                <div class="d-flex flex-column" id ="ap">
+                    <label id = "label" for="cijenaPoKM"  >Cijena po kilometru</label>
+                    <input [(ngModel)] = "cjenovnik.cijenaPoKM" type="number" min="0" name="cijenaPoKM" id="cijenaPoKM" class="form-control"/>
+                </div>
+                <div class="d-flex flex-column" id ="ap">
+                    <label id = "label" for="cijenaCDW"  >Cijena za Collision Damage Waiver</label>
+                    <input [(ngModel)] = "cjenovnik.cijenaCDW" type="number" min="0" name="cijenaCDW" id="cijenaCDW" class="form-control"/>
+                </div>
+                    <div class="d-flex flex-column" *ngIf ="role == 'ROLE_AGENT'" id ="sp">
+                        <label id = "label" for="popust"  >Popust</label>
+                        <input [(ngModel)] = "cjenovnik.popust" type="number" min="0" name="popust" id="popust" class="form-control"/>
+                    </div>
+              </div>
+          <div  style="margin: 20px;">
+            <button style="float: right;" *ngIf="mode == 'ADD'" class="btn btn-outline" id="btnSearchSecondary" (click) = "dodaj()">Dodaj</button>
+            <button style="float: right;" *ngIf="mode == 'EDIT'" class="btn btn-outline" id="btnSearchSecondary" (click) = "sacuvaj()">Sačuvaj</button>
+          </div>
+       </div>
+    </div>
+ </ng-template>

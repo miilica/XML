@@ -1,0 +1,56 @@
+<div class="container">
+    <h2 class="ui header">Lista zavrsenih zahtjeva</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Od</th>
+            <th>Do</th>
+            <th>Vozilo</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let z of zahtjevi">
+                <td>{{ z.Od |date: 'mediumDate' }}</td>
+                <td>{{ z.Doo |date: 'mediumDate' }}</td>
+                <td>{{ z.vozilo.markaAutomobila.nazivMarke }}</td>
+                <td><button (click)="open(mymodal, z)">Comment</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #mymodal let-modal>
+        <div class="modal-header">
+           <h4 class="modal-title" id="modal-basic-title">Komentari i ocene</h4>
+           <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+           >
+              <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <label> Kometar </label><br />
+           <textarea 
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="Komentar"
+              value=""
+              [(ngModel)]="textComment"
+           ></textarea>
+           <br />
+           <label> Ocena </label><br />
+           <ngb-rating  [(rate)]="currentRate" [max]="5">
+            <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 0">&#9733;</span>
+            </ng-template>
+           </ngb-rating>
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-outline-dark" (click)="send()">
+              Send
+           </button>
+        </div>
+     </ng-template>

@@ -1,0 +1,32 @@
+<h1>Oceni i komentarisi</h1>
+
+<table class="ui celled striped table">
+    <thead>
+      <th>Vozilo id</th>
+      <th>Ocjena</th>
+      <th>Agent id</th>
+      <th>Ocjeni vozilo</th>
+      <th>Ostavite komentar</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let zahtjev of zahtjevi">
+
+          <td> {{ zahtjev.vozilo.id }} </td>
+          <td> {{ zahtjev.vozilo.ocjena }} </td>
+          <td> {{ zahtjev.vozilo.agent.id }} </td>
+        
+          <td>
+                <ngb-rating [(rate)]="zahtjev.vozilo.ocjena" max="5"></ngb-rating>
+                <button (click)="rateVehicle(zahtjev.vozilo)">Ocjeni</button>
+          </td>
+
+          <td>
+            <mat-form-field class="example-full-width">
+                <textarea [(ngModel)]="komentar" matInput placeholder="Npr. Odlicno vozilo..."></textarea>
+            </mat-form-field>
+            <button (click)="commentVehicle(zahtjev.vozilo)">Komentarisi</button>
+          </td>
+
+        </tr>
+    </tbody>
+</table>

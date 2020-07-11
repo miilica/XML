@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span><a style="color:white;" [routerLink]="['']">Rent a Car</a></span>
+      <button mat-button ><a style="color:white;" [routerLink]="['pretraga']">Pretrazi </a></button>
+
+      <button mat-button style="position: absolute; right: 0; margin-right: 1cm;"><a style="color:white;" [routerLink]="['login']" *ngIf="!isUserLoggedIn()">Log in </a></button>
+
+      <button mat-button style="position: absolute; right: 0; margin-right: 3cm;"><a style="color:white;" (click)="onClickRegister()" *ngIf="!isUserLoggedIn()">Sign up </a></button>
+
+      <button mat-button style="position: absolute; right: 0; margin-right: 1cm;"><a style="color:white;" (click)="onClickLogout()" *ngIf="isUserLoggedIn()">Log out </a></button>
+  
+    
+
+    </mat-toolbar-row>
+</mat-toolbar>

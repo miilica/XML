@@ -1,0 +1,214 @@
+<h1 style="color: deeppink; align-content: center;">Admin homepage!</h1>
+        <div class="d-flex flex-row" >
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addcar']">Dodaj vozilo </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addmarkuautomobila']">Dodaj marku automobila </a></button> 
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addklasu']">Dodaj klasu automobila </a></button> 
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addtipgoriva']">Dodaj tip goriva </a></button>
+                <button type="button" class="btn btn-outline-secondary" ><a  [routerLink]="['addtipmjenjaca']">Dodaj tip mjenjaca </a></button>
+        </div>
+        <br/><br/>
+            <div class="container">
+                <h2 class="ui header" style=" align-content: center;" ><b>Lista korisnika</b></h2>
+                <table class="ui celled striped table">
+                    <thead>
+                        <th>Name </th>
+                        <th>Surname </th> 
+                        <th>Username</th>
+                        <th>Delete</th>
+                        <th>Activate/Block</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of categories">
+                            <td>{{ category.name }}</td>
+                            <td>{{category.surname }}</td>
+                            <td>{{ category.username }}</td>
+                            <td>
+                                <mat-icon (click)="onClickDelete(category.id)" >delete_outline</mat-icon>
+                            </td>
+                            <td *ngIf="category.enabled">
+                                <mat-icon (click)="onClickActivate(category.id)" >block</mat-icon>
+                            </td>
+                            <td *ngIf="!category.enabled">
+                                <mat-icon (click)="onClickActivate(category.id)" >check_circle_outline</mat-icon>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            <br/><br/>
+
+                <h2>Lista komentara</h2>
+
+                <table class="ui celled striped table">
+                    <thead>
+                        <th>Vozilo id</th>
+                        <th>User id</th>
+                        <th>Komentar</th>
+                        <th>Odobri</th>
+                        <th>Odbij</th>
+                    </thead>    
+                    <tbody>
+                        <tr *ngFor="let komentar of komentari">
+                            <td>{{ komentar.vozilo.id }}</td>
+                            <td>{{ komentar.userId }}</td>
+                            <td>{{ komentar.tekst }}</td>
+                            <td>
+                                <mat-icon (click)="onClickActivateComment(komentar.id)" >check_circle_outline</mat-icon>
+                            </td>
+                            <td >
+                                <mat-icon (click)="onClickDeactivateComment(komentar.id)" >block</mat-icon>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+<br/>
+<h2>Lista marki automobila</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv marke</th>
+      <th>Model</th>
+      <th>Izmeni</th>
+      <th>Obrisi</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let marka of marke">
+            <td>
+                {{marka.nazivMarke}}
+            </td>
+            <td>
+                {{marka.model}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" (click)='editMarku(marka)'> Izmeni </button>
+            </td>
+            <td>
+                <button type="submit" mat-button color="warn" (click)='deleteMarku(marka.id)' > Obrisi </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div  class="col-md-3 offset-md-9" *ngIf = 'edit'   >
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit1()">
+    <fieldset>
+        Edit marka automobila:  
+        <br/>
+        <label>Naziv marke:</label>
+        <input type="text"  class="form-control"  id="nazivMarke" name="nazivMarke" [(ngModel)]="editModel.nazivMarke" />
+        <br/>
+        <label>Model:</label>
+        <input type="text"  class="form-control"   id="model" name="model" [(ngModel)]="editModel.model"/>
+        
+    <button  mat-raised-button color="accent">Edit</button>
+    </fieldset>
+    </form>
+</div>
+
+<br/>
+<h2>Lista klasa</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv klase</th>
+      <th>Izmeni</th>
+      <th>Obrisi</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let klasa of klase">
+            <td>
+                {{klasa.naziv}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" (click)='editKlasu(klasa)'> Izmeni </button>
+            </td>
+            <td>
+                <button type="submit" mat-button color="warn" (click)='deleteKlasu(klasa.id)'> Obrisi </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div  class="col-md-3 offset-md-9" *ngIf = 'edit1'   >
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit()">
+    <fieldset>
+        Edit klasu automobila:  
+        <br/>
+        <label>Naziv:</label>
+        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelKlasa.naziv" />
+
+        
+    <button mat-raised-button color="accent">Edit</button>
+    </fieldset>
+    </form>
+</div>
+
+<br/>
+<h2>Lista tipa goriva</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv tipa goriva</th>
+      <th>Izmeni</th>
+      <th>Obrisi</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let gorivo of goriva">
+            <td>
+                {{gorivo.naziv}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" (click)='editTipGoriva(gorivo)'> Izmeni </button>
+            </td>
+            <td>
+                <button type="submit" mat-button color="warn" (click)='deleteTipGoriva(gorivo.id)'> Obrisi </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div  class="col-md-3 offset-md-9" *ngIf = 'edit2'   >
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit2()">
+    <fieldset>
+        Edit tip goriva:  
+        <br/>
+        <label>Naziv:</label>
+        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelTipGoriva.naziv" />
+
+        
+    <button mat-raised-button color="accent">Edit</button>
+    </fieldset>
+    </form>
+</div>
+
+
+<br/>
+<h2>Lista tipa menjaca</h2>
+<table class="ui celled striped table">
+    <thead>
+      <th>Naziv tipa menjaca</th>
+      <th>Izmeni</th>
+      <th>Obrisi</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menjac of menjaci">
+            <td>
+                {{menjac.naziv}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" (click)='editTipMenjaca(menjac)'> Izmeni </button>
+            </td>
+            <td>
+                <button type="submit" mat-button color="warn"  (click)='deleteTipMenjaca(menjac.id)'> Obrisi </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div  class="col-md-3 offset-md-9" *ngIf = 'edit3'   >
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit3()">
+    <fieldset>
+        Edit tip menjaca:  
+        <br/>
+        <label>Naziv:</label>
+        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelTipMenjaca.naziv" />
+
+        
+    <button mat-raised-button color="primary">Edit</button>
+    </fieldset>
+    </form>
+</div>

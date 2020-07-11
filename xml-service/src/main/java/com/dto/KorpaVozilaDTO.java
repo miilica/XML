@@ -34,17 +34,14 @@ public class KorpaVozilaDTO {
 
     private KlasaAutomobilaDTO klasaAutomobila;
 
-    private AgentDTO agent;
+    private Agent agent;
 
     private Long vehicleId;
 
 /*
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-
     private Set<Komentar> komentari;
-
     private Set<Izvjestaj> izvjestaji;
-
     private Set<Oglas> oglasi;
 */
 

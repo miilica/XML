@@ -1,0 +1,124 @@
+<html>
+
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div id="login">
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+                                <h1  style="text-align:center; margin-top: 50px;  text-transform: uppercase;">Sign up</h1>
+
+                                <form [formGroup]="registrationForm" (submit)="onRegisterSubmit()">
+                                    <div mat-dialog-content>
+
+                                        <p style="text-align:center" >
+                                            <mat-form-field appearance="outline" >
+                                                <mat-label>First name</mat-label>
+                                                <input matInput type="text" placeholder="First name" formControlName="name" >
+
+                                                <small id="firstname-error-msg" class="text-danger"
+                                                    *ngIf="registrationForm.controls.name.touched && registrationForm.controls.name.errors?.required">
+                                                    Name is required
+                                                </small>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Last name</mat-label>
+                                                <input matInput type="text" placeholder="Last name" formControlName="surname" >
+
+                                                <small id="firstname-error-msg" class="text-danger"
+                                                    *ngIf="registrationForm.controls.name.touched && registrationForm.controls.name.errors?.required">
+                                                    Surname is required
+                                                </small>
+                                            </mat-form-field>
+                                        </p>
+
+                                        <p style="text-align:center">
+                                            <mat-form-field appearance="outline" >
+                                                <mat-label>Username</mat-label>
+                                                <input matInput type="text" placeholder="Username" formControlName="username"  >
+
+                                                <small id="username-error-msg" class="text-danger"
+                                                    *ngIf="registrationForm.controls.username.touched && registrationForm.controls.username.errors?.required">
+                                                    Username is required
+                                                </small>
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="outline" >
+                                                <mat-label>Country</mat-label>
+                                                <input matInput type="text" placeholder="Country" formControlName="country"  >
+                                            </mat-form-field>
+
+                                        </p>
+
+                                        <p style="text-align:center">
+                                            <mat-form-field appearance="outline" >
+                                                <mat-label>Email</mat-label>
+                                                <input matInput type="email" placeholder="Email" formControlName="email"  >
+
+                                                <small id="email-error-msg-req" class="text-danger"
+                                                    *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.errors?.required">
+                                                    Email is required
+                                                </small>
+
+                                                <small id="email-error-msg" class="text-danger"
+                                                    *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.errors?.email">
+                                                    Email is not valid
+                                                </small>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Phone number</mat-label>
+                                                <input matInput type="text" placeholder="phone" formControlName="phone"  >
+                                            </mat-form-field>
+                                        </p>
+
+                                        <p style="text-align:center">
+                                            <mat-form-field appearance="outline" >
+                                                <mat-label>Address</mat-label>
+                                                <input matInput type="text" placeholder="Address" formControlName="address"  >
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline" >
+                                                <mat-label>City</mat-label>
+                                                <input matInput type="text" placeholder="City" formControlName="city"  >
+                                            </mat-form-field>
+                                        </p>
+
+                                        <p style="text-align:center">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Password</mat-label>
+                                                <input matInput type="password" formControlName="password"  >
+
+                                                <small id="password-error-msg" class="text-danger"
+                                                    *ngIf="registrationForm.controls.password.touched && registrationForm.controls.password.errors?.required">
+                                                    Password is required
+                                                </small>
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Repeat password</mat-label>
+                                                <input matInput type="password" formControlName="repeatPassword"  >
+
+                                                <small id="repeatpassword-error-msg" class="text-danger"
+                                                    *ngIf="registrationForm.controls.repeatPassword.touched && registrationForm.controls.repeatPassword.errors?.required">
+                                                    Repeat password is required
+                                                </small>
+                                            </mat-form-field>
+                                        </p>
+                                    </div>
+                                    <div  style="text-align:center" >
+                                    <button  mat-raised-button color="accent" type="submit" [disabled]="registrationForm.invalid">Sing up</button>
+                                    
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>

@@ -1,0 +1,51 @@
+<div class="container">
+    <h2 class="ui header">Lista termina iznajmljivanja</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>Od kada</th>
+            <th>Do kada</th>
+            <th>Vozilo id</th>
+            <th>User id</th>
+            <th>Broj predjenih km</th>
+            <th>Dodaj kilometre i opis</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let termin of termini">
+                <td>{{ termin.odKad|date: 'medium' }}</td>
+                <td>{{ termin.doKad|date: 'medium' }}</td>
+                <td>{{ termin.vozilo.id }}</td>
+                <td>{{ termin.userId }}</td>
+                <td>{{ termin.vozilo.kilometraza }}</td>
+                <td>
+                    <mat-icon (click)="onClickOpenTermin(termin.vozilo)">open_in_browser</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="vidiZahtjev">
+    <h2 class="ui header">Vozilo</h2>
+
+    <table class="ui celled striped table">
+        <thead>
+            <th>ID</th>
+            <th>Cijena</th>
+            <th>Kilometraza</th>
+            <th>Dodaj kilometre</th>
+            <th>Dodaj opis</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{trenutnoVozilo.id}}</td>
+                <td>{{trenutnoVozilo.cijena}}</td>
+                <td>{{trenutnoVozilo.kilometraza}}</td>
+                <td>
+                    <input type="text" [(ngModel)]="dodajKilometrePom"/>
+                    <button (click)="onClickDodaj()">Dodaj</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

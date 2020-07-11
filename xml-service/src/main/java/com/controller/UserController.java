@@ -10,7 +10,9 @@ import com.repository.KomentarRepository;
 import com.service.UserService;
 import com.service.ZahtjevService;
 import com.service.impl.KomentarService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -102,5 +104,11 @@ public class UserController {
 		zahtjevService.payForRentACar(zahtjev);
 		return ResponseEntity.ok().build();
 	}
+
+//	@GetMapping("/verify/{email}")
+//	public ResponseEntity<?> verify(@PathVariable("email") String email) throws NotFoundException {
+//		System.out.println("Verification invoked!");
+//		return new ResponseEntity<>(this.userService.verify(email), HttpStatus.OK);
+//	}
 
 }
