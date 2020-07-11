@@ -116,7 +116,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers(HttpMethod.PUT, "/**/public/**");
 		web.ignoring().antMatchers(HttpMethod.DELETE, "/**/public/**");
 		web.ignoring().antMatchers(HttpMethod.POST, "/message/**");
-		web.ignoring().antMatchers(HttpMethod.GET, "http://localhost:8083/message/poruke/**");
+		web.ignoring().antMatchers(HttpMethod.GET, "/message/poruke/**");
 	}
 
 }

@@ -1,14 +1,14 @@
 package com.example.zuul;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "consumer")
+import org.springframework.web.bind.annotation.PostMapping;
+
+@FeignClient(name = "auth")
 public interface AuthClient {
 
-    @GetMapping("/verify/{email}")
-    boolean verify(@PathVariable("email") String email);
+    @PostMapping("/verify")
+    VerificationResponse verify(String token);
 
 }
 
