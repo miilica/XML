@@ -50,7 +50,7 @@ public class AuthFilter extends ZuulFilter {
 
         String email = request.getHeader("email");
         try {
-            authClient.verify(email);
+            //authClient.verify(email);
 
             ctx.addZuulRequestHeader("username", email);
             ctx.addZuulRequestHeader("role", "ROLE_KORISNIK");

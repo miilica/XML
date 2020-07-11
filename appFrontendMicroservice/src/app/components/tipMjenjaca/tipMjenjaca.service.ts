@@ -8,12 +8,12 @@ import { TipMjenjaca } from './tipMjenjaca';
     providedIn: 'root'
 })
 export class TipMjenjacaService{
-    _url = 'http://localhost:8099/api/tipmjenjaca/dodaj';
+    _url = 'http://localhost:8088/api/tipmjenjaca/dodaj';
     //_url2 = 'http://localhost:8099/api/tipmjenjaca';
    
-    _url2 = 'http://localhost:8099/api/tipmjenjaca/get';
-    _url3 = 'http://localhost:8099/api/tipmjenjaca/edit';
-    _url4 = 'http://localhost:8099/api/tipmjenjaca/delete';
+    _url2 = 'http://localhost:8088/api/tipmjenjaca/get';
+    _url3 = 'http://localhost:8088/api/tipmjenjaca/edit';
+    _url4 = 'http://localhost:8088/api/tipmjenjaca/delete';
 
     constructor(private _http: HttpClient) { }
 

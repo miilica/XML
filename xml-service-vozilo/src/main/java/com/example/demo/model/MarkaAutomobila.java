@@ -21,6 +21,9 @@ public class MarkaAutomobila {
     @Column
     private boolean obrisan;
 
+    public MarkaAutomobila() {
+    }
+
     public MarkaAutomobila(MarkaAutomobilaDTO m) {
         this.setNazivMarke(m.getNazivMarke());
         this.setModel(m.getModel());
