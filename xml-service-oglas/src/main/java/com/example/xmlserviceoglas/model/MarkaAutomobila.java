@@ -25,6 +25,9 @@ public class MarkaAutomobila {
     @Column
     private String model;
 
+    @Column
+    private Boolean obrisan;
+
     @OneToMany(mappedBy = "markaAutomobila", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 }

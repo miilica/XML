@@ -74,6 +74,9 @@ public class Vozilo {
     @JoinColumn(name = "ocjene_id")
     private Set<Ocena> ocjene = new HashSet<>();
 
+    @OneToMany(mappedBy = "vozilo", cascade = CascadeType.ALL)
+    private Set<Slika> slike;
+
 
     public Vozilo(VoziloDTO v){
         this.id = v.getId();

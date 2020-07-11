@@ -1,6 +1,5 @@
 package com.example.xmlserviceoglas.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,15 +26,21 @@ public class Agent{
     private String prezime;
 
     @Column
+    private String adresa;
+
+    @Column
     private String imeKompanije;
+
+    @Column
+    private String poslovniMB;
+
+    @Column
+    private int brOglasa;
 
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Vozilo> vozila;
 
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Zahtjev> pristigliZahtjevi;
-
-    @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
-    private Set<KorpaVozila> korpaVozila;
 
 }
