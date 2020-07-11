@@ -73,6 +73,7 @@ public class ZauzeceService {
                         z.setZahtjevStatus("STATUS_CANCELED");
                         this.zahtjevRepository.save(z);
                     }
+
                     if (zahtjevOd.isBefore(zauzetOd) && zahtjevDo.isAfter(zauzetDo)) {
                         z.setZahtjevStatus("STATUS_CANCELED");
                         this.zahtjevRepository.save(z);

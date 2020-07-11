@@ -10,9 +10,9 @@ import { Cjenovnik } from '../search/shared/cjenovnik';
 export class CjenovnikService {
 
 
-    private urlDodajCjenovnik : string = `http://localhost:8086/api/cjenovnik/dodaj`;
-    private urlGetCjenovnik : string = `http://localhost:8086/api/cjenovnik/getCjenovnik`;
-    private urlIzmjeniCjenovnik : string = `http://localhost:8086/api/cjenovnik/izmjeni`;
+    private urlDodajCjenovnik : string = `http://localhost:8099/api/cjenovnik/dodaj`;
+    private urlGetCjenovnik : string = `http://localhost:8099/api/cjenovnik/getCjenovnik`;
+    private urlIzmjeniCjenovnik : string = `http://localhost:8099/api/cjenovnik/izmjeni`;
 
     constructor(private http: HttpClient) { 
     }

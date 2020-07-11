@@ -29,7 +29,7 @@ public class VoziloDTO {
     private KlasaAutomobilaDTO klasaAutomobila;
     private Boolean imaAndroid;
     private boolean coliisionDamageWavier;
-    private Agent agent;
+    private AgentDTO agent;
     private List<String> slike;
     //private Set<TerminIznajmljivanja> terminiIznajmljivanja;
 
@@ -57,7 +57,7 @@ public class VoziloDTO {
         this.cijena = v.getCijena();
         this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
         this.kilometraza = v.getKilometraza();
-        this.agent = v.getAgent();
+        this.agent = new AgentDTO(v.getAgent());
         this.markaAutomobila = new MarkaAutomobilaDTO(v.getMarkaAutomobila());
         this.klasaAutomobila = new KlasaAutomobilaDTO(v.getKlasaAutomobila());
         this.tipGoriva = new VrstaGorivaDTO(v.getTipGoriva());
@@ -163,11 +163,11 @@ public class VoziloDTO {
         this.coliisionDamageWavier = coliisionDamageWavier;
     }
 
-    public Agent getAgent() {
+    public AgentDTO getAgent() {
         return agent;
     }
 
-    public void setAgent(Agent agent) {
+    public void setAgent(AgentDTO agent) {
         this.agent = agent;
     }
 

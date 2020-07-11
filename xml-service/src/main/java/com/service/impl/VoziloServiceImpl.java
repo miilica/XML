@@ -27,6 +27,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 
+import javax.jws.WebParam;
 import javax.sql.rowset.serial.SerialBlob;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -73,7 +74,7 @@ public class VoziloServiceImpl implements VoziloService {
         List<VoziloDTO> vozilaDTO = new ArrayList<>();
 
         for(Vozilo v: vozila){
-            VoziloDTO voziloDTO = new ModelMapper().map(v, VoziloDTO.class);
+            VoziloDTO voziloDTO = modelMapper.map(v, VoziloDTO.class);
             vozilaDTO.add(voziloDTO);
         }
 

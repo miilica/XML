@@ -2,7 +2,6 @@ package com.dto;
 
 import com.Util.JsonJodaDateTimeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.model.Cjenovnik;
 import com.model.Oglas;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

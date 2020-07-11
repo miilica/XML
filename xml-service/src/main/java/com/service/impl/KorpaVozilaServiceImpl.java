@@ -1,17 +1,13 @@
 package com.service.impl;
 
 import com.config.consts.ZahtjevStatus;
+import com.dto.AgentDTO;
 import com.dto.KorpaVozilaDTO;
 import com.exception.ApiRequestException;
-import com.model.KorpaVozila;
-import com.model.User;
-import com.model.Vozilo;
-import com.model.Zahtjev;
-import com.repository.KorpaVozilaRepository;
-import com.repository.UserRepository;
-import com.repository.VoziloRepository;
-import com.repository.ZahtjevRepository;
+import com.model.*;
+import com.repository.*;
 import com.service.KorpaVozilaService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,6 +31,15 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
     @Autowired
     private VoziloServiceImpl voziloService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private VoziloRepository voziloRepository;
+
+    @Autowired
+    private  OglasRepository oglasRepository;
+
     @Override
     public KorpaVozila addVehicleToCart(KorpaVozilaDTO vozilo) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -56,7 +61,8 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         v.setUserId(u.getId());
         v.setVehicleId(vozilo.getId());
         v.setOcjena(vozilo.getOcjena());
-        v.setAgent(vozilo.getAgent());
+        Vozilo vozilo1 = voziloRepository.getOne(vozilo.getId());
+        v.setAgent(vozilo1.getAgent());
         v.setBrSjedistaZaDjecu(vozilo.getBrSjedistaZaDjecu());
         v.setColiisionDamageWavier(vozilo.isColiisionDamageWavier());
         v.setImaAndroid(vozilo.getImaAndroid());
@@ -98,12 +104,14 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         Zahtjev zahtjev = new Zahtjev();
         zahtjev.setDatumKreiranja(currentUtilDate);
         zahtjev.setPotvrdjen(false);
-        zahtjev.setAgent(vozilo.getAgent());
+        Vozilo vozilo1 = voziloRepository.getOne(vozilo.getId());
+        zahtjev.setAgent(vozilo1.getAgent());
         zahtjev.setBundle(vozilo.isBundle());
+        zahtjev.setOglas(this.oglasRepository.getOne(1L));
         zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PENDING);
 
-        Vozilo vozilo1 = voziloService.findById(vozilo.getVehicleId());
-        zahtjev.setVozilo(vozilo1);
+        Vozilo vozilo2 = voziloService.findById(vozilo.getVehicleId());
+        zahtjev.setVozilo(vozilo2);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Object currentUser = auth.getPrincipal();
@@ -130,7 +138,8 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         for(KorpaVozilaDTO vozilo: listaVozila) {
             KorpaVozila v = new KorpaVozila();
             v.setKilometraza(vozilo.getKilometraza());
-            v.setAgent(vozilo.getAgent());
+            Vozilo vozilo1 = voziloRepository.getOne(vozilo.getId());
+            v.setAgent(vozilo1.getAgent());
             v.setVehicleId(vozilo.getVehicleId());
             v.setImaAndroid(vozilo.getImaAndroid());
 
@@ -166,7 +175,7 @@ public class KorpaVozilaServiceImpl implements KorpaVozilaService {
         zahtjev.setDatumKreiranja(currentUtilDate);
         zahtjev.setPotvrdjen(false);
         zahtjev.setBundle(true);
-        zahtjev.setAgent(listaVozila[0].getAgent());
+        zahtjev.setAgent(modelMapper.map(listaVozila[0].getAgent(), Agent.class));
         zahtjev.setZahtjevStatus(ZahtjevStatus.STATUS_PENDING);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
