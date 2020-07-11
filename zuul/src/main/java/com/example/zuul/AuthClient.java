@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "auth")
 public interface AuthClient {
 
-    @PostMapping("/verify")
-    VerificationResponse verify(String token);
+
 
 }
 
