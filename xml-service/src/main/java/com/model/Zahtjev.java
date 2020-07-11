@@ -1,6 +1,5 @@
 package com.model;
 
-import com.dto.KorpaVozilaDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,6 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -49,17 +47,17 @@ public class Zahtjev {
     private  boolean bundle;
 
     //agent ciji je oglas
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name = "agent_id")
     private Agent agent;
 
     //user koji je poslao zahtjev
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_poslao_id")
     private User userPoslao;
 
     //user ciji je oglas
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_izdao_id")
     private User userIzdao;
 
@@ -67,7 +65,7 @@ public class Zahtjev {
     private String zahtjevStatus;
 
     //iznajmljivanje pojedinacnih vozila
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 
@@ -79,5 +77,4 @@ public class Zahtjev {
     @ManyToOne(fetch = FetchType.LAZY)
     private Oglas oglas;
 
-    //private StatusZahtjeva statusZahtjeva;
 }

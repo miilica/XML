@@ -46,8 +46,6 @@ public class Agent{
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private Set<Zahtjev> pristigliZahtjevi;
 
-
-
     //private Set<Oglas> oglasi;
     public Long getId() {
         return  id;

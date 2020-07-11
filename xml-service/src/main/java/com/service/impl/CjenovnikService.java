@@ -39,7 +39,6 @@ public class CjenovnikService {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     public ResponseEntity<?> izmjeniCjenovnik(CjenovnikDTO cjenovnikDTO) {
 
         Cjenovnik cjenovnik = this.cjenovnikRepository.getOne(cjenovnikDTO.getId());
@@ -66,7 +65,6 @@ public class CjenovnikService {
 
             cjenovnikDTOS.add(cjenovnikDTO);
         }
-
 
         return new ResponseEntity<>(cjenovnikDTOS,HttpStatus.OK);
     }
