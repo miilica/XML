@@ -20,14 +20,14 @@ public class KorpaVozilaKontroler {
     private KorpaVozilaService korpaVozilaService;
 
     @PostMapping("/addVehicleToCart")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+   // @PreAuthorize("hasRole('ROLE_KORISNIK')")
     public ResponseEntity add(@Valid @RequestBody KorpaVozilaDTO vozilo) {
         korpaVozilaService.addVehicleToCart(vozilo);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/allVozila")
-    @PreAuthorize("hasRole('ROLE_KORISNIK')")
+    //@PreAuthorize("hasRole('ROLE_KORISNIK')")
     public List<KorpaVozila> findAll() throws AccessDeniedException {
         return this.korpaVozilaService.findAll();
     }
