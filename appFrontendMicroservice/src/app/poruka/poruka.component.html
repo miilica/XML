@@ -17,7 +17,7 @@
     <div>
       <label  class="col-form-label" for="inputDefault">Primalac</label>
       <select class="form-control" id="primalac"  [(ngModel)]="po.primalacId" name="primalac" >
-       <option *ngFor = 'let c of useri' name="klasa" [ngValue]="c.id">{{c.name}} {{c.surname}}</option>
+       <option *ngFor = 'let c of useri' name="primalac" [ngValue]="c.id">{{c.name}} {{c.surname}}</option>
       </select>
     </div>
 

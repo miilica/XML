@@ -34,17 +34,14 @@ public class KorpaVozilaDTO {
 
     private KlasaAutomobilaDTO klasaAutomobila;
 
-    private AgentDTO agent;
+    private Agent agent;
 
     private Long vehicleId;
 
 /*
     private Set<TerminIznajmljivanja> terminiIznajmljivanja;
-
     private Set<Komentar> komentari;
-
     private Set<Izvjestaj> izvjestaji;
-
     private Set<Oglas> oglasi;
 */
 
@@ -53,7 +50,7 @@ public class KorpaVozilaDTO {
         this.cijena = v.getCijena();
         this.kilometraza = v.getKilometraza();
         this.mozePreciKM = v.getMozePreciKM();
-        this.agent = v.getAgent();
+        this.agent =  v.getAgent();
         this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
         this.imaAndroid = v.getImaAndroid();
         this.coliisionDamageWavier = v.isColiisionDamageWavier();

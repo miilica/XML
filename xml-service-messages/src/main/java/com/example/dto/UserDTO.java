@@ -1,7 +1,7 @@
 package com.example.dto;
 
-import com.example.model.Authority;
 import com.example.model.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,12 +10,12 @@ import lombok.Setter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
+
     private Long id;
     private String username;
     private String name;
@@ -23,7 +23,7 @@ public class UserDTO {
     private String address;
     private boolean enabled;
     private List<String> authorities;
-    private UserTokenDTO token;
+    //private UserTokenDTO token;
 
     public UserDTO(User user) {
         this.id = user.getId();
@@ -32,10 +32,10 @@ public class UserDTO {
         this.email = user.getEmail();
         this.address = user.getAddress();
         this.enabled = user.isEnabled();
-        this.token = null;
+        //this.token = null;
 
-        this.authorities = user.getAuthorities().stream()
-                .map(authority -> ((Authority) authority).getName()).collect(Collectors.toList());
+//        this.authorities = user.getAuthorities().stream()
+//                .map(authority -> ((Authority) authority).getName()).collect(Collectors.toList());
     }
 
 }

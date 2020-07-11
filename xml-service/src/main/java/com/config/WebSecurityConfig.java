@@ -92,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/**").permitAll()
 				.antMatchers("/api/users/getLoggedIn").permitAll()
 				.antMatchers("/api/vozilo/allVozila/kaca**").permitAll()
-
+				.antMatchers("http://localhost:8083/message/poruke/**").permitAll()
 				// All other requests must be authorized
 				.anyRequest().authenticated().and()
 
@@ -115,6 +115,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers(HttpMethod.POST, "/**/public/**");
 		web.ignoring().antMatchers(HttpMethod.PUT, "/**/public/**");
 		web.ignoring().antMatchers(HttpMethod.DELETE, "/**/public/**");
+		web.ignoring().antMatchers(HttpMethod.POST, "/message/**");
+		web.ignoring().antMatchers(HttpMethod.GET, "http://localhost:8083/message/poruke/**");
 	}
 
 }

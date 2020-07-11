@@ -6,7 +6,7 @@ import { Poruka } from '../poruka/poruka';
     providedIn: 'root'
 })
 export class ListaPorukaService{
-    _url = 'http://localhost:8099/api/poruke';
+    _url = 'http://localhost:8083/message/poruke';
     
    
 

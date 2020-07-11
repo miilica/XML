@@ -5,6 +5,7 @@ import com.dto.UserDTO;
 import com.dto.UserRegistrationDTO;
 import com.model.User;
 import com.model.UserRequest;
+import javassist.NotFoundException;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface UserService {
     void activateComment(Long id);
     public User getLoogedIn();
     List<KomentarDTO> loadAllComments();
+   // boolean verify(String email) throws NotFoundException;
 }

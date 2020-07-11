@@ -16,6 +16,7 @@ import com.repository.KomentarRepository;
 import com.repository.UserRepository;
 import com.service.AuthorityService;
 import com.service.UserService;
+import javassist.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -223,5 +224,14 @@ public class UserServiceImpl implements UserService {
 		komentarRepository.save(kom);
 	}
 
+
+//	@Autowired
+//	public boolean verify(String email) throws NotFoundException {
+//		if (!this.userRepository.existsByEmail(email)) {
+//			throw new NotFoundException("Consumer with that id does not exist!");
+//		}
+//
+//		return true;
+//	}
 
 }

@@ -35,14 +35,14 @@ export class PorukaComponent implements OnInit {
   )
 
   
-this._userService.getAll().subscribe(
-  data=>{ 
-    console.log('cao2')
-    console.log(data);
-      this.useri = data;
-  },
-  error=> console.error('Error!', error)
-)
+    this._userService.getAll().subscribe(
+       data=>{ 
+         console.log('cao2')
+         console.log(data);
+           this.useri = data;
+       },
+         error=> console.error('Error!', error)
+     )
 
   }
 

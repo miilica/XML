@@ -8,10 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -20,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "users")
-public class User implements UserDetails {
+public class User {
 
     @Id
     @Column(name = "id")
@@ -63,18 +60,25 @@ public class User implements UserDetails {
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
 
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
-    private List<Authority> authorities;
+//    @JsonIgnore
+//    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+//    @JoinTable(name = "user_authority",
+//            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+//    private List<Authority> authorities;
+//
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "user")
+//    private Set<Oglas> oglasi;
+//
+//    @OneToMany(mappedBy = "user")
+//    private Set<Cjenovnik> cjenovnici;
 
     public User() {
     }
 
     public User(String name, String surname, String address, String city, String country, String email,
-                String phone, String password, List<Authority> authorities, String username) {
+                String phone, String password,  String username) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -83,7 +87,6 @@ public class User implements UserDetails {
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.authorities = authorities;
         this.username = username;
     }
 
@@ -121,17 +124,17 @@ public class User implements UserDetails {
         this.name = name;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
-        this.authorities = authorities;
-    }
-
-    public List<Authority> getUserAuthorities() {
-        if (this.authorities == null) {
-            this.authorities = new ArrayList<>();
-        }
-
-        return this.authorities;
-    }
+//    public void setAuthorities(List<Authority> authorities) {
+//        this.authorities = authorities;
+//    }
+//
+//    public List<Authority> getUserAuthorities() {
+//        if (this.authorities == null) {
+//            this.authorities = new ArrayList<>();
+//        }
+//
+//        return this.authorities;
+//    }
 
     public String getEmail() {
         return email;
@@ -149,7 +152,7 @@ public class User implements UserDetails {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    @Override
+    //@Override
     public boolean isEnabled() {
         return enabled;
     }
@@ -158,25 +161,25 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return this.authorities;
+//    }
 
     @JsonIgnore
-    @Override
+    //@Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @JsonIgnore
-    @Override
+    //@Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @JsonIgnore
-    @Override
+    //@Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
@@ -229,4 +232,19 @@ public class User implements UserDetails {
         isAdmin = admin;
     }
 
+//    public Set<Oglas> getOglasi() {
+//        return oglasi;
+//    }
+//
+//    public void setOglasi(Set<Oglas> oglasi) {
+//        this.oglasi = oglasi;
+//    }
+//
+//    public Set<Cjenovnik> getCjenovnici() {
+//        return cjenovnici;
+//    }
+//
+//    public void setCjenovnici(Set<Cjenovnik> cjenovnici) {
+//        this.cjenovnici = cjenovnici;
+//    }
 }
