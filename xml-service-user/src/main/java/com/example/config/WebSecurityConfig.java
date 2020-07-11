@@ -1,6 +1,7 @@
 package com.example.config;
 
 import com.example.security.TokenUtils;
+import com.example.security.auth.AuthenticationTokenFilter;
 import com.example.security.auth.RestAuthenticationEntryPoint;
 import com.example.security.auth.TokenAuthenticationFilter;
 import com.example.service.impl.CustomUserDetailsService;
@@ -17,7 +18,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.header.writers.StaticHeadersWriter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -75,46 +78,44 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new CorsFilter(source);
 	}
 
+	@Bean
+	public AuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
+		AuthenticationTokenFilter authenticationTokenFilter = new AuthenticationTokenFilter();
+		authenticationTokenFilter.setAuthenticationManager(authenticationManagerBean());
+		return authenticationTokenFilter;
+	}
+
 	// Definisemo prava pristupa odredjenim URL-ovima
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+		http.headers().frameOptions().disable();
 
-				// Allow all users to access URLs that have 'public' in them
-				// Allow auth
+		http.headers().addHeaderWriter(new StaticHeadersWriter("X-Content-Security-Policy","script-src 'self'"));
+		http.cors().disable();
+		http
+				.csrf()
+				.disable()
+				.exceptionHandling()
+				.and()
+				.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
 				.authorizeRequests()
-				.antMatchers("**/public/**").permitAll()
-				.antMatchers("/auth/**").permitAll()
-				.antMatchers("/zauzece/**").permitAll()
-				.antMatchers("/api/poruke/**").permitAll()
-				.antMatchers("/api/**").permitAll()
-				.antMatchers("/api/users/getLoggedIn").permitAll()
-				.antMatchers("/api/vozilo/allVozila/kaca**").permitAll()
+				.antMatchers(HttpMethod.OPTIONS).permitAll()
+				.antMatchers("/h2-console/**", "/**")
+				.permitAll()
+				.anyRequest().authenticated();
 
-				// All other requests must be authorized
-				.anyRequest().authenticated().and()
-
-				// Intercept every request with filter
-				.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService), BasicAuthenticationFilter.class);
-
-		http
-				.cors().and()
-				.csrf().disable();
+		http.addFilterAfter(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 
+	// Generalna bezbednost aplikacije
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		// TokenAuthenticationFilter will ignore all URLs below
-		web.ignoring().antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html", "/**/*.css", "/**/*.js");
-		web.ignoring().antMatchers(HttpMethod.POST, "/auth/login");
-
-		// TokenAuthenticationFilter will ignore all paths that have 'public' in them
-		web.ignoring().antMatchers(HttpMethod.GET, "/**/public/**");
-		web.ignoring().antMatchers(HttpMethod.POST, "/**/public/**");
-		web.ignoring().antMatchers(HttpMethod.PUT, "/**/public/**");
-		web.ignoring().antMatchers(HttpMethod.DELETE, "/**/public/**");
+		web.ignoring().antMatchers(HttpMethod.GET, "/**");
+		web.ignoring().antMatchers(HttpMethod.POST, "/**");
+		web.ignoring().antMatchers(HttpMethod.PUT, "/**");
+		web.ignoring().antMatchers(HttpMethod.DELETE, "/**");
 	}
 
 }
